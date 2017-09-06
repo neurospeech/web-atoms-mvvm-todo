@@ -4,7 +4,7 @@
     
     <div>
         <input placeholder="Task..." atom-value="$[viewModel.newTask]"/>
-        <button atom-event-click="{  ($viewModel).addTask() }">Add</button>
+        <button atom-event-click="{ ()=> ($viewModel).addTask() }">Add</button>
     </div>
 
     <div 
