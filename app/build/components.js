@@ -1,8 +1,9 @@
 
 
-(function(window,baseType){
+window.TaskList = (function(window,baseType){
 
-                window.jsonML["WebAtoms.TaskList.template"] = ["div",
+                window.Templates.jsonML["TaskList.template"] = 
+                    [["div",
 {
   "data-atom-init": "TaskList_t0"
 },
@@ -29,8 +30,14 @@
   {
     "atom-type": "AtomItemsControl",
     "data-atom-init": "TaskList_t3"
-  }
-]];
+  },
+  [
+    "div",
+    {
+      "atom-template": "itemTemplate"
+    }
+  ]
+]]];
 
                 (function(window,WebAtoms){
                     this.TaskList_t0 = function(e) { 
@@ -50,8 +57,8 @@
                 return classCreatorEx({
                     name: "TaskList",
                     base: baseType,
-                    start: function(){
-
-                    }
+                    start: function(){},
+                    methods:{},
+                    properties:{}
                 })
             })(window, WebAtoms.AtomControl.prototype)
