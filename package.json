@@ -24,6 +24,6 @@
   "homepage": "https://github.com/neurospeech/web-atoms-mvvm-todo#readme",
   "dependencies": {
     "web-atoms":"^2.1.116",
-    "web-atoms-mvvm":"^1.0.46"
+    "web-atoms-mvvm":"^1.0.49"
   }
 }

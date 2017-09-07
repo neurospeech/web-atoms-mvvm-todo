@@ -1,10 +1,15 @@
+<!-- 
+    Root tag name is ignored, tag on which this control will be created, 
+    will be considered for at runtime.
+-->
+
 <div
     atom-component="TaskList" 
     atom-view-model="{new TaskListViewModel() }">
     
     <div>
         <input placeholder="Task..." atom-value="$[viewModel.newTask.label]"/>
-        <button atom-event-click="{ => $viewModel.addTask() }">Add</button>
+        <button atom-event-click="{ ()=> $viewModel.addTask() }">Add</button>
     </div>
 
     <div 
@@ -16,8 +21,7 @@
 
             <button
                 atom-type="AtomDeleteButton"
-                atom-next="{ => $viewModel.deleteTask($data)  }"
-                >Delete</button>
+                atom-next="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>
     </div>
 

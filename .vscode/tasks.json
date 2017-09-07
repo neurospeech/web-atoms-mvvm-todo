@@ -24,7 +24,8 @@
                 "node_modules/web-atoms-mvvm/bin/component-generator.js",
                 "app/src",
                 "app/build/components.js"
-            ]
+            ],
+            "problemMatcher":"$tsc-watch"
         }
     ]
 }
