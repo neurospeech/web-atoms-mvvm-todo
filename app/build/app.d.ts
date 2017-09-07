@@ -1,3 +1,6 @@
+declare class SettingsWindowViewModel extends WebAtoms.AtomWindowViewModel {
+    save(): void;
+}
 declare class Task {
     label: string;
     finished: boolean;
@@ -8,4 +11,5 @@ declare class TaskListViewModel extends WebAtoms.AtomViewModel {
     constructor();
     addTask(): void;
     deleteTask(task: Task): void;
+    openSettings(): Promise<void>;
 }
