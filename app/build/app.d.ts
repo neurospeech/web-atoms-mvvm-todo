@@ -7,4 +7,5 @@ declare class TaskListViewModel extends WebAtoms.AtomViewModel {
     newTask: Task;
     constructor();
     addTask(): void;
+    deleteTask(task: Task): void;
 }

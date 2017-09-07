@@ -38,6 +38,14 @@ window.TaskList = (function(window,baseType){
         {
           "data-atom-init": "TaskList_t4"
         }
+      ],
+      [
+        "button",
+        {
+          "atom-type": "AtomDeleteButton",
+          "data-atom-init": "TaskList_t5",
+          "atom-text": "Delete"
+        }
       ]
     ]
   ]
@@ -54,10 +62,13 @@ window.TaskList = (function(window,baseType){
                         this.setLocalValue('eventClick',function(){ return  (Atom.get(this,"viewModel")).addTask(); },e);
                     };
 		this.TaskList_t3 = function(e) { 
-                        this.setLocalValue('items',Atom.get(this,"viewModel.list"),e);
+                        this.setLocalValue('items',(Atom.get(this,"viewModel.list")),e);
                     };
 		this.TaskList_t4 = function(e) { 
-                        this.setLocalValue('text',Atom.get(this,"data.label"),e);
+                        this.setLocalValue('text',(Atom.get(this,"data.label")),e);
+                    };
+		this.TaskList_t5 = function(e) { 
+                        this.setLocalValue('next',function(){ return  (Atom.get(this,"viewModel")).deleteTask((Atom.get(this,"data"))); },e);
                     };
                 }).call(WebAtoms.PageSetup,window,WebAtoms);
 

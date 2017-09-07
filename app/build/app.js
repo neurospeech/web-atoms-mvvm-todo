@@ -32,6 +32,9 @@ var TaskListViewModel = /** @class */ (function (_super) {
         this.list.add(this.newTask);
         this.newTask = new Task();
     };
+    TaskListViewModel.prototype.deleteTask = function (task) {
+        this.list.remove(task);
+    };
     __decorate([
         bindableProperty
     ], TaskListViewModel.prototype, "list", void 0);

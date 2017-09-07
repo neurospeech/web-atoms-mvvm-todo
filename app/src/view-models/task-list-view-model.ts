@@ -20,4 +20,8 @@ class TaskListViewModel extends WebAtoms.AtomViewModel{
         this.list.add(this.newTask);
         this.newTask = new Task();
     }
+
+    deleteTask(task:Task){
+        this.list.remove(task);
+    }
 }

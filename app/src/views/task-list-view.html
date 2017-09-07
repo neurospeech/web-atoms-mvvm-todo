@@ -4,15 +4,20 @@
     
     <div>
         <input placeholder="Task..." atom-value="$[viewModel.newTask.label]"/>
-        <button atom-event-click="{ ()=> ($viewModel).addTask() }">Add</button>
+        <button atom-event-click="{ => $viewModel.addTask() }">Add</button>
     </div>
 
     <div 
         atom-type="AtomItemsControl"
         atom-items="{$viewModel.list}">
         <div atom-template="itemTemplate">
+
             <span atom-text="{$data.label}"></span>
-            <button>Delete</button>
+
+            <button
+                atom-type="AtomDeleteButton"
+                atom-next="{ => $viewModel.deleteTask($data)  }"
+                >Delete</button>
         </div>
     </div>
 
