@@ -1,17 +1,18 @@
 <div
     atom-component="TaskList" 
-    atom-view-model="{new TaskListViewModel}">
+    atom-view-model="{new TaskListViewModel() }">
     
     <div>
-        <input placeholder="Task..." atom-value="$[viewModel.newTask]"/>
+        <input placeholder="Task..." atom-value="$[viewModel.newTask.label]"/>
         <button atom-event-click="{ ()=> ($viewModel).addTask() }">Add</button>
     </div>
 
     <div 
         atom-type="AtomItemsControl"
-        atom-items="{$viewModel.items}">
+        atom-items="{$viewModel.list}">
         <div atom-template="itemTemplate">
-            
+            <span atom-text="{$data.label}"></span>
+            <button>Delete</button>
         </div>
     </div>
 
