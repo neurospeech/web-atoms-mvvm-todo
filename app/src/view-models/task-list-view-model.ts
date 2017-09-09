@@ -1,52 +1,54 @@
-class Task{
-    label:string = ""
-    finished: boolean
-}
+namespace Todo{
 
-class TaskListViewModel extends WebAtoms.AtomViewModel{
-    @bindableProperty
-    list:WebAtoms.AtomList<Task>
 
-    @bindableProperty
-    newTask:Task
+    export class Task{
+        
+        label:string = "";
 
-    constructor(){
-        super()
-        this.list = new WebAtoms.AtomList();
-        this.newTask = new Task();
+        description:string;
+
+        finished: boolean;
     }
 
-    addTask(){
+    export class TaskListViewModel extends WebAtoms.AtomViewModel{
+        @bindableProperty
+        list:WebAtoms.AtomList<Task>
 
-        if(!this.newTask.label){
-            WebAtoms.DI.resolve(WindowService)
-                .alert("Task cannot be empty");
-            return;
+        @bindableProperty
+        newTask:Task
+
+        constructor(){
+            super()
+            this.list = new WebAtoms.AtomList();
+
+            var sample = new Task();
+            sample.label = "Sample task 1";
+            this.list.add(sample);
+            this.newTask = new Task();
         }
 
-        this.list.add(this.newTask);
-        this.newTask = new Task();
-    }
 
-    deleteTask(task:Task){
+        deleteTask(task:Task){
 
-        var windowService = WebAtoms.DI.resolve(WindowService);
+            var windowService = WebAtoms.DI.resolve(WindowService);
 
-        this.list.remove(task);
-    }
+            this.list.remove(task);
+        }
 
-    async openSettings(){
+        async addTask(){
 
-        var windowService = WebAtoms.DI.resolve(WindowService);
+            var windowService = WebAtoms.DI.resolve(WindowService);
 
-        try{
-            if(await windowService.confirm(`Are you sure you change settings?`)){
-                await windowService.openWindow("SettingsWindow", new SettingsWindowViewModel() );
+            try{
+
+                var task:Task = await windowService.openWindow<Task>("Todo.NewTaskWindow", new NewTaskViewModelWindow() );
+                this.list.add(task);
+
+            }catch(e){
+                console.error(e);
+                windowService.alert(e);
             }
-        }catch(e){
-            console.error(e);
-            windowService.alert("Cancelled");
-        }
 
+        }
     }
 }

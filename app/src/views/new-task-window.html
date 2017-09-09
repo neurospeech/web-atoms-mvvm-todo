@@ -1,0 +1,21 @@
+<div 
+    atom-component="NewTaskWindow" 
+    atom-type="AtomWindow"
+    atom-title="[ $viewModel.task.label || 'Add New Task' ]"
+    atom-window-width="400"
+    atom-window-height="350">
+    <div 
+        atom-template="windowTemplate">
+        
+        <div>Task:</div>
+        <input type="text" atom-value="^[viewModel.task.label]" />
+
+        <div>Description:</div>
+        <textarea cols="30" rows="10" atom-value="$[viewModel.task.description]"></textarea>
+
+    </div>
+    <div atom-template="commandTemplate">
+        <button atom-event-click="{ () => $viewModel.cancel() }">Cancel</button>
+        <button atom-event-click="{ () => $viewModel.save() }">Save</button>
+    </div>
+</div>

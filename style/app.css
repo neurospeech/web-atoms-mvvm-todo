@@ -2,7 +2,7 @@
     font-family: "Arial"
 }
 
-button, input{
+button, input, textarea{
     padding: 5px; margin: 5px;
 }
 
