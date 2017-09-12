@@ -78,6 +78,7 @@ var Todo;
     var Task = /** @class */ (function () {
         function Task() {
             this.label = "";
+            this.status = "";
         }
         return Task;
     }());

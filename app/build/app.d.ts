@@ -8,7 +8,7 @@ declare namespace Todo {
     class Task {
         label: string;
         description: string;
-        finished: boolean;
+        status: string;
     }
     class TaskListViewModel extends WebAtoms.AtomViewModel {
         list: WebAtoms.AtomList<Task>;

@@ -7,7 +7,7 @@ namespace Todo{
 
         description:string;
 
-        finished: boolean;
+        status: string = "";
     }
 
     export class TaskListViewModel extends WebAtoms.AtomViewModel{

@@ -8,7 +8,10 @@
         atom-template="windowTemplate">
         
         <div>Task:</div>
-        <input type="text" atom-value="^[viewModel.task.label]" />
+        <input type="text" atom-value="^[viewModel.task.label]" autofocus />
+
+        <div>Status</div>
+        <select atom-type="Todo.TaskStatusCombo" atom-value="$[viewModel.task.status]"></select>
 
         <div>Description:</div>
         <textarea cols="30" rows="10" atom-value="$[viewModel.task.description]"></textarea>
