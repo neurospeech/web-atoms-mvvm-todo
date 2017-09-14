@@ -16,17 +16,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var Todo;
 (function (Todo) {
+    var NewTaskWindowErrors = /** @class */ (function (_super) {
+        __extends(NewTaskWindowErrors, _super);
+        function NewTaskWindowErrors() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        __decorate([
+            bindableProperty
+        ], NewTaskWindowErrors.prototype, "label", void 0);
+        __decorate([
+            bindableProperty
+        ], NewTaskWindowErrors.prototype, "status", void 0);
+        return NewTaskWindowErrors;
+    }(WebAtoms.AtomErrors));
+    Todo.NewTaskWindowErrors = NewTaskWindowErrors;
     var NewTaskViewModelWindow = /** @class */ (function (_super) {
         __extends(NewTaskViewModelWindow, _super);
         function NewTaskViewModelWindow() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
+            var _this = _super.call(this) || this;
             _this.task = new Todo.Task();
+            _this.errors = new NewTaskWindowErrors(_this);
+            _this.addValidation(_this, function (x) {
+                x.errors.label = x.task.label ? "" : "Task cannot be empty";
+            });
+            _this.addValidation(_this, function (x) {
+                x.errors.status = x.task.status ? "" : "Status cannot be empty";
+            });
             return _this;
         }
         NewTaskViewModelWindow.prototype.save = function () {
             var windowService = WebAtoms.DI.resolve(WindowService);
-            if (!this.task.label) {
-                windowService.alert("Task cannot be empty");
+            if (this.errors.hasErrors()) {
+                windowService.alert("Please complete all required fields.");
                 return;
             }
             this.close(this.task);

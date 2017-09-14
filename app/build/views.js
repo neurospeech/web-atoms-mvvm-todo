@@ -24,6 +24,13 @@ window.Todo.NewTaskWindow = (function(window,baseType){
       }
     ],
     [
+      "span",
+      {
+        "style": "color:red; font-weight:bold",
+        "data-atom-init": "NewTaskWindow_t2"
+      }
+    ],
+    [
       "div",
       {
         "atom-text": "Status"
@@ -33,7 +40,14 @@ window.Todo.NewTaskWindow = (function(window,baseType){
       "select",
       {
         "atom-type": "Todo.TaskStatusCombo",
-        "data-atom-init": "NewTaskWindow_t2"
+        "data-atom-init": "NewTaskWindow_t3"
+      }
+    ],
+    [
+      "span",
+      {
+        "style": "color:red; font-weight:bold",
+        "data-atom-init": "NewTaskWindow_t4"
       }
     ],
     [
@@ -47,7 +61,7 @@ window.Todo.NewTaskWindow = (function(window,baseType){
       {
         "cols": "30",
         "rows": "10",
-        "data-atom-init": "NewTaskWindow_t3"
+        "data-atom-init": "NewTaskWindow_t5"
       }
     ]
   ],
@@ -59,14 +73,14 @@ window.Todo.NewTaskWindow = (function(window,baseType){
     [
       "button",
       {
-        "data-atom-init": "NewTaskWindow_t4",
+        "data-atom-init": "NewTaskWindow_t6",
         "atom-text": "Cancel"
       }
     ],
     [
       "button",
       {
-        "data-atom-init": "NewTaskWindow_t5",
+        "data-atom-init": "NewTaskWindow_t7",
         "atom-text": "Save"
       }
     ]
@@ -84,23 +98,25 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                     };
 		this.NewTaskWindow_t1 = function(e) { 
                         this.bind(e,'value', ["viewModel","task","label"], 1 ,null,"keyup,keydown,keypress,blur,click");
-			window.WebAtoms.dispatcher.callLater( 
-                            function() { 
-                                e.focus(); 
-                            });
                     };
 		this.NewTaskWindow_t2 = function(e) { 
-                        this.bind(e,'value', ["viewModel","task","status"], 1 );
+                        this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });
                     };
 		this.NewTaskWindow_t3 = function(e) { 
-                        this.bind(e,'value', ["viewModel","task","description"], 1 );
+                        this.bind(e,'value', ["viewModel","task","status"], 1 );
                     };
 		this.NewTaskWindow_t4 = function(e) { 
+                        this.bind(e,'text', [["viewModel","errors","status"]], 0, function(v1) { return (v1); });
+                    };
+		this.NewTaskWindow_t5 = function(e) { 
+                        this.bind(e,'value', ["viewModel","task","description"], 1 );
+                    };
+		this.NewTaskWindow_t6 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
                     return  (Atom.get(this,"viewModel")).cancel(); 
                 },e);
                     };
-		this.NewTaskWindow_t5 = function(e) { 
+		this.NewTaskWindow_t7 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
                     return  (Atom.get(this,"viewModel")).save(); 
                 },e);
@@ -112,7 +128,7 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                     base: baseType,
                     start: function(e){
                          if(!AtomUI.attr(e,'atom-window-width')) AtomUI.attr(e, 'atom-window-width', '400' );
-		 if(!AtomUI.attr(e,'atom-window-height')) AtomUI.attr(e, 'atom-window-height', '350' );
+		 if(!AtomUI.attr(e,'atom-window-height')) AtomUI.attr(e, 'atom-window-height', '400' );
 		
                         var oldInit = AtomUI.attr(e,'data-atom-init');
                         if(oldInit){
@@ -121,7 +137,9 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                         AtomUI.attr(e, 'data-atom-init','NewTaskWindow_t0');
                     
                     },
-                    methods:{},
+                    methods:{
+                        setLocalValue: window.__atomSetLocalValue(baseType)
+                    },
                     properties:{
                         
                     }
@@ -215,7 +233,9 @@ window.Todo.TaskList = (function(window,baseType){
                         AtomUI.attr(e, 'data-atom-init','TaskList_t0');
                     
                     },
-                    methods:{},
+                    methods:{
+                        setLocalValue: window.__atomSetLocalValue(baseType)
+                    },
                     properties:{
                         
                     }
@@ -256,7 +276,9 @@ window.Todo.TaskStatusCombo = (function(window,baseType){
                         AtomUI.attr(e, 'data-atom-init','TaskStatusCombo_t0');
                     
                     },
-                    methods:{},
+                    methods:{
+                        setLocalValue: window.__atomSetLocalValue(baseType)
+                    },
                     properties:{
                         
                     }

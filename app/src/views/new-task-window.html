@@ -3,15 +3,17 @@
     atom-type="AtomWindow"
     atom-title="[ $viewModel.task.label || 'Add New Task' ]"
     atom-window-width="400"
-    atom-window-height="350">
+    atom-window-height="400">
     <div 
         atom-template="windowTemplate">
         
         <div>Task:</div>
         <input type="text" atom-value="^[viewModel.task.label]" autofocus />
+        <span atom-text="[$viewModel.errors.label]" style="color:red; font-weight:bold"></span>
 
         <div>Status</div>
         <select atom-type="Todo.TaskStatusCombo" atom-value="$[viewModel.task.status]"></select>
+        <span atom-text="[$viewModel.errors.status]" style="color:red; font-weight:bold"></span>
 
         <div>Description:</div>
         <textarea cols="30" rows="10" atom-value="$[viewModel.task.description]"></textarea>

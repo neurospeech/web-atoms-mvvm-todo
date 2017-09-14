@@ -1,6 +1,12 @@
 declare namespace Todo {
+    class NewTaskWindowErrors extends WebAtoms.AtomErrors {
+        label: string;
+        status: string;
+    }
     class NewTaskViewModelWindow extends WebAtoms.AtomWindowViewModel {
+        errors: NewTaskWindowErrors;
         task: Task;
+        constructor();
         save(): void;
     }
 }
