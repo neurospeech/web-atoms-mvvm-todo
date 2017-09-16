@@ -4,7 +4,7 @@
         "watch": true,
         "experimentalDecorators": true,
         "module":"none",
-        "outFile": "build/app.js",
+        "outFile": "build/tests.js",
         "sourceMap": true,
         "declaration": true
     },
@@ -13,11 +13,9 @@
     ],
     "files": [
         "../node_modules/typescript/lib/lib.es6.d.ts",
-        "../node_modules/web-atoms-mvvm/dist/web-atoms-mvvm.d.ts",
-        "../app/build/views.js.d.ts"
+        "../node_modules/web-atoms-mvvm/dist/web-atoms-mvvm.d.ts"
     ],
     "exclude": [
-        "../node_modules",
-        "../tests"
+        "../node_modules"
     ]
 }

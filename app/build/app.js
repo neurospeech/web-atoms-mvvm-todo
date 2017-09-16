@@ -129,7 +129,7 @@ var Todo;
                             _a.label = 1;
                         case 1:
                             _a.trys.push([1, 3, , 4]);
-                            return [4 /*yield*/, windowService.openWindow("Todo.NewTaskWindow", new Todo.NewTaskViewModelWindow())];
+                            return [4 /*yield*/, windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewModelWindow())];
                         case 2:
                             task = _a.sent();
                             this.list.add(task);
