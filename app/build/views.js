@@ -74,14 +74,14 @@ window.Todo.NewTaskWindow = (function(window,baseType){
       "button",
       {
         "data-atom-init": "NewTaskWindow_t6",
-        "atom-text": "Cancel"
+        "atom-text": "Save"
       }
     ],
     [
       "button",
       {
         "data-atom-init": "NewTaskWindow_t7",
-        "atom-text": "Save"
+        "atom-text": "Cancel"
       }
     ]
   ]
@@ -113,12 +113,12 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                     };
 		this.NewTaskWindow_t6 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
-                    return  (Atom.get(this,"viewModel")).cancel(); 
+                    return  (Atom.get(this,"viewModel")).save(); 
                 },e);
                     };
 		this.NewTaskWindow_t7 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
-                    return  (Atom.get(this,"viewModel")).save(); 
+                    return  (Atom.get(this,"viewModel")).cancel(); 
                 },e);
                     };
                 }).call(WebAtoms.PageSetup,window,WebAtoms);

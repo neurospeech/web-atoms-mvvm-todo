@@ -8,6 +8,9 @@ namespace Todo{
         @bindableProperty
         status: string;
 
+        @bindableProperty
+        description: string;
+
     }
 
     export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel{
@@ -29,6 +32,10 @@ namespace Todo{
             this.addValidation(this, x=>{
                 x.errors.status = x.task.status ? "" : "Status cannot be empty";
             });
+
+            // this.addValidation(this, x=> {
+            //     x.errors.description = x.task.description ? "" : "Description cannot be empty";
+            // });
         }
 
         async save(){

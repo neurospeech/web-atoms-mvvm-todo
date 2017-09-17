@@ -62,6 +62,9 @@ var Todo;
         __decorate([
             bindableProperty
         ], NewTaskWindowErrors.prototype, "status", void 0);
+        __decorate([
+            bindableProperty
+        ], NewTaskWindowErrors.prototype, "description", void 0);
         return NewTaskWindowErrors;
     }(WebAtoms.AtomErrors));
     Todo.NewTaskWindowErrors = NewTaskWindowErrors;
@@ -78,6 +81,9 @@ var Todo;
                 x.errors.status = x.task.status ? "" : "Status cannot be empty";
             });
             return _this;
+            // this.addValidation(this, x=> {
+            //     x.errors.description = x.task.description ? "" : "Description cannot be empty";
+            // });
         }
         NewTaskViewWindowViewModel.prototype.save = function () {
             return __awaiter(this, void 0, void 0, function () {
