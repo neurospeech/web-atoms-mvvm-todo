@@ -13,7 +13,11 @@
     ],
     "files": [
         "../node_modules/typescript/lib/lib.es6.d.ts",
-        "../node_modules/web-atoms-mvvm/dist/web-atoms-mvvm.d.ts"
+        "../node_modules/web-atoms-mvvm/dist/web-atoms-mvvm.d.ts",
+        "../node_modules/web-atoms-unit/index.d.ts",
+        "../node_modules/web-atoms-mvvm/dist/web-atoms-mock-window-service.d.ts",
+        "../app/build/views.js.d.ts",
+        "../app/build/app.d.ts",
     ],
     "exclude": [
         "../node_modules"

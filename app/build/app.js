@@ -14,51 +14,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var Todo;
-(function (Todo) {
-    var NewTaskWindowErrors = /** @class */ (function (_super) {
-        __extends(NewTaskWindowErrors, _super);
-        function NewTaskWindowErrors() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        __decorate([
-            bindableProperty
-        ], NewTaskWindowErrors.prototype, "label", void 0);
-        __decorate([
-            bindableProperty
-        ], NewTaskWindowErrors.prototype, "status", void 0);
-        return NewTaskWindowErrors;
-    }(WebAtoms.AtomErrors));
-    Todo.NewTaskWindowErrors = NewTaskWindowErrors;
-    var NewTaskViewModelWindow = /** @class */ (function (_super) {
-        __extends(NewTaskViewModelWindow, _super);
-        function NewTaskViewModelWindow() {
-            var _this = _super.call(this) || this;
-            _this.task = new Todo.Task();
-            _this.errors = new NewTaskWindowErrors(_this);
-            _this.addValidation(_this, function (x) {
-                x.errors.label = x.task.label ? "" : "Task cannot be empty";
-            });
-            _this.addValidation(_this, function (x) {
-                x.errors.status = x.task.status ? "" : "Status cannot be empty";
-            });
-            return _this;
-        }
-        NewTaskViewModelWindow.prototype.save = function () {
-            var windowService = WebAtoms.DI.resolve(WindowService);
-            if (this.errors.hasErrors()) {
-                windowService.alert("Please complete all required fields.");
-                return;
-            }
-            this.close(this.task);
-        };
-        __decorate([
-            bindableProperty
-        ], NewTaskViewModelWindow.prototype, "task", void 0);
-        return NewTaskViewModelWindow;
-    }(WebAtoms.AtomWindowViewModel));
-    Todo.NewTaskViewModelWindow = NewTaskViewModelWindow;
-})(Todo || (Todo = {}));
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -96,6 +51,62 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var Todo;
 (function (Todo) {
+    var NewTaskWindowErrors = /** @class */ (function (_super) {
+        __extends(NewTaskWindowErrors, _super);
+        function NewTaskWindowErrors() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        __decorate([
+            bindableProperty
+        ], NewTaskWindowErrors.prototype, "label", void 0);
+        __decorate([
+            bindableProperty
+        ], NewTaskWindowErrors.prototype, "status", void 0);
+        return NewTaskWindowErrors;
+    }(WebAtoms.AtomErrors));
+    Todo.NewTaskWindowErrors = NewTaskWindowErrors;
+    var NewTaskViewWindowViewModel = /** @class */ (function (_super) {
+        __extends(NewTaskViewWindowViewModel, _super);
+        function NewTaskViewWindowViewModel() {
+            var _this = _super.call(this) || this;
+            _this.task = new Todo.Task();
+            _this.errors = new NewTaskWindowErrors(_this);
+            _this.addValidation(_this, function (x) {
+                x.errors.label = x.task.label ? "" : "Task cannot be empty";
+            });
+            _this.addValidation(_this, function (x) {
+                x.errors.status = x.task.status ? "" : "Status cannot be empty";
+            });
+            return _this;
+        }
+        NewTaskViewWindowViewModel.prototype.save = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var windowService;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            windowService = WebAtoms.DI.resolve(WindowService);
+                            if (!this.errors.hasErrors()) return [3 /*break*/, 2];
+                            return [4 /*yield*/, windowService.alert("Please complete all required fields.")];
+                        case 1:
+                            _a.sent();
+                            return [2 /*return*/];
+                        case 2:
+                            this.close(this.task);
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        __decorate([
+            bindableProperty
+        ], NewTaskViewWindowViewModel.prototype, "task", void 0);
+        return NewTaskViewWindowViewModel;
+    }(WebAtoms.AtomWindowViewModel));
+    Todo.NewTaskViewWindowViewModel = NewTaskViewWindowViewModel;
+})(Todo || (Todo = {}));
+var Todo;
+(function (Todo) {
     var Task = /** @class */ (function () {
         function Task() {
             this.label = "";
@@ -129,7 +140,7 @@ var Todo;
                             _a.label = 1;
                         case 1:
                             _a.trys.push([1, 3, , 4]);
-                            return [4 /*yield*/, windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewModelWindow())];
+                            return [4 /*yield*/, windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewWindowViewModel())];
                         case 2:
                             task = _a.sent();
                             this.list.add(task);

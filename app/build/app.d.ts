@@ -3,11 +3,11 @@ declare namespace Todo {
         label: string;
         status: string;
     }
-    class NewTaskViewModelWindow extends WebAtoms.AtomWindowViewModel {
+    class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel {
         errors: NewTaskWindowErrors;
         task: Task;
         constructor();
-        save(): void;
+        save(): Promise<void>;
     }
 }
 declare namespace Todo {

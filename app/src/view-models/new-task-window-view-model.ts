@@ -10,7 +10,7 @@ namespace Todo{
 
     }
 
-    export class NewTaskViewModelWindow extends WebAtoms.AtomWindowViewModel{
+    export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel{
         
         errors: NewTaskWindowErrors;
 
@@ -31,12 +31,12 @@ namespace Todo{
             });
         }
 
-        save():void{
+        async save(){
 
             var windowService = WebAtoms.DI.resolve(WindowService);
 
             if(this.errors.hasErrors()){
-                windowService.alert("Please complete all required fields.");
+                await windowService.alert("Please complete all required fields.");
                 return;
             }
 

@@ -41,7 +41,7 @@ namespace Todo{
 
             try{
 
-                var task:Task = await windowService.openWindow<Task>(Todo.NewTaskWindow, new NewTaskViewModelWindow() );
+                var task:Task = await windowService.openWindow<Task>(Todo.NewTaskWindow, new NewTaskViewWindowViewModel() );
                 this.list.add(task);
 
             }catch(e){
