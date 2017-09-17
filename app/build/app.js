@@ -14,6 +14,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -49,6 +52,78 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var Todo;
+(function (Todo) {
+    var TaskListService = /** @class */ (function (_super) {
+        __extends(TaskListService, _super);
+        function TaskListService() {
+            var _this = _super.call(this) || this;
+            _this.tasks = [];
+            var t = new Todo.Task();
+            t.label = "Sample task";
+            t.status = "Open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
+            return _this;
+        }
+        TaskListService.prototype.create = function (task) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    task.id = (new Date()).getTime();
+                    this.tasks.push(task);
+                    return [2 /*return*/, task];
+                });
+            });
+        };
+        TaskListService.prototype.retrive = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, this.tasks];
+                });
+            });
+        };
+        TaskListService.prototype.update = function (data) {
+            return __awaiter(this, void 0, void 0, function () {
+                var t;
+                return __generator(this, function (_a) {
+                    t = this.tasks.find(function (x) { return x.id == data.id; });
+                    t.label = data.label;
+                    t.description = data.description;
+                    t.status = data.status;
+                    return [2 /*return*/, data];
+                });
+            });
+        };
+        TaskListService.prototype.deleteTask = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    this.tasks = this.tasks.filter(function (x) { return x.id !== id; });
+                    return [2 /*return*/];
+                });
+            });
+        };
+        __decorate([
+            Put("/tasks/task"),
+            __param(0, Body)
+        ], TaskListService.prototype, "create", null);
+        __decorate([
+            Get("/tasks")
+        ], TaskListService.prototype, "retrive", null);
+        __decorate([
+            Patch("/tasks/task"),
+            __param(0, Body)
+        ], TaskListService.prototype, "update", null);
+        __decorate([
+            Delete("/tasks/{id}"),
+            __param(0, Path("id"))
+        ], TaskListService.prototype, "deleteTask", null);
+        TaskListService = __decorate([
+            DIGlobal
+        ], TaskListService);
+        return TaskListService;
+    }(WebAtoms.Rest.BaseService));
+    Todo.TaskListService = TaskListService;
+})(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {
     var NewTaskWindowErrors = /** @class */ (function (_super) {
@@ -115,6 +190,7 @@ var Todo;
 (function (Todo) {
     var Task = /** @class */ (function () {
         function Task() {
+            this.id = 0;
             this.label = "";
             this.status = "";
         }
@@ -124,17 +200,37 @@ var Todo;
     var TaskListViewModel = /** @class */ (function (_super) {
         __extends(TaskListViewModel, _super);
         function TaskListViewModel() {
-            var _this = _super.call(this) || this;
+            var _this = _super !== null && _super.apply(this, arguments) || this;
             _this.list = new WebAtoms.AtomList();
-            var sample = new Task();
-            sample.label = "Sample task 1";
-            _this.list.add(sample);
-            _this.newTask = new Task();
+            _this.taskService = WebAtoms.DI.resolve(Todo.TaskListService);
             return _this;
         }
+        TaskListViewModel.prototype.init = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var r;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, this.taskService.retrive()];
+                        case 1:
+                            r = _a.sent();
+                            this.list.addAll(r);
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
         TaskListViewModel.prototype.deleteTask = function (task) {
-            var windowService = WebAtoms.DI.resolve(WindowService);
-            this.list.remove(task);
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, this.taskService.deleteTask(task.id)];
+                        case 1:
+                            _a.sent();
+                            this.list.remove(task);
+                            return [2 /*return*/];
+                    }
+                });
+            });
         };
         TaskListViewModel.prototype.addTask = function () {
             return __awaiter(this, void 0, void 0, function () {
@@ -145,18 +241,21 @@ var Todo;
                             windowService = WebAtoms.DI.resolve(WindowService);
                             _a.label = 1;
                         case 1:
-                            _a.trys.push([1, 3, , 4]);
+                            _a.trys.push([1, 4, , 5]);
                             return [4 /*yield*/, windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewWindowViewModel())];
                         case 2:
                             task = _a.sent();
-                            this.list.add(task);
-                            return [3 /*break*/, 4];
+                            return [4 /*yield*/, this.taskService.create(task)];
                         case 3:
+                            task = _a.sent();
+                            this.list.add(task);
+                            return [3 /*break*/, 5];
+                        case 4:
                             e_1 = _a.sent();
                             console.error(e_1);
                             windowService.alert(e_1);
-                            return [3 /*break*/, 4];
-                        case 4: return [2 /*return*/];
+                            return [3 /*break*/, 5];
+                        case 5: return [2 /*return*/];
                     }
                 });
             });
@@ -164,9 +263,6 @@ var Todo;
         __decorate([
             bindableProperty
         ], TaskListViewModel.prototype, "list", void 0);
-        __decorate([
-            bindableProperty
-        ], TaskListViewModel.prototype, "newTask", void 0);
         return TaskListViewModel;
     }(WebAtoms.AtomViewModel));
     Todo.TaskListViewModel = TaskListViewModel;

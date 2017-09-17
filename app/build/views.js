@@ -98,6 +98,10 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                     };
 		this.NewTaskWindow_t1 = function(e) { 
                         this.bind(e,'value', ["viewModel","task","label"], 1 ,null,"keyup,keydown,keypress,blur,click");
+			window.WebAtoms.dispatcher.callLater( 
+                            function() { 
+                                e.focus(); 
+                            });
                     };
 		this.NewTaskWindow_t2 = function(e) { 
                         this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });

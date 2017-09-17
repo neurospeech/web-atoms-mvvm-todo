@@ -2,6 +2,8 @@ namespace Todo{
 
 
     export class Task{
+
+        id: number = 0;
         
         label:string = "";
 
@@ -11,27 +13,20 @@ namespace Todo{
     }
 
     export class TaskListViewModel extends WebAtoms.AtomViewModel{
-        @bindableProperty
-        list:WebAtoms.AtomList<Task>
 
         @bindableProperty
-        newTask:Task
+        list:WebAtoms.AtomList<Task> = new WebAtoms.AtomList<Task>();
 
-        constructor(){
-            super()
-            this.list = new WebAtoms.AtomList();
+        taskService = WebAtoms.DI.resolve(Todo.TaskListService);
 
-            var sample = new Task();
-            sample.label = "Sample task 1";
-            this.list.add(sample);
-            this.newTask = new Task();
+        async init():Promise<any>{
+            var r = await this.taskService.retrive();
+            this.list.addAll(r);
         }
 
 
-        deleteTask(task:Task){
-
-            var windowService = WebAtoms.DI.resolve(WindowService);
-
+        async deleteTask(task:Task){
+            await this.taskService.deleteTask(task.id);
             this.list.remove(task);
         }
 
@@ -42,6 +37,7 @@ namespace Todo{
             try{
 
                 var task:Task = await windowService.openWindow<Task>(Todo.NewTaskWindow, new NewTaskViewWindowViewModel() );
+                task = await this.taskService.create(task);
                 this.list.add(task);
 
             }catch(e){
