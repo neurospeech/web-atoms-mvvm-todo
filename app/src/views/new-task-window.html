@@ -12,6 +12,8 @@
         <span atom-text="[$viewModel.errors.label]" style="color:red; font-weight:bold"></span>
 
         <div>Status</div>
+
+        <!-- We can reuse TaskStatusCombo that is another combo -->
         <select atom-type="Todo.TaskStatusCombo" atom-value="$[viewModel.task.status]"></select>
         <span atom-text="[$viewModel.errors.status]" style="color:red; font-weight:bold"></span>
 
