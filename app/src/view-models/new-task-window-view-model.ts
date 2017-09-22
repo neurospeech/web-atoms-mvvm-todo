@@ -25,17 +25,11 @@ namespace Todo{
 
             this.errors = new NewTaskWindowErrors(this);
 
-            this.addValidation(this, x=> {
-                x.errors.label = x.task.label ? "" : "Task cannot be empty";
-            });
+            this.addValidation(
+                () => this.errors.label = this.task.label ? "" : "Task cannot be empty",
+                () => this.errors.status = this.task.status ? "" : "Status cannot be empty"
+            );
 
-            this.addValidation(this, x=>{
-                x.errors.status = x.task.status ? "" : "Status cannot be empty";
-            });
-
-            // this.addValidation(this, x=> {
-            //     x.errors.description = x.task.description ? "" : "Description cannot be empty";
-            // });
         }
 
         async save(){

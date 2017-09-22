@@ -149,16 +149,8 @@ var Todo;
             var _this = _super.call(this) || this;
             _this.task = new Todo.Task();
             _this.errors = new NewTaskWindowErrors(_this);
-            _this.addValidation(_this, function (x) {
-                x.errors.label = x.task.label ? "" : "Task cannot be empty";
-            });
-            _this.addValidation(_this, function (x) {
-                x.errors.status = x.task.status ? "" : "Status cannot be empty";
-            });
+            _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
             return _this;
-            // this.addValidation(this, x=> {
-            //     x.errors.description = x.task.description ? "" : "Description cannot be empty";
-            // });
         }
         NewTaskViewWindowViewModel.prototype.save = function () {
             return __awaiter(this, void 0, void 0, function () {
