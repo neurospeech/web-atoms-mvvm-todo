@@ -1,5 +1,5 @@
 namespace Todo{
-    
+
     export class NewTaskWindowErrors extends WebAtoms.AtomErrors{
 
         @bindableProperty
@@ -14,7 +14,7 @@ namespace Todo{
     }
 
     export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel{
-        
+
         errors: NewTaskWindowErrors;
 
         @bindableProperty
