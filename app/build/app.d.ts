@@ -1,5 +1,26 @@
 declare namespace Todo {
+    type ConfigItem = {
+        label: string;
+        value: string;
+    };
+}
+declare namespace Todo {
+    class Task {
+        id: number;
+        label: string;
+        description: string;
+        status: string;
+    }
+}
+declare namespace Todo {
+    class ConfigService extends WebAtoms.Rest.BaseService {
+        static readonly instance: ConfigService;
+        getStatusList(): Promise<ConfigItem[]>;
+    }
+}
+declare namespace Todo {
     class TaskListService extends WebAtoms.Rest.BaseService {
+        static readonly instance: TaskListService;
         tasks: Array<Task>;
         constructor();
         create(task: Task): Promise<Task>;
@@ -18,21 +39,16 @@ declare namespace Todo {
         errors: NewTaskWindowErrors;
         task: Task;
         constructor();
-        save(): Promise<void>;
+        save(): Promise<any>;
     }
 }
 declare namespace Todo {
-    class Task {
-        id: number;
-        label: string;
-        description: string;
-        status: string;
-    }
     class TaskListViewModel extends WebAtoms.AtomViewModel {
         list: WebAtoms.AtomList<Task>;
         taskService: TaskListService;
+        windowService: WebAtoms.WindowService;
         init(): Promise<any>;
-        deleteTask(task: Task): Promise<void>;
-        addTask(): Promise<void>;
+        deleteTask(task: Task): Promise<any>;
+        addTask(): Promise<any>;
     }
 }

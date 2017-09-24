@@ -1,9 +1,5 @@
-<div
+<select
     atom-component="TaskStatusCombo"
     atom-type="AtomComboBox"
-    atom-items="[ [
-        { label: 'Select', value:'' },
-        { label: 'Open', value:'open'},
-        { label: 'Closed', value: 'closed'}
-    ] ]"
-    ></div>
+    atom-items="{ Todo.ConfigService.instance.getStatusList() }">
+</select>

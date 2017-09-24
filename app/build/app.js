@@ -1,3 +1,15 @@
+var Todo;
+(function (Todo) {
+    var Task = /** @class */ (function () {
+        function Task() {
+            this.id = 0;
+            this.label = "";
+            this.status = "";
+        }
+        return Task;
+    }());
+    Todo.Task = Task;
+})(Todo || (Todo = {}));
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -13,9 +25,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -54,6 +63,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var Todo;
 (function (Todo) {
+    var ConfigService = /** @class */ (function (_super) {
+        __extends(ConfigService, _super);
+        function ConfigService() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ConfigService_1 = ConfigService;
+        Object.defineProperty(ConfigService, "instance", {
+            get: function () {
+                return WebAtoms.DI.resolve(ConfigService_1);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        ConfigService.prototype.getStatusList = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, [
+                            {
+                                label: "Select", value: ""
+                            },
+                            {
+                                label: "Open", value: "open"
+                            },
+                            {
+                                label: "Closed", value: "closed"
+                            }
+                        ]];
+                });
+            });
+        };
+        __decorate([
+            Get("/config/status")
+        ], ConfigService.prototype, "getStatusList", null);
+        ConfigService = ConfigService_1 = __decorate([
+            DIGlobal
+        ], ConfigService);
+        return ConfigService;
+        var ConfigService_1;
+    }(WebAtoms.Rest.BaseService));
+    Todo.ConfigService = ConfigService;
+})(Todo || (Todo = {}));
+// tslint:disable
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var Todo;
+(function (Todo) {
     var TaskListService = /** @class */ (function (_super) {
         __extends(TaskListService, _super);
         function TaskListService() {
@@ -66,6 +122,14 @@ var Todo;
             _this.tasks.push(t);
             return _this;
         }
+        TaskListService_1 = TaskListService;
+        Object.defineProperty(TaskListService, "instance", {
+            get: function () {
+                return WebAtoms.DI.resolve(TaskListService_1);
+            },
+            enumerable: true,
+            configurable: true
+        });
         TaskListService.prototype.create = function (task) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
@@ -86,7 +150,7 @@ var Todo;
             return __awaiter(this, void 0, void 0, function () {
                 var t;
                 return __generator(this, function (_a) {
-                    t = this.tasks.find(function (x) { return x.id == data.id; });
+                    t = this.tasks.find(function (x) { return x.id === data.id; });
                     t.label = data.label;
                     t.description = data.description;
                     t.status = data.status;
@@ -117,10 +181,11 @@ var Todo;
             Delete("/tasks/{id}"),
             __param(0, Path("id"))
         ], TaskListService.prototype, "deleteTask", null);
-        TaskListService = __decorate([
+        TaskListService = TaskListService_1 = __decorate([
             DIGlobal
         ], TaskListService);
         return TaskListService;
+        var TaskListService_1;
     }(WebAtoms.Rest.BaseService));
     Todo.TaskListService = TaskListService;
 })(Todo || (Todo = {}));
@@ -180,21 +245,13 @@ var Todo;
 })(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {
-    var Task = /** @class */ (function () {
-        function Task() {
-            this.id = 0;
-            this.label = "";
-            this.status = "";
-        }
-        return Task;
-    }());
-    Todo.Task = Task;
     var TaskListViewModel = /** @class */ (function (_super) {
         __extends(TaskListViewModel, _super);
         function TaskListViewModel() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this.list = new WebAtoms.AtomList();
-            _this.taskService = WebAtoms.DI.resolve(Todo.TaskListService);
+            _this.taskService = Todo.TaskListService.instance;
+            _this.windowService = WebAtoms.DI.resolve(WebAtoms.WindowService);
             return _this;
         }
         TaskListViewModel.prototype.init = function () {
@@ -226,28 +283,25 @@ var Todo;
         };
         TaskListViewModel.prototype.addTask = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var windowService, task, e_1;
+                var task, e_1;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            windowService = WebAtoms.DI.resolve(WindowService);
-                            _a.label = 1;
+                            _a.trys.push([0, 3, , 4]);
+                            return [4 /*yield*/, this.windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewWindowViewModel())];
                         case 1:
-                            _a.trys.push([1, 4, , 5]);
-                            return [4 /*yield*/, windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewWindowViewModel())];
-                        case 2:
                             task = _a.sent();
                             return [4 /*yield*/, this.taskService.create(task)];
-                        case 3:
+                        case 2:
                             task = _a.sent();
                             this.list.add(task);
-                            return [3 /*break*/, 5];
-                        case 4:
+                            return [3 /*break*/, 4];
+                        case 3:
                             e_1 = _a.sent();
                             console.error(e_1);
-                            windowService.alert(e_1);
-                            return [3 /*break*/, 5];
-                        case 5: return [2 /*return*/];
+                            this.windowService.alert(e_1);
+                            return [3 /*break*/, 4];
+                        case 4: return [2 /*return*/];
                     }
                 });
             });

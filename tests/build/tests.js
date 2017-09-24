@@ -1,3 +1,4 @@
+// tslint:disable
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -64,6 +65,8 @@ var WindowTests = /** @class */ (function (_super) {
     __extends(WindowTests, _super);
     function WindowTests() {
         var _this = _super.call(this) || this;
+        // following line will use mock of REST Services
+        Atom.designMode = true;
         // any tests involving window service must
         // setup a mock window service
         WebAtoms.DI.push(WindowService, new MockWindowService());

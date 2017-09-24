@@ -255,11 +255,7 @@ window.Todo.TaskStatusCombo = (function(window,baseType){
 
                 (function(window,WebAtoms){
                     this.TaskStatusCombo_t0 = function(e) { 
-                        this.bind(e,'items', [], 0, function() { return [
-        { label: 'Select', value:'' },
-        { label: 'Open', value:'open'},
-        { label: 'Closed', value: 'closed'}
-    ]; });
+                        this.setLocalValue('items',Todo.ConfigService.instance.getStatusList(),e);
 			var oldInit = AtomUI.attr(e,'base-data-atom-init');
                         if(oldInit){
                             (window.WebAtoms.PageSetup[oldInit]).call(this,e);

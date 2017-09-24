@@ -1,15 +1,20 @@
-
+// tslint:disable
 
 namespace Todo{
-    
+
     @DIGlobal
-    export class TaskListService extends WebAtoms.Rest.BaseService{
+    export class TaskListService extends WebAtoms.Rest.BaseService {
+
+        static get instance():TaskListService{
+            return WebAtoms.DI.resolve(TaskListService);
+        }
+
 
         tasks:Array<Task> = [];
 
-        constructor(){
+        constructor() {
             super();
-            var t = new Task();
+            var t:Task = new Task();
             t.label = "Sample task";
             t.status = "Open";
             t.id = (new Date()).getTime();
@@ -29,8 +34,8 @@ namespace Todo{
         }
 
         @Patch("/tasks/task")
-        async update(@Body data:Task):Promise<Task>{
-            var t = this.tasks.find(x=>x.id == data.id);
+        async update(@Body data:Task):Promise<Task> {
+            var t:Task = this.tasks.find(x=>x.id === data.id);
             t.label = data.label;
             t.description = data.description;
             t.status = data.status;
@@ -38,9 +43,10 @@ namespace Todo{
         }
 
         @Delete("/tasks/{id}")
-        async deleteTask(@Path("id") id:number):Promise<any>{
+        async deleteTask(@Path("id") id:number):Promise<any> {
             this.tasks = this.tasks.filter(x=> x.id !== id);
         }
+
 
     }
 }

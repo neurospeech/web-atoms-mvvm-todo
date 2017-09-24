@@ -1,6 +1,6 @@
-namespace Todo{
+namespace Todo {
 
-    export class NewTaskWindowErrors extends WebAtoms.AtomErrors{
+    export class NewTaskWindowErrors extends WebAtoms.AtomErrors {
 
         @bindableProperty
         label: string;
@@ -13,14 +13,14 @@ namespace Todo{
 
     }
 
-    export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel{
+    export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel {
 
         errors: NewTaskWindowErrors;
 
         @bindableProperty
         task:Task = new Task();
 
-        constructor(){
+        constructor() {
             super();
 
             this.errors = new NewTaskWindowErrors(this);
@@ -32,11 +32,11 @@ namespace Todo{
 
         }
 
-        async save(){
+        async save(): Promise<any> {
 
-            var windowService = WebAtoms.DI.resolve(WindowService);
+            var windowService:WebAtoms.WindowService = WebAtoms.DI.resolve(WindowService);
 
-            if(this.errors.hasErrors()){
+            if(this.errors.hasErrors()) {
                 await windowService.alert("Please complete all required fields.");
                 return;
             }

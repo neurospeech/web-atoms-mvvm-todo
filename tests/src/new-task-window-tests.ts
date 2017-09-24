@@ -1,3 +1,5 @@
+// tslint:disable
+
 var Category = WebAtoms.Unit.Category;
 var Test = WebAtoms.Unit.Test;
 var Assert = WebAtoms.Unit.Assert;
@@ -15,6 +17,9 @@ class WindowTests extends TestItem{
 
     constructor(){
         super();
+
+        // following line will use mock of REST Services
+        Atom.designMode = true;
 
         // any tests involving window service must
         // setup a mock window service
