@@ -4,16 +4,20 @@
 -->
 
 <div
+    atom-type="AtomDockPanel"
     atom-component="TaskList" 
     atom-view-model="{new Todo.TaskListViewModel() }">
     
-    <div>
+    <header style="height:40px">
         <button atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
-    </div>
+    </header>
 
     <div 
-        atom-type="AtomItemsControl"
-        atom-items="{$viewModel.list}">
+        atom-dock="Left"
+        atom-type="AtomListBox"
+        atom-items="{$viewModel.list}"
+        atom-selected-item="$[viewModel.selectedTask]"
+        style="width:500px">
         <div atom-template="itemTemplate" style="width:400px; margin:5px; padding:5px; position:relative">
 
             <span atom-text="{$data.label}"></span>
@@ -24,5 +28,11 @@
                 atom-next="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>
     </div>
+
+    <section 
+        atom-type="Todo.TaskEditor"
+        atom-view-model="{ new Todo.TaskEditorViewModel()}">
+ 
+    </section>
 
 </div>

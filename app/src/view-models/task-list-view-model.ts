@@ -9,11 +9,20 @@ namespace Todo {
         taskService = Todo.TaskListService.instance;
         windowService = WebAtoms.DI.resolve(WebAtoms.WindowService);
 
+        @bindableProperty
+        selectedTask: Task;
+
         async init():Promise<any> {
             var r:Task[] = await this.taskService.retrive();
             this.list.addAll(r);
+
+            this.selectedTask = this.list[0];
         }
 
+        @watch
+        onSelectedTaskChanged(): void {
+            this.broadcast("selected-task-changed",this.selectedTask);
+        }
 
         async deleteTask(task:Task):Promise<any> {
             await this.taskService.deleteTask(task.id);
@@ -24,9 +33,11 @@ namespace Todo {
 
             try {
 
-                var task:Task = await this.windowService.openWindow<Task>(Todo.NewTaskWindow, new NewTaskViewWindowViewModel() );
+                var task:Task = await this.windowService.openWindow<Task>(Todo.NewTaskWindow, new TaskEditorViewModel() );
                 task = await this.taskService.create(task);
                 this.list.add(task);
+
+                this.selectedTask = task;
 
             }catch(e) {
                 console.error(e);

@@ -13,55 +13,7 @@ window.Todo.NewTaskWindow = (function(window,baseType){
     [
       "div",
       {
-        "atom-text": "Task:"
-      }
-    ],
-    [
-      "input",
-      {
-        "type": "text",
-        "data-atom-init": "NewTaskWindow_t1"
-      }
-    ],
-    [
-      "span",
-      {
-        "style": "color:red; font-weight:bold",
-        "data-atom-init": "NewTaskWindow_t2"
-      }
-    ],
-    [
-      "div",
-      {
-        "atom-text": "Status"
-      }
-    ],
-    [
-      "select",
-      {
-        "atom-type": "Todo.TaskStatusCombo",
-        "data-atom-init": "NewTaskWindow_t3"
-      }
-    ],
-    [
-      "span",
-      {
-        "style": "color:red; font-weight:bold",
-        "data-atom-init": "NewTaskWindow_t4"
-      }
-    ],
-    [
-      "div",
-      {
-        "atom-text": "Description:"
-      }
-    ],
-    [
-      "textarea",
-      {
-        "cols": "30",
-        "rows": "10",
-        "data-atom-init": "NewTaskWindow_t5"
+        "atom-type": "Todo.TaskEditor"
       }
     ]
   ],
@@ -73,14 +25,14 @@ window.Todo.NewTaskWindow = (function(window,baseType){
     [
       "button",
       {
-        "data-atom-init": "NewTaskWindow_t6",
+        "data-atom-init": "NewTaskWindow_t1",
         "atom-text": "Save"
       }
     ],
     [
       "button",
       {
-        "data-atom-init": "NewTaskWindow_t7",
+        "data-atom-init": "NewTaskWindow_t2",
         "atom-text": "Cancel"
       }
     ]
@@ -97,30 +49,11 @@ window.Todo.NewTaskWindow = (function(window,baseType){
                     
                     };
 		this.NewTaskWindow_t1 = function(e) { 
-                        this.bind(e,'value', ["viewModel","task","label"], 1 ,null,"keyup,keydown,keypress,blur,click");
-			window.WebAtoms.dispatcher.callLater( 
-                            function() { 
-                                e.focus(); 
-                            });
-                    };
-		this.NewTaskWindow_t2 = function(e) { 
-                        this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });
-                    };
-		this.NewTaskWindow_t3 = function(e) { 
-                        this.bind(e,'value', ["viewModel","task","status"], 1 );
-                    };
-		this.NewTaskWindow_t4 = function(e) { 
-                        this.bind(e,'text', [["viewModel","errors","status"]], 0, function(v1) { return (v1); });
-                    };
-		this.NewTaskWindow_t5 = function(e) { 
-                        this.bind(e,'value', ["viewModel","task","description"], 1 );
-                    };
-		this.NewTaskWindow_t6 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
                     return  (Atom.get(this,"viewModel")).save(); 
                 },e);
                     };
-		this.NewTaskWindow_t7 = function(e) { 
+		this.NewTaskWindow_t2 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 
                     return  (Atom.get(this,"viewModel")).cancel(); 
                 },e);
@@ -152,13 +85,148 @@ window.Todo.NewTaskWindow = (function(window,baseType){
 if(!window['Todo']){
                             window['Todo'] = {};
                         }
+window.Todo.TaskEditor = (function(window,baseType){
+
+                window.Templates.jsonML["Todo.TaskEditor.template"] = 
+                    [
+  [
+    "div",
+    {
+      "atom-text": "Task:"
+    }
+  ],
+  [
+    "input",
+    {
+      "type": "text",
+      "data-atom-init": "TaskEditor_t1"
+    }
+  ],
+  [
+    "span",
+    {
+      "style": "color:red; font-weight:bold",
+      "data-atom-init": "TaskEditor_t2"
+    }
+  ],
+  [
+    "div",
+    {
+      "atom-text": "Status"
+    }
+  ],
+  [
+    "select",
+    {
+      "atom-type": "Todo.TaskStatusCombo",
+      "data-atom-init": "TaskEditor_t3"
+    }
+  ],
+  [
+    "span",
+    {
+      "style": "color:red; font-weight:bold",
+      "data-atom-init": "TaskEditor_t4"
+    }
+  ],
+  [
+    "div",
+    {
+      "atom-text": "Description:"
+    }
+  ],
+  [
+    "textarea",
+    {
+      "cols": "30",
+      "rows": "10",
+      "data-atom-init": "TaskEditor_t5"
+    }
+  ],
+  [
+    "div",
+    {
+      "data-atom-init": "TaskEditor_t6"
+    },
+    [
+      "button",
+      {
+        "data-atom-init": "TaskEditor_t7",
+        "atom-text": "Save"
+      }
+    ]
+  ]
+];
+
+                (function(window,WebAtoms){
+                    this.TaskEditor_t0 = function(e) { 
+                        var oldInit = AtomUI.attr(e,'base-data-atom-init');
+                        if(oldInit){
+                            (window.WebAtoms.PageSetup[oldInit]).call(this,e);
+                        }
+                    
+                    };
+		this.TaskEditor_t1 = function(e) { 
+                        this.bind(e,'value', ["viewModel","task","label"], 1 ,null,"keyup,keydown,keypress,blur,click");
+			window.WebAtoms.dispatcher.callLater( 
+                            function() { 
+                                e.focus(); 
+                            });
+                    };
+		this.TaskEditor_t2 = function(e) { 
+                        this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });
+                    };
+		this.TaskEditor_t3 = function(e) { 
+                        this.bind(e,'value', ["viewModel","task","status"], 1 );
+                    };
+		this.TaskEditor_t4 = function(e) { 
+                        this.bind(e,'text', [["viewModel","errors","status"]], 0, function(v1) { return (v1); });
+                    };
+		this.TaskEditor_t5 = function(e) { 
+                        this.bind(e,'value', ["viewModel","task","description"], 1 );
+                    };
+		this.TaskEditor_t6 = function(e) { 
+                        this.setLocalValue('styleDisplay',(Atom.get(this,"viewModel.windowName")) ? 'none' : '',e);
+                    };
+		this.TaskEditor_t7 = function(e) { 
+                        this.setLocalValue('eventClick',function(){ 
+                    return  (Atom.get(this,"viewModel")).save(); 
+                },e);
+                    };
+                }).call(WebAtoms.PageSetup,window,WebAtoms);
+
+                return classCreatorEx({
+                    name: "Todo.TaskEditor",
+                    base: baseType,
+                    start: function(e){
+                        
+                        var oldInit = AtomUI.attr(e,'data-atom-init');
+                        if(oldInit){
+                            AtomUI.attr(e, 'base-data-atom-init',oldInit);
+                        };
+                        AtomUI.attr(e, 'data-atom-init','TaskEditor_t0');
+                    
+                    },
+                    methods:{
+                        setLocalValue: window.__atomSetLocalValue(baseType)
+                    },
+                    properties:{
+                        
+                    }
+                })
+            })(window, WebAtoms.AtomControl.prototype);
+if(!window['Todo']){
+                            window['Todo'] = {};
+                        }
 window.Todo.TaskList = (function(window,baseType){
 
                 window.Templates.jsonML["Todo.TaskList.template"] = 
                     [
   [
-    "div",
-    {},
+    "header",
+    {
+      "style": "height:40px"
+    },
     [
       "button",
       {
@@ -170,7 +238,9 @@ window.Todo.TaskList = (function(window,baseType){
   [
     "div",
     {
-      "atom-type": "AtomItemsControl",
+      "atom-dock": "Left",
+      "atom-type": "AtomListBox",
+      "style": "width:500px",
       "data-atom-init": "TaskList_t2"
     },
     [
@@ -195,6 +265,13 @@ window.Todo.TaskList = (function(window,baseType){
         }
       ]
     ]
+  ],
+  [
+    "section",
+    {
+      "atom-type": "Todo.TaskEditor",
+      "data-atom-init": "TaskList_t5"
+    }
   ]
 ];
 
@@ -214,6 +291,7 @@ window.Todo.TaskList = (function(window,baseType){
                     };
 		this.TaskList_t2 = function(e) { 
                         this.setLocalValue('items',(Atom.get(this,"viewModel.list")),e);
+			this.bind(e,'selectedItem', ["viewModel","selectedTask"], 1 );
                     };
 		this.TaskList_t3 = function(e) { 
                         this.setLocalValue('text',(Atom.get(this,"data.label")),e);
@@ -222,6 +300,9 @@ window.Todo.TaskList = (function(window,baseType){
                         this.setLocalValue('next',function(){ 
                     return  (Atom.get(this,"viewModel")).deleteTask((Atom.get(this,"data"))); 
                 },e);
+                    };
+		this.TaskList_t5 = function(e) { 
+                        this.setLocalValue('viewModel',new Todo.TaskEditorViewModel(),e);
                     };
                 }).call(WebAtoms.PageSetup,window,WebAtoms);
 
@@ -244,7 +325,7 @@ window.Todo.TaskList = (function(window,baseType){
                         
                     }
                 })
-            })(window, WebAtoms.AtomControl.prototype);
+            })(window, WebAtoms.AtomDockPanel.prototype);
 if(!window['Todo']){
                             window['Todo'] = {};
                         }

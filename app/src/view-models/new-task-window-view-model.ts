@@ -1,6 +1,6 @@
 namespace Todo {
 
-    export class NewTaskWindowErrors extends WebAtoms.AtomErrors {
+    export class TaskEditorErrors extends WebAtoms.AtomErrors {
 
         @bindableProperty
         label: string;
@@ -13,9 +13,9 @@ namespace Todo {
 
     }
 
-    export class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel {
+    export class TaskEditorViewModel extends WebAtoms.AtomWindowViewModel {
 
-        errors: NewTaskWindowErrors;
+        errors: TaskEditorErrors;
 
         @bindableProperty
         task:Task = new Task();
@@ -23,7 +23,7 @@ namespace Todo {
         constructor() {
             super();
 
-            this.errors = new NewTaskWindowErrors(this);
+            this.errors = new TaskEditorErrors(this);
 
             this.addValidation(
                 () => this.errors.label = this.task.label ? "" : "Task cannot be empty",
@@ -43,6 +43,13 @@ namespace Todo {
 
             this.close(this.task);
 
+        }
+
+        @receive("selected-task-changed")
+        onSelectedTaskChanged(channel:string, task:Task):void {
+            if(!this.windowName) {
+                this.task = task;
+            }
         }
 
 

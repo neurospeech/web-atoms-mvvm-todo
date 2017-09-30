@@ -117,7 +117,7 @@ var Todo;
             _this.tasks = [];
             var t = new Todo.Task();
             t.label = "Sample task";
-            t.status = "Open";
+            t.status = "open";
             t.id = (new Date()).getTime();
             _this.tasks.push(t);
             return _this;
@@ -191,33 +191,33 @@ var Todo;
 })(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {
-    var NewTaskWindowErrors = /** @class */ (function (_super) {
-        __extends(NewTaskWindowErrors, _super);
-        function NewTaskWindowErrors() {
+    var TaskEditorErrors = /** @class */ (function (_super) {
+        __extends(TaskEditorErrors, _super);
+        function TaskEditorErrors() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
         __decorate([
             bindableProperty
-        ], NewTaskWindowErrors.prototype, "label", void 0);
+        ], TaskEditorErrors.prototype, "label", void 0);
         __decorate([
             bindableProperty
-        ], NewTaskWindowErrors.prototype, "status", void 0);
+        ], TaskEditorErrors.prototype, "status", void 0);
         __decorate([
             bindableProperty
-        ], NewTaskWindowErrors.prototype, "description", void 0);
-        return NewTaskWindowErrors;
+        ], TaskEditorErrors.prototype, "description", void 0);
+        return TaskEditorErrors;
     }(WebAtoms.AtomErrors));
-    Todo.NewTaskWindowErrors = NewTaskWindowErrors;
-    var NewTaskViewWindowViewModel = /** @class */ (function (_super) {
-        __extends(NewTaskViewWindowViewModel, _super);
-        function NewTaskViewWindowViewModel() {
+    Todo.TaskEditorErrors = TaskEditorErrors;
+    var TaskEditorViewModel = /** @class */ (function (_super) {
+        __extends(TaskEditorViewModel, _super);
+        function TaskEditorViewModel() {
             var _this = _super.call(this) || this;
             _this.task = new Todo.Task();
-            _this.errors = new NewTaskWindowErrors(_this);
+            _this.errors = new TaskEditorErrors(_this);
             _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
             return _this;
         }
-        NewTaskViewWindowViewModel.prototype.save = function () {
+        TaskEditorViewModel.prototype.save = function () {
             return __awaiter(this, void 0, void 0, function () {
                 var windowService;
                 return __generator(this, function (_a) {
@@ -236,12 +236,20 @@ var Todo;
                 });
             });
         };
+        TaskEditorViewModel.prototype.onSelectedTaskChanged = function (channel, task) {
+            if (!this.windowName) {
+                this.task = task;
+            }
+        };
         __decorate([
             bindableProperty
-        ], NewTaskViewWindowViewModel.prototype, "task", void 0);
-        return NewTaskViewWindowViewModel;
+        ], TaskEditorViewModel.prototype, "task", void 0);
+        __decorate([
+            receive("selected-task-changed")
+        ], TaskEditorViewModel.prototype, "onSelectedTaskChanged", null);
+        return TaskEditorViewModel;
     }(WebAtoms.AtomWindowViewModel));
-    Todo.NewTaskViewWindowViewModel = NewTaskViewWindowViewModel;
+    Todo.TaskEditorViewModel = TaskEditorViewModel;
 })(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {
@@ -263,10 +271,14 @@ var Todo;
                         case 1:
                             r = _a.sent();
                             this.list.addAll(r);
+                            this.selectedTask = this.list[0];
                             return [2 /*return*/];
                     }
                 });
             });
+        };
+        TaskListViewModel.prototype.onSelectedTaskChanged = function () {
+            this.broadcast("selected-task-changed", this.selectedTask);
         };
         TaskListViewModel.prototype.deleteTask = function (task) {
             return __awaiter(this, void 0, void 0, function () {
@@ -288,13 +300,14 @@ var Todo;
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openWindow(Todo.NewTaskWindow, new Todo.NewTaskViewWindowViewModel())];
+                            return [4 /*yield*/, this.windowService.openWindow(Todo.NewTaskWindow, new Todo.TaskEditorViewModel())];
                         case 1:
                             task = _a.sent();
                             return [4 /*yield*/, this.taskService.create(task)];
                         case 2:
                             task = _a.sent();
                             this.list.add(task);
+                            this.selectedTask = task;
                             return [3 /*break*/, 4];
                         case 3:
                             e_1 = _a.sent();
@@ -309,6 +322,12 @@ var Todo;
         __decorate([
             bindableProperty
         ], TaskListViewModel.prototype, "list", void 0);
+        __decorate([
+            bindableProperty
+        ], TaskListViewModel.prototype, "selectedTask", void 0);
+        __decorate([
+            watch
+        ], TaskListViewModel.prototype, "onSelectedTaskChanged", null);
         return TaskListViewModel;
     }(WebAtoms.AtomViewModel));
     Todo.TaskListViewModel = TaskListViewModel;

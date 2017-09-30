@@ -30,16 +30,17 @@ declare namespace Todo {
     }
 }
 declare namespace Todo {
-    class NewTaskWindowErrors extends WebAtoms.AtomErrors {
+    class TaskEditorErrors extends WebAtoms.AtomErrors {
         label: string;
         status: string;
         description: string;
     }
-    class NewTaskViewWindowViewModel extends WebAtoms.AtomWindowViewModel {
-        errors: NewTaskWindowErrors;
+    class TaskEditorViewModel extends WebAtoms.AtomWindowViewModel {
+        errors: TaskEditorErrors;
         task: Task;
         constructor();
         save(): Promise<any>;
+        onSelectedTaskChanged(channel: string, task: Task): void;
     }
 }
 declare namespace Todo {
@@ -47,7 +48,9 @@ declare namespace Todo {
         list: WebAtoms.AtomList<Task>;
         taskService: TaskListService;
         windowService: WebAtoms.WindowService;
+        selectedTask: Task;
         init(): Promise<any>;
+        onSelectedTaskChanged(): void;
         deleteTask(task: Task): Promise<any>;
         addTask(): Promise<any>;
     }

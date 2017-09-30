@@ -16,7 +16,7 @@ namespace Todo{
             super();
             var t:Task = new Task();
             t.label = "Sample task";
-            t.status = "Open";
+            t.status = "open";
             t.id = (new Date()).getTime();
             this.tasks.push(t);
         }
