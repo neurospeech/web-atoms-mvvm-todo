@@ -92,7 +92,7 @@ var WindowTests = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        vm = new Todo.NewTaskViewWindowViewModel();
+                        vm = new Todo.TaskEditorViewModel();
                         MockWindowService.instance.expectAlert("Please complete all required fields.");
                         return [4 /*yield*/, vm.save()];
                     case 1:

@@ -49,7 +49,7 @@ class WindowTests extends TestItem{
     @Test("New Task")
     async newTask(){
 
-        var vm = new Todo.NewTaskViewWindowViewModel();
+        var vm = new Todo.TaskEditorViewModel();
 
         MockWindowService.instance.expectAlert("Please complete all required fields.");
 
@@ -81,7 +81,7 @@ class WindowTests extends TestItem{
         // unit test of View Model of Window should verify all
         // individual tasks
         MockWindowService.instance
-            .expectWindow<Todo.NewTaskViewWindowViewModel>(Todo.NewTaskWindow, async vm => {
+            .expectWindow<Todo.TaskEditorViewModel>(Todo.NewTaskWindow, async vm => {
 
                 vm.task.label = "New Task";
                 vm.task.status = "Open";

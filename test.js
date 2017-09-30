@@ -23,12 +23,17 @@ global.window = {
         createControl: function(){
 
         }
+    },
+    WebAtoms: {
+
     }
 };
 
+global.WebAtoms = window.WebAtoms;
+
 loadScript("./node_modules/web-atoms-unit/web-atoms-mock.js")
 loadScript("./node_modules/web-atoms-mvvm/dist/web-atoms-mvvm.js");
-loadScript("./node_modules/web-atoms-mvvm/dist/web-atoms-mock-window-service.js");
+loadScript("./node_modules/web-atoms-mvvm/dist/web-atoms-mvvm-mock.js");
 loadScript("./node_modules/web-atoms-unit/index.js");
 
 loadScript("./app/build/views.js.mock.js");
