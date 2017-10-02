@@ -1,4 +1,9 @@
 declare namespace Todo {
+    class Channels {
+        static readonly SelectedTaskChanged: string;
+    }
+}
+declare namespace Todo {
     type ConfigItem = {
         label: string;
         value: string;

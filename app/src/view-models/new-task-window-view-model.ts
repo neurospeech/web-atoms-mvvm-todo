@@ -45,7 +45,7 @@ namespace Todo {
 
         }
 
-        @receive("selected-task-changed")
+        @receive(Channels.SelectedTaskChanged)
         onSelectedTaskChanged(channel:string, task:Task):void {
             if(!this.windowName) {
                 this.task = task;

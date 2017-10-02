@@ -1,5 +1,15 @@
 var Todo;
 (function (Todo) {
+    var Channels = /** @class */ (function () {
+        function Channels() {
+        }
+        Channels.SelectedTaskChanged = "selected-task-changed";
+        return Channels;
+    }());
+    Todo.Channels = Channels;
+})(Todo || (Todo = {}));
+var Todo;
+(function (Todo) {
     var Task = /** @class */ (function () {
         function Task() {
             this.id = 0;
@@ -245,7 +255,7 @@ var Todo;
             bindableProperty
         ], TaskEditorViewModel.prototype, "task", void 0);
         __decorate([
-            receive("selected-task-changed")
+            receive(Todo.Channels.SelectedTaskChanged)
         ], TaskEditorViewModel.prototype, "onSelectedTaskChanged", null);
         return TaskEditorViewModel;
     }(WebAtoms.AtomWindowViewModel));
@@ -278,7 +288,7 @@ var Todo;
             });
         };
         TaskListViewModel.prototype.onSelectedTaskChanged = function () {
-            this.broadcast("selected-task-changed", this.selectedTask);
+            this.broadcast(Todo.Channels.SelectedTaskChanged, this.selectedTask);
         };
         TaskListViewModel.prototype.deleteTask = function (task) {
             return __awaiter(this, void 0, void 0, function () {
@@ -288,6 +298,7 @@ var Todo;
                         case 1:
                             _a.sent();
                             this.list.remove(task);
+                            this.selectedTask = this.list[0];
                             return [2 /*return*/];
                     }
                 });

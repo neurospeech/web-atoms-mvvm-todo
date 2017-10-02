@@ -21,12 +21,14 @@ namespace Todo {
 
         @watch
         onSelectedTaskChanged(): void {
-            this.broadcast("selected-task-changed",this.selectedTask);
+            this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
         }
 
         async deleteTask(task:Task):Promise<any> {
             await this.taskService.deleteTask(task.id);
             this.list.remove(task);
+
+            this.selectedTask = this.list[0];
         }
 
         async addTask():Promise<any> {

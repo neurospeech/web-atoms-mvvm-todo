@@ -31,7 +31,8 @@
 
     <section 
         atom-type="Todo.TaskEditor"
-        atom-view-model="{ new Todo.TaskEditorViewModel()}">
+        atom-view-model="{ new Todo.TaskEditorViewModel()}"
+        style-display="[ $viewModel.task ? '' : 'none' ]">
  
     </section>
 

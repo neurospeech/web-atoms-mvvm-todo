@@ -303,6 +303,7 @@ window.Todo.TaskList = (function(window,baseType){
                     };
 		this.TaskList_t5 = function(e) { 
                         this.setLocalValue('viewModel',new Todo.TaskEditorViewModel(),e);
+			this.bind(e,'styleDisplay', [["viewModel","task"]], 0, function(v1) { return (v1) ? '' : 'none'; });
                     };
                 }).call(WebAtoms.PageSetup,window,WebAtoms);
 
