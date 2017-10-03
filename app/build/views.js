@@ -92,68 +92,142 @@ window.Todo.TaskEditor = (function(window,baseType){
   [
     "div",
     {
-      "atom-text": "Task:"
-    }
-  ],
-  [
-    "input",
-    {
-      "type": "text",
-      "data-atom-init": "TaskEditor_t1"
-    }
-  ],
-  [
-    "span",
-    {
-      "style": "color:red; font-weight:bold",
-      "data-atom-init": "TaskEditor_t2"
-    }
-  ],
-  [
-    "div",
-    {
-      "atom-text": "Status"
-    }
-  ],
-  [
-    "select",
-    {
-      "atom-type": "Todo.TaskStatusCombo",
-      "data-atom-init": "TaskEditor_t3"
-    }
-  ],
-  [
-    "span",
-    {
-      "style": "color:red; font-weight:bold",
-      "data-atom-init": "TaskEditor_t4"
-    }
-  ],
-  [
-    "div",
-    {
-      "atom-text": "Description:"
-    }
-  ],
-  [
-    "textarea",
-    {
-      "cols": "30",
-      "rows": "10",
-      "data-atom-init": "TaskEditor_t5"
-    }
-  ],
-  [
-    "div",
-    {
-      "data-atom-init": "TaskEditor_t6"
+      "class": "atom-form"
     },
     [
-      "button",
+      "div",
       {
-        "data-atom-init": "TaskEditor_t7",
-        "atom-text": "Save"
-      }
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "atom-text": "Task:",
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "input",
+        {
+          "type": "text",
+          "data-atom-init": "TaskEditor_t1"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error",
+          "data-atom-init": "TaskEditor_t2"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "atom-text": "Status:",
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "select",
+        {
+          "atom-type": "Todo.TaskStatusCombo",
+          "data-atom-init": "TaskEditor_t3"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error",
+          "data-atom-init": "TaskEditor_t4"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "atom-text": "Description:",
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "textarea",
+        {
+          "cols": "30",
+          "rows": "10",
+          "data-atom-init": "TaskEditor_t5"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
+        "class": "atom-field",
+        "data-atom-init": "TaskEditor_t6"
+      },
+      [
+        "label",
+        {
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "div",
+        {},
+        [
+          "button",
+          {
+            "data-atom-init": "TaskEditor_t7",
+            "atom-text": "Save"
+          }
+        ]
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
     ]
   ]
 ];
@@ -175,18 +249,20 @@ window.Todo.TaskEditor = (function(window,baseType){
                     };
 		this.TaskEditor_t2 = function(e) { 
                         this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });
+			this.bind(e,'styleDisplay', [["viewModel","errors","label"]], 0, function(v1) { return (v1) ? '' : 'none'; });
                     };
 		this.TaskEditor_t3 = function(e) { 
                         this.bind(e,'value', ["viewModel","task","status"], 1 );
                     };
 		this.TaskEditor_t4 = function(e) { 
                         this.bind(e,'text', [["viewModel","errors","status"]], 0, function(v1) { return (v1); });
+			this.bind(e,'styleDisplay', [["viewModel","errors","status"]], 0, function(v1) { return (v1) ? '' : 'none'; });
                     };
 		this.TaskEditor_t5 = function(e) { 
                         this.bind(e,'value', ["viewModel","task","description"], 1 );
                     };
 		this.TaskEditor_t6 = function(e) { 
-                        this.setLocalValue('styleDisplay',(Atom.get(this,"viewModel.windowName")) ? 'none' : '',e);
+                        this.setLocalValue('styleDisplay',!(Atom.get(this,"viewModel.windowName"))  ? '' : 'none',e);
                     };
 		this.TaskEditor_t7 = function(e) { 
                         this.setLocalValue('eventClick',function(){ 

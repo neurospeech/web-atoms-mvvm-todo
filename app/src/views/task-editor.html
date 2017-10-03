@@ -1,22 +1,36 @@
 <div atom-component="TaskEditor">
-	<div>Task:</div>
-	<input type="text" atom-value="^[viewModel.task.label]" autofocus="autofocus" />
-	<span atom-text="[$viewModel.errors.label]" style="color:red; font-weight:bold"></span>
 
-	<div>Status</div>
+	<!-- Form layout is a special tag which generates fields -->
 
-	<!-- We can reuse TaskStatusCombo that is another combo -->
-	<select atom-type="Todo.TaskStatusCombo" atom-value="$[viewModel.task.status]"></select>
-	<span atom-text="[$viewModel.errors.status]" style="color:red; font-weight:bold"></span>
+	<form-layout>
 
-	<div>Description:</div>
-	<textarea cols="30" rows="10" atom-value="$[viewModel.task.description]"></textarea>
+		<input 
+			atom-label="Task:" 
+			type="text" 
+			atom-value="^[viewModel.task.label]" autofocus="autofocus"
+			atom-error="[$viewModel.errors.label]" />
+		
+
+		<!-- We can reuse TaskStatusCombo that is another combo -->
+		<select 
+			atom-label="Status:"
+			atom-type="Todo.TaskStatusCombo" 
+			atom-value="$[viewModel.task.status]"
+			atom-error="[$viewModel.errors.status]"></select>
+		
+
+		<textarea 
+			atom-label="Description:"
+			cols="30" 
+			rows="10"
+			atom-value="$[viewModel.task.description]"></textarea>
 
 
-	<div
-		style-display="{ $viewModel.windowName ? 'none' : '' }">
-		<button
-			atom-event-click="{ () => $viewModel.save() }">Save</button>
-	</div>
+		<div
+			atom-field-visibility="{ !$viewModel.windowName }">
+			<button
+				atom-event-click="{ () => $viewModel.save() }">Save</button>
+		</div>
+	</form-layout>
 
 </div>
