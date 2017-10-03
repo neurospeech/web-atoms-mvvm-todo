@@ -14,11 +14,11 @@ button, input, textarea{
 }    
 
 .atom-form .atom-field input{
-    width:100%;
+    width:80%;
 }
 
 .atom-form .atom-field textarea{
-    width:100%;
+    width:80%;
 }
 
 .atom-form .atom-field .atom-error{

@@ -18,12 +18,12 @@
         atom-items="{$viewModel.list}"
         atom-selected-item="$[viewModel.selectedTask]"
         style="width:500px">
-        <div atom-template="itemTemplate" style="width:400px; margin:5px; padding:5px; position:relative">
+        <div atom-template="itemTemplate" style="width:400px; height:35px; margin:5px; padding:5px; position:relative">
 
             <span atom-text="{$data.label}"></span>
 
             <button
-                style="position:absolute; right:5px; top:5px; margin:0; padding:2px;"
+                style="position:absolute; right:5px; top:5px; margin:5px; padding:2px;"
                 atom-type="AtomDeleteButton"
                 atom-next="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>

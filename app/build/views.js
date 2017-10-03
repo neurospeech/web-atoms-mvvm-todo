@@ -41,7 +41,7 @@ window.Todo.NewTaskWindow = (function(window,baseType){
 
                 (function(window,WebAtoms){
                     this.NewTaskWindow_t0 = function(e) { 
-                        this.bind(e,'title', [["viewModel","task","label"]], 0, function(v1) { return (v1) || 'Add New Task'; });
+                        this.bind(e,'title', [["viewModel","task","label"],["viewModel","task","label"]], 0, function(v1,v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
 			var oldInit = AtomUI.attr(e,'base-data-atom-init');
                         if(oldInit){
                             (window.WebAtoms.PageSetup[oldInit]).call(this,e);
@@ -323,7 +323,7 @@ window.Todo.TaskList = (function(window,baseType){
       "div",
       {
         "atom-template": "itemTemplate",
-        "style": "width:400px; margin:5px; padding:5px; position:relative"
+        "style": "width:400px; height:35px; margin:5px; padding:5px; position:relative"
       },
       [
         "span",
@@ -334,7 +334,7 @@ window.Todo.TaskList = (function(window,baseType){
       [
         "button",
         {
-          "style": "position:absolute; right:5px; top:5px; margin:0; padding:2px;",
+          "style": "position:absolute; right:5px; top:5px; margin:5px; padding:2px;",
           "atom-type": "AtomDeleteButton",
           "data-atom-init": "TaskList_t4",
           "atom-text": "Delete"
