@@ -45,7 +45,6 @@ declare namespace Todo {
         task: Task;
         constructor();
         save(): Promise<any>;
-        onSelectedTaskChanged(channel: string, task: Task): void;
     }
 }
 declare namespace Todo {
@@ -55,7 +54,6 @@ declare namespace Todo {
         windowService: WebAtoms.WindowService;
         selectedTask: Task;
         init(): Promise<any>;
-        onSelectedTaskChanged(): void;
         deleteTask(task: Task): Promise<any>;
         addTask(): Promise<any>;
     }

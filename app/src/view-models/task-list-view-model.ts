@@ -9,7 +9,7 @@ namespace Todo {
         taskService = Todo.TaskListService.instance;
         windowService = WebAtoms.DI.resolve(WebAtoms.WindowService);
 
-        @bindableProperty
+        @bindableBroadcast(Channels.SelectedTaskChanged)
         selectedTask: Task;
 
         async init():Promise<any> {
@@ -19,10 +19,11 @@ namespace Todo {
             this.selectedTask = this.list[0];
         }
 
-        @watch
-        onSelectedTaskChanged(): void {
-            this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
-        }
+        // // Use bindableBroadcast unless you need custom watch
+        // @watch
+        // onSelectedTaskChanged(): void {
+        //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
+        // }
 
         async deleteTask(task:Task):Promise<any> {
             await this.taskService.deleteTask(task.id);

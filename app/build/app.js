@@ -222,6 +222,10 @@ var Todo;
         __extends(TaskEditorViewModel, _super);
         function TaskEditorViewModel() {
             var _this = _super.call(this) || this;
+            // when AtomWindowViewModel starts, channelPrefix is set to windowName
+            // this will avoid receiving messages in WindowViewModel
+            // in order to receive messages for default, you will have to set
+            // channelPrefix = ""
             _this.task = new Todo.Task();
             _this.errors = new TaskEditorErrors(_this);
             _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
@@ -246,17 +250,9 @@ var Todo;
                 });
             });
         };
-        TaskEditorViewModel.prototype.onSelectedTaskChanged = function (channel, task) {
-            if (!this.windowName) {
-                this.task = task;
-            }
-        };
         __decorate([
-            bindableProperty
+            bindableReceive(Todo.Channels.SelectedTaskChanged)
         ], TaskEditorViewModel.prototype, "task", void 0);
-        __decorate([
-            receive(Todo.Channels.SelectedTaskChanged)
-        ], TaskEditorViewModel.prototype, "onSelectedTaskChanged", null);
         return TaskEditorViewModel;
     }(WebAtoms.AtomWindowViewModel));
     Todo.TaskEditorViewModel = TaskEditorViewModel;
@@ -287,9 +283,11 @@ var Todo;
                 });
             });
         };
-        TaskListViewModel.prototype.onSelectedTaskChanged = function () {
-            this.broadcast(Todo.Channels.SelectedTaskChanged, this.selectedTask);
-        };
+        // // Use bindableBroadcast unless you need custom watch
+        // @watch
+        // onSelectedTaskChanged(): void {
+        //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
+        // }
         TaskListViewModel.prototype.deleteTask = function (task) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
@@ -334,11 +332,8 @@ var Todo;
             bindableProperty
         ], TaskListViewModel.prototype, "list", void 0);
         __decorate([
-            bindableProperty
+            bindableBroadcast(Todo.Channels.SelectedTaskChanged)
         ], TaskListViewModel.prototype, "selectedTask", void 0);
-        __decorate([
-            watch
-        ], TaskListViewModel.prototype, "onSelectedTaskChanged", null);
         return TaskListViewModel;
     }(WebAtoms.AtomViewModel));
     Todo.TaskListViewModel = TaskListViewModel;

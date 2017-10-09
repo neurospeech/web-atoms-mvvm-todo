@@ -17,7 +17,11 @@ namespace Todo {
 
         errors: TaskEditorErrors;
 
-        @bindableProperty
+        // when AtomWindowViewModel starts, channelPrefix is set to windowName
+        // this will avoid receiving messages in WindowViewModel
+        // in order to receive messages for default, you will have to set
+        // channelPrefix = ""
+        @bindableReceive(Channels.SelectedTaskChanged)
         task:Task = new Task();
 
         constructor() {
@@ -45,12 +49,12 @@ namespace Todo {
 
         }
 
-        @receive(Channels.SelectedTaskChanged)
-        onSelectedTaskChanged(channel:string, task:Task):void {
-            if(!this.windowName) {
-                this.task = task;
-            }
-        }
+        // @receive(Channels.SelectedTaskChanged)
+        // onSelectedTaskChanged(channel:string, task:Task):void {
+        //     if(!this.windowName) {
+        //         this.task = task;
+        //     }
+        // }
 
 
     }
