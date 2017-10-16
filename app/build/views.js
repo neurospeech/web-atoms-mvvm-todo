@@ -243,9 +243,9 @@ window.Todo.TaskEditor = (function(window,baseType){
 		this.TaskEditor_t1 = function(e) { 
                         this.bind(e,'value', ["viewModel","task","label"], 1 ,null,"keyup,keydown,keypress,blur,click");
 			window.WebAtoms.dispatcher.callLater( 
-                            function() { 
-                                e.focus(); 
-                            });
+                                function() { 
+                                    e.focus(); 
+                                });
                     };
 		this.TaskEditor_t2 = function(e) { 
                         this.bind(e,'text', [["viewModel","errors","label"]], 0, function(v1) { return (v1); });
@@ -353,7 +353,7 @@ window.Todo.TaskList = (function(window,baseType){
 
                 (function(window,WebAtoms){
                     this.TaskList_t0 = function(e) { 
-                        this.setLocalValue('viewModel',new Todo.TaskListViewModel(),e);
+                        this.setLocalValue('viewModel',new Todo.TaskListViewModel(),e, true);
 			var oldInit = AtomUI.attr(e,'base-data-atom-init');
                         if(oldInit){
                             (window.WebAtoms.PageSetup[oldInit]).call(this,e);
@@ -378,7 +378,7 @@ window.Todo.TaskList = (function(window,baseType){
                 },e);
                     };
 		this.TaskList_t5 = function(e) { 
-                        this.setLocalValue('viewModel',new Todo.TaskEditorViewModel(),e);
+                        this.setLocalValue('viewModel',new Todo.TaskEditorViewModel(),e, true);
 			this.bind(e,'styleDisplay', [["viewModel","task"]], 0, function(v1) { return (v1) ? '' : 'none'; });
                     };
                 }).call(WebAtoms.PageSetup,window,WebAtoms);
