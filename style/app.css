@@ -6,22 +6,3 @@ button, input, textarea{
     padding: 5px; margin: 5px;
 }
 
-.atom-form .atom-field label.atom-label{
-    display: block;
-}
-.atom-form .atom-field input{
-    margin:5px;
-}    
-
-.atom-form .atom-field input{
-    width:80%;
-}
-
-.atom-form .atom-field textarea{
-    width:80%;
-}
-
-.atom-form .atom-field .atom-error{
-    font-size: smaller;
-    color:red;
-}

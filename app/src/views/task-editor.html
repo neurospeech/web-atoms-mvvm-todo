@@ -1,5 +1,27 @@
 <div atom-component="TaskEditor">
 
+	<style>
+		.atom-form .atom-field label.atom-label{
+			display: block;
+		}
+		.atom-form .atom-field input{
+			margin:5px;
+		}    
+
+		.atom-form .atom-field input{
+			width:80%;
+		}
+
+		.atom-form .atom-field textarea{
+			width:80%;
+		}
+
+		.atom-form .atom-field .atom-error{
+			font-size: smaller;
+			color:red;
+		}
+	</style>
+
 	<!-- Form layout is a special tag which generates fields -->
 
 	<form-layout>

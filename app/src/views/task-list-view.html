@@ -4,11 +4,34 @@
 -->
 
 <div
+    class="task-list"
     atom-type="AtomDockPanel"
     atom-component="TaskList" 
     atom-view-model="{new Todo.TaskListViewModel() }">
+
+    <style>
+        .task-list {
+            header {
+                height: 40px;
+            }
+
+            > div {
+                width: 500px;
+                .item {
+                    width:400px; 
+                    height:35px; 
+                    margin:5px; 
+                    padding:5px; 
+                    position:relative;
+                    button {
+                        position:absolute; right:5px; top:5px; margin:5px; padding:2px
+                    }
+                }
+            }
+        }
+    </style>
     
-    <header style="height:40px">
+    <header>
         <button atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
     </header>
 
@@ -16,14 +39,14 @@
         atom-dock="Left"
         atom-type="AtomListBox"
         atom-items="{$viewModel.list}"
-        atom-selected-item="$[viewModel.selectedTask]"
-        style="width:500px">
-        <div atom-template="itemTemplate" style="width:400px; height:35px; margin:5px; padding:5px; position:relative">
+        atom-selected-item="$[viewModel.selectedTask]">
+        <div 
+            atom-template="itemTemplate" 
+            class="item">
 
             <span atom-text="{$data.label}"></span>
 
             <button
-                style="position:absolute; right:5px; top:5px; margin:5px; padding:2px;"
                 atom-type="AtomDeleteButton"
                 atom-next="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>

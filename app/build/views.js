@@ -1,7 +1,8 @@
 if(!window['Todo']){
                             window['Todo'] = {};
                         }
-window.Todo.NewTaskWindow = (function(window,baseType){
+
+                window.Todo.NewTaskWindow = (function(window,baseType){
 
                 window.Templates.jsonML["Todo.NewTaskWindow.template"] = 
                     [
@@ -85,7 +86,22 @@ window.Todo.NewTaskWindow = (function(window,baseType){
 if(!window['Todo']){
                             window['Todo'] = {};
                         }
-window.Todo.TaskEditor = (function(window,baseType){
+
+                    (function(d){
+                        var css = ".atom-form .atom-field label.atom-label {\n  display: block;\n}\n.atom-form .atom-field input {\n  margin: 5px;\n}\n.atom-form .atom-field input {\n  width: 80%;\n}\n.atom-form .atom-field textarea {\n  width: 80%;\n}\n.atom-form .atom-field .atom-error {\n  font-size: smaller;\n  color: red;\n}\n";
+                        var head = d.head || d.getElementsByTagName('head')[0];
+                        var style = d.createElement('style');
+                        style.type = 'text/css';
+                        style.id = "component_style_Todo.TaskEditor";
+                        if(style.styleSheet){
+                            style.styleSheet.cssText = css;
+                        }else{
+                            style.appendChild(d.createTextNode(css));
+                        }
+                        head.appendChild(style);
+                    })(document);
+                
+                window.Todo.TaskEditor = (function(window,baseType){
 
                 window.Templates.jsonML["Todo.TaskEditor.template"] = 
                     [
@@ -294,15 +310,28 @@ window.Todo.TaskEditor = (function(window,baseType){
 if(!window['Todo']){
                             window['Todo'] = {};
                         }
-window.Todo.TaskList = (function(window,baseType){
+
+                    (function(d){
+                        var css = ".task-list header {\n  height: 40px;\n}\n.task-list > div {\n  width: 500px;\n}\n.task-list > div .item {\n  width: 400px;\n  height: 35px;\n  margin: 5px;\n  padding: 5px;\n  position: relative;\n}\n.task-list > div .item button {\n  position: absolute;\n  right: 5px;\n  top: 5px;\n  margin: 5px;\n  padding: 2px;\n}\n";
+                        var head = d.head || d.getElementsByTagName('head')[0];
+                        var style = d.createElement('style');
+                        style.type = 'text/css';
+                        style.id = "component_style_Todo.TaskList";
+                        if(style.styleSheet){
+                            style.styleSheet.cssText = css;
+                        }else{
+                            style.appendChild(d.createTextNode(css));
+                        }
+                        head.appendChild(style);
+                    })(document);
+                
+                window.Todo.TaskList = (function(window,baseType){
 
                 window.Templates.jsonML["Todo.TaskList.template"] = 
                     [
   [
     "header",
-    {
-      "style": "height:40px"
-    },
+    {},
     [
       "button",
       {
@@ -316,14 +345,13 @@ window.Todo.TaskList = (function(window,baseType){
     {
       "atom-dock": "Left",
       "atom-type": "AtomListBox",
-      "style": "width:500px",
       "data-atom-init": "TaskList_t2"
     },
     [
       "div",
       {
         "atom-template": "itemTemplate",
-        "style": "width:400px; height:35px; margin:5px; padding:5px; position:relative"
+        "class": "item"
       },
       [
         "span",
@@ -334,7 +362,6 @@ window.Todo.TaskList = (function(window,baseType){
       [
         "button",
         {
-          "style": "position:absolute; right:5px; top:5px; margin:5px; padding:2px;",
           "atom-type": "AtomDeleteButton",
           "data-atom-init": "TaskList_t4",
           "atom-text": "Delete"
@@ -387,7 +414,8 @@ window.Todo.TaskList = (function(window,baseType){
                     name: "Todo.TaskList",
                     base: baseType,
                     start: function(e){
-                        
+                         if(!AtomUI.attr(e,'atom-class')) AtomUI.attr(e, 'atom-class', 'task-list' );
+		
                         var oldInit = AtomUI.attr(e,'data-atom-init');
                         if(oldInit){
                             AtomUI.attr(e, 'base-data-atom-init',oldInit);
@@ -406,7 +434,8 @@ window.Todo.TaskList = (function(window,baseType){
 if(!window['Todo']){
                             window['Todo'] = {};
                         }
-window.Todo.TaskStatusCombo = (function(window,baseType){
+
+                window.Todo.TaskStatusCombo = (function(window,baseType){
 
                 window.Templates.jsonML["Todo.TaskStatusCombo.template"] = 
                     [];
