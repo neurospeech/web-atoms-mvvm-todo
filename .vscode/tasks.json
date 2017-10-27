@@ -22,8 +22,7 @@
                 "panel": "dedicated"
             },
             "args": [
-                "node_modules/web-atoms-mvvm/bin/component-generator.js",
-                "app"
+                "node_modules/web-atoms-mvvm/bin/component-generator.js"
             ],
             "problemMatcher":{
                 "owner": "cc",
