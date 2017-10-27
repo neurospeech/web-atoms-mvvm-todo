@@ -22,7 +22,7 @@
                 "panel": "dedicated"
             },
             "args": [
-                "node_modules/web-atoms-mvvm/bin/component-generator.js",
+                "${env:APPDATA}/npm/node_modules/web-atoms-generator/bin/component-generator.js",
                 "app"
             ],
             "problemMatcher":{
