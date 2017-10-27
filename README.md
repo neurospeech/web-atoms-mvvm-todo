@@ -1,3 +1,7 @@
+# Installation
+
+	npm install web-atoms-generator typescript -g
+
 # Web Atoms MVVM Sample
 Sample Todo Application using Web Atoms MVVM contains following features.
 
