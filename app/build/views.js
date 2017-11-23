@@ -212,8 +212,49 @@ if(!window['Todo']){
     [
       "div",
       {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "div",
+        {},
+        [
+          "span",
+          {
+            "data-atom-init": "TaskEditor_t6"
+          }
+        ],
+        [
+          "button",
+          {
+            "data-atom-init": "TaskEditor_t7",
+            "atom-text": "Assign"
+          }
+        ]
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
         "class": "atom-field",
-        "data-atom-init": "TaskEditor_t6"
+        "data-atom-init": "TaskEditor_t8"
       },
       [
         "label",
@@ -233,7 +274,7 @@ if(!window['Todo']){
         [
           "button",
           {
-            "data-atom-init": "TaskEditor_t7",
+            "data-atom-init": "TaskEditor_t9",
             "atom-text": "Save"
           }
         ]
@@ -278,9 +319,17 @@ if(!window['Todo']){
 					this.bind(e,'value', ["viewModel","task","description"], 1 );
 				};
 		this.TaskEditor_t6 = function(e) {
-					this.setLocalValue('styleDisplay',!(Atom.get(this,"viewModel.windowName"))  ? '' : 'none',e);
+					this.bind(e,'text', [["viewModel","user","label"]], 0, function(v1) { return (v1); });
 				};
 		this.TaskEditor_t7 = function(e) {
+					this.setLocalValue('eventClick',function(){
+				return  (Atom.get(this,"viewModel")).assign();
+			},e);
+				};
+		this.TaskEditor_t8 = function(e) {
+					this.setLocalValue('styleDisplay',!(Atom.get(this,"viewModel.windowName"))  ? '' : 'none',e);
+				};
+		this.TaskEditor_t9 = function(e) {
 					this.setLocalValue('eventClick',function(){
 				return  (Atom.get(this,"viewModel")).save();
 			},e);
@@ -471,3 +520,94 @@ if(!window['Todo']){
 				}
 			})
 		})(window, WebAtoms.AtomComboBox.prototype);
+if(!window['Todo']){
+						window['Todo'] = {};
+					}
+
+			window.Todo.UserSelector = (function(window,baseType){
+
+			window.Templates.jsonML["Todo.UserSelector.template"] =
+				[
+  [
+    "div",
+    {
+      "style": "background: white; padding:5px; border: solid lightgray 1px;"
+    },
+    [
+      "input",
+      {
+        "data-atom-init": "UserSelector_t1"
+      }
+    ],
+    [
+      "div",
+      {
+        "style": "padding:5px",
+        "atom-type": "AtomItemsControl",
+        "data-atom-init": "UserSelector_t2"
+      },
+      [
+        "div",
+        {
+          "atom-template": "itemTemplate",
+          "data-atom-init": "UserSelector_t3"
+        },
+        [
+          "span",
+          {
+            "data-atom-init": "UserSelector_t4"
+          }
+        ]
+      ]
+    ]
+  ]
+];
+
+			(function(window,WebAtoms){
+				this.UserSelector_t0 = function(e) {
+					var oldInit = AtomUI.attr(e,'base-data-atom-init');
+					if(oldInit){
+						(window.WebAtoms.PageSetup[oldInit]).call(this,e);
+					}
+				
+				};
+		this.UserSelector_t1 = function(e) {
+					window.WebAtoms.dispatcher.callLater(
+							function() {
+								e.focus();
+							});
+			this.bind(e,'value', ["viewModel","searchText"], 1 ,null,"keyup,keydown,keypress,blur,click");
+				};
+		this.UserSelector_t2 = function(e) {
+					this.bind(e,'items', [["viewModel","items"]], 0, function(v1) { return (v1); });
+				};
+		this.UserSelector_t3 = function(e) {
+					this.setLocalValue('eventClick',function(){
+				return  (Atom.get(this,"viewModel")).select((Atom.get(this,"data")));
+			},e);
+				};
+		this.UserSelector_t4 = function(e) {
+					this.setLocalValue('text',(Atom.get(this,"data.label")),e);
+				};
+			}).call(WebAtoms.PageSetup,window,WebAtoms);
+
+			return classCreatorEx({
+				name: "Todo.UserSelector",
+				base: baseType,
+				start: function(e){
+					
+					var oldInit = AtomUI.attr(e,'data-atom-init');
+					if(oldInit){
+						AtomUI.attr(e, 'base-data-atom-init',oldInit);
+					};
+					AtomUI.attr(e, 'data-atom-init','UserSelector_t0');
+				
+				},
+				methods:{
+					setLocalValue: window.__atomSetLocalValue(baseType)
+				},
+				properties:{
+					
+				}
+			})
+		})(window, WebAtoms.AtomControl.prototype);

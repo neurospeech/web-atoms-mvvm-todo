@@ -1,0 +1,16 @@
+<div>
+	<div style="background: white; padding:5px; border: solid lightgray 1px;">
+		<input autofocus="autofocus" atom-value="^[viewModel.searchText]"/>
+
+		<div 
+			style="padding:5px"
+			atom-type="AtomItemsControl"
+			atom-items="[$viewModel.items]">
+			<div 
+				atom-template="itemTemplate"
+				atom-event-click="{ () => $viewModel.select($data) }">
+				<span atom-text="{$data.label}"></span>
+			</div>
+		</div>
+	</div>
+</div>

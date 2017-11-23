@@ -50,6 +50,10 @@
 			rows="10"
 			atom-value="$[viewModel.task.description]"></textarea>
 
+		<div>
+			<span atom-text="[$viewModel.user.label]"></span>
+			<button atom-event-click="{ () => $viewModel.assign() }">Assign</button>
+		</div>
 
 		<div
 			atom-field-visibility="{ !$viewModel.windowName }">

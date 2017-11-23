@@ -125,6 +125,16 @@ var Todo;
         function TaskListService() {
             var _this = _super.call(this) || this;
             _this.tasks = [];
+            _this.users = [{
+                    label: "Akash Kava",
+                    value: "ackava",
+                }, {
+                    label: "John",
+                    value: "Hemond"
+                }, {
+                    label: "Chris",
+                    value: "Tucker"
+                }];
             var t = new Todo.Task();
             t.label = "Sample task";
             t.status = "open";
@@ -176,6 +186,28 @@ var Todo;
                 });
             });
         };
+        TaskListService.prototype.getUsers = function (name) {
+            return __awaiter(this, void 0, void 0, function () {
+                var n;
+                return __generator(this, function (_a) {
+                    if (!name) {
+                        return [2 /*return*/, this.users];
+                    }
+                    n = name.toLocaleLowerCase();
+                    return [2 /*return*/, this.users.filter(function (x) {
+                            if (name) {
+                                if (x.label.toLocaleLowerCase().indexOf(n) >= 0 ||
+                                    x.value.toLocaleLowerCase().indexOf(n) >= 0) {
+                                    return true;
+                                }
+                            }
+                            else {
+                                return true;
+                            }
+                        })];
+                });
+            });
+        };
         __decorate([
             Put("/tasks/task"),
             __param(0, Body)
@@ -191,6 +223,10 @@ var Todo;
             Delete("/tasks/{id}"),
             __param(0, Path("id"))
         ], TaskListService.prototype, "deleteTask", null);
+        __decorate([
+            Get("/users"),
+            __param(0, Query("name"))
+        ], TaskListService.prototype, "getUsers", null);
         TaskListService = TaskListService_1 = __decorate([
             DIGlobal
         ], TaskListService);
@@ -227,6 +263,7 @@ var Todo;
             // in order to receive messages for default, you will have to set
             // channelPrefix = ""
             _this.task = new Todo.Task();
+            _this.user = {};
             _this.errors = new TaskEditorErrors(_this);
             _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
             return _this;
@@ -250,9 +287,28 @@ var Todo;
                 });
             });
         };
+        TaskEditorViewModel.prototype.assign = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var windowService, _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            windowService = WebAtoms.DI.resolve(WindowService);
+                            _a = this;
+                            return [4 /*yield*/, windowService.openPopup(Todo.UserSelector, new Todo.UserSelectorViewModel())];
+                        case 1:
+                            _a.user = _b.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
         __decorate([
             bindableReceive(Todo.Channels.SelectedTaskChanged)
         ], TaskEditorViewModel.prototype, "task", void 0);
+        __decorate([
+            bindableProperty
+        ], TaskEditorViewModel.prototype, "user", void 0);
         return TaskEditorViewModel;
     }(WebAtoms.AtomWindowViewModel));
     Todo.TaskEditorViewModel = TaskEditorViewModel;
@@ -337,5 +393,58 @@ var Todo;
         return TaskListViewModel;
     }(WebAtoms.AtomViewModel));
     Todo.TaskListViewModel = TaskListViewModel;
+})(Todo || (Todo = {}));
+var Todo;
+(function (Todo) {
+    var UserSelectorViewModel = /** @class */ (function (_super) {
+        __extends(UserSelectorViewModel, _super);
+        function UserSelectorViewModel() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        UserSelectorViewModel.prototype.init = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _a = this;
+                            return [4 /*yield*/, Todo.TaskListService.instance.getUsers(null)];
+                        case 1:
+                            _a.items = _b.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        UserSelectorViewModel.prototype.searchUser = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _a = this;
+                            return [4 /*yield*/, Todo.TaskListService.instance.getUsers(this.searchText)];
+                        case 1:
+                            _a.items = _b.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        UserSelectorViewModel.prototype.select = function (user) {
+            this.close(user);
+        };
+        __decorate([
+            bindableProperty
+        ], UserSelectorViewModel.prototype, "items", void 0);
+        __decorate([
+            bindableProperty
+        ], UserSelectorViewModel.prototype, "searchText", void 0);
+        __decorate([
+            watch
+        ], UserSelectorViewModel.prototype, "searchUser", null);
+        return UserSelectorViewModel;
+    }(WebAtoms.AtomWindowViewModel));
+    Todo.UserSelectorViewModel = UserSelectorViewModel;
 })(Todo || (Todo = {}));
 //# sourceMappingURL=app.js.map

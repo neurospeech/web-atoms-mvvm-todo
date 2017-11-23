@@ -24,6 +24,9 @@ namespace Todo {
         @bindableReceive(Channels.SelectedTaskChanged)
         task:Task = new Task();
 
+        @bindableProperty
+        user:User = {};
+
         constructor() {
             super();
 
@@ -47,6 +50,11 @@ namespace Todo {
 
             this.close(this.task);
 
+        }
+
+        async assign(): Promise<any> {
+            var windowService:WebAtoms.WindowService = WebAtoms.DI.resolve(WindowService);
+            this.user = await windowService.openPopup<User>(Todo.UserSelector, new UserSelectorViewModel());
         }
 
         // @receive(Channels.SelectedTaskChanged)

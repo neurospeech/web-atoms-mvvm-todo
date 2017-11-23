@@ -12,6 +12,17 @@ namespace Todo{
 
         tasks:Array<Task> = [];
 
+        users: User[] = [{
+            label: "Akash Kava",
+            value: "ackava",
+        },{ 
+            label:"John", 
+            value:"Hemond"
+        },{ 
+            label:"Chris", 
+            value: "Tucker"
+        }];
+
         constructor() {
             super();
             var t:Task = new Task();
@@ -45,6 +56,26 @@ namespace Todo{
         @Delete("/tasks/{id}")
         async deleteTask(@Path("id") id:number):Promise<any> {
             this.tasks = this.tasks.filter(x=> x.id !== id);
+        }
+
+        @Get("/users")
+        async getUsers(@Query("name") name: string): Promise<User[]> {
+
+            if(!name) {
+                return this.users;
+            }
+
+            var n: string = name.toLocaleLowerCase();
+            return this.users.filter( x => { 
+                if(name){
+                    if( x.label.toLocaleLowerCase().indexOf(n) >= 0 || 
+                        x.value.toLocaleLowerCase().indexOf(n) >= 0) {
+                        return true;
+                    }
+                } else { 
+                    return true; 
+                } 
+            });
         }
 
 
