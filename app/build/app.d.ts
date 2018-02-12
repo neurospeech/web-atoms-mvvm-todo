@@ -48,6 +48,13 @@ declare namespace Todo {
     }
 }
 declare namespace Todo {
+    class LoginViewModel extends WebAtoms.AtomViewModel {
+        username: String;
+        password: String;
+        login(): void;
+    }
+}
+declare namespace Todo {
     class TaskEditorErrors extends WebAtoms.AtomErrors {
         label: string;
         status: string;

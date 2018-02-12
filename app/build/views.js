@@ -53,6 +53,164 @@ if(!window['Todo']){
 						window['Todo'] = {};
 					}
 
+			window.Todo.LoginView = (function(window,baseType){
+
+			window.Templates.jsonML["Todo.LoginView.template"] =
+				[
+  [
+    "div",
+    {
+      "class": "atom-form"
+    },
+    [
+      "div",
+      {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "class": "atom-label",
+          "data-atom-init": "LoginView_t1"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "input",
+        {
+          "data-atom-init": "LoginView_t2"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "class": "atom-label",
+          "data-atom-init": "LoginView_t3"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "input",
+        {
+          "type": "password",
+          "data-atom-init": "LoginView_t4"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
+    ],
+    [
+      "div",
+      {
+        "class": "atom-field"
+      },
+      [
+        "label",
+        {
+          "class": "atom-label"
+        }
+      ],
+      [
+        "span",
+        {
+          "class": "atom-required"
+        }
+      ],
+      [
+        "button",
+        {
+          "data-atom-init": "LoginView_t5",
+          "atom-text": "Login"
+        }
+      ],
+      [
+        "div",
+        {
+          "class": "atom-error"
+        }
+      ]
+    ]
+  ]
+];
+
+			(function(window,WebAtoms){
+				this.LoginView_t0 = function(e) {
+					this.setLocalValue('viewModel',new Todo.LoginViewModel(),e, true);
+			var oldInit = AtomUI.attr(e,'base-data-atom-init');
+					if(oldInit){
+						(window.WebAtoms.PageSetup[oldInit]).call(this,e);
+					}
+				
+				};
+		this.LoginView_t1 = function(e) {
+					this.setLocalValue('text',"Username:", e)
+				};
+		this.LoginView_t2 = function(e) {
+					this.bind(e,'value', ["viewModel","username"], 1 );
+				};
+		this.LoginView_t3 = function(e) {
+					this.setLocalValue('text',"Password:", e)
+				};
+		this.LoginView_t4 = function(e) {
+					this.bind(e,'value', ["viewModel","password"], 1 );
+				};
+		this.LoginView_t5 = function(e) {
+					this.setLocalValue('eventClick',function(){
+				return  (Atom.get(this,"viewModel")).login();
+			},e);
+				};
+			}).call(WebAtoms.PageSetup,window,WebAtoms);
+
+			return classCreatorEx({
+				name: "Todo.LoginView",
+				base: baseType,
+				start: function(e){
+					
+					var oldInit = AtomUI.attr(e,'data-atom-init');
+					if(oldInit){
+						AtomUI.attr(e, 'base-data-atom-init',oldInit);
+					};
+					AtomUI.attr(e, 'data-atom-init','LoginView_t0');
+				
+				},
+				methods:{
+					setLocalValue: window.__atomSetLocalValue(baseType)
+				},
+				properties:{
+					
+				}
+			})
+		})(window, WebAtoms.AtomControl.prototype);
+if(!window['Todo']){
+						window['Todo'] = {};
+					}
+
 			window.Todo.NewTaskWindow = (function(window,baseType){
 
 			window.Templates.jsonML["Todo.NewTaskWindow.template"] =

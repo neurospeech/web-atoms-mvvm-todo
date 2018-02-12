@@ -241,7 +241,7 @@ var Todo;
         __extends(AppFrameViewModel, _super);
         function AppFrameViewModel() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.url = "Todo.TaskListView";
+            _this.url = "Todo.LoginView";
             return _this;
         }
         __decorate([
@@ -250,6 +250,29 @@ var Todo;
         return AppFrameViewModel;
     }(WebAtoms.AtomViewModel));
     Todo.AppFrameViewModel = AppFrameViewModel;
+})(Todo || (Todo = {}));
+var Todo;
+(function (Todo) {
+    var LoginViewModel = /** @class */ (function (_super) {
+        __extends(LoginViewModel, _super);
+        function LoginViewModel() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.username = "demo";
+            _this.password = "demo";
+            return _this;
+        }
+        LoginViewModel.prototype.login = function () {
+            this.broadcast("app-url", "Todo.TaskListView");
+        };
+        __decorate([
+            bindableProperty
+        ], LoginViewModel.prototype, "username", void 0);
+        __decorate([
+            bindableProperty
+        ], LoginViewModel.prototype, "password", void 0);
+        return LoginViewModel;
+    }(WebAtoms.AtomViewModel));
+    Todo.LoginViewModel = LoginViewModel;
 })(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {

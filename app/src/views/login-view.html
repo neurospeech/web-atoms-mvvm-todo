@@ -1,0 +1,14 @@
+<div atom-view-model="{new Todo.LoginViewModel()}">
+	<form-layout>
+		<input 
+			atom-label="Username:"
+			atom-value="$[viewModel.username]"/>
+		<input 
+			atom-label="Password:"
+			atom-value="$[viewModel.password]" type="password"/>
+
+		<button
+			atom-event-click="{ () => $viewModel.login() }">Login</button>
+
+	</form-layout>
+</div>
