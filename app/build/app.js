@@ -237,6 +237,22 @@ var Todo;
 })(Todo || (Todo = {}));
 var Todo;
 (function (Todo) {
+    var AppFrameViewModel = /** @class */ (function (_super) {
+        __extends(AppFrameViewModel, _super);
+        function AppFrameViewModel() {
+            var _this = _super !== null && _super.apply(this, arguments) || this;
+            _this.url = "Todo.TaskListView";
+            return _this;
+        }
+        __decorate([
+            bindableReceive("app-url")
+        ], AppFrameViewModel.prototype, "url", void 0);
+        return AppFrameViewModel;
+    }(WebAtoms.AtomViewModel));
+    Todo.AppFrameViewModel = AppFrameViewModel;
+})(Todo || (Todo = {}));
+var Todo;
+(function (Todo) {
     var TaskEditorErrors = /** @class */ (function (_super) {
         __extends(TaskEditorErrors, _super);
         function TaskEditorErrors() {

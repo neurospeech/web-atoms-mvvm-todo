@@ -43,6 +43,11 @@ declare namespace Todo {
     }
 }
 declare namespace Todo {
+    class AppFrameViewModel extends WebAtoms.AtomViewModel {
+        url: string;
+    }
+}
+declare namespace Todo {
     class TaskEditorErrors extends WebAtoms.AtomErrors {
         label: string;
         status: string;
