@@ -1,6 +1,7 @@
 // tslint:disable
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
+<<<<<<< HEAD
     import {LoginViewModel} from "../view-models/LoginViewModel";
 
 
@@ -12,18 +13,15 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             this.element = document.createElement("div");
             
             
-        const e1 = document.createTextNode("\r\n\t");
+        const e1 = document.createTextNode("\r\n=======\r\n\timport { LoginViewModel }  from \"./../view-models/LoginViewModel\";\r\n\r\n");
         
         this.append(e1);
 
-        const e2 = document.createElement("form-layout");
+        const e2 = document.createElement("div");
         
         this.append(e2);
         
-
-        const e11 = document.createTextNode("\r\n");
-        
-        this.append(e11);
+            this.setLocalValue(e2, "atom-view-model", new LoginViewModel());
             
             this.setLocalValue(this.element, "atom-view-model", this.resolve(LoginViewModel));
         }

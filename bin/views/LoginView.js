@@ -30,12 +30,11 @@ var __extends = (this && this.__extends) || (function () {
         LoginView.prototype.create = function () {
             _super.prototype.create.call(this);
             this.element = document.createElement("div");
-            var e1 = document.createTextNode("\r\n\t");
+            var e1 = document.createTextNode("\r\n=======\r\n\timport { LoginViewModel }  from \"./../view-models/LoginViewModel\";\r\n\r\n");
             this.append(e1);
-            var e2 = document.createElement("form-layout");
+            var e2 = document.createElement("div");
             this.append(e2);
-            var e11 = document.createTextNode("\r\n");
-            this.append(e11);
+            this.setLocalValue(e2, "atom-view-model", new LoginViewModel_1.LoginViewModel());
             this.setLocalValue(this.element, "atom-view-model", this.resolve(LoginViewModel_1.LoginViewModel));
         };
         return LoginView;

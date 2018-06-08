@@ -14,14 +14,21 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
+<<<<<<< HEAD
         define(["require", "exports", "web-atoms-core/bin/controls/AtomControl", "./TaskStatusCombo"], factory);
+=======
+        define(["require", "exports", "web-atoms-core/bin/controls/AtomControl"], factory);
+>>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     // tslint:disable
     var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
+<<<<<<< HEAD
     var TaskStatusCombo_1 = require("./TaskStatusCombo");
+=======
+>>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
     var TaskEditor = /** @class */ (function (_super) {
         __extends(TaskEditor, _super);
         function TaskEditor() {
@@ -42,6 +49,7 @@ var __extends = (this && this.__extends) || (function () {
             this.append(e5);
             var e6 = document.createElement("undefined");
             this.append(e6);
+<<<<<<< HEAD
             var e7 = document.createTextNode("\r\n\t\r\n\r\n\t\t");
             this.append(e7);
             var e8 = document.createElement("input");
@@ -81,6 +89,14 @@ var __extends = (this && this.__extends) || (function () {
             this.setLocalValue(e24, "atom-field-visibility", !(this.getValue("viewModel.windowName")));
             var e29 = document.createTextNode("\r\n\r\n");
             this.append(e29);
+=======
+            var e7 = document.createTextNode("\r\n\t");
+            this.append(e7);
+            var e8 = document.createElement("form-layout");
+            this.append(e8);
+            var e32 = document.createTextNode("\r\n\r\n");
+            this.append(e32);
+>>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
             this.setLocalValue(this.element, "atom-component", "TaskEditor");
         };
         return TaskEditor;

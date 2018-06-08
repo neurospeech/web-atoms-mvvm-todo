@@ -51,7 +51,13 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e3);
             
+<<<<<<< HEAD
             this.setLocalValue(this.element, "atom-event-click", () => (this.getValue("viewModel")).select((this.getValue("data"))));
+=======
+            this.setLocalValue(this.element, "atom-event-click", function(){
+    return  (this.getValue("viewModel")).select((this.getValue("data")));
+});
+>>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
         }
     }
 
