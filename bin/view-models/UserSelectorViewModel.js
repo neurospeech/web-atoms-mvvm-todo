@@ -17,6 +17,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -58,42 +61,76 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/services/RestService"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/decorators/Inject", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../services/TaskListService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var RestService_1 = require("web-atoms-core/bin/services/RestService");
-    var ConfigService = /** @class */ (function (_super) {
-        __extends(ConfigService, _super);
-        function ConfigService() {
-            return _super !== null && _super.apply(this, arguments) || this;
+    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+    var Inject_1 = require("web-atoms-core/bin/di/decorators/Inject");
+    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+    var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
+    var TaskListService_1 = require("../services/TaskListService");
+    var UserSelectorViewModel = /** @class */ (function (_super) {
+        __extends(UserSelectorViewModel, _super);
+        function UserSelectorViewModel(taskListService) {
+            var _this = _super.call(this) || this;
+            _this.taskListService = taskListService;
+            return _this;
         }
-        ConfigService.prototype.getStatusList = function () {
+        UserSelectorViewModel.prototype.init = function () {
             return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, [
-                            {
-                                label: "Select", value: ""
-                            },
-                            {
-                                label: "Open", value: "open"
-                            },
-                            {
-                                label: "Closed", value: "closed"
-                            }
-                        ]];
+                var _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _a = this;
+                            return [4 /*yield*/, this.taskListService.getUsers(null)];
+                        case 1:
+                            _a.items = _b.sent();
+                            return [2 /*return*/];
+                    }
                 });
             });
         };
+        UserSelectorViewModel.prototype.searchUser = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
+                        case 0:
+                            _a = this;
+                            return [4 /*yield*/, this.taskListService.getUsers(this.searchText)];
+                        case 1:
+                            _a.items = _b.sent();
+                            return [2 /*return*/];
+                    }
+                });
+            });
+        };
+        UserSelectorViewModel.prototype.select = function (user) {
+            this.close(user);
+        };
         __decorate([
-            RestService_1.Get("/config/status"),
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", Array)
+        ], UserSelectorViewModel.prototype, "items", void 0);
+        __decorate([
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", String)
+        ], UserSelectorViewModel.prototype, "searchText", void 0);
+        __decorate([
+            AtomViewModel_1.watch,
             __metadata("design:type", Function),
             __metadata("design:paramtypes", []),
             __metadata("design:returntype", Promise)
-        ], ConfigService.prototype, "getStatusList", null);
-        return ConfigService;
-    }(RestService_1.BaseService));
-    exports.ConfigService = ConfigService;
+        ], UserSelectorViewModel.prototype, "searchUser", null);
+        UserSelectorViewModel = __decorate([
+            __param(0, Inject_1.Inject()),
+            __metadata("design:paramtypes", [TaskListService_1.TaskListService])
+        ], UserSelectorViewModel);
+        return UserSelectorViewModel;
+    }(AtomWindowViewModel_1.AtomWindowViewModel));
+    exports.UserSelectorViewModel = UserSelectorViewModel;
 });
-//# sourceMappingURL=config-service.js.map
+//# sourceMappingURL=UserSelectorViewModel.js.map

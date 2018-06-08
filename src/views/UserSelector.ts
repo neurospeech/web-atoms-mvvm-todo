@@ -1,4 +1,5 @@
 // tslint:disable
+import {AtomItemsControl} from "web-atoms-core/bin/controls/AtomItemsControl";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
     export class UserSelector extends AtomControl {
@@ -44,15 +45,13 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-            this.setLocalValue(e2, "atom-text", Atom.get((Atom.get(this,"data.label"))) );
+            this.setLocalValue(e2, "atom-text", (this.getValue("data.label")));
 
         const e3 = document.createTextNode("\r\n\t\t\t");
         
         this.append(e3);
             
-            this.setLocalValue(this.element, "atom-event-click", Atom.get(function(){
-    return  (Atom.get(this,"viewModel")).select((Atom.get(this,"data")));
-}) );
+            this.setLocalValue(this.element, "atom-event-click", () => (this.getValue("viewModel")).select((this.getValue("data"))));
         }
     }
 

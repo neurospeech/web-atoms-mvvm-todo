@@ -1,7 +1,10 @@
 // tslint:disable
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
 
-    export class TaskStatusCombo extends AtomControl {
+    import { ConfigService } from "../services/ConfigService";
+
+
+    export class TaskStatusCombo extends AtomComboBox {
 
         public create(): void {
             super.create();
@@ -16,7 +19,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.setLocalValue(this.element, "atom-component", "TaskStatusCombo");
         
 
-            this.setLocalValue(this.element, "atom-items", Atom.get(Todo.ConfigService.instance.getStatusList()) );
+            this.setLocalValue(this.element, "atom-items", ConfigService.instance.getStatusList());
         }
     }
 

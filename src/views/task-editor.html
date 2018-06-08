@@ -1,3 +1,6 @@
+<script>
+	import { TaskStatusCombo } from "./TaskStatusCombo";
+</script>
 <div atom-component="TaskEditor">
 
 	<!--
@@ -27,7 +30,7 @@
 	</style> -->
 
 	<!-- Form layout is a special tag which generates fields -->
-	<form-layout>
+	
 
 		<input 
 			atom-label="Task:" 
@@ -39,7 +42,7 @@
 		<!-- We can reuse TaskStatusCombo that is another combo -->
 		<select 
 			atom-label="Status:"
-			atom-type="Todo.TaskStatusCombo" 
+			atom-type="TaskStatusCombo" 
 			atom-value="$[viewModel.task.status]"
 			atom-error="[$viewModel.errors.status]"></select>
 		
@@ -60,6 +63,5 @@
 			<button
 				atom-event-click="{ () => $viewModel.save() }">Save</button>
 		</div>
-	</form-layout>
 
 </div>

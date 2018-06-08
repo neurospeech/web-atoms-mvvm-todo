@@ -1,4 +1,7 @@
-<div atom-view-model="{new Todo.LoginViewModel()}">
+<script>
+    import {LoginViewModel} from "../view-models/LoginViewModel";
+</script>
+<div atom-view-model="{ this.resolve(LoginViewModel) }">
 	<form-layout>
 		<input 
 			atom-label="Username:"

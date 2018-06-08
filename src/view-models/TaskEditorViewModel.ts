@@ -1,9 +1,13 @@
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
+import { Inject } from "web-atoms-core/bin/di/decorators/Inject";
+import { WindowService } from "web-atoms-core/bin/services/WindowService";
 import { AtomErrors, bindableReceive } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
+import { UserSelector } from "../views/UserSelector";
+import { UserSelectorViewModel } from "./UserSelectorViewModel";
 export class TaskEditorErrors extends AtomErrors {
 
     @bindableProperty
@@ -31,7 +35,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     @bindableProperty
     public user: IUser = {};
 
-    constructor() {
+    constructor(@Inject() private windowService: WindowService) {
         super();
 
         this.errors = new TaskEditorErrors(this);
@@ -45,10 +49,8 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
 
     public async save(): Promise<any> {
 
-        var windowService:WindowService = DI.resolve(WindowService);
-
-        if(this.errors.hasErrors()) {
-            await windowService.alert("Please complete all required fields.");
+        if (this.errors.hasErrors()) {
+            await this.windowService.alert("Please complete all required fields.");
             return;
         }
 
@@ -57,8 +59,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        var windowService:WindowService = DI.resolve(WindowService);
-        this.user = await windowService.openPopup<IUser>(UserSelector, new UserSelectorViewModel());
+        this.user = await this.windowService.openPopup<IUser>(UserSelector, this.resolve(UserSelectorViewModel));
     }
 
     // @receive(Channels.SelectedTaskChanged)
@@ -67,6 +68,5 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     //         this.task = task;
     //     }
     // }
-
 
 }

@@ -2,11 +2,15 @@
     Root tag name is ignored, tag on which this control will be created, 
     will be considered for at runtime.
 -->
-
+<script>
+    import { TaskListViewModel } from "../view-models/TaskListViewModel";
+    import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
+    import { TaskEditor } from "./TaskEditor";
+</script>
 <div
     class="task-list"
     atom-type="AtomDockPanel"
-    atom-view-model="{new Todo.TaskListViewModel() }">
+    atom-view-model="{ this.resolve(TaskListViewModel) }">
 
     <header>
         <button atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
@@ -24,14 +28,13 @@
             <span atom-text="{$data.label}"></span>
 
             <button
-                atom-type="AtomDeleteButton"
-                atom-next="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
+                event-click="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>
     </div>
 
     <section 
-        atom-type="Todo.TaskEditor"
-        atom-view-model="{ new Todo.TaskEditorViewModel()}"
+        atom-type="TaskEditor"
+        atom-view-model="{ this.resolve(TaskEditorViewModel) }"
         style-display="[ $viewModel.task ? '' : 'none' ]">
  
     </section>

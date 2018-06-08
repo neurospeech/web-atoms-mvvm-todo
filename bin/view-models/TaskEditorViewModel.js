@@ -14,6 +14,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -49,34 +55,56 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var Todo;
-(function (Todo) {
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/decorators/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../channels", "../models/task", "../views/UserSelector", "./UserSelectorViewModel"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+    var Inject_1 = require("web-atoms-core/bin/di/decorators/Inject");
+    var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+    var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
+    var channels_1 = require("../channels");
+    var task_1 = require("../models/task");
+    var UserSelector_1 = require("../views/UserSelector");
+    var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
     var TaskEditorErrors = /** @class */ (function (_super) {
         __extends(TaskEditorErrors, _super);
         function TaskEditorErrors() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
         __decorate([
-            bindableProperty
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", String)
         ], TaskEditorErrors.prototype, "label", void 0);
         __decorate([
-            bindableProperty
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", String)
         ], TaskEditorErrors.prototype, "status", void 0);
         __decorate([
-            bindableProperty
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", String)
         ], TaskEditorErrors.prototype, "description", void 0);
         return TaskEditorErrors;
-    }(WebAtoms.AtomErrors));
-    Todo.TaskEditorErrors = TaskEditorErrors;
+    }(AtomViewModel_1.AtomErrors));
+    exports.TaskEditorErrors = TaskEditorErrors;
     var TaskEditorViewModel = /** @class */ (function (_super) {
         __extends(TaskEditorViewModel, _super);
-        function TaskEditorViewModel() {
+        function TaskEditorViewModel(windowService) {
             var _this = _super.call(this) || this;
+            _this.windowService = windowService;
             // when AtomWindowViewModel starts, channelPrefix is set to windowName
             // this will avoid receiving messages in WindowViewModel
             // in order to receive messages for default, you will have to set
             // channelPrefix = ""
-            _this.task = new Task();
+            _this.task = new task_1.Task();
             _this.user = {};
             _this.errors = new TaskEditorErrors(_this);
             _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
@@ -84,13 +112,11 @@ var Todo;
         }
         TaskEditorViewModel.prototype.save = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var windowService;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            windowService = WebAtoms.DI.resolve(WindowService);
                             if (!this.errors.hasErrors()) return [3 /*break*/, 2];
-                            return [4 /*yield*/, windowService.alert("Please complete all required fields.")];
+                            return [4 /*yield*/, this.windowService.alert("Please complete all required fields.")];
                         case 1:
                             _a.sent();
                             return [2 /*return*/];
@@ -103,13 +129,12 @@ var Todo;
         };
         TaskEditorViewModel.prototype.assign = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var windowService, _a;
+                var _a;
                 return __generator(this, function (_b) {
                     switch (_b.label) {
                         case 0:
-                            windowService = WebAtoms.DI.resolve(WindowService);
                             _a = this;
-                            return [4 /*yield*/, windowService.openPopup(Todo.UserSelector, new Todo.UserSelectorViewModel())];
+                            return [4 /*yield*/, this.windowService.openPopup(UserSelector_1.UserSelector, this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
                         case 1:
                             _a.user = _b.sent();
                             return [2 /*return*/];
@@ -118,13 +143,19 @@ var Todo;
             });
         };
         __decorate([
-            bindableReceive(Todo.Channels.SelectedTaskChanged)
+            AtomViewModel_1.bindableReceive(channels_1.Channels.SelectedTaskChanged),
+            __metadata("design:type", task_1.Task)
         ], TaskEditorViewModel.prototype, "task", void 0);
         __decorate([
-            bindableProperty
+            bindable_properties_1.bindableProperty,
+            __metadata("design:type", Object)
         ], TaskEditorViewModel.prototype, "user", void 0);
+        TaskEditorViewModel = __decorate([
+            __param(0, Inject_1.Inject()),
+            __metadata("design:paramtypes", [WindowService_1.WindowService])
+        ], TaskEditorViewModel);
         return TaskEditorViewModel;
-    }(WebAtoms.AtomWindowViewModel));
-    Todo.TaskEditorViewModel = TaskEditorViewModel;
-})(Todo || (Todo = {}));
-//# sourceMappingURL=new-task-window-view-model.js.map
+    }(AtomWindowViewModel_1.AtomWindowViewModel));
+    exports.TaskEditorViewModel = TaskEditorViewModel;
+});
+//# sourceMappingURL=TaskEditorViewModel.js.map

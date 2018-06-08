@@ -1,7 +1,11 @@
 // tslint:disable
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomPageView} from "web-atoms-core/bin/controls/AtomPageView";
+import {AtomDockPanel} from "web-atoms-core/bin/controls/AtomDockPanel";
 
-    export class AppFrame extends AtomControl {
+    import {AppFrameViewModel} from "../view-models/AppFrameViewModel";
+
+
+    export class AppFrame extends AtomDockPanel {
 
         public create(): void {
             super.create();
@@ -28,7 +32,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e4);
             
-            this.setLocalValue(this.element, "atom-local-view-model", Atom.get(new Todo.AppFrameViewModel()) );
+            this.setLocalValue(this.element, "atom-local-view-model", this.resolve(AppFrameViewModel));
         }
     }
 

@@ -1,5 +1,8 @@
+<script>
+    import { ConfigService } from "../services/ConfigService";
+</script>
 <select
     atom-component="TaskStatusCombo"
     atom-type="AtomComboBox"
-    atom-items="{ Todo.ConfigService.instance.getStatusList() }">
+    atom-items="{ ConfigService.instance.getStatusList() }">
 </select>

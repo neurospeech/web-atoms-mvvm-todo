@@ -1,7 +1,11 @@
 // tslint:disable
+import {AtomWindow} from "web-atoms-core/bin/controls/AtomWindow";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
-    export class NewTaskWindow extends AtomControl {
+    import {TaskEditor} from "./TaskEditor";
+
+
+    export class NewTaskWindow extends AtomWindow {
 
         public create(): void {
             super.create();
@@ -53,7 +57,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e1);
 
-            const e2 = new Todo.TaskEditor(document.createElement("div"));
+            const e2 = new TaskEditor(document.createElement("div"));
             
             
             
@@ -87,9 +91,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-            this.setLocalValue(e2, "atom-event-click", Atom.get(function(){
-    return  (Atom.get(this,"viewModel")).save();
-}) );
+            this.setLocalValue(e2, "atom-event-click", () => (this.getValue("viewModel")).save());
 
         const e4 = document.createTextNode("\r\n        ");
         
@@ -99,9 +101,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e5);
         
-            this.setLocalValue(e5, "atom-event-click", Atom.get(function(){
-    return  (Atom.get(this,"viewModel")).cancel();
-}) );
+            this.setLocalValue(e5, "atom-event-click", () => (this.getValue("viewModel")).cancel());
 
         const e7 = document.createTextNode("\r\n    ");
         

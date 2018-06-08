@@ -52,88 +52,61 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var Todo;
-(function (Todo) {
-    var TaskListViewModel = /** @class */ (function (_super) {
-        __extends(TaskListViewModel, _super);
-        function TaskListViewModel() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.list = new WebAtoms.AtomList();
-            _this.taskService = Todo.TaskListService.instance;
-            _this.windowService = WebAtoms.DI.resolve(WebAtoms.WindowService);
-            return _this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/di", "web-atoms-core/bin/services/RestService"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var di_1 = require("web-atoms-core/bin/di");
+    var RestService_1 = require("web-atoms-core/bin/services/RestService");
+    var ConfigService = /** @class */ (function (_super) {
+        __extends(ConfigService, _super);
+        function ConfigService() {
+            return _super !== null && _super.apply(this, arguments) || this;
         }
-        TaskListViewModel.prototype.init = function () {
+        ConfigService_1 = ConfigService;
+        Object.defineProperty(ConfigService, "instance", {
+            get: function () {
+                return di_1.ServiceProvider.global.get(ConfigService_1);
+            },
+            enumerable: true,
+            configurable: true
+        });
+        ConfigService.prototype.getStatusList = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var r;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, this.taskService.retrive()];
-                        case 1:
-                            r = _a.sent();
-                            this.list.addAll(r);
-                            this.selectedTask = this.list[0];
-                            return [2 /*return*/];
-                    }
+                    return [2 /*return*/, [
+                            {
+                                label: "Select", value: ""
+                            },
+                            {
+                                label: "Open", value: "open"
+                            },
+                            {
+                                label: "Closed", value: "closed"
+                            }
+                        ]];
                 });
             });
         };
-        // // Use bindableBroadcast unless you need custom watch
-        // @watch
-        // onSelectedTaskChanged(): void {
-        //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
-        // }
-        TaskListViewModel.prototype.deleteTask = function (task) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, this.taskService.deleteTask(task.id)];
-                        case 1:
-                            _a.sent();
-                            this.list.remove(task);
-                            this.selectedTask = this.list[0];
-                            return [2 /*return*/];
-                    }
-                });
-            });
-        };
-        TaskListViewModel.prototype.addTask = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var task, e_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openWindow(Todo.NewTaskWindow, new TaskEditorViewModel())];
-                        case 1:
-                            task = _a.sent();
-                            return [4 /*yield*/, this.taskService.create(task)];
-                        case 2:
-                            task = _a.sent();
-                            this.list.add(task);
-                            this.selectedTask = task;
-                            return [3 /*break*/, 4];
-                        case 3:
-                            e_1 = _a.sent();
-                            console.error(e_1);
-                            this.windowService.alert(e_1);
-                            return [3 /*break*/, 4];
-                        case 4: return [2 /*return*/];
-                    }
-                });
-            });
-        };
-        var _a, _b;
+        var ConfigService_1;
         __decorate([
-            bindableProperty,
-            __metadata("design:type", typeof (_a = (typeof WebAtoms !== "undefined" && WebAtoms).AtomList) === "function" && _a || Object)
-        ], TaskListViewModel.prototype, "list", void 0);
-        __decorate([
-            bindableBroadcast(Channels.SelectedTaskChanged),
-            __metadata("design:type", typeof (_b = typeof Task !== "undefined" && Task) === "function" && _b || Object)
-        ], TaskListViewModel.prototype, "selectedTask", void 0);
-        return TaskListViewModel;
-    }(WebAtoms.AtomViewModel));
-    Todo.TaskListViewModel = TaskListViewModel;
-})(Todo || (Todo = {}));
-//# sourceMappingURL=task-list-view-model.js.map
+            RestService_1.Get("/config/status"),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", []),
+            __metadata("design:returntype", Promise)
+        ], ConfigService.prototype, "getStatusList", null);
+        ConfigService = ConfigService_1 = __decorate([
+            di_1.RegisterSingleton
+        ], ConfigService);
+        return ConfigService;
+    }(RestService_1.BaseService));
+    exports.ConfigService = ConfigService;
+});
+//# sourceMappingURL=ConfigService.js.map
