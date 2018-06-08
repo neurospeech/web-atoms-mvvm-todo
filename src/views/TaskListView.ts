@@ -1,7 +1,9 @@
 // tslint:disable
+import {AtomListBox} from "web-atoms-core/bin/controls/AtomListBox";
+import {AtomDockPanel} from "web-atoms-core/bin/controls/AtomDockPanel";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
-    export class TaskListView extends AtomControl {
+    export class TaskListView extends AtomDockPanel {
 
         public create(): void {
             super.create();
@@ -36,7 +38,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         e8.setLocalValue(e8.element, "atom-dock", "Left");
         
 
-            e8.setLocalValue(e8.element, "atom-items", Atom.get((Atom.get(this,"viewModel.list"))) );
+            e8.setLocalValue(e8.element, "atom-items", (this.getValue("viewModel.list")));
 
             e8.bind(e8.element, "atom-selected-item",  ["viewModel","selectedTask"], 1 );
 
@@ -56,7 +58,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e12.append(e13);
             
-            e12.setLocalValue(e12.element, "atom-view-model", Atom.get(new Todo.TaskEditorViewModel()) );
+            e12.setLocalValue(e12.element, "atom-view-model", new Todo.TaskEditorViewModel());
 
             e12.bind(e12.element, "style-display",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
             this.append(e12);
@@ -69,7 +71,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.setLocalValue(this.element, "class", "task-list");
         
 
-            this.setLocalValue(this.element, "atom-view-model", Atom.get(new Todo.TaskListViewModel()) );
+            this.setLocalValue(this.element, "atom-view-model", new Todo.TaskListViewModel());
         }
     }
 
@@ -90,7 +92,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-            this.setLocalValue(e2, "atom-text", Atom.get((Atom.get(this,"data.label"))) );
+            this.setLocalValue(e2, "atom-text", (this.getValue("data.label")));
 
         const e3 = document.createTextNode("\r\n\r\n            ");
         
@@ -103,9 +105,9 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e4.append(e5);
             
-            e4.setLocalValue(e4.element, "atom-next", Atom.get(function(){
-    return  (Atom.get(this,"viewModel")).deleteTask((Atom.get(this,"data")));
-}) );
+            e4.setLocalValue(e4.element, "atom-next", function(){
+    return  (this.getValue("viewModel")).deleteTask((this.getValue("data")));
+});
             this.append(e4);
 
 
