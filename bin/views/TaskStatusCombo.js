@@ -1,4 +1,3 @@
-// tslint:disable
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -20,6 +19,7 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    // tslint:disable
     var AtomComboBox_1 = require("web-atoms-core/bin/controls/AtomComboBox");
     var ConfigService_1 = require("../services/ConfigService");
     var TaskStatusCombo = /** @class */ (function (_super) {

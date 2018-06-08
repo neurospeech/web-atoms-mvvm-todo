@@ -3,14 +3,11 @@ import {AtomListBox} from "web-atoms-core/bin/controls/AtomListBox";
 import {AtomDockPanel} from "web-atoms-core/bin/controls/AtomDockPanel";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
-<<<<<<< HEAD
     import { TaskListViewModel } from "../view-models/TaskListViewModel";
     import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
     import { TaskEditor } from "./TaskEditor";
 
 
-=======
->>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
     export class TaskListView extends AtomDockPanel {
 
         public create(): void {
@@ -66,11 +63,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e12.append(e13);
             
-<<<<<<< HEAD
             e12.setLocalValue(e12.element, "atom-view-model", this.resolve(TaskEditorViewModel));
-=======
-            e12.setLocalValue(e12.element, "atom-view-model", new Todo.TaskEditorViewModel());
->>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
 
             e12.bind(e12.element, "style-display",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
             this.append(e12);
@@ -83,11 +76,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.setLocalValue(this.element, "class", "task-list");
         
 
-<<<<<<< HEAD
             this.setLocalValue(this.element, "atom-view-model", this.resolve(TaskListViewModel));
-=======
-            this.setLocalValue(this.element, "atom-view-model", new Todo.TaskListViewModel());
->>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
         }
     }
 
@@ -116,19 +105,9 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e4 = document.createElement("button");
         
-<<<<<<< HEAD
         this.append(e4);
         
             this.setLocalValue(e4, "event-click", ()=> (this.getValue("viewModel")).deleteTask((this.getValue("data"))));
-=======
-        e4.append(e5);
-            
-            e4.setLocalValue(e4.element, "atom-next", function(){
-    return  (this.getValue("viewModel")).deleteTask((this.getValue("data")));
-});
-            this.append(e4);
-
->>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
 
         const e6 = document.createTextNode("\r\n        ");
         
