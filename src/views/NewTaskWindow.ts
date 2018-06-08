@@ -2,11 +2,7 @@
 import {AtomWindow} from "web-atoms-core/bin/controls/AtomWindow";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
-<<<<<<< HEAD
     import {TaskEditor} from "./TaskEditor";
-=======
-    import {TaskEditor} from "./TaskEditor"
->>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5
 
 
     export class NewTaskWindow extends AtomWindow {

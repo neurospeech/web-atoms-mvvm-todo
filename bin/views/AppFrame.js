@@ -31,20 +31,15 @@ var __extends = (this && this.__extends) || (function () {
         AppFrame.prototype.create = function () {
             _super.prototype.create.call(this);
             this.element = document.createElement("section");
-            var e1 = document.createTextNode("\r\n=======\r\n    import { AppFrameViewModel }  from \"./../view-models/AppFrameViewModel\";\r\n\r\n");
+            var e1 = document.createTextNode("\r\n\r\n    ");
             this.append(e1);
-            var e2 = new AtomDockPanel_1.AtomDockPanel(document.createElement("section"));
-            var e3 = document.createTextNode("\r\n>>>>>>> 678c27332c6f12bf155a599f6a9ae82649a322d5\r\n\r\n    ");
+            var e2 = new AtomPageView_1.AtomPageView(document.createElement("section"));
+            var e3 = document.createTextNode("\r\n    ");
             e2.append(e3);
-            var e4 = new AtomPageView_1.AtomPageView(document.createElement("section"));
-            var e5 = document.createTextNode("\r\n    ");
-            e4.append(e5);
-            e4.bind(e4.element, "atom-url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
-            e2.append(e4);
-            var e6 = document.createTextNode("\r\n\r\n");
-            e2.append(e6);
-            e2.setLocalValue(e2.element, "atom-local-view-model", new AppFrameViewModel_1.AppFrameViewModel());
+            e2.bind(e2.element, "atom-url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
             this.append(e2);
+            var e4 = document.createTextNode("\r\n\r\n");
+            this.append(e4);
             this.setLocalValue(this.element, "atom-local-view-model", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
         };
         return AppFrame;
