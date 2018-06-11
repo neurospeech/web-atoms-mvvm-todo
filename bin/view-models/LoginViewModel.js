@@ -23,13 +23,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/view-model/AtomViewModel", "../../../web-atoms-core/bin/core/bindable-properties"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/view-model/AtomViewModel"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
-    var bindable_properties_1 = require("../../../web-atoms-core/bin/core/bindable-properties");
     var LoginViewModel = /** @class */ (function (_super) {
         __extends(LoginViewModel, _super);
         function LoginViewModel() {

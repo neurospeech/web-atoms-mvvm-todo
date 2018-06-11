@@ -5,7 +5,7 @@
         "module":"umd",
         "sourceMap": true,
         "declaration": true,
-        "moduleResolution": "node",
+        "moduleResolution": "classic",
         "outDir": "bin",
         "downlevelIteration": true,
         "experimentalDecorators": true,
