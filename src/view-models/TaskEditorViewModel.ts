@@ -1,5 +1,5 @@
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
-import { Inject } from "web-atoms-core/bin/di/decorators/Inject";
+import { Inject } from "web-atoms-core/bin/di/Inject";
 import { WindowService } from "web-atoms-core/bin/services/WindowService";
 import { AtomErrors, bindableReceive } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
@@ -35,7 +35,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     @bindableProperty
     public user: IUser = {};
 
-    constructor(@Inject() private windowService: WindowService) {
+    constructor(@Inject private windowService: WindowService) {
         super();
 
         this.errors = new TaskEditorErrors(this);
@@ -59,7 +59,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        this.user = await this.windowService.openPopup<IUser>(UserSelector, this.resolve(UserSelectorViewModel));
+        this.user = await this.windowService.openPopup<IUser>("UserSelector", this.resolve(UserSelectorViewModel));
     }
 
     // @receive(Channels.SelectedTaskChanged)

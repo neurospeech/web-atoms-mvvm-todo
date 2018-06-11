@@ -61,19 +61,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/decorators/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../channels", "../models/task", "../views/UserSelector", "./UserSelectorViewModel"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../channels", "../models/task", "./UserSelectorViewModel"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
-    var Inject_1 = require("web-atoms-core/bin/di/decorators/Inject");
+    var Inject_1 = require("web-atoms-core/bin/di/Inject");
     var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
     var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
     var channels_1 = require("../channels");
     var task_1 = require("../models/task");
-    var UserSelector_1 = require("../views/UserSelector");
     var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
     var TaskEditorErrors = /** @class */ (function (_super) {
         __extends(TaskEditorErrors, _super);
@@ -134,7 +133,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_b.label) {
                         case 0:
                             _a = this;
-                            return [4 /*yield*/, this.windowService.openPopup(UserSelector_1.UserSelector, this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
+                            return [4 /*yield*/, this.windowService.openPopup("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
                         case 1:
                             _a.user = _b.sent();
                             return [2 /*return*/];
@@ -151,7 +150,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             __metadata("design:type", Object)
         ], TaskEditorViewModel.prototype, "user", void 0);
         TaskEditorViewModel = __decorate([
-            __param(0, Inject_1.Inject()),
+            __param(0, Inject_1.Inject),
             __metadata("design:paramtypes", [WindowService_1.WindowService])
         ], TaskEditorViewModel);
         return TaskEditorViewModel;

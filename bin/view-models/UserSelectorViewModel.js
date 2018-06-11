@@ -61,13 +61,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/decorators/Inject", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../services/TaskListService"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../services/TaskListService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
-    var Inject_1 = require("web-atoms-core/bin/di/decorators/Inject");
+    var Inject_1 = require("web-atoms-core/bin/di/Inject");
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
     var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
     var TaskListService_1 = require("../services/TaskListService");
@@ -126,7 +126,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             __metadata("design:returntype", Promise)
         ], UserSelectorViewModel.prototype, "searchUser", null);
         UserSelectorViewModel = __decorate([
-            __param(0, Inject_1.Inject()),
+            __param(0, Inject_1.Inject),
             __metadata("design:paramtypes", [TaskListService_1.TaskListService])
         ], UserSelectorViewModel);
         return UserSelectorViewModel;

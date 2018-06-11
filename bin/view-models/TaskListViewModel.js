@@ -61,19 +61,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core", "web-atoms-core/bin/di/decorators/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "../channels", "../models/task", "../services/TaskListService", "../views/NewTaskWindow", "./TaskEditorViewModel"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "../channels", "../models/task", "../services/TaskListService", "./TaskEditorViewModel"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var core_1 = require("web-atoms-core/bin/core");
-    var Inject_1 = require("web-atoms-core/bin/di/decorators/Inject");
+    var Inject_1 = require("web-atoms-core/bin/di/Inject");
     var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
     var channels_1 = require("../channels");
     var task_1 = require("../models/task");
     var TaskListService_1 = require("../services/TaskListService");
-    var NewTaskWindow_1 = require("../views/NewTaskWindow");
     var TaskEditorViewModel_1 = require("./TaskEditorViewModel");
     var TaskListViewModel = /** @class */ (function (_super) {
         __extends(TaskListViewModel, _super);
@@ -125,7 +124,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openWindow(NewTaskWindow_1.NewTaskWindow, this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
+                            return [4 /*yield*/, this.windowService.openWindow("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
                         case 1:
                             task = _a.sent();
                             return [4 /*yield*/, this.taskService.create(task)];
@@ -153,8 +152,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             __metadata("design:type", task_1.Task)
         ], TaskListViewModel.prototype, "selectedTask", void 0);
         TaskListViewModel = __decorate([
-            __param(0, Inject_1.Inject()),
-            __param(1, Inject_1.Inject()),
+            __param(0, Inject_1.Inject),
+            __param(1, Inject_1.Inject),
             __metadata("design:paramtypes", [WindowService_1.WindowService,
                 TaskListService_1.TaskListService])
         ], TaskListViewModel);

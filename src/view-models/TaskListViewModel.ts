@@ -1,5 +1,5 @@
 import { AtomList, bindableProperty } from "web-atoms-core/bin/core";
-import { Inject } from "web-atoms-core/bin/di/decorators/Inject";
+import { Inject } from "web-atoms-core/bin/di/Inject";
 import { WindowService } from "web-atoms-core/bin/services/WindowService";
 import { AtomViewModel, bindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { Channels } from "../channels";
@@ -17,8 +17,8 @@ export class TaskListViewModel extends AtomViewModel {
     public selectedTask: Task;
 
     constructor(
-        @Inject() private windowService: WindowService,
-        @Inject() private taskService: TaskListService
+        @Inject private windowService: WindowService,
+        @Inject private taskService: TaskListService
     ) {
         super();
     }
@@ -47,7 +47,7 @@ export class TaskListViewModel extends AtomViewModel {
 
         try {
 
-            let task = await this.windowService.openWindow<Task>(NewTaskWindow,
+            let task = await this.windowService.openWindow<Task>("NewTaskWindow",
                 this.services.get(TaskEditorViewModel) );
             task = await this.taskService.create(task);
             this.list.add(task);
