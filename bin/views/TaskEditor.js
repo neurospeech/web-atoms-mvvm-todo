@@ -82,6 +82,7 @@ var __extends = (this && this.__extends) || (function () {
             var e29 = document.createTextNode("\r\n\r\n");
             this.append(e29);
             this.setLocalValue(this.element, "atom-component", "TaskEditor");
+            this.init();
         };
         return TaskEditor;
     }(AtomControl_1.AtomControl));

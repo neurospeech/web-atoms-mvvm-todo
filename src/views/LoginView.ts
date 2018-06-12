@@ -26,6 +26,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.append(e11);
             
             this.setLocalValue(this.element, "atom-view-model", this.resolve(LoginViewModel));
+
+            this.init();
         }
     }
 

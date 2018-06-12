@@ -62,6 +62,7 @@ var __extends = (this && this.__extends) || (function () {
             this.append(e14);
             this.setLocalValue(this.element, "class", "task-list");
             this.setLocalValue(this.element, "atom-view-model", this.resolve(TaskListViewModel_1.TaskListViewModel));
+            this.init();
         };
         return TaskListView;
     }(AtomDockPanel_1.AtomDockPanel));
@@ -88,6 +89,7 @@ var __extends = (this && this.__extends) || (function () {
             var e6 = document.createTextNode("\r\n        ");
             this.append(e6);
             this.setLocalValue(this.element, "class", "item");
+            this.init();
         };
         return TaskListView_itemTemplate_1;
     }(AtomControl_1.AtomControl));

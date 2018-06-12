@@ -8,8 +8,7 @@
         "max-classes-per-file":false,
         "object-literal-sort-keys":false,
         "trailing-comma":false,
-        "indent": false,
-        "no-console": false
+        "indent": false
     },
     "rulesDirectory": []
 }

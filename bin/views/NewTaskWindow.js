@@ -43,6 +43,7 @@ var __extends = (this && this.__extends) || (function () {
             this.setLocalValue(this.element, "atom-window-height", "400");
             this.windowTemplate = NewTaskWindow_windowTemplate_1;
             this.commandTemplate = NewTaskWindow_commandTemplate_2;
+            this.init();
         };
         return NewTaskWindow;
     }(AtomWindow_1.AtomWindow));
@@ -61,6 +62,7 @@ var __extends = (this && this.__extends) || (function () {
             this.append(e2);
             var e3 = document.createTextNode("\r\n\r\n    ");
             this.append(e3);
+            this.init();
         };
         return NewTaskWindow_windowTemplate_1;
     }(AtomControl_1.AtomControl));
@@ -85,6 +87,7 @@ var __extends = (this && this.__extends) || (function () {
             this.setLocalValue(e5, "atom-event-click", function () { return (_this.getValue("viewModel")).cancel(); });
             var e7 = document.createTextNode("\r\n    ");
             this.append(e7);
+            this.init();
         };
         return NewTaskWindow_commandTemplate_2;
     }(AtomControl_1.AtomControl));

@@ -37,6 +37,7 @@ var __extends = (this && this.__extends) || (function () {
             var e11 = document.createTextNode("\r\n");
             this.append(e11);
             this.setLocalValue(this.element, "atom-view-model", this.resolve(LoginViewModel_1.LoginViewModel));
+            this.init();
         };
         return LoginView;
     }(AtomControl_1.AtomControl));

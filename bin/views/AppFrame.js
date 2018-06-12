@@ -41,6 +41,7 @@ var __extends = (this && this.__extends) || (function () {
             var e4 = document.createTextNode("\r\n\r\n");
             this.append(e4);
             this.setLocalValue(this.element, "atom-local-view-model", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
+            this.init();
         };
         return AppFrame;
     }(AtomDockPanel_1.AtomDockPanel));

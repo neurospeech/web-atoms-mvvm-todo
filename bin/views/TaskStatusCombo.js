@@ -34,6 +34,7 @@ var __extends = (this && this.__extends) || (function () {
             this.append(e1);
             this.setLocalValue(this.element, "atom-component", "TaskStatusCombo");
             this.setLocalValue(this.element, "atom-items", ConfigService_1.ConfigService.instance.getStatusList());
+            this.init();
         };
         return TaskStatusCombo;
     }(AtomComboBox_1.AtomComboBox));

@@ -41,6 +41,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         this.commandTemplate = NewTaskWindow_commandTemplate_2;
             
+
+            this.init();
         }
     }
 
@@ -68,6 +70,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e3);
             
+
+            this.init();
         }
     }
 
@@ -107,6 +111,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e7);
             
+
+            this.init();
         }
     }
 

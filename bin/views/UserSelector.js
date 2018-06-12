@@ -35,6 +35,7 @@ var __extends = (this && this.__extends) || (function () {
             this.setLocalValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;");
             var e10 = document.createTextNode("\r\n");
             this.append(e10);
+            this.init();
         };
         return UserSelector;
     }(AtomControl_1.AtomControl));
@@ -56,6 +57,7 @@ var __extends = (this && this.__extends) || (function () {
             var e3 = document.createTextNode("\r\n\t\t\t");
             this.append(e3);
             this.setLocalValue(this.element, "atom-event-click", function () { return (_this.getValue("viewModel")).select((_this.getValue("data"))); });
+            this.init();
         };
         return UserSelector_itemTemplate_1;
     }(AtomControl_1.AtomControl));

@@ -25,6 +25,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e10);
             
+
+            this.init();
         }
     }
 
@@ -52,6 +54,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.append(e3);
             
             this.setLocalValue(this.element, "atom-event-click", () => (this.getValue("viewModel")).select((this.getValue("data"))));
+
+            this.init();
         }
     }
 

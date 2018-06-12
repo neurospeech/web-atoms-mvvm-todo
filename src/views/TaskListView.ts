@@ -77,6 +77,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
 
             this.setLocalValue(this.element, "atom-view-model", this.resolve(TaskListViewModel));
+
+            this.init();
         }
     }
 
@@ -115,6 +117,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         this.setLocalValue(this.element, "class", "item");
         
+
+            this.init();
         }
     }
 

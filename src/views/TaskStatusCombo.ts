@@ -20,6 +20,8 @@ import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
         
 
             this.setLocalValue(this.element, "atom-items", ConfigService.instance.getStatusList());
+
+            this.init();
         }
     }
 

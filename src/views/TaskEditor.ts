@@ -131,6 +131,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         this.setLocalValue(this.element, "atom-component", "TaskEditor");
         
+
+            this.init();
         }
     }
 

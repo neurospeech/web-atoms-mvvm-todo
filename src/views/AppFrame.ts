@@ -33,6 +33,8 @@ import {AtomDockPanel} from "web-atoms-core/bin/controls/AtomDockPanel";
         this.append(e4);
             
             this.setLocalValue(this.element, "atom-local-view-model", this.resolve(AppFrameViewModel));
+
+            this.init();
         }
     }
 
