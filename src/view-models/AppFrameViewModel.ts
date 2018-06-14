@@ -3,6 +3,6 @@ import { AtomViewModel, bindableReceive } from "web-atoms-core/bin/view-model/At
 export class AppFrameViewModel extends AtomViewModel {
 
     @bindableReceive("app-url")
-    public url: string = "Todo.LoginView";
+    public url: string = "LoginView";
 
 }

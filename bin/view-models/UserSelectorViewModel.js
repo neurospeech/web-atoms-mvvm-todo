@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -55,82 +56,71 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-(function (factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
+Object.defineProperty(exports, "__esModule", { value: true });
+var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var Inject_1 = require("web-atoms-core/bin/di/Inject");
+var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
+var TaskListService_1 = require("../services/TaskListService");
+var UserSelectorViewModel = /** @class */ (function (_super) {
+    __extends(UserSelectorViewModel, _super);
+    function UserSelectorViewModel(taskListService) {
+        var _this = _super.call(this) || this;
+        _this.taskListService = taskListService;
+        return _this;
     }
-    else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../services/TaskListService"], factory);
-    }
-})(function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
-    var Inject_1 = require("web-atoms-core/bin/di/Inject");
-    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
-    var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
-    var TaskListService_1 = require("../services/TaskListService");
-    var UserSelectorViewModel = /** @class */ (function (_super) {
-        __extends(UserSelectorViewModel, _super);
-        function UserSelectorViewModel(taskListService) {
-            var _this = _super.call(this) || this;
-            _this.taskListService = taskListService;
-            return _this;
-        }
-        UserSelectorViewModel.prototype.init = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = this;
-                            return [4 /*yield*/, this.taskListService.getUsers(null)];
-                        case 1:
-                            _a.items = _b.sent();
-                            return [2 /*return*/];
-                    }
-                });
+    UserSelectorViewModel.prototype.init = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.taskListService.getUsers(null)];
+                    case 1:
+                        _a.items = _b.sent();
+                        return [2 /*return*/];
+                }
             });
-        };
-        UserSelectorViewModel.prototype.searchUser = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = this;
-                            return [4 /*yield*/, this.taskListService.getUsers(this.searchText)];
-                        case 1:
-                            _a.items = _b.sent();
-                            return [2 /*return*/];
-                    }
-                });
+        });
+    };
+    UserSelectorViewModel.prototype.searchUser = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.taskListService.getUsers(this.searchText)];
+                    case 1:
+                        _a.items = _b.sent();
+                        return [2 /*return*/];
+                }
             });
-        };
-        UserSelectorViewModel.prototype.select = function (user) {
-            this.close(user);
-        };
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", Array)
-        ], UserSelectorViewModel.prototype, "items", void 0);
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], UserSelectorViewModel.prototype, "searchText", void 0);
-        __decorate([
-            AtomViewModel_1.watch,
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", Promise)
-        ], UserSelectorViewModel.prototype, "searchUser", null);
-        UserSelectorViewModel = __decorate([
-            __param(0, Inject_1.Inject),
-            __metadata("design:paramtypes", [TaskListService_1.TaskListService])
-        ], UserSelectorViewModel);
-        return UserSelectorViewModel;
-    }(AtomWindowViewModel_1.AtomWindowViewModel));
-    exports.UserSelectorViewModel = UserSelectorViewModel;
-});
+        });
+    };
+    UserSelectorViewModel.prototype.select = function (user) {
+        this.close(user);
+    };
+    __decorate([
+        bindable_properties_1.bindableProperty,
+        __metadata("design:type", Array)
+    ], UserSelectorViewModel.prototype, "items", void 0);
+    __decorate([
+        bindable_properties_1.bindableProperty,
+        __metadata("design:type", String)
+    ], UserSelectorViewModel.prototype, "searchText", void 0);
+    __decorate([
+        AtomViewModel_1.watch,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", Promise)
+    ], UserSelectorViewModel.prototype, "searchUser", null);
+    UserSelectorViewModel = __decorate([
+        __param(0, Inject_1.Inject),
+        __metadata("design:paramtypes", [TaskListService_1.TaskListService])
+    ], UserSelectorViewModel);
+    return UserSelectorViewModel;
+}(AtomWindowViewModel_1.AtomWindowViewModel));
+exports.UserSelectorViewModel = UserSelectorViewModel;
 //# sourceMappingURL=UserSelectorViewModel.js.map

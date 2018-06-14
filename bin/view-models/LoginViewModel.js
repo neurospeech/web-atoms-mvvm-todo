@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -17,40 +18,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-(function (factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
+Object.defineProperty(exports, "__esModule", { value: true });
+var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+var LoginViewModel = /** @class */ (function (_super) {
+    __extends(LoginViewModel, _super);
+    function LoginViewModel() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.username = "demo";
+        _this.password = "demo";
+        return _this;
     }
-    else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/view-model/AtomViewModel"], factory);
-    }
-})(function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
-    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
-    var LoginViewModel = /** @class */ (function (_super) {
-        __extends(LoginViewModel, _super);
-        function LoginViewModel() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.username = "demo";
-            _this.password = "demo";
-            return _this;
-        }
-        LoginViewModel.prototype.login = function () {
-            this.broadcast("app-url", "Todo.TaskListView");
-        };
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], LoginViewModel.prototype, "username", void 0);
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], LoginViewModel.prototype, "password", void 0);
-        return LoginViewModel;
-    }(AtomViewModel_1.AtomViewModel));
-    exports.LoginViewModel = LoginViewModel;
-});
+    LoginViewModel.prototype.login = function () {
+        this.broadcast("app-url", "TaskListView");
+    };
+    __decorate([
+        bindable_properties_1.bindableProperty,
+        __metadata("design:type", String)
+    ], LoginViewModel.prototype, "username", void 0);
+    __decorate([
+        bindable_properties_1.bindableProperty,
+        __metadata("design:type", String)
+    ], LoginViewModel.prototype, "password", void 0);
+    return LoginViewModel;
+}(AtomViewModel_1.AtomViewModel));
+exports.LoginViewModel = LoginViewModel;
 //# sourceMappingURL=LoginViewModel.js.map

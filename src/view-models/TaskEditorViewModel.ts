@@ -1,29 +1,15 @@
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { WindowService } from "web-atoms-core/bin/services/WindowService";
-import { AtomErrors, bindableReceive } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { bindableReceive, validate } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 import { UserSelector } from "../views/UserSelector";
 import { UserSelectorViewModel } from "./UserSelectorViewModel";
-export class TaskEditorErrors extends AtomErrors {
-
-    @bindableProperty
-    public label: string;
-
-    @bindableProperty
-    public status: string;
-
-    @bindableProperty
-    public description: string;
-
-}
 
 export class TaskEditorViewModel extends AtomWindowViewModel {
-
-    public errors: TaskEditorErrors;
 
     // when AtomWindowViewModel starts, channelPrefix is set to windowName
     // this will avoid receiving messages in WindowViewModel
@@ -35,21 +21,23 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     @bindableProperty
     public user: IUser = {};
 
+    @validate
+    public get errorLabel(): string {
+        return this.task.label ? "" : "Task cannot be empty";
+    }
+
+    @validate
+    public get errorStatus(): string {
+        return this.task.status ? "" : "Status cannot be empty";
+    }
+
     constructor(@Inject private windowService: WindowService) {
         super();
-
-        this.errors = new TaskEditorErrors(this);
-
-        this.addValidation(
-            () => this.errors.label = this.task.label ? "" : "Task cannot be empty",
-            () => this.errors.status = this.task.status ? "" : "Status cannot be empty"
-        );
-
     }
 
     public async save(): Promise<any> {
 
-        if (this.errors.hasErrors()) {
+        if (!this.isValid) {
             await this.windowService.alert("Please complete all required fields.");
             return;
         }

@@ -1,1 +1,1 @@
-{"version":3,"file":"task.js","sourceRoot":"","sources":["../../src/models/task.ts"],"names":[],"mappings":";;;;;;;;;;;IAAA;QAAA;YAEI,OAAE,GAAW,CAAC,CAAC;YAEf,UAAK,GAAU,EAAE,CAAC;YAIlB,WAAM,GAAW,EAAE,CAAC;QACxB,CAAC;QAAD,WAAC;IAAD,CAAC,AATD,IASC;IATY,oBAAI"}
+{"version":3,"file":"task.js","sourceRoot":"","sources":["../../src/models/task.ts"],"names":[],"mappings":";;AAAA;IAAA;QAEW,OAAE,GAAW,CAAC,CAAC;QAEf,UAAK,GAAW,EAAE,CAAC;QAInB,WAAM,GAAW,EAAE,CAAC;IAC/B,CAAC;IAAD,WAAC;AAAD,CAAC,AATD,IASC;AATY,oBAAI"}

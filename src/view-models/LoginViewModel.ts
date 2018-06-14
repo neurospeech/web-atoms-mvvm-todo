@@ -10,7 +10,7 @@ export class LoginViewModel extends AtomViewModel {
 	public password: string = "demo";
 
 	public login(): void {
-		this.broadcast("app-url", "Todo.TaskListView");
+		this.broadcast("app-url", "TaskListView");
 	}
 
 }

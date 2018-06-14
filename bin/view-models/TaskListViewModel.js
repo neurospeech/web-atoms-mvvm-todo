@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -55,110 +56,100 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-(function (factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("web-atoms-core/bin/core");
+var Inject_1 = require("web-atoms-core/bin/di/Inject");
+var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+var channels_1 = require("../channels");
+var task_1 = require("../models/task");
+var TaskListService_1 = require("../services/TaskListService");
+var TaskEditorViewModel_1 = require("./TaskEditorViewModel");
+var TaskListViewModel = /** @class */ (function (_super) {
+    __extends(TaskListViewModel, _super);
+    function TaskListViewModel(windowService, taskService) {
+        var _this = _super.call(this) || this;
+        _this.windowService = windowService;
+        _this.taskService = taskService;
+        _this.list = new core_1.AtomList();
+        return _this;
     }
-    else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "../channels", "../models/task", "../services/TaskListService", "./TaskEditorViewModel"], factory);
-    }
-})(function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var core_1 = require("web-atoms-core/bin/core");
-    var Inject_1 = require("web-atoms-core/bin/di/Inject");
-    var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
-    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
-    var channels_1 = require("../channels");
-    var task_1 = require("../models/task");
-    var TaskListService_1 = require("../services/TaskListService");
-    var TaskEditorViewModel_1 = require("./TaskEditorViewModel");
-    var TaskListViewModel = /** @class */ (function (_super) {
-        __extends(TaskListViewModel, _super);
-        function TaskListViewModel(windowService, taskService) {
-            var _this = _super.call(this) || this;
-            _this.windowService = windowService;
-            _this.taskService = taskService;
-            _this.list = new core_1.AtomList();
-            return _this;
-        }
-        TaskListViewModel.prototype.init = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var r;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, this.taskService.retrive()];
-                        case 1:
-                            r = _a.sent();
-                            this.list.addAll(r);
-                            this.selectedTask = this.list[0];
-                            return [2 /*return*/];
-                    }
-                });
+    TaskListViewModel.prototype.init = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var r;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.taskService.retrive()];
+                    case 1:
+                        r = _a.sent();
+                        this.list.addAll(r);
+                        this.selectedTask = this.list[0];
+                        return [2 /*return*/];
+                }
             });
-        };
-        // // Use bindableBroadcast unless you need custom watch
-        // @watch
-        // onSelectedTaskChanged(): void {
-        //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
-        // }
-        TaskListViewModel.prototype.deleteTask = function (task) {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, this.taskService.deleteTask(task.id)];
-                        case 1:
-                            _a.sent();
-                            this.list.remove(task);
-                            this.selectedTask = this.list[0];
-                            return [2 /*return*/];
-                    }
-                });
+        });
+    };
+    // // Use bindableBroadcast unless you need custom watch
+    // @watch
+    // onSelectedTaskChanged(): void {
+    //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
+    // }
+    TaskListViewModel.prototype.deleteTask = function (task) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.taskService.deleteTask(task.id)];
+                    case 1:
+                        _a.sent();
+                        this.list.remove(task);
+                        this.selectedTask = this.list[0];
+                        return [2 /*return*/];
+                }
             });
-        };
-        TaskListViewModel.prototype.addTask = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var task, e_1;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openWindow("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
-                        case 1:
-                            task = _a.sent();
-                            return [4 /*yield*/, this.taskService.create(task)];
-                        case 2:
-                            task = _a.sent();
-                            this.list.add(task);
-                            this.selectedTask = task;
-                            return [3 /*break*/, 4];
-                        case 3:
-                            e_1 = _a.sent();
-                            console.error(e_1);
-                            this.windowService.alert(e_1);
-                            return [3 /*break*/, 4];
-                        case 4: return [2 /*return*/];
-                    }
-                });
+        });
+    };
+    TaskListViewModel.prototype.addTask = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var task, e_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.windowService.openWindow("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
+                    case 1:
+                        task = _a.sent();
+                        return [4 /*yield*/, this.taskService.create(task)];
+                    case 2:
+                        task = _a.sent();
+                        this.list.add(task);
+                        this.selectedTask = task;
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_1 = _a.sent();
+                        // tslint:disable-next-line:no-console
+                        console.error(e_1);
+                        this.windowService.alert(e_1);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
             });
-        };
-        __decorate([
-            core_1.bindableProperty,
-            __metadata("design:type", core_1.AtomList)
-        ], TaskListViewModel.prototype, "list", void 0);
-        __decorate([
-            AtomViewModel_1.bindableBroadcast(channels_1.Channels.SelectedTaskChanged),
-            __metadata("design:type", task_1.Task)
-        ], TaskListViewModel.prototype, "selectedTask", void 0);
-        TaskListViewModel = __decorate([
-            __param(0, Inject_1.Inject),
-            __param(1, Inject_1.Inject),
-            __metadata("design:paramtypes", [WindowService_1.WindowService,
-                TaskListService_1.TaskListService])
-        ], TaskListViewModel);
-        return TaskListViewModel;
-    }(AtomViewModel_1.AtomViewModel));
-    exports.TaskListViewModel = TaskListViewModel;
-});
+        });
+    };
+    __decorate([
+        core_1.bindableProperty,
+        __metadata("design:type", core_1.AtomList)
+    ], TaskListViewModel.prototype, "list", void 0);
+    __decorate([
+        AtomViewModel_1.bindableBroadcast(channels_1.Channels.SelectedTaskChanged),
+        __metadata("design:type", task_1.Task)
+    ], TaskListViewModel.prototype, "selectedTask", void 0);
+    TaskListViewModel = __decorate([
+        __param(0, Inject_1.Inject),
+        __param(1, Inject_1.Inject),
+        __metadata("design:paramtypes", [WindowService_1.WindowService,
+            TaskListService_1.TaskListService])
+    ], TaskListViewModel);
+    return TaskListViewModel;
+}(AtomViewModel_1.AtomViewModel));
+exports.TaskListViewModel = TaskListViewModel;
 //# sourceMappingURL=TaskListViewModel.js.map

@@ -18,34 +18,54 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         const e1 = document.createTextNode("\r\n\r\n    ");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
         const e2 = document.createElement("header");
         
         this.append(e2);
         
+        
+        const e3 = document.createTextNode("\r\n        ");
+        
+        e2.appendChild(e3);
+
+        const e4 = document.createElement("button");
+        
+        this.append(e4);
+        
+            this.runAfterInit( () =>
+            this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).addTask()) );
+        
+        const e5 = document.createTextNode("Add New Task");
+        
+        e4.appendChild(e5);
+
+        const e6 = document.createTextNode("\r\n    ");
+        
+        e2.appendChild(e6);
 
         const e7 = document.createTextNode("\r\n\r\n    ");
         
-        this.append(e7);
+        this.element.appendChild(e7);
 
             const e8 = new AtomListBox(document.createElement("div"));
             
             
         const e9 = document.createTextNode("\r\n        ");
         
-        e8.append(e9);
+        e8.element.appendChild(e9);
 
         const e10 = document.createTextNode("\r\n    ");
         
-        e8.append(e10);
+        e8.element.appendChild(e10);
             
-        e8.setLocalValue(e8.element, "atom-dock", "Left");
+        e8.setLocalValue(e8.element, "dock", "Left" );
         
 
-            e8.setLocalValue(e8.element, "atom-items", (this.getValue("viewModel.list")));
+            e8.runAfterInit( () =>
+            e8.setLocalValue(e8.element, "items", (this.viewModel.list)) );
 
-            e8.bind(e8.element, "atom-selected-item",  [["viewModel","selectedTask"]], true );
+            e8.bind(e8.element, "selectedItem",  [["viewModel","selectedTask"]], true );
 
         e8.itemTemplate = TaskListView_itemTemplate_1;
             
@@ -54,31 +74,29 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e11 = document.createTextNode("\r\n\r\n    ");
         
-        this.append(e11);
+        this.element.appendChild(e11);
 
             const e12 = new TaskEditor(document.createElement("section"));
             
             
         const e13 = document.createTextNode("\r\n \r\n    ");
         
-        e12.append(e13);
+        e12.element.appendChild(e13);
             
-            e12.setLocalValue(e12.element, "atom-view-model", this.resolve(TaskEditorViewModel));
+                e12.viewModel = this.resolve(TaskEditorViewModel);
 
-            e12.bind(e12.element, "style-display",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
+            e12.bind(e12.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
             this.append(e12);
 
 
         const e14 = document.createTextNode("\r\n\r\n");
         
-        this.append(e14);
+        this.element.appendChild(e14);
             
-        this.setLocalValue(this.element, "class", "task-list");
+        this.setLocalValue(this.element, "class", "task-list" );
         
 
-            this.setLocalValue(this.element, "atom-view-model", this.resolve(TaskListViewModel));
-
-            this.init();
+                this.viewModel = this.resolve(TaskListViewModel);
         }
     }
 
@@ -93,32 +111,37 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         const e1 = document.createTextNode("\r\n\r\n            ");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
         const e2 = document.createElement("span");
         
         this.append(e2);
         
-            this.setLocalValue(e2, "atom-text", (this.getValue("data.label")));
+            this.runAfterInit( () =>
+            this.setLocalValue(e2, "text", (this.data.label)) );
+        
 
         const e3 = document.createTextNode("\r\n\r\n            ");
         
-        this.append(e3);
+        this.element.appendChild(e3);
 
         const e4 = document.createElement("button");
         
         this.append(e4);
         
-            this.setLocalValue(e4, "event-click", ()=> (this.getValue("viewModel")).deleteTask((this.getValue("data"))));
+            this.runAfterInit( () =>
+            this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).deleteTask((this.data))) );
+        
+        const e5 = document.createTextNode("Delete");
+        
+        e4.appendChild(e5);
 
         const e6 = document.createTextNode("\r\n        ");
         
-        this.append(e6);
+        this.element.appendChild(e6);
             
-        this.setLocalValue(this.element, "class", "item");
+        this.setLocalValue(this.element, "class", "item" );
         
-
-            this.init();
         }
     }
 

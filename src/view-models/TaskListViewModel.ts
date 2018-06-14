@@ -55,6 +55,7 @@ export class TaskListViewModel extends AtomViewModel {
             this.selectedTask = task;
 
         } catch (e) {
+            // tslint:disable-next-line:no-console
             console.error(e);
             this.windowService.alert(e);
         }

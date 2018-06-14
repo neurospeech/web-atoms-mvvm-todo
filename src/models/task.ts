@@ -1,10 +1,10 @@
 export class Task {
 
-    id: number = 0;
+    public id: number = 0;
 
-    label:string = "";
+    public label: string = "";
 
-    description:string;
+    public description: string;
 
-    status: string = "";
+    public status: string = "";
 }

@@ -14,14 +14,13 @@ import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
             
         const e1 = document.createTextNode("\r\n");
         
-        this.append(e1);
+        this.element.appendChild(e1);
             
-        this.setLocalValue(this.element, "atom-component", "TaskStatusCombo");
+        this.setLocalValue(this.element, "component", "TaskStatusCombo" );
         
 
-            this.setLocalValue(this.element, "atom-items", ConfigService.instance.getStatusList());
-
-            this.init();
+            this.runAfterInit( () =>
+            this.setLocalValue(this.element, "items", ConfigService.instance.getStatusList()) );
         }
     }
 

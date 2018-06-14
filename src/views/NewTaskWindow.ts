@@ -15,25 +15,25 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         const e1 = document.createTextNode("\r\n    ");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
         const e2 = document.createTextNode("\r\n    ");
         
-        this.append(e2);
+        this.element.appendChild(e2);
 
         const e3 = document.createTextNode("\r\n");
         
-        this.append(e3);
+        this.element.appendChild(e3);
             
-        this.setLocalValue(this.element, "atom-component", "NewTaskWindow");
+        this.setLocalValue(this.element, "component", "NewTaskWindow" );
         
 
-            this.bind(this.element, "atom-title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task');
+            this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task');
 
-        this.setLocalValue(this.element, "atom-window-width", "400");
+        this.setLocalValue(this.element, "windowWidth", "400" );
         
 
-        this.setLocalValue(this.element, "atom-window-height", "400");
+        this.setLocalValue(this.element, "windowHeight", "400" );
         
 
         this.windowTemplate = NewTaskWindow_windowTemplate_1;
@@ -41,8 +41,6 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         this.commandTemplate = NewTaskWindow_commandTemplate_2;
             
-
-            this.init();
         }
     }
 
@@ -57,7 +55,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         const e1 = document.createTextNode("\r\n        \r\n        ");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
             const e2 = new TaskEditor(document.createElement("div"));
             
@@ -68,10 +66,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e3 = document.createTextNode("\r\n\r\n    ");
         
-        this.append(e3);
+        this.element.appendChild(e3);
             
-
-            this.init();
         }
     }
 
@@ -89,30 +85,38 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
         const e1 = document.createTextNode("\r\n        ");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
         const e2 = document.createElement("button");
         
         this.append(e2);
         
-            this.setLocalValue(e2, "atom-event-click", () => (this.getValue("viewModel")).save());
+            this.runAfterInit( () =>
+            this.setLocalValue(e2, "eventClick", () => (this.viewModel).save()) );
+        
+        const e3 = document.createTextNode("Save");
+        
+        e2.appendChild(e3);
 
         const e4 = document.createTextNode("\r\n        ");
         
-        this.append(e4);
+        this.element.appendChild(e4);
 
         const e5 = document.createElement("button");
         
         this.append(e5);
         
-            this.setLocalValue(e5, "atom-event-click", () => (this.getValue("viewModel")).cancel());
+            this.runAfterInit( () =>
+            this.setLocalValue(e5, "eventClick", () => (this.viewModel).cancel()) );
+        
+        const e6 = document.createTextNode("Cancel");
+        
+        e5.appendChild(e6);
 
         const e7 = document.createTextNode("\r\n    ");
         
-        this.append(e7);
+        this.element.appendChild(e7);
             
-
-            this.init();
         }
     }
 

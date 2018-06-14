@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -55,106 +56,97 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-(function (factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
+Object.defineProperty(exports, "__esModule", { value: true });
+var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var Inject_1 = require("web-atoms-core/bin/di/Inject");
+var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
+var channels_1 = require("../channels");
+var task_1 = require("../models/task");
+var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
+var TaskEditorViewModel = /** @class */ (function (_super) {
+    __extends(TaskEditorViewModel, _super);
+    function TaskEditorViewModel(windowService) {
+        var _this = _super.call(this) || this;
+        _this.windowService = windowService;
+        // when AtomWindowViewModel starts, channelPrefix is set to windowName
+        // this will avoid receiving messages in WindowViewModel
+        // in order to receive messages for default, you will have to set
+        // channelPrefix = ""
+        _this.task = new task_1.Task();
+        _this.user = {};
+        return _this;
     }
-    else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/bindable-properties", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/WindowService", "web-atoms-core/bin/view-model/AtomViewModel", "web-atoms-core/bin/view-model/AtomWindowViewModel", "../channels", "../models/task", "./UserSelectorViewModel"], factory);
-    }
-})(function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
-    var Inject_1 = require("web-atoms-core/bin/di/Inject");
-    var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
-    var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
-    var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
-    var channels_1 = require("../channels");
-    var task_1 = require("../models/task");
-    var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
-    var TaskEditorErrors = /** @class */ (function (_super) {
-        __extends(TaskEditorErrors, _super);
-        function TaskEditorErrors() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], TaskEditorErrors.prototype, "label", void 0);
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], TaskEditorErrors.prototype, "status", void 0);
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", String)
-        ], TaskEditorErrors.prototype, "description", void 0);
-        return TaskEditorErrors;
-    }(AtomViewModel_1.AtomErrors));
-    exports.TaskEditorErrors = TaskEditorErrors;
-    var TaskEditorViewModel = /** @class */ (function (_super) {
-        __extends(TaskEditorViewModel, _super);
-        function TaskEditorViewModel(windowService) {
-            var _this = _super.call(this) || this;
-            _this.windowService = windowService;
-            // when AtomWindowViewModel starts, channelPrefix is set to windowName
-            // this will avoid receiving messages in WindowViewModel
-            // in order to receive messages for default, you will have to set
-            // channelPrefix = ""
-            _this.task = new task_1.Task();
-            _this.user = {};
-            _this.errors = new TaskEditorErrors(_this);
-            _this.addValidation(function () { return _this.errors.label = _this.task.label ? "" : "Task cannot be empty"; }, function () { return _this.errors.status = _this.task.status ? "" : "Status cannot be empty"; });
-            return _this;
-        }
-        TaskEditorViewModel.prototype.save = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            if (!this.errors.hasErrors()) return [3 /*break*/, 2];
-                            return [4 /*yield*/, this.windowService.alert("Please complete all required fields.")];
-                        case 1:
-                            _a.sent();
-                            return [2 /*return*/];
-                        case 2:
-                            this.close(this.task);
-                            return [2 /*return*/];
-                    }
-                });
+    Object.defineProperty(TaskEditorViewModel.prototype, "errorLabel", {
+        get: function () {
+            return this.task.label ? "" : "Task cannot be empty";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TaskEditorViewModel.prototype, "errorStatus", {
+        get: function () {
+            return this.task.status ? "" : "Status cannot be empty";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TaskEditorViewModel.prototype.save = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!!this.isValid) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.windowService.alert("Please complete all required fields.")];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                    case 2:
+                        this.close(this.task);
+                        return [2 /*return*/];
+                }
             });
-        };
-        TaskEditorViewModel.prototype.assign = function () {
-            return __awaiter(this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = this;
-                            return [4 /*yield*/, this.windowService.openPopup("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
-                        case 1:
-                            _a.user = _b.sent();
-                            return [2 /*return*/];
-                    }
-                });
+        });
+    };
+    TaskEditorViewModel.prototype.assign = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.windowService.openPopup("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
+                    case 1:
+                        _a.user = _b.sent();
+                        return [2 /*return*/];
+                }
             });
-        };
-        __decorate([
-            AtomViewModel_1.bindableReceive(channels_1.Channels.SelectedTaskChanged),
-            __metadata("design:type", task_1.Task)
-        ], TaskEditorViewModel.prototype, "task", void 0);
-        __decorate([
-            bindable_properties_1.bindableProperty,
-            __metadata("design:type", Object)
-        ], TaskEditorViewModel.prototype, "user", void 0);
-        TaskEditorViewModel = __decorate([
-            __param(0, Inject_1.Inject),
-            __metadata("design:paramtypes", [WindowService_1.WindowService])
-        ], TaskEditorViewModel);
-        return TaskEditorViewModel;
-    }(AtomWindowViewModel_1.AtomWindowViewModel));
-    exports.TaskEditorViewModel = TaskEditorViewModel;
-});
+        });
+    };
+    __decorate([
+        AtomViewModel_1.bindableReceive(channels_1.Channels.SelectedTaskChanged),
+        __metadata("design:type", task_1.Task)
+    ], TaskEditorViewModel.prototype, "task", void 0);
+    __decorate([
+        bindable_properties_1.bindableProperty,
+        __metadata("design:type", Object)
+    ], TaskEditorViewModel.prototype, "user", void 0);
+    __decorate([
+        AtomViewModel_1.validate,
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [])
+    ], TaskEditorViewModel.prototype, "errorLabel", null);
+    __decorate([
+        AtomViewModel_1.validate,
+        __metadata("design:type", String),
+        __metadata("design:paramtypes", [])
+    ], TaskEditorViewModel.prototype, "errorStatus", null);
+    TaskEditorViewModel = __decorate([
+        __param(0, Inject_1.Inject),
+        __metadata("design:paramtypes", [WindowService_1.WindowService])
+    ], TaskEditorViewModel);
+    return TaskEditorViewModel;
+}(AtomWindowViewModel_1.AtomWindowViewModel));
+exports.TaskEditorViewModel = TaskEditorViewModel;
 //# sourceMappingURL=TaskEditorViewModel.js.map

@@ -1,50 +1,20 @@
 <script>
 	import { TaskStatusCombo } from "./TaskStatusCombo";
 </script>
-<div atom-component="TaskEditor">
-
-	<!--
-		Though inline styles in less form are supported, please use seperate file with less extension
-	 -->
-
-	<!-- <style>
-		.atom-form .atom-field label.atom-label{
-			display: block;
-		}
-		.atom-form .atom-field input{
-			margin:5px;
-		}    
-
-		.atom-form .atom-field input{
-			width:80%;
-		}
-
-		.atom-form .atom-field textarea{
-			width:80%;
-		}
-
-		.atom-form .atom-field .atom-error{
-			font-size: smaller;
-			color:red;
-		}
-	</style> -->
-
-	<!-- Form layout is a special tag which generates fields -->
-	
-
+<div>
 		<input 
 			atom-label="Task:" 
 			type="text" 
-			atom-value="^[viewModel.task.label]" autofocus="autofocus"
-			atom-error="[$viewModel.errors.label]" />
+			atom-value="^[viewModel.task.label]" autofocus="autofocus" />
+		<span atom-text="[$viewModel.errorLabel]"></span>
 		
 
 		<!-- We can reuse TaskStatusCombo that is another combo -->
 		<select 
 			atom-label="Status:"
 			atom-type="TaskStatusCombo" 
-			atom-value="$[viewModel.task.status]"
-			atom-error="[$viewModel.errors.status]"></select>
+			atom-value="$[viewModel.task.status]"></select>
+		<span atom-text="[$viewModel.errorStatus]"></span>
 		
 
 		<textarea 

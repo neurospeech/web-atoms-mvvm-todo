@@ -12,127 +12,166 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             this.element = document.createElement("div");
             
             
-        const e1 = document.createTextNode("\r\n\r\n\t");
+        const e1 = document.createTextNode("\r\n\t\t");
         
-        this.append(e1);
+        this.element.appendChild(e1);
 
-        const e2 = document.createElement("undefined");
+        const e2 = document.createElement("input");
         
         this.append(e2);
         
-
-        const e3 = document.createTextNode("\r\n\r\n\t");
+        this.setLocalValue(e2, "label", "Task:" );
         
-        this.append(e3);
 
-        const e4 = document.createElement("undefined");
+        this.setLocalValue(e2, "type", "text" );
+        
+
+            this.bind(e2, "value",  [["viewModel","task","label"]], true );
+
+        this.setLocalValue(e2, "autofocus", "autofocus" );
+        
+        
+
+        const e3 = document.createTextNode("\r\n\t\t");
+        
+        this.element.appendChild(e3);
+
+        const e4 = document.createElement("span");
         
         this.append(e4);
         
-
-        const e5 = document.createTextNode("\r\n\r\n\t");
+            this.bind(e4, "text",  [["viewModel","errorLabel"]], false , (v1) => (v1));
         
-        this.append(e5);
+
+        const e5 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
+        
+        this.element.appendChild(e5);
 
         const e6 = document.createElement("undefined");
         
         this.append(e6);
         
-
-        const e7 = document.createTextNode("\r\n\t\r\n\r\n\t\t");
-        
-        this.append(e7);
-
-        const e8 = document.createElement("input");
-        
-        this.append(e8);
-        
-        this.setLocalValue(e8, "atom-label", "Task:");
         
 
-        this.setLocalValue(e8, "type", "text");
+        const e7 = document.createTextNode("\r\n\t\t");
+        
+        this.element.appendChild(e7);
+
+            const e8 = new TaskStatusCombo(document.createElement("select"));
+            
+            
+            
+        e8.setLocalValue(e8.element, "label", "Status:" );
         
 
-        this.setLocalValue(e8, "atom-value", "^[viewModel.task.label]");
+            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true );
+            this.append(e8);
+
+
+        const e9 = document.createTextNode("\r\n\t\t");
         
+        this.element.appendChild(e9);
 
-        this.setLocalValue(e8, "autofocus", "autofocus");
-        
-
-            this.bind(e8, "atom-error",  [["viewModel","errors","label"]], false , (v1) => (v1));
-
-        const e9 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
-        
-        this.append(e9);
-
-        const e10 = document.createElement("undefined");
+        const e10 = document.createElement("span");
         
         this.append(e10);
         
-
-        const e11 = document.createTextNode("\r\n\t\t");
-        
-        this.append(e11);
-
-            const e12 = new TaskStatusCombo(document.createElement("select"));
-            
-            
-            
-        e12.setLocalValue(e12.element, "atom-label", "Status:");
+            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1));
         
 
-            e12.bind(e12.element, "atom-value",  [["viewModel","task","status"]], true );
-
-            e12.bind(e12.element, "atom-error",  [["viewModel","errors","status"]], false , (v1) => (v1));
-            this.append(e12);
-
-
-        const e13 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
+        const e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
         
-        this.append(e13);
+        this.element.appendChild(e11);
 
-        const e14 = document.createElement("textarea");
+        const e12 = document.createElement("textarea");
+        
+        this.append(e12);
+        
+        this.setLocalValue(e12, "label", "Description:" );
+        
+
+        this.setLocalValue(e12, "cols", "30" );
+        
+
+        this.setLocalValue(e12, "rows", "10" );
+        
+
+            this.bind(e12, "value",  [["viewModel","task","description"]], true );
+        
+
+        const e13 = document.createTextNode("\r\n\r\n\t\t");
+        
+        this.element.appendChild(e13);
+
+        const e14 = document.createElement("div");
         
         this.append(e14);
         
-        this.setLocalValue(e14, "atom-label", "Description:");
         
-
-        this.setLocalValue(e14, "cols", "30");
+        const e15 = document.createTextNode("\r\n\t\t\t");
         
+        e14.appendChild(e15);
 
-        this.setLocalValue(e14, "rows", "10");
-        
-
-            this.bind(e14, "atom-value",  [["viewModel","task","description"]], true );
-
-        const e15 = document.createTextNode("\r\n\r\n\t\t");
-        
-        this.append(e15);
-
-        const e16 = document.createElement("div");
+        const e16 = document.createElement("span");
         
         this.append(e16);
         
-
-        const e23 = document.createTextNode("\r\n\r\n\t\t");
+            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1));
         
-        this.append(e23);
 
-        const e24 = document.createElement("div");
+        const e17 = document.createTextNode("\r\n\t\t\t");
+        
+        e14.appendChild(e17);
+
+        const e18 = document.createElement("button");
+        
+        this.append(e18);
+        
+            this.runAfterInit( () =>
+            this.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
+        
+        const e19 = document.createTextNode("Assign");
+        
+        e18.appendChild(e19);
+
+        const e20 = document.createTextNode("\r\n\t\t");
+        
+        e14.appendChild(e20);
+
+        const e21 = document.createTextNode("\r\n\r\n\t\t");
+        
+        this.element.appendChild(e21);
+
+        const e22 = document.createElement("div");
+        
+        this.append(e22);
+        
+            this.runAfterInit( () =>
+            this.setLocalValue(e22, "fieldVisibility", !(this.viewModel.windowName)) );
+        
+        const e23 = document.createTextNode("\r\n\t\t\t");
+        
+        e22.appendChild(e23);
+
+        const e24 = document.createElement("button");
         
         this.append(e24);
         
-            this.setLocalValue(e24, "atom-field-visibility", !(this.getValue("viewModel.windowName")));
-
-        const e29 = document.createTextNode("\r\n\r\n");
+            this.runAfterInit( () =>
+            this.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
         
-        this.append(e29);
+        const e25 = document.createTextNode("Save");
+        
+        e24.appendChild(e25);
+
+        const e26 = document.createTextNode("\r\n\t\t");
+        
+        e22.appendChild(e26);
+
+        const e27 = document.createTextNode("\r\n\r\n");
+        
+        this.element.appendChild(e27);
             
-        this.setLocalValue(this.element, "atom-component", "TaskEditor");
-        
-
-            this.init();
         }
     }
 

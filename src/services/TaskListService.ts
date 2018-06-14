@@ -1,7 +1,9 @@
+import { RegisterSingleton } from "web-atoms-core/bin/di";
 import { BaseService, Body, Delete, Get, Patch, Path, Put, Query } from "web-atoms-core/bin/services/RestService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 
+@RegisterSingleton
 export class TaskListService extends BaseService {
 
     public tasks: Task[] = [];
