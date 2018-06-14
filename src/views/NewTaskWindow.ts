@@ -25,15 +25,14 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e3);
             
-        this.setLocalValue(this.element, "component", "NewTaskWindow" );
-        
-
             this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task');
 
-        this.setLocalValue(this.element, "windowWidth", "400" );
+        this.runAfterInit( () =>
+        this.setLocalValue(this.element, "width", "400px" ));
         
 
-        this.setLocalValue(this.element, "windowHeight", "400" );
+        this.runAfterInit( () =>
+        this.setLocalValue(this.element, "height", "400px" ));
         
 
         this.windowTemplate = NewTaskWindow_windowTemplate_1;

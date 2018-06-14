@@ -20,15 +20,18 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-        this.setLocalValue(e2, "label", "Task:" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e2, "label", "Task:" ));
         
 
-        this.setLocalValue(e2, "type", "text" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e2, "type", "text" ));
         
 
             this.bind(e2, "value",  [["viewModel","task","label"]], true );
 
-        this.setLocalValue(e2, "autofocus", "autofocus" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e2, "autofocus", "autofocus" ));
         
         
 
@@ -61,7 +64,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
             
             
-        e8.setLocalValue(e8.element, "label", "Status:" );
+        e8.runAfterInit( () =>
+        e8.setLocalValue(e8.element, "label", "Status:" ));
         
 
             e8.bind(e8.element, "value",  [["viewModel","task","status"]], true );
@@ -87,13 +91,16 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e12);
         
-        this.setLocalValue(e12, "label", "Description:" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e12, "label", "Description:" ));
         
 
-        this.setLocalValue(e12, "cols", "30" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e12, "cols", "30" ));
         
 
-        this.setLocalValue(e12, "rows", "10" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e12, "rows", "10" ));
         
 
             this.bind(e12, "value",  [["viewModel","task","description"]], true );

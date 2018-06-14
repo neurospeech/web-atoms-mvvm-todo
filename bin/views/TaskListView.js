@@ -48,7 +48,9 @@ var TaskListView = /** @class */ (function (_super) {
         e8.element.appendChild(e9);
         var e10 = document.createTextNode("\r\n    ");
         e8.element.appendChild(e10);
-        e8.setLocalValue(e8.element, "dock", "Left");
+        e8.runAfterInit(function () {
+            return e8.setLocalValue(e8.element, "dock", "Left");
+        });
         e8.runAfterInit(function () {
             return e8.setLocalValue(e8.element, "items", (_this.viewModel.list));
         });
@@ -65,7 +67,9 @@ var TaskListView = /** @class */ (function (_super) {
         this.append(e12);
         var e14 = document.createTextNode("\r\n\r\n");
         this.element.appendChild(e14);
-        this.setLocalValue(this.element, "class", "task-list");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(_this.element, "class", "task-list");
+        });
         this.viewModel = this.resolve(TaskListViewModel_1.TaskListViewModel);
     };
     return TaskListView;
@@ -98,7 +102,9 @@ var TaskListView_itemTemplate_1 = /** @class */ (function (_super) {
         e4.appendChild(e5);
         var e6 = document.createTextNode("\r\n        ");
         this.element.appendChild(e6);
-        this.setLocalValue(this.element, "class", "item");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(_this.element, "class", "item");
+        });
     };
     return TaskListView_itemTemplate_1;
 }(AtomControl_1.AtomControl));

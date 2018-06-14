@@ -26,10 +26,16 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e1);
         var e2 = document.createElement("input");
         this.append(e2);
-        this.setLocalValue(e2, "label", "Task:");
-        this.setLocalValue(e2, "type", "text");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e2, "label", "Task:");
+        });
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e2, "type", "text");
+        });
         this.bind(e2, "value", [["viewModel", "task", "label"]], true);
-        this.setLocalValue(e2, "autofocus", "autofocus");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e2, "autofocus", "autofocus");
+        });
         var e3 = document.createTextNode("\r\n\t\t");
         this.element.appendChild(e3);
         var e4 = document.createElement("span");
@@ -42,7 +48,9 @@ var TaskEditor = /** @class */ (function (_super) {
         var e7 = document.createTextNode("\r\n\t\t");
         this.element.appendChild(e7);
         var e8 = new TaskStatusCombo_1.TaskStatusCombo(document.createElement("select"));
-        e8.setLocalValue(e8.element, "label", "Status:");
+        e8.runAfterInit(function () {
+            return e8.setLocalValue(e8.element, "label", "Status:");
+        });
         e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
         this.append(e8);
         var e9 = document.createTextNode("\r\n\t\t");
@@ -54,9 +62,15 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e11);
         var e12 = document.createElement("textarea");
         this.append(e12);
-        this.setLocalValue(e12, "label", "Description:");
-        this.setLocalValue(e12, "cols", "30");
-        this.setLocalValue(e12, "rows", "10");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e12, "label", "Description:");
+        });
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e12, "cols", "30");
+        });
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e12, "rows", "10");
+        });
         this.bind(e12, "value", [["viewModel", "task", "description"]], true);
         var e13 = document.createTextNode("\r\n\r\n\t\t");
         this.element.appendChild(e13);

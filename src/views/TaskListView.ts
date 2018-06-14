@@ -59,7 +59,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e8.element.appendChild(e10);
             
-        e8.setLocalValue(e8.element, "dock", "Left" );
+        e8.runAfterInit( () =>
+        e8.setLocalValue(e8.element, "dock", "Left" ));
         
 
             e8.runAfterInit( () =>
@@ -93,7 +94,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e14);
             
-        this.setLocalValue(this.element, "class", "task-list" );
+        this.runAfterInit( () =>
+        this.setLocalValue(this.element, "class", "task-list" ));
         
 
                 this.viewModel = this.resolve(TaskListViewModel);
@@ -140,7 +142,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e6);
             
-        this.setLocalValue(this.element, "class", "item" );
+        this.runAfterInit( () =>
+        this.setLocalValue(this.element, "class", "item" ));
         
         }
     }

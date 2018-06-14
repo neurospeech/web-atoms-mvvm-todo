@@ -29,7 +29,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e4);
         
-        this.setLocalValue(e4, "label", "Username:" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e4, "label", "Username:" ));
         
 
             this.bind(e4, "value",  [["viewModel","username"]], true );
@@ -43,12 +44,14 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e6);
         
-        this.setLocalValue(e6, "label", "Password:" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e6, "label", "Password:" ));
         
 
             this.bind(e6, "value",  [["viewModel","password"]], true );
 
-        this.setLocalValue(e6, "type", "password" );
+        this.runAfterInit( () =>
+        this.setLocalValue(e6, "type", "password" ));
         
         
 

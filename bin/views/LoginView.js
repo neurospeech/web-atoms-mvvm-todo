@@ -30,15 +30,21 @@ var LoginView = /** @class */ (function (_super) {
         e2.appendChild(e3);
         var e4 = document.createElement("input");
         this.append(e4);
-        this.setLocalValue(e4, "label", "Username:");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e4, "label", "Username:");
+        });
         this.bind(e4, "value", [["viewModel", "username"]], true);
         var e5 = document.createTextNode("\r\n\t\t");
         e2.appendChild(e5);
         var e6 = document.createElement("input");
         this.append(e6);
-        this.setLocalValue(e6, "label", "Password:");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e6, "label", "Password:");
+        });
         this.bind(e6, "value", [["viewModel", "password"]], true);
-        this.setLocalValue(e6, "type", "password");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(e6, "type", "password");
+        });
         var e7 = document.createTextNode("\r\n\r\n\t\t");
         e2.appendChild(e7);
         var e8 = document.createElement("button");

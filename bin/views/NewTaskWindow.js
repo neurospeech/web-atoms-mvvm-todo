@@ -20,6 +20,7 @@ var NewTaskWindow = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     NewTaskWindow.prototype.create = function () {
+        var _this = this;
         _super.prototype.create.call(this);
         this.element = document.createElement("div");
         var e1 = document.createTextNode("\r\n    ");
@@ -28,10 +29,13 @@ var NewTaskWindow = /** @class */ (function (_super) {
         this.element.appendChild(e2);
         var e3 = document.createTextNode("\r\n");
         this.element.appendChild(e3);
-        this.setLocalValue(this.element, "component", "NewTaskWindow");
         this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
-        this.setLocalValue(this.element, "windowWidth", "400");
-        this.setLocalValue(this.element, "windowHeight", "400");
+        this.runAfterInit(function () {
+            return _this.setLocalValue(_this.element, "width", "400px");
+        });
+        this.runAfterInit(function () {
+            return _this.setLocalValue(_this.element, "height", "400px");
+        });
         this.windowTemplate = NewTaskWindow_windowTemplate_1;
         this.commandTemplate = NewTaskWindow_commandTemplate_2;
     };
