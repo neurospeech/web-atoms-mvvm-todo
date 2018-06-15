@@ -64,10 +64,6 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
             
             
-        e8.runAfterInit( () =>
-        e8.setLocalValue(e8.element, "label", "Status:" ));
-        
-
             e8.bind(e8.element, "value",  [["viewModel","task","status"]], true );
             this.append(e8);
 
@@ -91,10 +87,6 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e12);
         
-        this.runAfterInit( () =>
-        this.setLocalValue(e12, "label", "Description:" ));
-        
-
         this.runAfterInit( () =>
         this.setLocalValue(e12, "cols", "30" ));
         

@@ -48,9 +48,6 @@ var TaskEditor = /** @class */ (function (_super) {
         var e7 = document.createTextNode("\r\n\t\t");
         this.element.appendChild(e7);
         var e8 = new TaskStatusCombo_1.TaskStatusCombo(document.createElement("select"));
-        e8.runAfterInit(function () {
-            return e8.setLocalValue(e8.element, "label", "Status:");
-        });
         e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
         this.append(e8);
         var e9 = document.createTextNode("\r\n\t\t");
@@ -62,9 +59,6 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e11);
         var e12 = document.createElement("textarea");
         this.append(e12);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e12, "label", "Description:");
-        });
         this.runAfterInit(function () {
             return _this.setLocalValue(e12, "cols", "30");
         });

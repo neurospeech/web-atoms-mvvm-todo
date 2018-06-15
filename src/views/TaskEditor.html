@@ -11,14 +11,12 @@
 
 		<!-- We can reuse TaskStatusCombo that is another combo -->
 		<select 
-			atom-label="Status:"
 			atom-type="TaskStatusCombo" 
 			atom-value="$[viewModel.task.status]"></select>
 		<span atom-text="[$viewModel.errorStatus]"></span>
 		
 
 		<textarea 
-			atom-label="Description:"
 			cols="30" 
 			rows="10"
 			atom-value="$[viewModel.task.description]"></textarea>
