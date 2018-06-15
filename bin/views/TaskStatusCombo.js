@@ -25,9 +25,6 @@ var TaskStatusCombo = /** @class */ (function (_super) {
         var e1 = document.createTextNode("\r\n");
         this.element.appendChild(e1);
         this.runAfterInit(function () {
-            return _this.setLocalValue(_this.element, "component", "TaskStatusCombo");
-        });
-        this.runAfterInit(function () {
             return _this.setLocalValue(_this.element, "items", ConfigService_1.ConfigService.instance.getStatusList());
         });
     };

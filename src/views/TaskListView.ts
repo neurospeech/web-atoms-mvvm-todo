@@ -45,7 +45,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         e2.appendChild(e6);
 
         const e7 = document.createTextNode("\r\n\r\n    ");
-        
+
         this.element.appendChild(e7);
 
             const e8 = new AtomListBox(document.createElement("div"));

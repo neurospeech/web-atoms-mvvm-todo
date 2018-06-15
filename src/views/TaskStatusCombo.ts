@@ -16,10 +16,6 @@ import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
         
         this.element.appendChild(e1);
             
-        this.runAfterInit( () =>
-        this.setLocalValue(this.element, "component", "TaskStatusCombo" ));
-        
-
             this.runAfterInit( () =>
             this.setLocalValue(this.element, "items", ConfigService.instance.getStatusList()) );
         }

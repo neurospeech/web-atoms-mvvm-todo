@@ -12,7 +12,14 @@
             }
         },
         {
-            "taskName": "Component Compiler",
+            "label": "WebPack",
+            "command": "powershell",
+            "args": [
+                "webpack --config .\\webpack.config.js"
+            ]
+        },
+        {
+            "label": "Component Compiler",
             "command": "node",
             "isBackground": true,
             "presentation": {

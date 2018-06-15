@@ -2,7 +2,6 @@
     import { ConfigService } from "../services/ConfigService";
 </script>
 <select
-    atom-component="TaskStatusCombo"
     atom-type="AtomComboBox"
     atom-items="{ ConfigService.instance.getStatusList() }">
 </select>
