@@ -27,12 +27,10 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
             
             this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task');
 
-        this.runAfterInit( () =>
-        this.setLocalValue(this.element, "width", "400px" ));
+        this.setPrimitiveValue(this.element, "width", "400px" );
         
 
-        this.runAfterInit( () =>
-        this.setLocalValue(this.element, "height", "400px" ));
+        this.setPrimitiveValue(this.element, "height", "400px" );
         
 
         this.windowTemplate = NewTaskWindow_windowTemplate_1;

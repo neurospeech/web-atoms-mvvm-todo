@@ -11,8 +11,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
+var AtomGridSplitter_1 = require("web-atoms-core/bin/controls/AtomGridSplitter");
 var AtomListBox_1 = require("web-atoms-core/bin/controls/AtomListBox");
-var AtomDockPanel_1 = require("web-atoms-core/bin/controls/AtomDockPanel");
+var AtomGridView_1 = require("web-atoms-core/bin/controls/AtomGridView");
 var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
@@ -30,10 +31,11 @@ var TaskListView = /** @class */ (function (_super) {
         this.element.appendChild(e1);
         var e2 = document.createElement("header");
         this.append(e2);
+        this.setPrimitiveValue(e2, "cell", "0:3,0");
         var e3 = document.createTextNode("\r\n        ");
         e2.appendChild(e3);
         var e4 = document.createElement("button");
-        this.append(e4);
+        e2.appendChild(e4);
         this.runAfterInit(function () {
             return _this.setLocalValue(e4, "eventClick", function () { return (_this.viewModel).addTask(); });
         });
@@ -43,37 +45,43 @@ var TaskListView = /** @class */ (function (_super) {
         e2.appendChild(e6);
         var e7 = document.createTextNode("\r\n\r\n    ");
         this.element.appendChild(e7);
-        var e8 = new AtomListBox_1.AtomListBox(document.createElement("div"));
-        var e9 = document.createTextNode("\r\n        ");
-        e8.element.appendChild(e9);
-        var e10 = document.createTextNode("\r\n    ");
-        e8.element.appendChild(e10);
-        e8.runAfterInit(function () {
-            return e8.setLocalValue(e8.element, "dock", "Left");
-        });
-        e8.runAfterInit(function () {
-            return e8.setLocalValue(e8.element, "items", (_this.viewModel.list));
-        });
-        e8.bind(e8.element, "selectedItem", [["viewModel", "selectedTask"]], true);
-        e8.itemTemplate = TaskListView_itemTemplate_1;
+        var e8 = new AtomGridSplitter_1.AtomGridSplitter(document.createElement("div"));
+        e8.setPrimitiveValue(e8.element, "cell", "1,1");
+        e8.setPrimitiveValue(e8.element, "direction", "vertical");
         this.append(e8);
-        var e11 = document.createTextNode("\r\n\r\n    ");
-        this.element.appendChild(e11);
-        var e12 = new TaskEditor_1.TaskEditor(document.createElement("section"));
-        var e13 = document.createTextNode("\r\n \r\n    ");
-        e12.element.appendChild(e13);
-        e12.viewModel = this.resolve(TaskEditorViewModel_1.TaskEditorViewModel);
-        e12.bind(e12.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; });
-        this.append(e12);
-        var e14 = document.createTextNode("\r\n\r\n");
-        this.element.appendChild(e14);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(_this.element, "class", "task-list");
+        var e9 = document.createTextNode("\r\n\r\n    ");
+        this.element.appendChild(e9);
+        var e10 = new AtomListBox_1.AtomListBox(document.createElement("div"));
+        var e11 = document.createTextNode("\r\n        ");
+        e10.element.appendChild(e11);
+        var e12 = document.createTextNode("\r\n    ");
+        e10.element.appendChild(e12);
+        e10.setPrimitiveValue(e10.element, "cell", "0,1");
+        e10.setPrimitiveValue(e10.element, "dock", "Left");
+        e10.runAfterInit(function () {
+            return e10.setLocalValue(e10.element, "items", (_this.viewModel.list));
         });
-        this.viewModel = this.resolve(TaskListViewModel_1.TaskListViewModel);
+        e10.bind(e10.element, "selectedItem", [["viewModel", "selectedTask"]], true);
+        e10.itemTemplate = TaskListView_itemTemplate_1;
+        this.append(e10);
+        var e13 = document.createTextNode("\r\n\r\n    ");
+        this.element.appendChild(e13);
+        var e14 = new TaskEditor_1.TaskEditor(document.createElement("section"));
+        var e15 = document.createTextNode("\r\n \r\n    ");
+        e14.element.appendChild(e15);
+        e14.setPrimitiveValue(e14.element, "cell", "2,1");
+        e14.setPrimitiveValue(e14.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
+        e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; });
+        this.append(e14);
+        var e16 = document.createTextNode("\r\n\r\n");
+        this.element.appendChild(e16);
+        this.setPrimitiveValue(this.element, "class", "task-list");
+        this.setPrimitiveValue(this.element, "columns", "30%,5, *");
+        this.setPrimitiveValue(this.element, "rows", "50, *");
+        this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskListViewModel_1.TaskListViewModel));
     };
     return TaskListView;
-}(AtomDockPanel_1.AtomDockPanel));
+}(AtomGridView_1.AtomGridView));
 exports.TaskListView = TaskListView;
 var TaskListView_itemTemplate_1 = /** @class */ (function (_super) {
     __extends(TaskListView_itemTemplate_1, _super);
@@ -102,9 +110,7 @@ var TaskListView_itemTemplate_1 = /** @class */ (function (_super) {
         e4.appendChild(e5);
         var e6 = document.createTextNode("\r\n        ");
         this.element.appendChild(e6);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(_this.element, "class", "item");
-        });
+        this.setPrimitiveValue(this.element, "class", "item");
     };
     return TaskListView_itemTemplate_1;
 }(AtomControl_1.AtomControl));

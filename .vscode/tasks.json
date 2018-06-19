@@ -20,6 +20,14 @@
             "problemMatcher": []
         },
         {
+            "label": "Http Server",
+            "command": "powershell",
+            "args": [
+                "http-server"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "Component Compiler",
             "command": "node",
             "isBackground": true,

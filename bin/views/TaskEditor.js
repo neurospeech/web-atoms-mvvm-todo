@@ -26,16 +26,10 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e1);
         var e2 = document.createElement("input");
         this.append(e2);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e2, "label", "Task:");
-        });
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e2, "type", "text");
-        });
+        this.setPrimitiveValue(e2, "label", "Task:");
+        this.setPrimitiveValue(e2, "type", "text");
         this.bind(e2, "value", [["viewModel", "task", "label"]], true);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e2, "autofocus", "autofocus");
-        });
+        this.setPrimitiveValue(e2, "autofocus", "autofocus");
         var e3 = document.createTextNode("\r\n\t\t");
         this.element.appendChild(e3);
         var e4 = document.createElement("span");
@@ -59,12 +53,8 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e11);
         var e12 = document.createElement("textarea");
         this.append(e12);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e12, "cols", "30");
-        });
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e12, "rows", "10");
-        });
+        this.setPrimitiveValue(e12, "cols", "30");
+        this.setPrimitiveValue(e12, "rows", "10");
         this.bind(e12, "value", [["viewModel", "task", "description"]], true);
         var e13 = document.createTextNode("\r\n\r\n\t\t");
         this.element.appendChild(e13);
@@ -73,12 +63,12 @@ var TaskEditor = /** @class */ (function (_super) {
         var e15 = document.createTextNode("\r\n\t\t\t");
         e14.appendChild(e15);
         var e16 = document.createElement("span");
-        this.append(e16);
+        e14.appendChild(e16);
         this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); });
         var e17 = document.createTextNode("\r\n\t\t\t");
         e14.appendChild(e17);
         var e18 = document.createElement("button");
-        this.append(e18);
+        e14.appendChild(e18);
         this.runAfterInit(function () {
             return _this.setLocalValue(e18, "eventClick", function () { return (_this.viewModel).assign(); });
         });
@@ -91,12 +81,12 @@ var TaskEditor = /** @class */ (function (_super) {
         var e22 = document.createElement("div");
         this.append(e22);
         this.runAfterInit(function () {
-            return _this.setLocalValue(e22, "fieldVisibility", !(_this.viewModel.windowName));
+            return _this.setLocalValue(e22, "styleDisplay", !(_this.viewModel.windowName) ? '' : 'none');
         });
         var e23 = document.createTextNode("\r\n\t\t\t");
         e22.appendChild(e23);
         var e24 = document.createElement("button");
-        this.append(e24);
+        e22.appendChild(e24);
         this.runAfterInit(function () {
             return _this.setLocalValue(e24, "eventClick", function () { return (_this.viewModel).save(); });
         });

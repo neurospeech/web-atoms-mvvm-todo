@@ -27,7 +27,7 @@
 		</div>
 
 		<div
-			atom-field-visibility="{ !$viewModel.windowName }">
+			style-display="{ !$viewModel.windowName ? '' : 'none' }">
 			<button
 				atom-event-click="{ () => $viewModel.save() }">Save</button>
 		</div>

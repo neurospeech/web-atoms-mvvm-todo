@@ -9,14 +9,19 @@
 </script>
 <div
     class="task-list"
-    atom-type="AtomDockPanel"
+    atom-type="AtomGridView"
+    atom-columns="30%, 5, *"
+    atom-rows="50, *"
     atom-view-model="{ this.resolve(TaskListViewModel) }">
 
-    <header>
+    <header cell="0:3,0">
         <button atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
     </header>
 
-    <div 
+    <div atom-type="AtomGridSplitter" cell="1,1" direction="vertical"></div>
+
+    <div
+        cell="0,1"
         atom-dock="Left"
         atom-type="AtomListBox"
         atom-items="{$viewModel.list}"
@@ -33,6 +38,7 @@
     </div>
 
     <section 
+        cell="2,1"
         atom-type="TaskEditor"
         atom-view-model="{ this.resolve(TaskEditorViewModel) }"
         style-display="[ $viewModel.task ? '' : 'none' ]">

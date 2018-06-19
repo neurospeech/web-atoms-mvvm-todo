@@ -1,6 +1,7 @@
 // tslint:disable
+import {AtomGridSplitter} from "web-atoms-core/bin/controls/AtomGridSplitter";
 import {AtomListBox} from "web-atoms-core/bin/controls/AtomListBox";
-import {AtomDockPanel} from "web-atoms-core/bin/controls/AtomDockPanel";
+import {AtomGridView} from "web-atoms-core/bin/controls/AtomGridView";
 import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
     import { TaskListViewModel } from "../view-models/TaskListViewModel";
@@ -8,7 +9,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
     import { TaskEditor } from "./TaskEditor";
 
 
-    export class TaskListView extends AtomDockPanel {
+    export class TaskListView extends AtomGridView {
 
         public create(): void {
             super.create();
@@ -24,6 +25,8 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
+        this.setPrimitiveValue(e2, "cell", "0:3,0" );
+        
         
         const e3 = document.createTextNode("\r\n        ");
         
@@ -31,7 +34,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e4 = document.createElement("button");
         
-        this.append(e4);
+        e2.appendChild(e4);
         
             this.runAfterInit( () =>
             this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).addTask()) );
@@ -48,57 +51,83 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e7);
 
-            const e8 = new AtomListBox(document.createElement("div"));
+            const e8 = new AtomGridSplitter(document.createElement("div"));
             
             
-        const e9 = document.createTextNode("\r\n        ");
-        
-        e8.element.appendChild(e9);
-
-        const e10 = document.createTextNode("\r\n    ");
-        
-        e8.element.appendChild(e10);
             
-        e8.runAfterInit( () =>
-        e8.setLocalValue(e8.element, "dock", "Left" ));
+        e8.setPrimitiveValue(e8.element, "cell", "1,1" );
         
 
-            e8.runAfterInit( () =>
-            e8.setLocalValue(e8.element, "items", (this.viewModel.list)) );
-
-            e8.bind(e8.element, "selectedItem",  [["viewModel","selectedTask"]], true );
-
-        e8.itemTemplate = TaskListView_itemTemplate_1;
-            
+        e8.setPrimitiveValue(e8.element, "direction", "vertical" );
+        
             this.append(e8);
 
 
-        const e11 = document.createTextNode("\r\n\r\n    ");
+        const e9 = document.createTextNode("\r\n\r\n    ");
         
-        this.element.appendChild(e11);
+        this.element.appendChild(e9);
 
-            const e12 = new TaskEditor(document.createElement("section"));
+            const e10 = new AtomListBox(document.createElement("div"));
             
             
-        const e13 = document.createTextNode("\r\n \r\n    ");
+        const e11 = document.createTextNode("\r\n        ");
         
-        e12.element.appendChild(e13);
+        e10.element.appendChild(e11);
+
+        const e12 = document.createTextNode("\r\n    ");
+        
+        e10.element.appendChild(e12);
             
-                e12.viewModel = this.resolve(TaskEditorViewModel);
-
-            e12.bind(e12.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
-            this.append(e12);
-
-
-        const e14 = document.createTextNode("\r\n\r\n");
+        e10.setPrimitiveValue(e10.element, "cell", "0,1" );
         
-        this.element.appendChild(e14);
+
+        e10.setPrimitiveValue(e10.element, "dock", "Left" );
+        
+
+            e10.runAfterInit( () =>
+            e10.setLocalValue(e10.element, "items", (this.viewModel.list)) );
+
+            e10.bind(e10.element, "selectedItem",  [["viewModel","selectedTask"]], true );
+
+        e10.itemTemplate = TaskListView_itemTemplate_1;
             
-        this.runAfterInit( () =>
-        this.setLocalValue(this.element, "class", "task-list" ));
+            this.append(e10);
+
+
+        const e13 = document.createTextNode("\r\n\r\n    ");
+        
+        this.element.appendChild(e13);
+
+            const e14 = new TaskEditor(document.createElement("section"));
+            
+            
+        const e15 = document.createTextNode("\r\n \r\n    ");
+        
+        e14.element.appendChild(e15);
+            
+        e14.setPrimitiveValue(e14.element, "cell", "2,1" );
         
 
-                this.viewModel = this.resolve(TaskListViewModel);
+                e14.setPrimitiveValue(e14.element, "viewModel",  this.resolve(TaskEditorViewModel) );
+
+            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
+            this.append(e14);
+
+
+        const e16 = document.createTextNode("\r\n\r\n");
+        
+        this.element.appendChild(e16);
+            
+        this.setPrimitiveValue(this.element, "class", "task-list" );
+        
+
+        this.setPrimitiveValue(this.element, "columns", "30%,5, *" );
+        
+
+        this.setPrimitiveValue(this.element, "rows", "50, *" );
+        
+
+                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskListViewModel) );
         }
     }
 
@@ -142,8 +171,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e6);
             
-        this.runAfterInit( () =>
-        this.setLocalValue(this.element, "class", "item" ));
+        this.setPrimitiveValue(this.element, "class", "item" );
         
         }
     }

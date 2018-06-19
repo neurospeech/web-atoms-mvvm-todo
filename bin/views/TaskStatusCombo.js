@@ -19,14 +19,11 @@ var TaskStatusCombo = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TaskStatusCombo.prototype.create = function () {
-        var _this = this;
         _super.prototype.create.call(this);
         this.element = document.createElement("select");
         var e1 = document.createTextNode("\r\n");
         this.element.appendChild(e1);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(_this.element, "items", ConfigService_1.ConfigService.instance.getStatusList());
-        });
+        this.setPrimitiveValue(this.element, "items", ConfigService_1.ConfigService.instance.getStatusList());
     };
     return TaskStatusCombo;
 }(AtomComboBox_1.AtomComboBox));

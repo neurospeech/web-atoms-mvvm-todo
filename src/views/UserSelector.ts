@@ -18,8 +18,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-        this.runAfterInit( () =>
-        this.setLocalValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;" ));
+        this.setPrimitiveValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;" );
         
         
         const e3 = document.createTextNode("\r\n\t\t");
@@ -28,10 +27,9 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e4 = document.createElement("input");
         
-        this.append(e4);
+        e2.appendChild(e4);
         
-        this.runAfterInit( () =>
-        this.setLocalValue(e4, "autofocus", "autofocus" ));
+        this.setPrimitiveValue(e4, "autofocus", "autofocus" );
         
 
             this.bind(e4, "value",  [["viewModel","searchText"]], true );
@@ -52,8 +50,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e6.element.appendChild(e8);
             
-        e6.runAfterInit( () =>
-        e6.setLocalValue(e6.element, "style", "padding:5px" ));
+        e6.setPrimitiveValue(e6.element, "style", "padding:5px" );
         
 
             e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1));

@@ -20,18 +20,15 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e2);
         
-        this.runAfterInit( () =>
-        this.setLocalValue(e2, "label", "Task:" ));
+        this.setPrimitiveValue(e2, "label", "Task:" );
         
 
-        this.runAfterInit( () =>
-        this.setLocalValue(e2, "type", "text" ));
+        this.setPrimitiveValue(e2, "type", "text" );
         
 
             this.bind(e2, "value",  [["viewModel","task","label"]], true );
 
-        this.runAfterInit( () =>
-        this.setLocalValue(e2, "autofocus", "autofocus" ));
+        this.setPrimitiveValue(e2, "autofocus", "autofocus" );
         
         
 
@@ -87,12 +84,10 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.append(e12);
         
-        this.runAfterInit( () =>
-        this.setLocalValue(e12, "cols", "30" ));
+        this.setPrimitiveValue(e12, "cols", "30" );
         
 
-        this.runAfterInit( () =>
-        this.setLocalValue(e12, "rows", "10" ));
+        this.setPrimitiveValue(e12, "rows", "10" );
         
 
             this.bind(e12, "value",  [["viewModel","task","description"]], true );
@@ -113,7 +108,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e16 = document.createElement("span");
         
-        this.append(e16);
+        e14.appendChild(e16);
         
             this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1));
         
@@ -124,7 +119,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e18 = document.createElement("button");
         
-        this.append(e18);
+        e14.appendChild(e18);
         
             this.runAfterInit( () =>
             this.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
@@ -146,7 +141,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.append(e22);
         
             this.runAfterInit( () =>
-            this.setLocalValue(e22, "fieldVisibility", !(this.viewModel.windowName)) );
+            this.setLocalValue(e22, "styleDisplay", !(this.viewModel.windowName) ? '' : 'none') );
         
         const e23 = document.createTextNode("\r\n\t\t\t");
         
@@ -154,7 +149,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
 
         const e24 = document.createElement("button");
         
-        this.append(e24);
+        e22.appendChild(e24);
         
             this.runAfterInit( () =>
             this.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );

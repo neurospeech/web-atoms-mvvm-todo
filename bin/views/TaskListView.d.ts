@@ -1,4 +1,4 @@
-import { AtomDockPanel } from "web-atoms-core/bin/controls/AtomDockPanel";
-export declare class TaskListView extends AtomDockPanel {
+import { AtomGridView } from "web-atoms-core/bin/controls/AtomGridView";
+export declare class TaskListView extends AtomGridView {
     create(): void;
 }

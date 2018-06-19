@@ -12,7 +12,6 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
 var AtomPageView_1 = require("web-atoms-core/bin/controls/AtomPageView");
-var AtomDockPanel_1 = require("web-atoms-core/bin/controls/AtomDockPanel");
 var AppFrameViewModel_1 = require("../view-models/AppFrameViewModel");
 var AppFrame = /** @class */ (function (_super) {
     __extends(AppFrame, _super);
@@ -22,18 +21,12 @@ var AppFrame = /** @class */ (function (_super) {
     AppFrame.prototype.create = function () {
         _super.prototype.create.call(this);
         this.element = document.createElement("section");
-        var e1 = document.createTextNode("\r\n\r\n    ");
+        var e1 = document.createTextNode("\r\n");
         this.element.appendChild(e1);
-        var e2 = new AtomPageView_1.AtomPageView(document.createElement("section"));
-        var e3 = document.createTextNode("\r\n    ");
-        e2.element.appendChild(e3);
-        e2.bind(e2.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
-        this.append(e2);
-        var e4 = document.createTextNode("\r\n\r\n");
-        this.element.appendChild(e4);
-        this.localViewModel = this.resolve(AppFrameViewModel_1.AppFrameViewModel);
+        this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
+        this.bind(this.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
     };
     return AppFrame;
-}(AtomDockPanel_1.AtomDockPanel));
+}(AtomPageView_1.AtomPageView));
 exports.AppFrame = AppFrame;
 //# sourceMappingURL=AppFrame.js.map

@@ -19,23 +19,18 @@ var UserSelector = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     UserSelector.prototype.create = function () {
-        var _this = this;
         _super.prototype.create.call(this);
         this.element = document.createElement("div");
         var e1 = document.createTextNode("\r\n\t");
         this.element.appendChild(e1);
         var e2 = document.createElement("div");
         this.append(e2);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;");
-        });
+        this.setPrimitiveValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;");
         var e3 = document.createTextNode("\r\n\t\t");
         e2.appendChild(e3);
         var e4 = document.createElement("input");
-        this.append(e4);
-        this.runAfterInit(function () {
-            return _this.setLocalValue(e4, "autofocus", "autofocus");
-        });
+        e2.appendChild(e4);
+        this.setPrimitiveValue(e4, "autofocus", "autofocus");
         this.bind(e4, "value", [["viewModel", "searchText"]], true);
         var e5 = document.createTextNode("\r\n\r\n\t\t");
         e2.appendChild(e5);
@@ -44,9 +39,7 @@ var UserSelector = /** @class */ (function (_super) {
         e6.element.appendChild(e7);
         var e8 = document.createTextNode("\r\n\t\t");
         e6.element.appendChild(e8);
-        e6.runAfterInit(function () {
-            return e6.setLocalValue(e6.element, "style", "padding:5px");
-        });
+        e6.setPrimitiveValue(e6.element, "style", "padding:5px");
         e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
         e6.itemTemplate = UserSelector_itemTemplate_1;
         this.append(e6);

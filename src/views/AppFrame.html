@@ -1,13 +1,8 @@
 <script>
     import {AppFrameViewModel} from "../view-models/AppFrameViewModel";
 </script>
-<section 
-    atom-type="AtomDockPanel"
-    atom-local-view-model="{this.resolve(AppFrameViewModel)}">
-
-    <section
-        atom-type="AtomPageView"
-        atom-url="[$localViewModel.url]">
-    </section>
-
+<section
+    atom-type="AtomPageView"
+    atom-local-view-model="{this.resolve(AppFrameViewModel)}"
+    atom-url="[$localViewModel.url]">
 </section>
