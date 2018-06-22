@@ -56,7 +56,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("test-dom");
 var Atom_1 = require("web-atoms-core/bin/Atom");
-var MockWindowService_1 = require("web-atoms-core/bin/services/MockWindowService");
+var MockNavigationService_1 = require("web-atoms-core/bin/services/MockNavigationService");
 var base_test_1 = require("web-atoms-core/bin/unit/base-test");
 var TaskListService_1 = require("../services/TaskListService");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
@@ -68,7 +68,7 @@ var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
 var WindowTests = /** @class */ (function (_super) {
     __extends(WindowTests, _super);
     function WindowTests(windowService) {
-        if (windowService === void 0) { windowService = new MockWindowService_1.MockWindowService(); }
+        if (windowService === void 0) { windowService = new MockNavigationService_1.MockNavigationService(); }
         var _this = _super.call(this) || this;
         _this.windowService = windowService;
         // following line will use mock of REST Services
@@ -93,21 +93,24 @@ var WindowTests = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         vm = new TaskEditorViewModel_1.TaskEditorViewModel(this.windowService);
+                        return [4 /*yield*/, vm.waitForReady()];
+                    case 1:
+                        _a.sent();
                         this.windowService.expectAlert("Please complete all required fields.");
                         return [4 /*yield*/, vm.save()];
-                    case 1:
+                    case 2:
                         _a.sent();
                         base_test_1.Assert.equals("Task cannot be empty", vm.errorLabel);
                         base_test_1.Assert.equals("Status cannot be empty", vm.errorStatus);
                         this.windowService.expectAlert("Please complete all required fields.");
                         vm.task.label = "Sample";
                         return [4 /*yield*/, vm.save()];
-                    case 2:
+                    case 3:
                         _a.sent();
                         base_test_1.Assert.equals("Status cannot be empty", vm.errorStatus);
                         vm.task.status = "Open";
                         return [4 /*yield*/, vm.save()];
-                    case 3:
+                    case 4:
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -121,8 +124,10 @@ var WindowTests = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.windowService.assert();
                         vm = new TaskListViewModel_1.TaskListViewModel(this.windowService, new TaskListService_1.TaskListService());
+                        return [4 /*yield*/, vm.waitForReady()];
+                    case 1:
+                        _a.sent();
                         // we will not execute methods of view model here...
                         // instead we will only return expected return value
                         // unit test of View Model of Window should verify all
@@ -136,7 +141,7 @@ var WindowTests = /** @class */ (function (_super) {
                             });
                         }); });
                         return [4 /*yield*/, vm.addTask()];
-                    case 1:
+                    case 2:
                         _a.sent();
                         task = vm.list[1];
                         base_test_1.Assert.equals("New Task", task.label);
@@ -160,7 +165,7 @@ var WindowTests = /** @class */ (function (_super) {
     ], WindowTests.prototype, "taskList", null);
     WindowTests = __decorate([
         base_test_1.Category("Window Tests"),
-        __metadata("design:paramtypes", [MockWindowService_1.MockWindowService])
+        __metadata("design:paramtypes", [MockNavigationService_1.MockNavigationService])
     ], WindowTests);
     return WindowTests;
 }(base_test_1.TestItem));

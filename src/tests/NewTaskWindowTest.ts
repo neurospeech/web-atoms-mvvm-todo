@@ -1,6 +1,6 @@
 import "test-dom";
 import { Atom } from "web-atoms-core/bin/Atom";
-import { MockWindowService } from "web-atoms-core/bin/services/MockWindowService";
+import { MockNavigationService } from "web-atoms-core/bin/services/MockNavigationService";
 import {Assert, Category, Test, TestItem} from "web-atoms-core/bin/unit/base-test";
 import { TaskListService } from "../services/TaskListService";
 import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
@@ -13,7 +13,7 @@ import { TaskListViewModel } from "../view-models/TaskListViewModel";
 @Category("Window Tests")
 class WindowTests extends TestItem {
 
-    constructor(private windowService: MockWindowService = new MockWindowService()) {
+    constructor(private windowService: MockNavigationService = new MockNavigationService()) {
         super();
 
         // following line will use mock of REST Services
@@ -39,6 +39,8 @@ class WindowTests extends TestItem {
 
         const vm = new TaskEditorViewModel(this.windowService);
 
+        await vm.waitForReady();
+
         this.windowService.expectAlert("Please complete all required fields.");
 
         await vm.save();
@@ -60,9 +62,9 @@ class WindowTests extends TestItem {
     @Test("Task List new Window")
     public async taskList() {
 
-        this.windowService.assert();
-
         const vm = new TaskListViewModel(this.windowService, new TaskListService());
+
+        await vm.waitForReady();
 
         // we will not execute methods of view model here...
         // instead we will only return expected return value

@@ -1,12 +1,11 @@
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
 import { Inject } from "web-atoms-core/bin/di/Inject";
-import { WindowService } from "web-atoms-core/bin/services/WindowService";
+import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { bindableReceive, validate } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
-import { UserSelector } from "../views/UserSelector";
 import { UserSelectorViewModel } from "./UserSelectorViewModel";
 
 export class TaskEditorViewModel extends AtomWindowViewModel {
@@ -31,7 +30,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
         return this.task.status ? "" : "Status cannot be empty";
     }
 
-    constructor(@Inject private windowService: WindowService) {
+    constructor(@Inject private windowService: NavigationService) {
         super();
     }
 

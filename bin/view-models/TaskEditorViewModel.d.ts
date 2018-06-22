@@ -1,4 +1,4 @@
-import { WindowService } from "web-atoms-core/bin/services/WindowService";
+import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
@@ -8,7 +8,7 @@ export declare class TaskEditorViewModel extends AtomWindowViewModel {
     user: IUser;
     readonly errorLabel: string;
     readonly errorStatus: string;
-    constructor(windowService: WindowService);
+    constructor(windowService: NavigationService);
     save(): Promise<any>;
     assign(): Promise<any>;
 }

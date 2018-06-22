@@ -59,7 +59,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
-var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
 var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
 var channels_1 = require("../channels");
@@ -144,7 +144,7 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
     ], TaskEditorViewModel.prototype, "errorStatus", null);
     TaskEditorViewModel = __decorate([
         __param(0, Inject_1.Inject),
-        __metadata("design:paramtypes", [WindowService_1.WindowService])
+        __metadata("design:paramtypes", [NavigationService_1.NavigationService])
     ], TaskEditorViewModel);
     return TaskEditorViewModel;
 }(AtomWindowViewModel_1.AtomWindowViewModel));
