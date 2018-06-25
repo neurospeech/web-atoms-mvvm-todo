@@ -58,11 +58,11 @@ require("test-dom");
 var App_1 = require("web-atoms-core/bin/App");
 var Atom_1 = require("web-atoms-core/bin/Atom");
 var MockNavigationService_1 = require("web-atoms-core/bin/services/MockNavigationService");
+var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var base_test_1 = require("web-atoms-core/bin/unit/base-test");
 var TaskListService_1 = require("../services/TaskListService");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
-var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 /**
  * @class WindowTests
  * @extends {TestItem}
