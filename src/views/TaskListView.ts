@@ -121,7 +121,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         this.setPrimitiveValue(this.element, "class", "task-list" );
         
 
-        this.setPrimitiveValue(this.element, "columns", "30%,5, *" );
+        this.setPrimitiveValue(this.element, "columns", "30%, 5, *" );
         
 
         this.setPrimitiveValue(this.element, "rows", "50, *" );

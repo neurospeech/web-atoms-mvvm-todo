@@ -76,7 +76,7 @@ var TaskListView = /** @class */ (function (_super) {
         var e16 = document.createTextNode("\r\n\r\n");
         this.element.appendChild(e16);
         this.setPrimitiveValue(this.element, "class", "task-list");
-        this.setPrimitiveValue(this.element, "columns", "30%,5, *");
+        this.setPrimitiveValue(this.element, "columns", "30%, 5, *");
         this.setPrimitiveValue(this.element, "rows", "50, *");
         this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskListViewModel_1.TaskListViewModel));
     };

@@ -1,4 +1,5 @@
-import { App } from "web-atoms-core/bin/App";
-export declare class SampleApp extends App {
+import { WebApp } from "web-atoms-core/bin/WebApp";
+export declare class SampleApp extends WebApp {
+    static current: SampleApp;
     main(): void;
 }

@@ -1,3 +1,4 @@
+import { App } from "web-atoms-core/bin/App";
 import { AtomList, bindableProperty } from "web-atoms-core/bin/core";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
@@ -16,10 +17,11 @@ export class TaskListViewModel extends AtomViewModel {
     public selectedTask: Task;
 
     constructor(
+        @Inject app: App,
         @Inject private windowService: NavigationService,
         @Inject private taskService: TaskListService
     ) {
-        super();
+        super(app);
     }
 
     public async init(): Promise<any> {
@@ -46,7 +48,7 @@ export class TaskListViewModel extends AtomViewModel {
 
         try {
 
-            let task = await this.windowService.openWindow<Task>("NewTaskWindow",
+            let task = await this.windowService.openPage<Task>("NewTaskWindow",
                 this.services.get(TaskEditorViewModel) );
             task = await this.taskService.create(task);
             this.list.add(task);

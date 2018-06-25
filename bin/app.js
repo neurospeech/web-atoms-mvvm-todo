@@ -10,10 +10,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var App_1 = require("web-atoms-core/bin/App");
 var Atom_1 = require("web-atoms-core/bin/Atom");
-var di_1 = require("web-atoms-core/bin/di");
 var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+var WebApp_1 = require("web-atoms-core/bin/WebApp");
 var AppFrameViewModel_1 = require("./view-models/AppFrameViewModel");
 var AppFrame_1 = require("./views/AppFrame");
 var LoginView_1 = require("./views/LoginView");
@@ -26,19 +25,22 @@ var SampleApp = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SampleApp.prototype.main = function () {
+        SampleApp.current = this;
         Atom_1.Atom.designMode = true;
-        var windowService = di_1.ServiceProvider.global.get(WindowService_1.WindowService);
+        var windowService = this.resolve(WindowService_1.WindowService);
         windowService.register("NewTaskWindow", NewTaskWindow_1.NewTaskWindow);
         windowService.register("LoginView", LoginView_1.LoginView);
         windowService.register("TaskListView", TaskListView_1.TaskListView);
         windowService.register("UserSelector", UserSelector_1.UserSelector);
-        var appFrame = di_1.ServiceProvider.global.get(AppFrame_1.AppFrame);
-        var vm = di_1.ServiceProvider.global.get(AppFrameViewModel_1.AppFrameViewModel);
+        var appFrame = new AppFrame_1.AppFrame();
+        appFrame.serviceProvider = this;
+        var vm = app.get(AppFrameViewModel_1.AppFrameViewModel);
         appFrame.viewModel = vm;
         document.body.appendChild(appFrame.element);
     };
+    SampleApp.current = null;
     return SampleApp;
-}(App_1.App));
+}(WebApp_1.WebApp));
 exports.SampleApp = SampleApp;
 var app = new SampleApp();
 //# sourceMappingURL=app.js.map

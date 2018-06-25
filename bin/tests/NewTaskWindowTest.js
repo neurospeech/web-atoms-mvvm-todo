@@ -55,12 +55,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("test-dom");
+var App_1 = require("web-atoms-core/bin/App");
 var Atom_1 = require("web-atoms-core/bin/Atom");
 var MockNavigationService_1 = require("web-atoms-core/bin/services/MockNavigationService");
 var base_test_1 = require("web-atoms-core/bin/unit/base-test");
 var TaskListService_1 = require("../services/TaskListService");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
+var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 /**
  * @class WindowTests
  * @extends {TestItem}
@@ -88,11 +90,13 @@ var WindowTests = /** @class */ (function (_super) {
      */
     WindowTests.prototype.newTask = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var vm;
+            var app, vm;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        vm = new TaskEditorViewModel_1.TaskEditorViewModel(this.windowService);
+                        app = new App_1.App();
+                        app.put(NavigationService_1.NavigationService, this.windowService);
+                        vm = new TaskEditorViewModel_1.TaskEditorViewModel(app, this.windowService);
                         return [4 /*yield*/, vm.waitForReady()];
                     case 1:
                         _a.sent();
@@ -119,12 +123,14 @@ var WindowTests = /** @class */ (function (_super) {
     };
     WindowTests.prototype.taskList = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var vm, task;
+            var app, vm, task;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        vm = new TaskListViewModel_1.TaskListViewModel(this.windowService, new TaskListService_1.TaskListService());
+                        app = new App_1.App();
+                        app.put(NavigationService_1.NavigationService, this.windowService);
+                        vm = new TaskListViewModel_1.TaskListViewModel(app, this.windowService, new TaskListService_1.TaskListService());
                         return [4 /*yield*/, vm.waitForReady()];
                     case 1:
                         _a.sent();

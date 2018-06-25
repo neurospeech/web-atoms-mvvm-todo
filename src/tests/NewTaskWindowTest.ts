@@ -1,10 +1,12 @@
 import "test-dom";
+import { App } from "web-atoms-core/bin/App";
 import { Atom } from "web-atoms-core/bin/Atom";
 import { MockNavigationService } from "web-atoms-core/bin/services/MockNavigationService";
 import {Assert, Category, Test, TestItem} from "web-atoms-core/bin/unit/base-test";
 import { TaskListService } from "../services/TaskListService";
 import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
 import { TaskListViewModel } from "../view-models/TaskListViewModel";
+import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 
 /**
  * @class WindowTests
@@ -37,7 +39,9 @@ class WindowTests extends TestItem {
     @Test("New Task")
     public async newTask() {
 
-        const vm = new TaskEditorViewModel(this.windowService);
+        const app = new App();
+        app.put(NavigationService, this.windowService);
+        const vm = new TaskEditorViewModel(app, this.windowService);
 
         await vm.waitForReady();
 
@@ -62,7 +66,9 @@ class WindowTests extends TestItem {
     @Test("Task List new Window")
     public async taskList() {
 
-        const vm = new TaskListViewModel(this.windowService, new TaskListService());
+        const app = new App();
+        app.put(NavigationService, this.windowService);
+        const vm = new TaskListViewModel(app, this.windowService, new TaskListService());
 
         await vm.waitForReady();
 

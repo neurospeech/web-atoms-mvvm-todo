@@ -57,6 +57,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var App_1 = require("web-atoms-core/bin/App");
 var core_1 = require("web-atoms-core/bin/core");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
@@ -67,8 +68,8 @@ var TaskListService_1 = require("../services/TaskListService");
 var TaskEditorViewModel_1 = require("./TaskEditorViewModel");
 var TaskListViewModel = /** @class */ (function (_super) {
     __extends(TaskListViewModel, _super);
-    function TaskListViewModel(windowService, taskService) {
-        var _this = _super.call(this) || this;
+    function TaskListViewModel(app, windowService, taskService) {
+        var _this = _super.call(this, app) || this;
         _this.windowService = windowService;
         _this.taskService = taskService;
         _this.list = new core_1.AtomList();
@@ -115,7 +116,7 @@ var TaskListViewModel = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.windowService.openWindow("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
+                        return [4 /*yield*/, this.windowService.openPage("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
                     case 1:
                         task = _a.sent();
                         return [4 /*yield*/, this.taskService.create(task)];
@@ -146,7 +147,9 @@ var TaskListViewModel = /** @class */ (function (_super) {
     TaskListViewModel = __decorate([
         __param(0, Inject_1.Inject),
         __param(1, Inject_1.Inject),
-        __metadata("design:paramtypes", [NavigationService_1.NavigationService,
+        __param(2, Inject_1.Inject),
+        __metadata("design:paramtypes", [App_1.App,
+            NavigationService_1.NavigationService,
             TaskListService_1.TaskListService])
     ], TaskListViewModel);
     return TaskListViewModel;

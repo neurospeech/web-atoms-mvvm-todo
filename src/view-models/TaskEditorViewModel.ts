@@ -1,3 +1,4 @@
+import { App } from "web-atoms-core/bin/App";
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
@@ -30,8 +31,10 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
         return this.task.status ? "" : "Status cannot be empty";
     }
 
-    constructor(@Inject private windowService: NavigationService) {
-        super();
+    constructor(
+        @Inject app: App,
+        @Inject private windowService: NavigationService) {
+        super(app);
     }
 
     public async save(): Promise<any> {
@@ -46,7 +49,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        this.user = await this.windowService.openPopup<IUser>("UserSelector", this.resolve(UserSelectorViewModel));
+        this.user = await this.windowService.openPage<IUser>("UserSelector", this.resolve(UserSelectorViewModel));
     }
 
     // @receive(Channels.SelectedTaskChanged)

@@ -57,6 +57,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var App_1 = require("web-atoms-core/bin/App");
 var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
@@ -67,8 +68,8 @@ var task_1 = require("../models/task");
 var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
 var TaskEditorViewModel = /** @class */ (function (_super) {
     __extends(TaskEditorViewModel, _super);
-    function TaskEditorViewModel(windowService) {
-        var _this = _super.call(this) || this;
+    function TaskEditorViewModel(app, windowService) {
+        var _this = _super.call(this, app) || this;
         _this.windowService = windowService;
         // when AtomWindowViewModel starts, channelPrefix is set to windowName
         // this will avoid receiving messages in WindowViewModel
@@ -116,7 +117,7 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.windowService.openPopup("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
+                        return [4 /*yield*/, this.windowService.openPage("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
                     case 1:
                         _a.user = _b.sent();
                         return [2 /*return*/];
@@ -144,7 +145,9 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
     ], TaskEditorViewModel.prototype, "errorStatus", null);
     TaskEditorViewModel = __decorate([
         __param(0, Inject_1.Inject),
-        __metadata("design:paramtypes", [NavigationService_1.NavigationService])
+        __param(1, Inject_1.Inject),
+        __metadata("design:paramtypes", [App_1.App,
+            NavigationService_1.NavigationService])
     ], TaskEditorViewModel);
     return TaskEditorViewModel;
 }(AtomWindowViewModel_1.AtomWindowViewModel));

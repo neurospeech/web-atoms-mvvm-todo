@@ -56,6 +56,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var di_1 = require("web-atoms-core/bin/di");
 var RestService_1 = require("web-atoms-core/bin/services/RestService");
+var app_1 = require("../app");
 var ConfigService = /** @class */ (function (_super) {
     __extends(ConfigService, _super);
     function ConfigService() {
@@ -64,7 +65,7 @@ var ConfigService = /** @class */ (function (_super) {
     ConfigService_1 = ConfigService;
     Object.defineProperty(ConfigService, "instance", {
         get: function () {
-            return di_1.ServiceProvider.global.get(ConfigService_1);
+            return app_1.SampleApp.current.get(ConfigService_1);
         },
         enumerable: true,
         configurable: true
