@@ -11,13 +11,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Atom_1 = require("web-atoms-core/bin/Atom");
-var WindowService_1 = require("web-atoms-core/bin/services/WindowService");
+var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var WebApp_1 = require("web-atoms-core/bin/WebApp");
 var ConfigService_1 = require("./services/ConfigService");
 var MockConfigService_1 = require("./services/MockConfigService");
 var MockTaskListService_1 = require("./services/MockTaskListService");
 var TaskListService_1 = require("./services/TaskListService");
-var AppFrameViewModel_1 = require("./view-models/AppFrameViewModel");
 var AppFrame_1 = require("./views/AppFrame");
 var LoginView_1 = require("./views/LoginView");
 var NewTaskWindow_1 = require("./views/NewTaskWindow");
@@ -31,7 +30,7 @@ var SampleApp = /** @class */ (function (_super) {
     SampleApp.prototype.main = function () {
         SampleApp.current = this;
         Atom_1.Atom.designMode = true;
-        var windowService = this.resolve(WindowService_1.WindowService);
+        var windowService = this.resolve(NavigationService_1.NavigationService);
         windowService.register("NewTaskWindow", NewTaskWindow_1.NewTaskWindow);
         windowService.register("LoginView", LoginView_1.LoginView);
         windowService.register("TaskListView", TaskListView_1.TaskListView);
@@ -40,9 +39,7 @@ var SampleApp = /** @class */ (function (_super) {
             this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService());
             this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService());
         }
-        var appFrame = this.get(AppFrame_1.AppFrame);
-        var vm = app.get(AppFrameViewModel_1.AppFrameViewModel);
-        appFrame.viewModel = vm;
+        var appFrame = new AppFrame_1.AppFrame(this);
         document.body.appendChild(appFrame.element);
     };
     SampleApp.current = null;

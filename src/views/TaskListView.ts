@@ -51,7 +51,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e7);
 
-            const e8 = new AtomGridSplitter(document.createElement("div"));
+            const e8 = new AtomGridSplitter(this.app, document.createElement("div"));
             
             
             
@@ -67,7 +67,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e9);
 
-            const e10 = new AtomListBox(document.createElement("div"));
+            const e10 = new AtomListBox(this.app, document.createElement("div"));
             
             
         const e11 = document.createTextNode("\r\n        ");
@@ -98,7 +98,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e13);
 
-            const e14 = new TaskEditor(document.createElement("section"));
+            const e14 = new TaskEditor(this.app, document.createElement("section"));
             
             
         const e15 = document.createTextNode("\r\n \r\n    ");

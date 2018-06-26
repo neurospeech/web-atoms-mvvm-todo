@@ -54,7 +54,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e1);
 
-            const e2 = new TaskEditor(document.createElement("div"));
+            const e2 = new TaskEditor(this.app, document.createElement("div"));
             
             
             

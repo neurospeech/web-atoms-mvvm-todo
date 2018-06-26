@@ -1,5 +1,5 @@
 import { Atom } from "web-atoms-core/bin/Atom";
-import { WindowService } from "web-atoms-core/bin/services/WindowService";
+import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { WebApp } from "web-atoms-core/bin/WebApp";
 import { ConfigService } from "./services/ConfigService";
 import { MockConfigService } from "./services/MockConfigService";
@@ -22,7 +22,7 @@ export class SampleApp extends WebApp {
 
         Atom.designMode = true;
 
-        const windowService = this.resolve(WindowService);
+        const windowService = this.resolve(NavigationService);
 
         windowService.register("NewTaskWindow", NewTaskWindow);
         windowService.register("LoginView", LoginView);
@@ -34,10 +34,7 @@ export class SampleApp extends WebApp {
             this.put(TaskListService, new MockTaskListService());
         }
 
-        const appFrame = this.get(AppFrame);
-        const vm = app.get(AppFrameViewModel);
-
-        appFrame.viewModel = vm;
+        const appFrame = new AppFrame(this);
 
         document.body.appendChild(appFrame.element);
     }

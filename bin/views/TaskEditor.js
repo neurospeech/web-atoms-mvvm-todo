@@ -41,7 +41,7 @@ var TaskEditor = /** @class */ (function (_super) {
         this.append(e6);
         var e7 = document.createTextNode("\r\n\t\t");
         this.element.appendChild(e7);
-        var e8 = new TaskStatusCombo_1.TaskStatusCombo(document.createElement("select"));
+        var e8 = new TaskStatusCombo_1.TaskStatusCombo(this.app, document.createElement("select"));
         e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
         this.append(e8);
         var e9 = document.createTextNode("\r\n\t\t");

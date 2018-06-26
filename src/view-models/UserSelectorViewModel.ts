@@ -1,3 +1,4 @@
+import { App } from "web-atoms-core/bin/App";
 import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { watch } from "web-atoms-core/bin/view-model/AtomViewModel";
@@ -13,8 +14,10 @@ export class UserSelectorViewModel extends AtomWindowViewModel {
 	@bindableProperty
 	public searchText: string;
 
-	constructor(@Inject private taskListService: TaskListService) {
-		super();
+	constructor(
+		@Inject app: App,
+		@Inject private taskListService: TaskListService) {
+		super(app);
 	}
 
 	public async init(): Promise<any> {

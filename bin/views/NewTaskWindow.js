@@ -47,7 +47,7 @@ var NewTaskWindow_windowTemplate_1 = /** @class */ (function (_super) {
         this.element = document.createElement("div");
         var e1 = document.createTextNode("\r\n        \r\n        ");
         this.element.appendChild(e1);
-        var e2 = new TaskEditor_1.TaskEditor(document.createElement("div"));
+        var e2 = new TaskEditor_1.TaskEditor(this.app, document.createElement("div"));
         this.append(e2);
         var e3 = document.createTextNode("\r\n\r\n    ");
         this.element.appendChild(e3);

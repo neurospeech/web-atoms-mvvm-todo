@@ -57,6 +57,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var App_1 = require("web-atoms-core/bin/App");
 var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
@@ -64,8 +65,8 @@ var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowVie
 var TaskListService_1 = require("../services/TaskListService");
 var UserSelectorViewModel = /** @class */ (function (_super) {
     __extends(UserSelectorViewModel, _super);
-    function UserSelectorViewModel(taskListService) {
-        var _this = _super.call(this) || this;
+    function UserSelectorViewModel(app, taskListService) {
+        var _this = _super.call(this, app) || this;
         _this.taskListService = taskListService;
         return _this;
     }
@@ -118,7 +119,9 @@ var UserSelectorViewModel = /** @class */ (function (_super) {
     ], UserSelectorViewModel.prototype, "searchUser", null);
     UserSelectorViewModel = __decorate([
         __param(0, Inject_1.Inject),
-        __metadata("design:paramtypes", [TaskListService_1.TaskListService])
+        __param(1, Inject_1.Inject),
+        __metadata("design:paramtypes", [App_1.App,
+            TaskListService_1.TaskListService])
     ], UserSelectorViewModel);
     return UserSelectorViewModel;
 }(AtomWindowViewModel_1.AtomWindowViewModel));

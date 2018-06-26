@@ -34,7 +34,7 @@ var UserSelector = /** @class */ (function (_super) {
         this.bind(e4, "value", [["viewModel", "searchText"]], true);
         var e5 = document.createTextNode("\r\n\r\n\t\t");
         e2.appendChild(e5);
-        var e6 = new AtomItemsControl_1.AtomItemsControl(document.createElement("div"));
+        var e6 = new AtomItemsControl_1.AtomItemsControl(this.app, document.createElement("div"));
         var e7 = document.createTextNode("\r\n\t\t\t");
         e6.element.appendChild(e7);
         var e8 = document.createTextNode("\r\n\t\t");

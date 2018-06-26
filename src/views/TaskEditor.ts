@@ -57,7 +57,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         this.element.appendChild(e7);
 
-            const e8 = new TaskStatusCombo(document.createElement("select"));
+            const e8 = new TaskStatusCombo(this.app, document.createElement("select"));
             
             
             

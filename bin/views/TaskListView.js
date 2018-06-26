@@ -45,13 +45,13 @@ var TaskListView = /** @class */ (function (_super) {
         e2.appendChild(e6);
         var e7 = document.createTextNode("\r\n\r\n    ");
         this.element.appendChild(e7);
-        var e8 = new AtomGridSplitter_1.AtomGridSplitter(document.createElement("div"));
+        var e8 = new AtomGridSplitter_1.AtomGridSplitter(this.app, document.createElement("div"));
         e8.setPrimitiveValue(e8.element, "cell", "1,1");
         e8.setPrimitiveValue(e8.element, "direction", "vertical");
         this.append(e8);
         var e9 = document.createTextNode("\r\n\r\n    ");
         this.element.appendChild(e9);
-        var e10 = new AtomListBox_1.AtomListBox(document.createElement("div"));
+        var e10 = new AtomListBox_1.AtomListBox(this.app, document.createElement("div"));
         var e11 = document.createTextNode("\r\n        ");
         e10.element.appendChild(e11);
         var e12 = document.createTextNode("\r\n    ");
@@ -66,7 +66,7 @@ var TaskListView = /** @class */ (function (_super) {
         this.append(e10);
         var e13 = document.createTextNode("\r\n\r\n    ");
         this.element.appendChild(e13);
-        var e14 = new TaskEditor_1.TaskEditor(document.createElement("section"));
+        var e14 = new TaskEditor_1.TaskEditor(this.app, document.createElement("section"));
         var e15 = document.createTextNode("\r\n \r\n    ");
         e14.element.appendChild(e15);
         e14.setPrimitiveValue(e14.element, "cell", "2,1");

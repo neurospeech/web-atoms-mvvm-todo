@@ -39,7 +39,7 @@ import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
         
         e2.appendChild(e5);
 
-            const e6 = new AtomItemsControl(document.createElement("div"));
+            const e6 = new AtomItemsControl(this.app, document.createElement("div"));
             
             
         const e7 = document.createTextNode("\r\n\t\t\t");
