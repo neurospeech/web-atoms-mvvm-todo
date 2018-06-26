@@ -3,5 +3,5 @@
 </script>
 <select
     atom-type="AtomComboBox"
-    atom-items="{ ConfigService.instance.getStatusList() }">
+    atom-items="{ this.resolve(ConfigService).getStatusList() }">
 </select>

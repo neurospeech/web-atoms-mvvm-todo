@@ -55,34 +55,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("test-dom");
-var App_1 = require("web-atoms-core/bin/App");
-var Atom_1 = require("web-atoms-core/bin/Atom");
-var MockNavigationService_1 = require("web-atoms-core/bin/services/MockNavigationService");
-var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var base_test_1 = require("web-atoms-core/bin/unit/base-test");
-var TaskListService_1 = require("../services/TaskListService");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
+var BaseTest_1 = require("./BaseTest");
 /**
  * @class WindowTests
  * @extends {TestItem}
  */
 var WindowTests = /** @class */ (function (_super) {
     __extends(WindowTests, _super);
-    function WindowTests(windowService) {
-        if (windowService === void 0) { windowService = new MockNavigationService_1.MockNavigationService(); }
-        var _this = _super.call(this) || this;
-        _this.windowService = windowService;
-        // following line will use mock of REST Services
-        Atom_1.Atom.designMode = true;
-        return _this;
+    function WindowTests() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    WindowTests.prototype.dispose = function () {
-        // this is important, we must verify that all
-        // expected windows did open correctly
-        this.windowService.assert();
-        return _super.prototype.dispose.call(this);
-    };
     /**
      * This task verifies every possibility of Window
      *
@@ -90,23 +75,21 @@ var WindowTests = /** @class */ (function (_super) {
      */
     WindowTests.prototype.newTask = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var app, vm;
+            var vm;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        app = new App_1.App();
-                        app.put(NavigationService_1.NavigationService, this.windowService);
-                        vm = new TaskEditorViewModel_1.TaskEditorViewModel(app, this.windowService);
+                        vm = this.app.get(TaskEditorViewModel_1.TaskEditorViewModel);
                         return [4 /*yield*/, vm.waitForReady()];
                     case 1:
                         _a.sent();
-                        this.windowService.expectAlert("Please complete all required fields.");
+                        this.navigationService.expectAlert("Please complete all required fields.");
                         return [4 /*yield*/, vm.save()];
                     case 2:
                         _a.sent();
                         base_test_1.Assert.equals("Task cannot be empty", vm.errorLabel);
                         base_test_1.Assert.equals("Status cannot be empty", vm.errorStatus);
-                        this.windowService.expectAlert("Please complete all required fields.");
+                        this.navigationService.expectAlert("Please complete all required fields.");
                         vm.task.label = "Sample";
                         return [4 /*yield*/, vm.save()];
                     case 3:
@@ -123,22 +106,22 @@ var WindowTests = /** @class */ (function (_super) {
     };
     WindowTests.prototype.taskList = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var app, vm, task;
+            var vm, task;
             var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        app = new App_1.App();
-                        app.put(NavigationService_1.NavigationService, this.windowService);
-                        vm = new TaskListViewModel_1.TaskListViewModel(app, this.windowService, new TaskListService_1.TaskListService());
+                        vm = this.app.get(TaskListViewModel_1.TaskListViewModel);
                         return [4 /*yield*/, vm.waitForReady()];
                     case 1:
                         _a.sent();
+                        // tslint:disable-next-line:no-debugger
+                        debugger;
                         // we will not execute methods of view model here...
                         // instead we will only return expected return value
                         // unit test of View Model of Window should verify all
                         // individual tasks
-                        this.windowService
+                        this.navigationService
                             .expectWindow("NewTaskWindow", function (vm2) { return __awaiter(_this, void 0, void 0, function () {
                             return __generator(this, function (_a) {
                                 vm2.task.label = "New Task";
@@ -170,9 +153,8 @@ var WindowTests = /** @class */ (function (_super) {
         __metadata("design:returntype", Promise)
     ], WindowTests.prototype, "taskList", null);
     WindowTests = __decorate([
-        base_test_1.Category("Window Tests"),
-        __metadata("design:paramtypes", [MockNavigationService_1.MockNavigationService])
+        base_test_1.Category("Window Tests")
     ], WindowTests);
     return WindowTests;
-}(base_test_1.TestItem));
+}(BaseTest_1.BaseTest));
 //# sourceMappingURL=NewTaskWindowTest.js.map

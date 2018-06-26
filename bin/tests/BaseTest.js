@@ -9,15 +9,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -54,30 +45,28 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var di_1 = require("web-atoms-core/bin/di");
-var RestService_1 = require("web-atoms-core/bin/services/RestService");
-var ConfigService = /** @class */ (function (_super) {
-    __extends(ConfigService, _super);
-    function ConfigService() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
+var base_test_1 = require("web-atoms-core/bin/unit/base-test");
+var TestApp_1 = require("./TestApp");
+var BaseTest = /** @class */ (function (_super) {
+    __extends(BaseTest, _super);
+    function BaseTest(app, navigationService) {
+        if (app === void 0) { app = new TestApp_1.TestApp(); }
+        if (navigationService === void 0) { navigationService = app.get(NavigationService_1.NavigationService); }
+        var _this = _super.call(this) || this;
+        _this.app = app;
+        _this.navigationService = navigationService;
+        return _this;
     }
-    ConfigService.prototype.getStatusList = function () {
+    BaseTest.prototype.dispose = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                this.navigationService.assert();
+                return [2 /*return*/];
             });
         });
     };
-    __decorate([
-        RestService_1.Get("/config/status"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], ConfigService.prototype, "getStatusList", null);
-    ConfigService = __decorate([
-        di_1.RegisterSingleton
-    ], ConfigService);
-    return ConfigService;
-}(RestService_1.BaseService));
-exports.ConfigService = ConfigService;
-//# sourceMappingURL=ConfigService.js.map
+    return BaseTest;
+}(base_test_1.TestItem));
+exports.BaseTest = BaseTest;
+//# sourceMappingURL=BaseTest.js.map

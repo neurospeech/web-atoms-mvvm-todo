@@ -23,7 +23,7 @@ var TaskStatusCombo = /** @class */ (function (_super) {
         this.element = document.createElement("select");
         var e1 = document.createTextNode("\r\n");
         this.element.appendChild(e1);
-        this.setPrimitiveValue(this.element, "items", ConfigService_1.ConfigService.instance.getStatusList());
+        this.setPrimitiveValue(this.element, "items", this.resolve(ConfigService_1.ConfigService).getStatusList());
     };
     return TaskStatusCombo;
 }(AtomComboBox_1.AtomComboBox));

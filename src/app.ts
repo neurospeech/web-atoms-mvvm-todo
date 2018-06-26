@@ -1,7 +1,10 @@
 import { Atom } from "web-atoms-core/bin/Atom";
-import { ServiceProvider } from "web-atoms-core/bin/di";
 import { WindowService } from "web-atoms-core/bin/services/WindowService";
 import { WebApp } from "web-atoms-core/bin/WebApp";
+import { ConfigService } from "./services/ConfigService";
+import { MockConfigService } from "./services/MockConfigService";
+import { MockTaskListService } from "./services/MockTaskListService";
+import { TaskListService } from "./services/TaskListService";
 import { AppFrameViewModel } from "./view-models/AppFrameViewModel";
 import { AppFrame } from "./views/AppFrame";
 import { LoginView } from "./views/LoginView";
@@ -26,8 +29,12 @@ export class SampleApp extends WebApp {
         windowService.register("TaskListView", TaskListView);
         windowService.register("UserSelector", UserSelector);
 
-        const appFrame = new AppFrame();
-        appFrame.serviceProvider = this;
+        if (Atom.designMode) {
+            this.put(ConfigService, new MockConfigService());
+            this.put(TaskListService, new MockTaskListService());
+        }
+
+        const appFrame = this.get(AppFrame);
         const vm = app.get(AppFrameViewModel);
 
         appFrame.viewModel = vm;

@@ -16,7 +16,7 @@ import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
         
         this.element.appendChild(e1);
             
-                this.setPrimitiveValue(this.element, "items",  ConfigService.instance.getStatusList() );
+                this.setPrimitiveValue(this.element, "items",  this.resolve(ConfigService).getStatusList() );
         }
     }
 
