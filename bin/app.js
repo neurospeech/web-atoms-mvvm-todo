@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Atom_1 = require("web-atoms-core/bin/Atom");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
-var WebApp_1 = require("web-atoms-core/bin/WebApp");
+var WebApp_1 = require("web-atoms-core/bin/web/WebApp");
 var ConfigService_1 = require("./services/ConfigService");
 var MockConfigService_1 = require("./services/MockConfigService");
 var MockTaskListService_1 = require("./services/MockTaskListService");

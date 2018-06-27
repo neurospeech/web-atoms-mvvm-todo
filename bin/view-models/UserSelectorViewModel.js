@@ -58,7 +58,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var App_1 = require("web-atoms-core/bin/App");
-var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var BindableProperty_1 = require("web-atoms-core/bin/core/BindableProperty");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
 var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
@@ -104,11 +104,11 @@ var UserSelectorViewModel = /** @class */ (function (_super) {
         this.close(user);
     };
     __decorate([
-        bindable_properties_1.bindableProperty,
+        BindableProperty_1.bindableProperty,
         __metadata("design:type", Array)
     ], UserSelectorViewModel.prototype, "items", void 0);
     __decorate([
-        bindable_properties_1.bindableProperty,
+        BindableProperty_1.bindableProperty,
         __metadata("design:type", String)
     ], UserSelectorViewModel.prototype, "searchText", void 0);
     __decorate([

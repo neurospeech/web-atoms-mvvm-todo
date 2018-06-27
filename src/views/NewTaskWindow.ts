@@ -1,6 +1,6 @@
 // tslint:disable
-import {AtomWindow} from "web-atoms-core/bin/controls/AtomWindow";
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomWindow} from "web-atoms-core/bin/web/controls/AtomWindow";
+import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import {TaskEditor} from "./TaskEditor";
 

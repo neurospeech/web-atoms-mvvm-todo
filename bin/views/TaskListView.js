@@ -11,10 +11,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
-var AtomGridSplitter_1 = require("web-atoms-core/bin/controls/AtomGridSplitter");
-var AtomListBox_1 = require("web-atoms-core/bin/controls/AtomListBox");
-var AtomGridView_1 = require("web-atoms-core/bin/controls/AtomGridView");
-var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
+var AtomGridSplitter_1 = require("web-atoms-core/bin/web/controls/AtomGridSplitter");
+var AtomListBox_1 = require("web-atoms-core/bin/web/controls/AtomListBox");
+var AtomGridView_1 = require("web-atoms-core/bin/web/controls/AtomGridView");
+var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskEditor_1 = require("./TaskEditor");

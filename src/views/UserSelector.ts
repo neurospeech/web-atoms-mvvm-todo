@@ -1,6 +1,6 @@
 // tslint:disable
-import {AtomItemsControl} from "web-atoms-core/bin/controls/AtomItemsControl";
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomItemsControl} from "web-atoms-core/bin/web/controls/AtomItemsControl";
+import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class UserSelector extends AtomControl {
 

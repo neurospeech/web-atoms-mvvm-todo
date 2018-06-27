@@ -11,8 +11,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
-var AtomItemsControl_1 = require("web-atoms-core/bin/controls/AtomItemsControl");
-var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
+var AtomItemsControl_1 = require("web-atoms-core/bin/web/controls/AtomItemsControl");
+var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
 var UserSelector = /** @class */ (function (_super) {
     __extends(UserSelector, _super);
     function UserSelector() {

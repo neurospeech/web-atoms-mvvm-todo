@@ -58,7 +58,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var App_1 = require("web-atoms-core/bin/App");
-var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var BindableProperty_1 = require("web-atoms-core/bin/core/BindableProperty");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
@@ -130,7 +130,7 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
         __metadata("design:type", task_1.Task)
     ], TaskEditorViewModel.prototype, "task", void 0);
     __decorate([
-        bindable_properties_1.bindableProperty,
+        BindableProperty_1.bindableProperty,
         __metadata("design:type", Object)
     ], TaskEditorViewModel.prototype, "user", void 0);
     __decorate([

@@ -1,5 +1,5 @@
 // tslint:disable
-import {AtomPageView} from "web-atoms-core/bin/controls/AtomPageView";
+import {AtomPageView} from "web-atoms-core/bin/web/controls/AtomPageView";
 
     import {AppFrameViewModel} from "../view-models/AppFrameViewModel";
 

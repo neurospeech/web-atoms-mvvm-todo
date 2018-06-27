@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
-var AtomPageView_1 = require("web-atoms-core/bin/controls/AtomPageView");
+var AtomPageView_1 = require("web-atoms-core/bin/web/controls/AtomPageView");
 var AppFrameViewModel_1 = require("../view-models/AppFrameViewModel");
 var AppFrame = /** @class */ (function (_super) {
     __extends(AppFrame, _super);

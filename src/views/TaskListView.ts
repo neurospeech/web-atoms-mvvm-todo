@@ -1,8 +1,8 @@
 // tslint:disable
-import {AtomGridSplitter} from "web-atoms-core/bin/controls/AtomGridSplitter";
-import {AtomListBox} from "web-atoms-core/bin/controls/AtomListBox";
-import {AtomGridView} from "web-atoms-core/bin/controls/AtomGridView";
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomGridSplitter} from "web-atoms-core/bin/web/controls/AtomGridSplitter";
+import {AtomListBox} from "web-atoms-core/bin/web/controls/AtomListBox";
+import {AtomGridView} from "web-atoms-core/bin/web/controls/AtomGridView";
+import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import { TaskListViewModel } from "../view-models/TaskListViewModel";
     import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";

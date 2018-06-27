@@ -1,5 +1,5 @@
 // tslint:disable
-import {AtomComboBox} from "web-atoms-core/bin/controls/AtomComboBox";
+import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
 
     import { ConfigService } from "../services/ConfigService";
 

@@ -1,4 +1,4 @@
-import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
+import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { AtomViewModel } from "web-atoms-core/bin/view-model/AtomViewModel";
 
 export class LoginViewModel extends AtomViewModel {

@@ -1,5 +1,5 @@
 // tslint:disable
-import {AtomControl} from "web-atoms-core/bin/controls/AtomControl";
+import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import {LoginViewModel} from "../view-models/LoginViewModel";
 

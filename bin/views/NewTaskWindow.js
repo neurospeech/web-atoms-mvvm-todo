@@ -11,8 +11,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
-var AtomWindow_1 = require("web-atoms-core/bin/controls/AtomWindow");
-var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
+var AtomWindow_1 = require("web-atoms-core/bin/web/controls/AtomWindow");
+var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
 var TaskEditor_1 = require("./TaskEditor");
 var NewTaskWindow = /** @class */ (function (_super) {
     __extends(NewTaskWindow, _super);

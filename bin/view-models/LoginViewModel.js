@@ -19,7 +19,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var bindable_properties_1 = require("web-atoms-core/bin/core/bindable-properties");
+var BindableProperty_1 = require("web-atoms-core/bin/core/BindableProperty");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
 var LoginViewModel = /** @class */ (function (_super) {
     __extends(LoginViewModel, _super);
@@ -33,11 +33,11 @@ var LoginViewModel = /** @class */ (function (_super) {
         this.broadcast("app-url", "TaskListView");
     };
     __decorate([
-        bindable_properties_1.bindableProperty,
+        BindableProperty_1.bindableProperty,
         __metadata("design:type", String)
     ], LoginViewModel.prototype, "username", void 0);
     __decorate([
-        bindable_properties_1.bindableProperty,
+        BindableProperty_1.bindableProperty,
         __metadata("design:type", String)
     ], LoginViewModel.prototype, "password", void 0);
     return LoginViewModel;

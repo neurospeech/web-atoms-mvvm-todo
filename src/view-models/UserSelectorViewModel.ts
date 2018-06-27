@@ -1,5 +1,5 @@
 import { App } from "web-atoms-core/bin/App";
-import { bindableProperty } from "web-atoms-core/bin/core/bindable-properties";
+import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { watch } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";

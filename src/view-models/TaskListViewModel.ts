@@ -1,5 +1,6 @@
 import { App } from "web-atoms-core/bin/App";
-import { AtomList, bindableProperty } from "web-atoms-core/bin/core";
+import { AtomList } from "web-atoms-core/bin/core/AtomList";
+import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { AtomViewModel, bindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
@@ -49,7 +50,7 @@ export class TaskListViewModel extends AtomViewModel {
         try {
 
             let task = await this.windowService.openPage<Task>("NewTaskWindow",
-                this.services.get(TaskEditorViewModel) );
+                this.app.get(TaskEditorViewModel) );
             task = await this.taskService.create(task);
             this.list.add(task);
 

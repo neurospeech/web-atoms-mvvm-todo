@@ -1,5 +1,5 @@
 import { App } from "web-atoms-core/bin/App";
-import { AtomList } from "web-atoms-core/bin/core";
+import { AtomList } from "web-atoms-core/bin/core/AtomList";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { AtomViewModel } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { Task } from "../models/task";

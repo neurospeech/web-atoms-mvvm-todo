@@ -58,7 +58,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var App_1 = require("web-atoms-core/bin/App");
-var core_1 = require("web-atoms-core/bin/core");
+var AtomList_1 = require("web-atoms-core/bin/core/AtomList");
+var BindableProperty_1 = require("web-atoms-core/bin/core/BindableProperty");
 var Inject_1 = require("web-atoms-core/bin/di/Inject");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
@@ -72,7 +73,7 @@ var TaskListViewModel = /** @class */ (function (_super) {
         var _this = _super.call(this, app) || this;
         _this.windowService = windowService;
         _this.taskService = taskService;
-        _this.list = new core_1.AtomList();
+        _this.list = new AtomList_1.AtomList();
         return _this;
     }
     TaskListViewModel.prototype.init = function () {
@@ -116,7 +117,7 @@ var TaskListViewModel = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.windowService.openPage("NewTaskWindow", this.services.get(TaskEditorViewModel_1.TaskEditorViewModel))];
+                        return [4 /*yield*/, this.windowService.openPage("NewTaskWindow", this.app.get(TaskEditorViewModel_1.TaskEditorViewModel))];
                     case 1:
                         task = _a.sent();
                         return [4 /*yield*/, this.taskService.create(task)];
@@ -137,8 +138,8 @@ var TaskListViewModel = /** @class */ (function (_super) {
         });
     };
     __decorate([
-        core_1.bindableProperty,
-        __metadata("design:type", core_1.AtomList)
+        BindableProperty_1.bindableProperty,
+        __metadata("design:type", AtomList_1.AtomList)
     ], TaskListViewModel.prototype, "list", void 0);
     __decorate([
         AtomViewModel_1.bindableBroadcast(channels_1.Channels.SelectedTaskChanged),

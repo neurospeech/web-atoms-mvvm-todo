@@ -54,7 +54,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var di_1 = require("web-atoms-core/bin/di");
+var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
 var RestService_1 = require("web-atoms-core/bin/services/RestService");
 var ConfigService = /** @class */ (function (_super) {
     __extends(ConfigService, _super);
@@ -75,7 +75,7 @@ var ConfigService = /** @class */ (function (_super) {
         __metadata("design:returntype", Promise)
     ], ConfigService.prototype, "getStatusList", null);
     ConfigService = __decorate([
-        di_1.RegisterSingleton
+        RegisterSingleton_1.RegisterSingleton
     ], ConfigService);
     return ConfigService;
 }(RestService_1.BaseService));

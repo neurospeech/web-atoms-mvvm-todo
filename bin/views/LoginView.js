@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
-var AtomControl_1 = require("web-atoms-core/bin/controls/AtomControl");
+var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
 var LoginViewModel_1 = require("../view-models/LoginViewModel");
 var LoginView = /** @class */ (function (_super) {
     __extends(LoginView, _super);
