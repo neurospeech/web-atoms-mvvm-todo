@@ -1,14 +1,10 @@
 import "test-dom";
-import { Atom } from "web-atoms-core/bin/Atom";
-import { MockApp } from "web-atoms-core/bin/MockApp";
-import { MockNavigationService } from "web-atoms-core/bin/services/MockNavigationService";
-import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import {Assert, Category, Test, TestItem} from "web-atoms-core/bin/unit/base-test";
-import { TaskListService } from "../services/TaskListService";
+import { Assert } from "web-atoms-core/bin/unit/Assert";
+import { Category } from "web-atoms-core/bin/unit/Category";
+import { Test } from "web-atoms-core/bin/unit/Test";
 import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
 import { TaskListViewModel } from "../view-models/TaskListViewModel";
 import { BaseTest } from "./BaseTest";
-import { TestApp } from "./TestApp";
 
 /**
  * @class WindowTests

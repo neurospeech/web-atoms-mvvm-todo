@@ -55,7 +55,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("test-dom");
-var base_test_1 = require("web-atoms-core/bin/unit/base-test");
+var Assert_1 = require("web-atoms-core/bin/unit/Assert");
+var Category_1 = require("web-atoms-core/bin/unit/Category");
+var Test_1 = require("web-atoms-core/bin/unit/Test");
 var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
 var BaseTest_1 = require("./BaseTest");
@@ -87,14 +89,14 @@ var WindowTests = /** @class */ (function (_super) {
                         return [4 /*yield*/, vm.save()];
                     case 2:
                         _a.sent();
-                        base_test_1.Assert.equals("Task cannot be empty", vm.errorLabel);
-                        base_test_1.Assert.equals("Status cannot be empty", vm.errorStatus);
+                        Assert_1.Assert.equals("Task cannot be empty", vm.errorLabel);
+                        Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
                         this.navigationService.expectAlert("Please complete all required fields.");
                         vm.task.label = "Sample";
                         return [4 /*yield*/, vm.save()];
                     case 3:
                         _a.sent();
-                        base_test_1.Assert.equals("Status cannot be empty", vm.errorStatus);
+                        Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
                         vm.task.status = "Open";
                         return [4 /*yield*/, vm.save()];
                     case 4:
@@ -133,27 +135,27 @@ var WindowTests = /** @class */ (function (_super) {
                     case 2:
                         _a.sent();
                         task = vm.list[1];
-                        base_test_1.Assert.equals("New Task", task.label);
-                        base_test_1.Assert.equals("Open", task.status);
+                        Assert_1.Assert.equals("New Task", task.label);
+                        Assert_1.Assert.equals("Open", task.status);
                         return [2 /*return*/];
                 }
             });
         });
     };
     __decorate([
-        base_test_1.Test("New Task"),
+        Test_1.Test("New Task"),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
     ], WindowTests.prototype, "newTask", null);
     __decorate([
-        base_test_1.Test("Task List new Window"),
+        Test_1.Test("Task List new Window"),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)
     ], WindowTests.prototype, "taskList", null);
     WindowTests = __decorate([
-        base_test_1.Category("Window Tests")
+        Category_1.Category("Window Tests")
     ], WindowTests);
     return WindowTests;
 }(BaseTest_1.BaseTest));

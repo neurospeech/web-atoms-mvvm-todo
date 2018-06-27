@@ -46,7 +46,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
-var base_test_1 = require("web-atoms-core/bin/unit/base-test");
+var TestItem_1 = require("web-atoms-core/bin/unit/TestItem");
 var TestApp_1 = require("./TestApp");
 var BaseTest = /** @class */ (function (_super) {
     __extends(BaseTest, _super);
@@ -67,6 +67,6 @@ var BaseTest = /** @class */ (function (_super) {
         });
     };
     return BaseTest;
-}(base_test_1.TestItem));
+}(TestItem_1.TestItem));
 exports.BaseTest = BaseTest;
 //# sourceMappingURL=BaseTest.js.map
