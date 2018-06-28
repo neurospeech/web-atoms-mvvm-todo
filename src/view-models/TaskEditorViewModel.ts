@@ -1,8 +1,8 @@
 import { App } from "web-atoms-core/bin/App";
-import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
+import { BindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import { bindableReceive, validate } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { BindableReceive, Validate } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
@@ -15,18 +15,18 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     // this will avoid receiving messages in WindowViewModel
     // in order to receive messages for default, you will have to set
     // channelPrefix = ""
-    @bindableReceive(Channels.SelectedTaskChanged)
+    @BindableReceive(Channels.SelectedTaskChanged)
     public task: Task = new Task();
 
-    @bindableProperty
+    @BindableProperty
     public user: IUser = {};
 
-    @validate
+    @Validate
     public get errorLabel(): string {
         return this.task.label ? "" : "Task cannot be empty";
     }
 
-    @validate
+    @Validate
     public get errorStatus(): string {
         return this.task.status ? "" : "Status cannot be empty";
     }
@@ -49,7 +49,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        this.user = await this.windowService.openPage<IUser>("UserSelector", this.resolve(UserSelectorViewModel));
+        this.user = await this.windowService.openPage<IUser>("UserSelector");
     }
 
     // @receive(Channels.SelectedTaskChanged)

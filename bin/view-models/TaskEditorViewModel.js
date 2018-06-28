@@ -65,7 +65,6 @@ var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
 var AtomWindowViewModel_1 = require("web-atoms-core/bin/view-model/AtomWindowViewModel");
 var channels_1 = require("../channels");
 var task_1 = require("../models/task");
-var UserSelectorViewModel_1 = require("./UserSelectorViewModel");
 var TaskEditorViewModel = /** @class */ (function (_super) {
     __extends(TaskEditorViewModel, _super);
     function TaskEditorViewModel(app, windowService) {
@@ -117,7 +116,7 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.windowService.openPage("UserSelector", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel))];
+                        return [4 /*yield*/, this.windowService.openPage("UserSelector")];
                     case 1:
                         _a.user = _b.sent();
                         return [2 /*return*/];
@@ -126,20 +125,20 @@ var TaskEditorViewModel = /** @class */ (function (_super) {
         });
     };
     __decorate([
-        AtomViewModel_1.bindableReceive(channels_1.Channels.SelectedTaskChanged),
+        AtomViewModel_1.BindableReceive(channels_1.Channels.SelectedTaskChanged),
         __metadata("design:type", task_1.Task)
     ], TaskEditorViewModel.prototype, "task", void 0);
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", Object)
     ], TaskEditorViewModel.prototype, "user", void 0);
     __decorate([
-        AtomViewModel_1.validate,
+        AtomViewModel_1.Validate,
         __metadata("design:type", String),
         __metadata("design:paramtypes", [])
     ], TaskEditorViewModel.prototype, "errorLabel", null);
     __decorate([
-        AtomViewModel_1.validate,
+        AtomViewModel_1.Validate,
         __metadata("design:type", String),
         __metadata("design:paramtypes", [])
     ], TaskEditorViewModel.prototype, "errorStatus", null);

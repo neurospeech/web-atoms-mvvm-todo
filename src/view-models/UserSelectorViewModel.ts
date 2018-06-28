@@ -1,17 +1,17 @@
 import { App } from "web-atoms-core/bin/App";
-import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
+import { BindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { Inject } from "web-atoms-core/bin/di/Inject";
-import { watch } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { Watch } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowViewModel";
 import { IUser } from "../models/user";
 import { TaskListService } from "../services/TaskListService";
 
 export class UserSelectorViewModel extends AtomWindowViewModel {
 
-	@bindableProperty
+	@BindableProperty
 	public items: IUser[];
 
-	@bindableProperty
+	@BindableProperty
 	public searchText: string;
 
 	constructor(
@@ -24,7 +24,7 @@ export class UserSelectorViewModel extends AtomWindowViewModel {
 		this.items = await this.taskListService.getUsers(null);
 	}
 
-	@watch
+	@Watch
 	public async searchUser(): Promise<any> {
 		this.items = await this.taskListService.getUsers(this.searchText);
 	}

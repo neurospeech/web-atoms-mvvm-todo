@@ -66,7 +66,6 @@ var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
 var channels_1 = require("../channels");
 var task_1 = require("../models/task");
 var TaskListService_1 = require("../services/TaskListService");
-var TaskEditorViewModel_1 = require("./TaskEditorViewModel");
 var TaskListViewModel = /** @class */ (function (_super) {
     __extends(TaskListViewModel, _super);
     function TaskListViewModel(app, windowService, taskService) {
@@ -91,8 +90,8 @@ var TaskListViewModel = /** @class */ (function (_super) {
             });
         });
     };
-    // // Use bindableBroadcast unless you need custom watch
-    // @watch
+    // // Use BindableBroadcast unless you need custom Watch
+    // @Watch
     // onSelectedTaskChanged(): void {
     //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
     // }
@@ -117,7 +116,7 @@ var TaskListViewModel = /** @class */ (function (_super) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.windowService.openPage("NewTaskWindow", this.app.get(TaskEditorViewModel_1.TaskEditorViewModel))];
+                        return [4 /*yield*/, this.windowService.openPage("NewTaskWindow")];
                     case 1:
                         task = _a.sent();
                         return [4 /*yield*/, this.taskService.create(task)];
@@ -138,11 +137,11 @@ var TaskListViewModel = /** @class */ (function (_super) {
         });
     };
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", AtomList_1.AtomList)
     ], TaskListViewModel.prototype, "list", void 0);
     __decorate([
-        AtomViewModel_1.bindableBroadcast(channels_1.Channels.SelectedTaskChanged),
+        AtomViewModel_1.BindableBroadcast(channels_1.Channels.SelectedTaskChanged),
         __metadata("design:type", task_1.Task)
     ], TaskListViewModel.prototype, "selectedTask", void 0);
     TaskListViewModel = __decorate([

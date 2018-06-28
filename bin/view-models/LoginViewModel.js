@@ -33,11 +33,11 @@ var LoginViewModel = /** @class */ (function (_super) {
         this.broadcast("app-url", "TaskListView");
     };
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", String)
     ], LoginViewModel.prototype, "username", void 0);
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", String)
     ], LoginViewModel.prototype, "password", void 0);
     return LoginViewModel;

@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
 var AtomWindow_1 = require("web-atoms-core/bin/web/controls/AtomWindow");
 var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
+var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
 var TaskEditor_1 = require("./TaskEditor");
 var NewTaskWindow = /** @class */ (function (_super) {
     __extends(NewTaskWindow, _super);
@@ -28,6 +29,7 @@ var NewTaskWindow = /** @class */ (function (_super) {
         this.element.appendChild(e2);
         var e3 = document.createTextNode("\r\n");
         this.element.appendChild(e3);
+        this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
         this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
         this.setPrimitiveValue(this.element, "width", "400px");
         this.setPrimitiveValue(this.element, "height", "400px");

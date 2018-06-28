@@ -1,4 +1,7 @@
-<div>
+<script>
+	import {UserSelectorViewModel} from "../view-models/UserSelectorViewModel";
+</script>
+<div atom-view-model="{ this.resolve(UserSelectorViewModel) }">
 	<div style="background: white; padding:5px; border: solid lightgray 1px;">
 		<input autofocus="autofocus" atom-value="^[viewModel.searchText]"/>
 

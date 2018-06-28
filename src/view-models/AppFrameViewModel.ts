@@ -1,8 +1,8 @@
-import { AtomViewModel, bindableReceive } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { AtomViewModel, BindableReceive } from "web-atoms-core/bin/view-model/AtomViewModel";
 
 export class AppFrameViewModel extends AtomViewModel {
 
-    @bindableReceive("app-url")
+    @BindableReceive("app-url")
     public url: string = "LoginView";
 
 }

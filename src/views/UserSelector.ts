@@ -2,6 +2,9 @@
 import {AtomItemsControl} from "web-atoms-core/bin/web/controls/AtomItemsControl";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
+	import {UserSelectorViewModel} from "../view-models/UserSelectorViewModel";
+
+
     export class UserSelector extends AtomControl {
 
         public create(): void {
@@ -68,6 +71,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.element.appendChild(e10);
             
+                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(UserSelectorViewModel) );
         }
     }
 

@@ -1,8 +1,10 @@
 <script>
+    import {TaskEditorViewModel} from "../view-models/TaskEditorViewModel";
     import {TaskEditor} from "./TaskEditor";
 </script>
 <div 
     atom-type="AtomWindow"
+    atom-view-model="{ this.resolve(TaskEditorViewModel) }"
     atom-title="[ $viewModel.task.label ? ('Task ' + $viewModel.task.label) : 'Add New Task' ]"
     atom-width="400px"
     atom-height="400px">

@@ -104,15 +104,15 @@ var UserSelectorViewModel = /** @class */ (function (_super) {
         this.close(user);
     };
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", Array)
     ], UserSelectorViewModel.prototype, "items", void 0);
     __decorate([
-        BindableProperty_1.bindableProperty,
+        BindableProperty_1.BindableProperty,
         __metadata("design:type", String)
     ], UserSelectorViewModel.prototype, "searchText", void 0);
     __decorate([
-        AtomViewModel_1.watch,
+        AtomViewModel_1.Watch,
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", Promise)

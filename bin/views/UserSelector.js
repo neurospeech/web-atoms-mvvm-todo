@@ -13,6 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // tslint:disable
 var AtomItemsControl_1 = require("web-atoms-core/bin/web/controls/AtomItemsControl");
 var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
+var UserSelectorViewModel_1 = require("../view-models/UserSelectorViewModel");
 var UserSelector = /** @class */ (function (_super) {
     __extends(UserSelector, _super);
     function UserSelector() {
@@ -47,6 +48,7 @@ var UserSelector = /** @class */ (function (_super) {
         e2.appendChild(e9);
         var e10 = document.createTextNode("\r\n");
         this.element.appendChild(e10);
+        this.setPrimitiveValue(this.element, "viewModel", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel));
     };
     return UserSelector;
 }(AtomControl_1.AtomControl));

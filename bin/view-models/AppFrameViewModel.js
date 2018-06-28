@@ -28,7 +28,7 @@ var AppFrameViewModel = /** @class */ (function (_super) {
         return _this;
     }
     __decorate([
-        AtomViewModel_1.bindableReceive("app-url"),
+        AtomViewModel_1.BindableReceive("app-url"),
         __metadata("design:type", String)
     ], AppFrameViewModel.prototype, "url", void 0);
     return AppFrameViewModel;

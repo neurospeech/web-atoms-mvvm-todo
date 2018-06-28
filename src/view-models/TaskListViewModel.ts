@@ -1,9 +1,9 @@
 import { App } from "web-atoms-core/bin/App";
 import { AtomList } from "web-atoms-core/bin/core/AtomList";
-import { bindableProperty } from "web-atoms-core/bin/core/BindableProperty";
+import { BindableProperty } from "web-atoms-core/bin/core/BindableProperty";
 import { Inject } from "web-atoms-core/bin/di/Inject";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import { AtomViewModel, bindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { AtomViewModel, BindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { TaskListService } from "../services/TaskListService";
@@ -11,10 +11,10 @@ import { TaskEditorViewModel } from "./TaskEditorViewModel";
 
 export class TaskListViewModel extends AtomViewModel {
 
-    @bindableProperty
+    @BindableProperty
     public list: AtomList<Task> = new AtomList<Task>();
 
-    @bindableBroadcast(Channels.SelectedTaskChanged)
+    @BindableBroadcast(Channels.SelectedTaskChanged)
     public selectedTask: Task;
 
     constructor(
@@ -32,8 +32,8 @@ export class TaskListViewModel extends AtomViewModel {
         this.selectedTask = this.list[0];
     }
 
-    // // Use bindableBroadcast unless you need custom watch
-    // @watch
+    // // Use BindableBroadcast unless you need custom Watch
+    // @Watch
     // onSelectedTaskChanged(): void {
     //     this.broadcast(Channels.SelectedTaskChanged,this.selectedTask);
     // }
@@ -49,8 +49,7 @@ export class TaskListViewModel extends AtomViewModel {
 
         try {
 
-            let task = await this.windowService.openPage<Task>("NewTaskWindow",
-                this.app.get(TaskEditorViewModel) );
+            let task = await this.windowService.openPage<Task>("NewTaskWindow");
             task = await this.taskService.create(task);
             this.list.add(task);
 
