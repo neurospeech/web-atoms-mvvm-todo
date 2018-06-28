@@ -4,8 +4,8 @@ import {AtomListBox} from "web-atoms-core/bin/web/controls/AtomListBox";
 import {AtomGridView} from "web-atoms-core/bin/web/controls/AtomGridView";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
-    import { TaskListViewModel } from "../view-models/TaskListViewModel";
-    import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
+    import { TaskListViewModel } from "../../view-models/TaskListViewModel";
+    import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import { TaskEditor } from "./TaskEditor";
 
 

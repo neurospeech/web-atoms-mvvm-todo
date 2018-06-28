@@ -5,20 +5,15 @@ import { ConfigService } from "./services/ConfigService";
 import { MockConfigService } from "./services/MockConfigService";
 import { MockTaskListService } from "./services/MockTaskListService";
 import { TaskListService } from "./services/TaskListService";
-import { AppFrameViewModel } from "./view-models/AppFrameViewModel";
-import { AppFrame } from "./views/AppFrame";
-import { LoginView } from "./views/LoginView";
-import { NewTaskWindow } from "./views/NewTaskWindow";
-import { TaskListView } from "./views/TaskListView";
-import { UserSelector } from "./views/UserSelector";
+import { AppFrame } from "./web/views/AppFrame";
+import { LoginView } from "./web/views/LoginView";
+import { NewTaskWindow } from "./web/views/NewTaskWindow";
+import { TaskListView } from "./web/views/TaskListView";
+import { UserSelector } from "./web/views/UserSelector";
 
 export class SampleApp extends WebApp {
 
-    public static current: SampleApp = null;
-
     public main(): void {
-
-        SampleApp.current = this;
 
         Atom.designMode = true;
 

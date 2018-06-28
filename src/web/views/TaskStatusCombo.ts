@@ -1,7 +1,7 @@
 // tslint:disable
 import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
 
-    import { ConfigService } from "../services/ConfigService";
+    import { ConfigService } from "../../services/ConfigService";
 
 
     export class TaskStatusCombo extends AtomComboBox {

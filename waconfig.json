@@ -1,8 +1,4 @@
 {
     "srcFolder":"src",
-    "outFolder":"src/views",
-    "mode": "core",
-    "imports": {
-        "vm": "~/view-models"
-    }
+    "mode": "core"
 }

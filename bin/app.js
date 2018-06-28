@@ -17,11 +17,11 @@ var ConfigService_1 = require("./services/ConfigService");
 var MockConfigService_1 = require("./services/MockConfigService");
 var MockTaskListService_1 = require("./services/MockTaskListService");
 var TaskListService_1 = require("./services/TaskListService");
-var AppFrame_1 = require("./views/AppFrame");
-var LoginView_1 = require("./views/LoginView");
-var NewTaskWindow_1 = require("./views/NewTaskWindow");
-var TaskListView_1 = require("./views/TaskListView");
-var UserSelector_1 = require("./views/UserSelector");
+var AppFrame_1 = require("./web/views/AppFrame");
+var LoginView_1 = require("./web/views/LoginView");
+var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
+var TaskListView_1 = require("./web/views/TaskListView");
+var UserSelector_1 = require("./web/views/UserSelector");
 var SampleApp = /** @class */ (function (_super) {
     __extends(SampleApp, _super);
     function SampleApp() {

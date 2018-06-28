@@ -2,7 +2,7 @@
 import {AtomItemsControl} from "web-atoms-core/bin/web/controls/AtomItemsControl";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
-	import {UserSelectorViewModel} from "../view-models/UserSelectorViewModel";
+	import {UserSelectorViewModel} from "../../view-models/UserSelectorViewModel";
 
 
     export class UserSelector extends AtomControl {

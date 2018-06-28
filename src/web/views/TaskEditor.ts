@@ -20,9 +20,6 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e2);
         
-        this.setPrimitiveValue(e2, "label", "Task:" );
-        
-
         this.setPrimitiveValue(e2, "type", "text" );
         
 

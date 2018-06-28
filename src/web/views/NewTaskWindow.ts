@@ -2,7 +2,7 @@
 import {AtomWindow} from "web-atoms-core/bin/web/controls/AtomWindow";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
-    import {TaskEditorViewModel} from "../view-models/TaskEditorViewModel";
+    import {TaskEditorViewModel} from "../../view-models/TaskEditorViewModel";
     import {TaskEditor} from "./TaskEditor";
 
 
