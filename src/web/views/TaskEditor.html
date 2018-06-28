@@ -28,6 +28,7 @@
 		<div
 			style-display="{ !$viewModel.windowName ? '' : 'none' }">
 			<button
+				style-class="{ this.controlStyle.saveButton }"
 				atom-event-click="{ () => $viewModel.save() }">Save</button>
 		</div>
 
