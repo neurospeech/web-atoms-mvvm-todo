@@ -17,6 +17,7 @@ var ConfigService_1 = require("./services/ConfigService");
 var MockConfigService_1 = require("./services/MockConfigService");
 var MockTaskListService_1 = require("./services/MockTaskListService");
 var TaskListService_1 = require("./services/TaskListService");
+var AppTheme_1 = require("./web/styles/AppTheme");
 var AppFrame_1 = require("./web/views/AppFrame");
 var LoginView_1 = require("./web/views/LoginView");
 var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
@@ -28,7 +29,6 @@ var SampleApp = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     SampleApp.prototype.main = function () {
-        SampleApp.current = this;
         Atom_1.Atom.designMode = true;
         var windowService = this.resolve(NavigationService_1.NavigationService);
         windowService.register("NewTaskWindow", NewTaskWindow_1.NewTaskWindow);
@@ -39,10 +39,10 @@ var SampleApp = /** @class */ (function (_super) {
             this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService());
             this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService());
         }
+        this.theme = this.resolve(AppTheme_1.AppTheme);
         var appFrame = new AppFrame_1.AppFrame(this);
         document.body.appendChild(appFrame.element);
     };
-    SampleApp.current = null;
     return SampleApp;
 }(WebApp_1.WebApp));
 exports.SampleApp = SampleApp;

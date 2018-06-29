@@ -26,7 +26,6 @@ var TaskEditor = /** @class */ (function (_super) {
         this.element.appendChild(e1);
         var e2 = document.createElement("input");
         this.append(e2);
-        this.setPrimitiveValue(e2, "label", "Task:");
         this.setPrimitiveValue(e2, "type", "text");
         this.bind(e2, "value", [["viewModel", "task", "label"]], true);
         this.setPrimitiveValue(e2, "autofocus", "autofocus");
@@ -87,6 +86,7 @@ var TaskEditor = /** @class */ (function (_super) {
         e22.appendChild(e23);
         var e24 = document.createElement("button");
         e22.appendChild(e24);
+        this.setPrimitiveValue(e24, "styleClass", this.controlStyle.saveButton);
         this.runAfterInit(function () {
             return _this.setLocalValue(e24, "eventClick", function () { return (_this.viewModel).save(); });
         });

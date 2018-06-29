@@ -148,6 +148,8 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e22.appendChild(e24);
         
+                this.setPrimitiveValue(e24, "styleClass",  this.controlStyle.saveButton );
+
             this.runAfterInit( () =>
             this.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
         

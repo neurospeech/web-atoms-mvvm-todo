@@ -9,6 +9,10 @@ const instance: TestRunner = TestRunner.instance;
 // export Atom;
 declare var process: any;
 
+declare var global: any;
+
+global.location = {};
+
 instance.run().then(() => {
     console.log("Tests ran successfully.");
     process.exit();

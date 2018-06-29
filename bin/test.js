@@ -5,6 +5,7 @@ var TestRunner_1 = require("web-atoms-core/bin/unit/TestRunner");
 // import unit test modules here
 require("./tests/NewTaskWindowTest");
 var instance = TestRunner_1.TestRunner.instance;
+global.location = {};
 instance.run().then(function () {
     console.log("Tests ran successfully.");
     process.exit();
