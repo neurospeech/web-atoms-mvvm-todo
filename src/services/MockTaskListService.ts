@@ -1,3 +1,5 @@
+import { Inject } from "web-atoms-core/bin/di/Inject";
+import { JsonService } from "web-atoms-core/bin/services/JsonService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 import { TaskListService } from "./TaskListService";
@@ -16,8 +18,8 @@ export class MockTaskListService extends TaskListService {
         value: "Tucker"
     }];
 
-    constructor() {
-        super();
+    constructor(@Inject jsonService: JsonService = new JsonService()) {
+        super(jsonService);
 
         const t = new Task();
         t.label = "Sample task";

@@ -57,87 +57,96 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
-var RestService_1 = require("web-atoms-core/bin/services/http/RestService");
 var task_1 = require("../models/task");
-var TaskListService = /** @class */ (function (_super) {
-    __extends(TaskListService, _super);
-    function TaskListService() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var TaskListService_1 = require("./TaskListService");
+var Inject_1 = require("web-atoms-core/bin/di/Inject");
+var JsonService_1 = require("../../../web-atoms-core/src/services/JsonService");
+var MockTaskListService = /** @class */ (function (_super) {
+    __extends(MockTaskListService, _super);
+    function MockTaskListService(jsonService) {
+        if (jsonService === void 0) { jsonService = new JsonService_1.JsonService(); }
+        var _this = _super.call(this, jsonService) || this;
+        _this.tasks = [];
+        _this.users = [{
+                label: "Akash Kava",
+                value: "ackava",
+            }, {
+                label: "John",
+                value: "Hemond"
+            }, {
+                label: "Chris",
+                value: "Tucker"
+            }];
+        var t = new task_1.Task();
+        t.label = "Sample task";
+        t.status = "open";
+        t.id = (new Date()).getTime();
+        _this.tasks.push(t);
+        return _this;
     }
-    TaskListService.prototype.create = function (task) {
+    MockTaskListService.prototype.create = function (task) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                task.id = (new Date()).getTime();
+                this.tasks.push(task);
+                return [2 /*return*/, task];
             });
         });
     };
-    TaskListService.prototype.retrive = function () {
+    MockTaskListService.prototype.retrive = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                return [2 /*return*/, this.tasks];
             });
         });
     };
-    TaskListService.prototype.update = function (data) {
+    MockTaskListService.prototype.update = function (data) {
         return __awaiter(this, void 0, void 0, function () {
+            var t;
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                t = this.tasks.find(function (x) { return x.id === data.id; });
+                t.label = data.label;
+                t.description = data.description;
+                t.status = data.status;
+                return [2 /*return*/, data];
             });
         });
     };
-    TaskListService.prototype.deleteTask = function (id) {
+    MockTaskListService.prototype.deleteTask = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                this.tasks = this.tasks.filter(function (x) { return x.id !== id; });
+                return [2 /*return*/];
             });
         });
     };
-    TaskListService.prototype.getUsers = function (name) {
+    MockTaskListService.prototype.getUsers = function (name) {
         return __awaiter(this, void 0, void 0, function () {
+            var n;
             return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+                if (!name) {
+                    return [2 /*return*/, this.users];
+                }
+                n = name.toLocaleLowerCase();
+                return [2 /*return*/, this.users.filter(function (x) {
+                        if (name) {
+                            if (x.label.toLocaleLowerCase().indexOf(n) >= 0 ||
+                                x.value.toLocaleLowerCase().indexOf(n) >= 0) {
+                                return true;
+                            }
+                        }
+                        else {
+                            return true;
+                        }
+                    })];
             });
         });
     };
-    __decorate([
-        RestService_1.Put("/tasks/task"),
-        __param(0, RestService_1.Body),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [task_1.Task]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "create", null);
-    __decorate([
-        RestService_1.Get("/tasks"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "retrive", null);
-    __decorate([
-        RestService_1.Patch("/tasks/task"),
-        __param(0, RestService_1.Body),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [task_1.Task]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "update", null);
-    __decorate([
-        RestService_1.Delete("/tasks/{id}"),
-        __param(0, RestService_1.Path("id")),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "deleteTask", null);
-    __decorate([
-        RestService_1.Get("/users"),
-        __param(0, RestService_1.Query("name")),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "getUsers", null);
-    TaskListService = __decorate([
-        RegisterSingleton_1.RegisterSingleton
-    ], TaskListService);
-    return TaskListService;
-}(RestService_1.BaseService));
-exports.TaskListService = TaskListService;
-//# sourceMappingURL=TaskListService.js.map
+    MockTaskListService = __decorate([
+        __param(0, Inject_1.Inject),
+        __metadata("design:paramtypes", [JsonService_1.JsonService])
+    ], MockTaskListService);
+    return MockTaskListService;
+}(TaskListService_1.TaskListService));
+exports.MockTaskListService = MockTaskListService;
+//# sourceMappingURL=MockTaskListService.js.map

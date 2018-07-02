@@ -1,4 +1,4 @@
-import { BaseService } from "web-atoms-core/bin/services/RestService";
+import { BaseService } from "web-atoms-core/bin/services/http/RestService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 export declare class TaskListService extends BaseService {

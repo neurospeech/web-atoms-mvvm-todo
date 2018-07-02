@@ -23,7 +23,6 @@ var LoginView_1 = require("./web/views/LoginView");
 var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
 var TaskListView_1 = require("./web/views/TaskListView");
 var UserSelector_1 = require("./web/views/UserSelector");
-var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
 var SampleApp = /** @class */ (function (_super) {
     __extends(SampleApp, _super);
     function SampleApp() {
@@ -37,8 +36,8 @@ var SampleApp = /** @class */ (function (_super) {
         windowService.register("TaskListView", TaskListView_1.TaskListView);
         windowService.register("UserSelector", UserSelector_1.UserSelector);
         if (Atom_1.Atom.designMode) {
-            this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService(this.resolve(JsonService_1.JsonService)));
-            this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService(this.resolve(JsonService_1.JsonService)));
+            this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService());
+            this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService());
         }
         this.theme = this.resolve(AppTheme_1.AppTheme);
         var appFrame = new AppFrame_1.AppFrame(this);

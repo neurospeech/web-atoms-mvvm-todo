@@ -12,6 +12,7 @@ import { LoginView } from "./web/views/LoginView";
 import { NewTaskWindow } from "./web/views/NewTaskWindow";
 import { TaskListView } from "./web/views/TaskListView";
 import { UserSelector } from "./web/views/UserSelector";
+import { JsonService } from "web-atoms-core/bin/services/JsonService";
 
 export class SampleApp extends WebApp {
 
@@ -27,8 +28,8 @@ export class SampleApp extends WebApp {
         windowService.register("UserSelector", UserSelector);
 
         if (Atom.designMode) {
-            this.put(ConfigService, new MockConfigService());
-            this.put(TaskListService, new MockTaskListService());
+            this.put(ConfigService, new MockConfigService(this.resolve(JsonService)));
+            this.put(TaskListService, new MockTaskListService(this.resolve(JsonService)));
         }
 
         this.theme = this.resolve(AppTheme);

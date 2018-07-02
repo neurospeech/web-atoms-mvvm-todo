@@ -1,7 +1,7 @@
-import { JsonService } from "web-atoms-core/bin/services/JsonService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 import { TaskListService } from "./TaskListService";
+import { JsonService } from '../../../web-atoms-core/src/services/JsonService';
 export declare class MockTaskListService extends TaskListService {
     tasks: Task[];
     users: IUser[];

@@ -1,5 +1,5 @@
 import { RegisterSingleton } from "web-atoms-core/bin/di/RegisterSingleton";
-import { BaseService, Body, Delete, Get, Patch, Path, Put, Query } from "web-atoms-core/bin/services/RestService";
+import { BaseService, Body, Delete, Get, Patch, Path, Put, Query } from "web-atoms-core/bin/services/http/RestService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 

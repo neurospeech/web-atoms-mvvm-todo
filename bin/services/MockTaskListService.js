@@ -9,6 +9,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -24,8 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -45,12 +57,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Inject_1 = require("web-atoms-core/bin/di/Inject");
+var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
 var task_1 = require("../models/task");
 var TaskListService_1 = require("./TaskListService");
 var MockTaskListService = /** @class */ (function (_super) {
     __extends(MockTaskListService, _super);
-    function MockTaskListService() {
-        var _this = _super.call(this) || this;
+    function MockTaskListService(jsonService) {
+        if (jsonService === void 0) { jsonService = new JsonService_1.JsonService(); }
+        var _this = _super.call(this, jsonService) || this;
         _this.tasks = [];
         _this.users = [{
                 label: "Akash Kava",
@@ -127,6 +142,10 @@ var MockTaskListService = /** @class */ (function (_super) {
             });
         });
     };
+    MockTaskListService = __decorate([
+        __param(0, Inject_1.Inject),
+        __metadata("design:paramtypes", [JsonService_1.JsonService])
+    ], MockTaskListService);
     return MockTaskListService;
 }(TaskListService_1.TaskListService));
 exports.MockTaskListService = MockTaskListService;
