@@ -10,5 +10,8 @@ module.exports = {
     },
     resolve: {
         modules: ['node_modules']
+    },
+    externals: {
+        "__atoms": "__atoms"
     }
 };

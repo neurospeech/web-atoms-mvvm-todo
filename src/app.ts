@@ -1,4 +1,5 @@
 import { Atom } from "web-atoms-core/bin/Atom";
+import { JsonService } from "web-atoms-core/bin/services/JsonService";
 import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
 import { AtomTheme } from "web-atoms-core/bin/web/styles/AtomTheme";
 import { WebApp } from "web-atoms-core/bin/web/WebApp";
@@ -12,7 +13,6 @@ import { LoginView } from "./web/views/LoginView";
 import { NewTaskWindow } from "./web/views/NewTaskWindow";
 import { TaskListView } from "./web/views/TaskListView";
 import { UserSelector } from "./web/views/UserSelector";
-import { JsonService } from "web-atoms-core/bin/services/JsonService";
 
 export class SampleApp extends WebApp {
 

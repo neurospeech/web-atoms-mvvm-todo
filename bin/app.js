@@ -11,6 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var Atom_1 = require("web-atoms-core/bin/Atom");
+var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
 var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
 var WebApp_1 = require("web-atoms-core/bin/web/WebApp");
 var ConfigService_1 = require("./services/ConfigService");
@@ -23,7 +24,6 @@ var LoginView_1 = require("./web/views/LoginView");
 var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
 var TaskListView_1 = require("./web/views/TaskListView");
 var UserSelector_1 = require("./web/views/UserSelector");
-var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
 var SampleApp = /** @class */ (function (_super) {
     __extends(SampleApp, _super);
     function SampleApp() {
