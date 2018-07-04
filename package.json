@@ -1,6 +1,6 @@
 {
   "name": "web-atoms-mvvm-todo",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Web Atoms MVVM Todo Sample",
   "main": "index.js",
   "scripts": {
