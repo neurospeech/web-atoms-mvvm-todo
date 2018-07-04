@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -44,31 +43,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var ConfigService_1 = require("./ConfigService");
-var MockConfigService = /** @class */ (function (_super) {
-    __extends(MockConfigService, _super);
-    function MockConfigService() {
-        return _super !== null && _super.apply(this, arguments) || this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    MockConfigService.prototype.getStatusList = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, [
-                        {
-                            label: "Select", value: ""
-                        },
-                        {
-                            label: "Open", value: "open"
-                        },
-                        {
-                            label: "Closed", value: "closed"
-                        }
-                    ]];
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./ConfigService"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ConfigService_1 = require("./ConfigService");
+    var MockConfigService = /** @class */ (function (_super) {
+        __extends(MockConfigService, _super);
+        function MockConfigService() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        MockConfigService.prototype.getStatusList = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, [
+                            {
+                                label: "Select", value: ""
+                            },
+                            {
+                                label: "Open", value: "open"
+                            },
+                            {
+                                label: "Closed", value: "closed"
+                            }
+                        ]];
+                });
             });
-        });
-    };
-    return MockConfigService;
-}(ConfigService_1.ConfigService));
-exports.MockConfigService = MockConfigService;
+        };
+        return MockConfigService;
+    }(ConfigService_1.ConfigService));
+    exports.MockConfigService = MockConfigService;
+});
 //# sourceMappingURL=MockConfigService.js.map

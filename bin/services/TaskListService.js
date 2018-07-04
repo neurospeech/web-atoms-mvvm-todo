@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -56,88 +55,99 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
-var RestService_1 = require("web-atoms-core/bin/services/http/RestService");
-var task_1 = require("../models/task");
-var TaskListService = /** @class */ (function (_super) {
-    __extends(TaskListService, _super);
-    function TaskListService() {
-        return _super !== null && _super.apply(this, arguments) || this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    TaskListService.prototype.create = function (task) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/di/RegisterSingleton", "web-atoms-core/bin/services/http/RestService", "../models/task"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
+    var RestService_1 = require("web-atoms-core/bin/services/http/RestService");
+    var task_1 = require("../models/task");
+    var TaskListService = /** @class */ (function (_super) {
+        __extends(TaskListService, _super);
+        function TaskListService() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        TaskListService.prototype.create = function (task) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    TaskListService.prototype.retrive = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+        };
+        TaskListService.prototype.retrive = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    TaskListService.prototype.update = function (data) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+        };
+        TaskListService.prototype.update = function (data) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    TaskListService.prototype.deleteTask = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+        };
+        TaskListService.prototype.deleteTask = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    TaskListService.prototype.getUsers = function (name) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+        };
+        TaskListService.prototype.getUsers = function (name) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    __decorate([
-        RestService_1.Put("/tasks/task"),
-        __param(0, RestService_1.Body),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [task_1.Task]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "create", null);
-    __decorate([
-        RestService_1.Get("/tasks"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "retrive", null);
-    __decorate([
-        RestService_1.Patch("/tasks/task"),
-        __param(0, RestService_1.Body),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [task_1.Task]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "update", null);
-    __decorate([
-        RestService_1.Delete("/tasks/{id}"),
-        __param(0, RestService_1.Path("id")),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Number]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "deleteTask", null);
-    __decorate([
-        RestService_1.Get("/users"),
-        __param(0, RestService_1.Query("name")),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String]),
-        __metadata("design:returntype", Promise)
-    ], TaskListService.prototype, "getUsers", null);
-    TaskListService = __decorate([
-        RegisterSingleton_1.RegisterSingleton
-    ], TaskListService);
-    return TaskListService;
-}(RestService_1.BaseService));
-exports.TaskListService = TaskListService;
+        };
+        __decorate([
+            RestService_1.Put("/tasks/task"),
+            __param(0, RestService_1.Body),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", [task_1.Task]),
+            __metadata("design:returntype", Promise)
+        ], TaskListService.prototype, "create", null);
+        __decorate([
+            RestService_1.Get("/tasks"),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", []),
+            __metadata("design:returntype", Promise)
+        ], TaskListService.prototype, "retrive", null);
+        __decorate([
+            RestService_1.Patch("/tasks/task"),
+            __param(0, RestService_1.Body),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", [task_1.Task]),
+            __metadata("design:returntype", Promise)
+        ], TaskListService.prototype, "update", null);
+        __decorate([
+            RestService_1.Delete("/tasks/{id}"),
+            __param(0, RestService_1.Path("id")),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", [Number]),
+            __metadata("design:returntype", Promise)
+        ], TaskListService.prototype, "deleteTask", null);
+        __decorate([
+            RestService_1.Get("/users"),
+            __param(0, RestService_1.Query("name")),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", [String]),
+            __metadata("design:returntype", Promise)
+        ], TaskListService.prototype, "getUsers", null);
+        TaskListService = __decorate([
+            RegisterSingleton_1.RegisterSingleton
+        ], TaskListService);
+        return TaskListService;
+    }(RestService_1.BaseService));
+    exports.TaskListService = TaskListService;
+});
 //# sourceMappingURL=TaskListService.js.map

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,43 +8,54 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-Object.defineProperty(exports, "__esModule", { value: true });
-var Atom_1 = require("web-atoms-core/bin/Atom");
-var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
-var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
-var WebApp_1 = require("web-atoms-core/bin/web/WebApp");
-var ConfigService_1 = require("./services/ConfigService");
-var MockConfigService_1 = require("./services/MockConfigService");
-var MockTaskListService_1 = require("./services/MockTaskListService");
-var TaskListService_1 = require("./services/TaskListService");
-var AppTheme_1 = require("./web/styles/AppTheme");
-var AppFrame_1 = require("./web/views/AppFrame");
-var LoginView_1 = require("./web/views/LoginView");
-var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
-var TaskListView_1 = require("./web/views/TaskListView");
-var UserSelector_1 = require("./web/views/UserSelector");
-var SampleApp = /** @class */ (function (_super) {
-    __extends(SampleApp, _super);
-    function SampleApp() {
-        return _super !== null && _super.apply(this, arguments) || this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    SampleApp.prototype.main = function () {
-        Atom_1.Atom.designMode = true;
-        var windowService = this.resolve(NavigationService_1.NavigationService);
-        windowService.register("NewTaskWindow", NewTaskWindow_1.NewTaskWindow);
-        windowService.register("LoginView", LoginView_1.LoginView);
-        windowService.register("TaskListView", TaskListView_1.TaskListView);
-        windowService.register("UserSelector", UserSelector_1.UserSelector);
-        if (Atom_1.Atom.designMode) {
-            this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService(this.resolve(JsonService_1.JsonService)));
-            this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService(this.resolve(JsonService_1.JsonService)));
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/Atom", "web-atoms-core/bin/services/JsonService", "web-atoms-core/bin/services/NavigationService", "web-atoms-core/bin/web/WebApp", "./services/ConfigService", "./services/MockConfigService", "./services/MockTaskListService", "./services/TaskListService", "./web/styles/AppTheme", "./web/views/AppFrame", "./web/views/LoginView", "./web/views/NewTaskWindow", "./web/views/TaskListView", "./web/views/UserSelector"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var Atom_1 = require("web-atoms-core/bin/Atom");
+    var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
+    var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
+    var WebApp_1 = require("web-atoms-core/bin/web/WebApp");
+    var ConfigService_1 = require("./services/ConfigService");
+    var MockConfigService_1 = require("./services/MockConfigService");
+    var MockTaskListService_1 = require("./services/MockTaskListService");
+    var TaskListService_1 = require("./services/TaskListService");
+    var AppTheme_1 = require("./web/styles/AppTheme");
+    var AppFrame_1 = require("./web/views/AppFrame");
+    var LoginView_1 = require("./web/views/LoginView");
+    var NewTaskWindow_1 = require("./web/views/NewTaskWindow");
+    var TaskListView_1 = require("./web/views/TaskListView");
+    var UserSelector_1 = require("./web/views/UserSelector");
+    var SampleApp = /** @class */ (function (_super) {
+        __extends(SampleApp, _super);
+        function SampleApp() {
+            return _super !== null && _super.apply(this, arguments) || this;
         }
-        this.theme = this.resolve(AppTheme_1.AppTheme);
-        var appFrame = new AppFrame_1.AppFrame(this);
-        document.body.appendChild(appFrame.element);
-    };
-    return SampleApp;
-}(WebApp_1.WebApp));
-exports.SampleApp = SampleApp;
-var app = new SampleApp();
+        SampleApp.prototype.main = function () {
+            Atom_1.Atom.designMode = true;
+            var windowService = this.resolve(NavigationService_1.NavigationService);
+            windowService.register("NewTaskWindow", NewTaskWindow_1.NewTaskWindow);
+            windowService.register("LoginView", LoginView_1.LoginView);
+            windowService.register("TaskListView", TaskListView_1.TaskListView);
+            windowService.register("UserSelector", UserSelector_1.UserSelector);
+            if (Atom_1.Atom.designMode) {
+                this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService(this.resolve(JsonService_1.JsonService)));
+                this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService(this.resolve(JsonService_1.JsonService)));
+            }
+            this.theme = this.resolve(AppTheme_1.AppTheme);
+            var appFrame = new AppFrame_1.AppFrame(this);
+            document.body.appendChild(appFrame.element);
+        };
+        return SampleApp;
+    }(WebApp_1.WebApp));
+    exports.SampleApp = SampleApp;
+    var app = new SampleApp();
+});
 //# sourceMappingURL=app.js.map

@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -44,29 +43,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
-var TestItem_1 = require("web-atoms-core/bin/unit/TestItem");
-var TestApp_1 = require("./TestApp");
-var BaseTest = /** @class */ (function (_super) {
-    __extends(BaseTest, _super);
-    function BaseTest(app, navigationService) {
-        if (app === void 0) { app = new TestApp_1.TestApp(); }
-        if (navigationService === void 0) { navigationService = app.get(NavigationService_1.NavigationService); }
-        var _this = _super.call(this) || this;
-        _this.app = app;
-        _this.navigationService = navigationService;
-        return _this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    BaseTest.prototype.dispose = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                this.navigationService.assert();
-                return [2 /*return*/];
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/services/NavigationService", "web-atoms-core/bin/unit/TestItem", "./TestApp"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
+    var TestItem_1 = require("web-atoms-core/bin/unit/TestItem");
+    var TestApp_1 = require("./TestApp");
+    var BaseTest = /** @class */ (function (_super) {
+        __extends(BaseTest, _super);
+        function BaseTest(app, navigationService) {
+            if (app === void 0) { app = new TestApp_1.TestApp(); }
+            if (navigationService === void 0) { navigationService = app.get(NavigationService_1.NavigationService); }
+            var _this = _super.call(this) || this;
+            _this.app = app;
+            _this.navigationService = navigationService;
+            return _this;
+        }
+        BaseTest.prototype.dispose = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    this.navigationService.assert();
+                    return [2 /*return*/];
+                });
             });
-        });
-    };
-    return BaseTest;
-}(TestItem_1.TestItem));
-exports.BaseTest = BaseTest;
+        };
+        return BaseTest;
+    }(TestItem_1.TestItem));
+    exports.BaseTest = BaseTest;
+});
 //# sourceMappingURL=BaseTest.js.map

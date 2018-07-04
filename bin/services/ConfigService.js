@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -53,31 +52,42 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
-var RestService_1 = require("web-atoms-core/bin/services/http/RestService");
-var ConfigService = /** @class */ (function (_super) {
-    __extends(ConfigService, _super);
-    function ConfigService() {
-        return _super !== null && _super.apply(this, arguments) || this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    ConfigService.prototype.getStatusList = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, null];
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "web-atoms-core/bin/di/RegisterSingleton", "web-atoms-core/bin/services/http/RestService"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
+    var RestService_1 = require("web-atoms-core/bin/services/http/RestService");
+    var ConfigService = /** @class */ (function (_super) {
+        __extends(ConfigService, _super);
+        function ConfigService() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ConfigService.prototype.getStatusList = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, null];
+                });
             });
-        });
-    };
-    __decorate([
-        RestService_1.Get("/config/status"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], ConfigService.prototype, "getStatusList", null);
-    ConfigService = __decorate([
-        RegisterSingleton_1.RegisterSingleton
-    ], ConfigService);
-    return ConfigService;
-}(RestService_1.BaseService));
-exports.ConfigService = ConfigService;
+        };
+        __decorate([
+            RestService_1.Get("/config/status"),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", []),
+            __metadata("design:returntype", Promise)
+        ], ConfigService.prototype, "getStatusList", null);
+        ConfigService = __decorate([
+            RegisterSingleton_1.RegisterSingleton
+        ], ConfigService);
+        return ConfigService;
+    }(RestService_1.BaseService));
+    exports.ConfigService = ConfigService;
+});
 //# sourceMappingURL=ConfigService.js.map

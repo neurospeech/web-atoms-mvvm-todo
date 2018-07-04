@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -53,109 +52,120 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-require("test-dom");
-var Assert_1 = require("web-atoms-core/bin/unit/Assert");
-var Category_1 = require("web-atoms-core/bin/unit/Category");
-var Test_1 = require("web-atoms-core/bin/unit/Test");
-var task_1 = require("../models/task");
-var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
-var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
-var BaseTest_1 = require("./BaseTest");
-/**
- * @class WindowTests
- * @extends {TestItem}
- */
-var WindowTests = /** @class */ (function (_super) {
-    __extends(WindowTests, _super);
-    function WindowTests() {
-        return _super !== null && _super.apply(this, arguments) || this;
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "test-dom", "web-atoms-core/bin/unit/Assert", "web-atoms-core/bin/unit/Category", "web-atoms-core/bin/unit/Test", "../models/task", "../view-models/TaskEditorViewModel", "../view-models/TaskListViewModel", "./BaseTest"], factory);
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    require("test-dom");
+    var Assert_1 = require("web-atoms-core/bin/unit/Assert");
+    var Category_1 = require("web-atoms-core/bin/unit/Category");
+    var Test_1 = require("web-atoms-core/bin/unit/Test");
+    var task_1 = require("../models/task");
+    var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
+    var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
+    var BaseTest_1 = require("./BaseTest");
     /**
-     * This task verifies every possibility of Window
-     *
-     * @memberof WindowTests
+     * @class WindowTests
+     * @extends {TestItem}
      */
-    WindowTests.prototype.newTask = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var vm;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        vm = this.app.get(TaskEditorViewModel_1.TaskEditorViewModel);
-                        return [4 /*yield*/, vm.waitForReady()];
-                    case 1:
-                        _a.sent();
-                        this.navigationService.expectAlert("Please complete all required fields.");
-                        return [4 /*yield*/, vm.save()];
-                    case 2:
-                        _a.sent();
-                        Assert_1.Assert.equals("Task cannot be empty", vm.errorLabel);
-                        Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
-                        this.navigationService.expectAlert("Please complete all required fields.");
-                        vm.task.label = "Sample";
-                        return [4 /*yield*/, vm.save()];
-                    case 3:
-                        _a.sent();
-                        Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
-                        vm.task.status = "Open";
-                        return [4 /*yield*/, vm.save()];
-                    case 4:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
+    var WindowTests = /** @class */ (function (_super) {
+        __extends(WindowTests, _super);
+        function WindowTests() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        /**
+         * This task verifies every possibility of Window
+         *
+         * @memberof WindowTests
+         */
+        WindowTests.prototype.newTask = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var vm;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            vm = this.app.get(TaskEditorViewModel_1.TaskEditorViewModel);
+                            return [4 /*yield*/, vm.waitForReady()];
+                        case 1:
+                            _a.sent();
+                            this.navigationService.expectAlert("Please complete all required fields.");
+                            return [4 /*yield*/, vm.save()];
+                        case 2:
+                            _a.sent();
+                            Assert_1.Assert.equals("Task cannot be empty", vm.errorLabel);
+                            Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
+                            this.navigationService.expectAlert("Please complete all required fields.");
+                            vm.task.label = "Sample";
+                            return [4 /*yield*/, vm.save()];
+                        case 3:
+                            _a.sent();
+                            Assert_1.Assert.equals("Status cannot be empty", vm.errorStatus);
+                            vm.task.status = "Open";
+                            return [4 /*yield*/, vm.save()];
+                        case 4:
+                            _a.sent();
+                            return [2 /*return*/];
+                    }
+                });
             });
-        });
-    };
-    WindowTests.prototype.taskList = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var vm, task;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        vm = this.app.get(TaskListViewModel_1.TaskListViewModel);
-                        return [4 /*yield*/, vm.waitForReady()];
-                    case 1:
-                        _a.sent();
-                        // tslint:disable-next-line:no-debugger
-                        debugger;
-                        // we will not execute methods of view model here...
-                        // instead we will only return expected return value
-                        // unit test of View Model of Window should verify all
-                        // individual tasks
-                        this.navigationService
-                            .expectWindow("NewTaskWindow", function (vm2) {
-                            var t = new task_1.Task();
-                            t.label = "New Task";
-                            t.status = "Open";
-                            return t;
-                        });
-                        return [4 /*yield*/, vm.addTask()];
-                    case 2:
-                        _a.sent();
-                        task = vm.list[1];
-                        Assert_1.Assert.equals("New Task", task.label);
-                        Assert_1.Assert.equals("Open", task.status);
-                        return [2 /*return*/];
-                }
+        };
+        WindowTests.prototype.taskList = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var vm, task;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            vm = this.app.get(TaskListViewModel_1.TaskListViewModel);
+                            return [4 /*yield*/, vm.waitForReady()];
+                        case 1:
+                            _a.sent();
+                            // tslint:disable-next-line:no-debugger
+                            debugger;
+                            // we will not execute methods of view model here...
+                            // instead we will only return expected return value
+                            // unit test of View Model of Window should verify all
+                            // individual tasks
+                            this.navigationService
+                                .expectWindow("NewTaskWindow", function (vm2) {
+                                var t = new task_1.Task();
+                                t.label = "New Task";
+                                t.status = "Open";
+                                return t;
+                            });
+                            return [4 /*yield*/, vm.addTask()];
+                        case 2:
+                            _a.sent();
+                            task = vm.list[1];
+                            Assert_1.Assert.equals("New Task", task.label);
+                            Assert_1.Assert.equals("Open", task.status);
+                            return [2 /*return*/];
+                    }
+                });
             });
-        });
-    };
-    __decorate([
-        Test_1.Test("New Task"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], WindowTests.prototype, "newTask", null);
-    __decorate([
-        Test_1.Test("Task List new Window"),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], WindowTests.prototype, "taskList", null);
-    WindowTests = __decorate([
-        Category_1.Category("Window Tests")
-    ], WindowTests);
-    return WindowTests;
-}(BaseTest_1.BaseTest));
+        };
+        __decorate([
+            Test_1.Test("New Task"),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", []),
+            __metadata("design:returntype", Promise)
+        ], WindowTests.prototype, "newTask", null);
+        __decorate([
+            Test_1.Test("Task List new Window"),
+            __metadata("design:type", Function),
+            __metadata("design:paramtypes", []),
+            __metadata("design:returntype", Promise)
+        ], WindowTests.prototype, "taskList", null);
+        WindowTests = __decorate([
+            Category_1.Category("Window Tests")
+        ], WindowTests);
+        return WindowTests;
+    }(BaseTest_1.BaseTest));
+});
 //# sourceMappingURL=NewTaskWindowTest.js.map
