@@ -4,8 +4,13 @@
 
         export class AddIcon {
 
+            private static mContentUrl: string = null;
             private static get contentUrl(): string {
-                return "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjog"+
+                if (AddIcon.mContentUrl) {
+                    return AddIcon.mContentUrl;
+                }
+                return AddIcon.mContentUrl =
+                    "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjog"+
 		"QWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjog"+
 		"Ni4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4"+
 		"bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0i"+
@@ -16,10 +21,7 @@
 		"MTMuOTgxYzcuNzI1LDAsMTMuOTgzLTYuMjYsMTMuOTgzLTEzLjk4MSAgICBDMjcuOTYzLDYuMjYsMjEu"+
 		"NzA1LDAsMTMuOTgsMHogTTIxLjEwMiwxNi4wNTloLTQuOTM5djUuMDQyaC00LjI5OXYtNS4wNDJINi44"+
 		"NjJWMTEuNzZoNS4wMDF2LTQuOWg0LjI5OXY0LjloNC45Mzl2NC4yOTlIMjEuMTAyeiAgICAiIGZpbGw9"+
-		"IiNEODAwMjciLz4KCTwvZz4KCTxnIGlkPSJDYXBhXzFfOV8iPgoJPC9nPgo8L2c+CjxnPgo8L2c+Cjxn"+
-		"Pgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+"+
-		"CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8"+
-		"L2c+Cjwvc3ZnPgo=";
+		"IiNEODAwMjciLz4KCTwvZz4KCTxnIGlkPSJDYXBhXzFfOV8iPgoJPC9nPgo8L2c+Cjwvc3ZnPgo=";
             }
 
             public static get url(): string {
