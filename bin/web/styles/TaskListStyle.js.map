@@ -1,0 +1,1 @@
+{"version":3,"file":"TaskListStyle.js","sourceRoot":"","sources":["../../../src/web/styles/TaskListStyle.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;IAAA,qEAAoE;IAGpE;QAAmC,iCAAS;QAA5C;YAAA,qEAKC;YAJmB,gBAAU,GAAmB,KAAI,CAAC,WAAW,CAAC,QAAQ,EAAE;gBACpE,UAAU,EAAE,MAAM;gBAClB,KAAK,EAAE,OAAO;aACjB,CAAC,CAAC;;QACP,CAAC;QAAD,oBAAC;IAAD,CAAC,AALD,CAAmC,qBAAS,GAK3C;IALY,sCAAa"}

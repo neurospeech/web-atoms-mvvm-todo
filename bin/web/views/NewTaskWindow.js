@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomWindow_1 = require("web-atoms-core/bin/web/controls/AtomWindow");
     var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
     var TaskEditorViewModel_1 = require("../../view-models/TaskEditorViewModel");
@@ -31,6 +30,7 @@ var __extends = (this && this.__extends) || (function () {
         }
         NewTaskWindow.prototype.create = function () {
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n    ");
             this.element.appendChild(e1);
@@ -39,11 +39,13 @@ var __extends = (this && this.__extends) || (function () {
             var e3 = document.createTextNode("\r\n");
             this.element.appendChild(e3);
             this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
-            this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
+            this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; }, __creator);
             this.setPrimitiveValue(this.element, "width", "400px");
             this.setPrimitiveValue(this.element, "height", "400px");
             this.windowTemplate = NewTaskWindow_windowTemplate_1;
+            NewTaskWindow_windowTemplate_1.__creator = this;
             this.commandTemplate = NewTaskWindow_commandTemplate_2;
+            NewTaskWindow_commandTemplate_2.__creator = this;
         };
         return NewTaskWindow;
     }(AtomWindow_1.AtomWindow));
@@ -55,6 +57,7 @@ var __extends = (this && this.__extends) || (function () {
         }
         NewTaskWindow_windowTemplate_1.prototype.create = function () {
             _super.prototype.create.call(this);
+            var __creator = NewTaskWindow_windowTemplate_1.__creator;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n        \r\n        ");
             this.element.appendChild(e1);
@@ -73,6 +76,7 @@ var __extends = (this && this.__extends) || (function () {
         NewTaskWindow_commandTemplate_2.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = NewTaskWindow_commandTemplate_2.__creator;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n        ");
             this.element.appendChild(e1);

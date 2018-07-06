@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomWindow} from "web-atoms-core/bin/web/controls/AtomWindow";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
@@ -8,8 +9,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class NewTaskWindow extends AtomWindow {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("div");
             
@@ -28,7 +37,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
             
                 this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskEditorViewModel) );
 
-            this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task');
+            this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task', __creator);
 
         this.setPrimitiveValue(this.element, "width", "400px" );
         
@@ -37,9 +46,11 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
 
         this.windowTemplate = NewTaskWindow_windowTemplate_1;
+        NewTaskWindow_windowTemplate_1.__creator = this;
             
 
         this.commandTemplate = NewTaskWindow_commandTemplate_2;
+        NewTaskWindow_commandTemplate_2.__creator = this;
             
         }
     }
@@ -47,8 +58,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
     
      class NewTaskWindow_windowTemplate_1 extends AtomControl {
 
+        
+
+        public static __creator: any;
+
         public create(): void {
             super.create();
+
+            const __creator = NewTaskWindow_windowTemplate_1.__creator;
+
+            
 
             this.element = document.createElement("div");
             
@@ -77,8 +96,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
      class NewTaskWindow_commandTemplate_2 extends AtomControl {
 
+        
+
+        public static __creator: any;
+
         public create(): void {
             super.create();
+
+            const __creator = NewTaskWindow_commandTemplate_2.__creator;
+
+            
 
             this.element = document.createElement("div");
             

@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomGridSplitter} from "web-atoms-core/bin/web/controls/AtomGridSplitter";
 import {AtomListBox} from "web-atoms-core/bin/web/controls/AtomListBox";
 import {AtomGridView} from "web-atoms-core/bin/web/controls/AtomGridView";
@@ -11,8 +12,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class TaskListView extends AtomGridView {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("div");
             
@@ -87,9 +96,10 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
             e10.runAfterInit( () =>
             e10.setLocalValue(e10.element, "items", (this.viewModel.list)) );
 
-            e10.bind(e10.element, "selectedItem",  [["viewModel","selectedTask"]], true );
+            e10.bind(e10.element, "selectedItem",  [["viewModel","selectedTask"]], true  );
 
         e10.itemTemplate = TaskListView_itemTemplate_1;
+        TaskListView_itemTemplate_1.__creator = this;
             
             this.append(e10);
 
@@ -110,7 +120,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
                 e14.setPrimitiveValue(e14.element, "viewModel",  this.resolve(TaskEditorViewModel) );
 
-            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none');
+            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none', __creator);
             this.append(e14);
 
 
@@ -134,8 +144,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
     
      class TaskListView_itemTemplate_1 extends AtomControl {
 
+        
+
+        public static __creator: any;
+
         public create(): void {
             super.create();
+
+            const __creator = TaskListView_itemTemplate_1.__creator;
+
+            
 
             this.element = document.createElement("div");
             
@@ -160,6 +178,8 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e4);
         
+            this.bind(e4, "styleClass",  [["this","controlStyle","saveButton"]], false , (v1) => (v1), __creator);
+
             this.runAfterInit( () =>
             this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).deleteTask((this.data))) );
         

@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
 
     import { ConfigService } from "../../services/ConfigService";
@@ -6,8 +7,16 @@ import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
 
     export class TaskStatusCombo extends AtomComboBox {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("select");
             

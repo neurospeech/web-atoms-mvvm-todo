@@ -20,7 +20,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/di/RegisterSingleton", "web-atoms-core/bin/web/styles/AtomTheme", "../views/TaskEditor", "./TaskEditorStyle"], factory);
+        define(["require", "exports", "web-atoms-core/bin/di/RegisterSingleton", "web-atoms-core/bin/web/styles/AtomTheme", "../views/TaskEditor", "../views/TaskListView", "./TaskEditorStyle", "./TaskListStyle"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -28,12 +28,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     var RegisterSingleton_1 = require("web-atoms-core/bin/di/RegisterSingleton");
     var AtomTheme_1 = require("web-atoms-core/bin/web/styles/AtomTheme");
     var TaskEditor_1 = require("../views/TaskEditor");
+    var TaskListView_1 = require("../views/TaskListView");
     var TaskEditorStyle_1 = require("./TaskEditorStyle");
+    var TaskListStyle_1 = require("./TaskListStyle");
     var AppTheme = /** @class */ (function (_super) {
         __extends(AppTheme, _super);
         function AppTheme() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
             _this.taskEditor = _this.createStyle(TaskEditor_1.TaskEditor, TaskEditorStyle_1.TaskEditorStyle, "editor");
+            _this.taskList = _this.createStyle(TaskListView_1.TaskListView, TaskListStyle_1.TaskListStyle, "list");
             return _this;
         }
         AppTheme = __decorate([

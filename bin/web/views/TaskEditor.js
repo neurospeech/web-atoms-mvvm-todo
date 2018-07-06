@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
     var TaskStatusCombo_1 = require("./TaskStatusCombo");
     var TaskEditor = /** @class */ (function (_super) {
@@ -30,19 +29,20 @@ var __extends = (this && this.__extends) || (function () {
         TaskEditor.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e1);
             var e2 = document.createElement("input");
             this.append(e2);
             this.setPrimitiveValue(e2, "type", "text");
-            this.bind(e2, "value", [["viewModel", "task", "label"]], true);
+            this.bind(e2, "value", [["viewModel", "task", "label"]], ["change", "keyup", "keydown", "blur"]);
             this.setPrimitiveValue(e2, "autofocus", "autofocus");
             var e3 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e3);
             var e4 = document.createElement("span");
             this.append(e4);
-            this.bind(e4, "text", [["viewModel", "errorLabel"]], false, function (v1) { return (v1); });
+            this.bind(e4, "text", [["viewModel", "errorLabel"]], false, function (v1) { return (v1); }, __creator);
             var e5 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
             this.element.appendChild(e5);
             var e6 = document.createElement("undefined");
@@ -56,7 +56,7 @@ var __extends = (this && this.__extends) || (function () {
             this.element.appendChild(e9);
             var e10 = document.createElement("span");
             this.append(e10);
-            this.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); });
+            this.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); }, __creator);
             var e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
             this.element.appendChild(e11);
             var e12 = document.createElement("textarea");
@@ -72,7 +72,7 @@ var __extends = (this && this.__extends) || (function () {
             e14.appendChild(e15);
             var e16 = document.createElement("span");
             e14.appendChild(e16);
-            this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); });
+            this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); }, __creator);
             var e17 = document.createTextNode("\r\n\t\t\t");
             e14.appendChild(e17);
             var e18 = document.createElement("button");

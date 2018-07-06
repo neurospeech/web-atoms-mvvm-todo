@@ -33,6 +33,7 @@
             <span atom-text="{$data.label}"></span>
 
             <button
+                style-class="[$this.controlStyle.saveButton]"
                 event-click="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>
     </div>

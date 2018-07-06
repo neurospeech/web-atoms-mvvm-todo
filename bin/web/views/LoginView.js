@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
     var LoginViewModel_1 = require("../../view-models/LoginViewModel");
     var LoginView = /** @class */ (function (_super) {
@@ -30,6 +29,7 @@ var __extends = (this && this.__extends) || (function () {
         LoginView.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\t");
             this.element.appendChild(e1);

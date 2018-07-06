@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import {LoginViewModel} from "../../view-models/LoginViewModel";
@@ -6,8 +7,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class LoginView extends AtomControl {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("div");
             
@@ -36,7 +45,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e5, "label", "Username:" );
         
 
-            this.bind(e5, "value",  [["viewModel","username"]], true );
+            this.bind(e5, "value",  [["viewModel","username"]], true  );
         
 
         const e6 = document.createTextNode("\r\n\t");
@@ -63,7 +72,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e10, "label", "Password:" );
         
 
-            this.bind(e10, "value",  [["viewModel","password"]], true );
+            this.bind(e10, "value",  [["viewModel","password"]], true  );
 
         this.setPrimitiveValue(e10, "type", "password" );
         

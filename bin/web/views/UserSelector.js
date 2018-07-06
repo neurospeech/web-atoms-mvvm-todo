@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomItemsControl_1 = require("web-atoms-core/bin/web/controls/AtomItemsControl");
     var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
     var UserSelectorViewModel_1 = require("../../view-models/UserSelectorViewModel");
@@ -30,6 +29,7 @@ var __extends = (this && this.__extends) || (function () {
         }
         UserSelector.prototype.create = function () {
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\t");
             this.element.appendChild(e1);
@@ -41,7 +41,7 @@ var __extends = (this && this.__extends) || (function () {
             var e4 = document.createElement("input");
             e2.appendChild(e4);
             this.setPrimitiveValue(e4, "autofocus", "autofocus");
-            this.bind(e4, "value", [["viewModel", "searchText"]], true);
+            this.bind(e4, "value", [["viewModel", "searchText"]], ["change", "keyup", "keydown", "blur"]);
             var e5 = document.createTextNode("\r\n\r\n\t\t");
             e2.appendChild(e5);
             var e6 = new AtomItemsControl_1.AtomItemsControl(this.app, document.createElement("div"));
@@ -50,8 +50,9 @@ var __extends = (this && this.__extends) || (function () {
             var e8 = document.createTextNode("\r\n\t\t");
             e6.element.appendChild(e8);
             e6.setPrimitiveValue(e6.element, "style", "padding:5px");
-            e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
+            e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); }, __creator);
             e6.itemTemplate = UserSelector_itemTemplate_1;
+            UserSelector_itemTemplate_1.__creator = this;
             this.append(e6);
             var e9 = document.createTextNode("\r\n\t");
             e2.appendChild(e9);
@@ -70,6 +71,7 @@ var __extends = (this && this.__extends) || (function () {
         UserSelector_itemTemplate_1.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = UserSelector_itemTemplate_1.__creator;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\t\t\t\t");
             this.element.appendChild(e1);

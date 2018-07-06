@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomGridSplitter_1 = require("web-atoms-core/bin/web/controls/AtomGridSplitter");
     var AtomListBox_1 = require("web-atoms-core/bin/web/controls/AtomListBox");
     var AtomGridView_1 = require("web-atoms-core/bin/web/controls/AtomGridView");
@@ -35,6 +34,7 @@ var __extends = (this && this.__extends) || (function () {
         TaskListView.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\r\n    ");
             this.element.appendChild(e1);
@@ -72,6 +72,7 @@ var __extends = (this && this.__extends) || (function () {
             });
             e10.bind(e10.element, "selectedItem", [["viewModel", "selectedTask"]], true);
             e10.itemTemplate = TaskListView_itemTemplate_1;
+            TaskListView_itemTemplate_1.__creator = this;
             this.append(e10);
             var e13 = document.createTextNode("\r\n\r\n    ");
             this.element.appendChild(e13);
@@ -80,7 +81,7 @@ var __extends = (this && this.__extends) || (function () {
             e14.element.appendChild(e15);
             e14.setPrimitiveValue(e14.element, "cell", "2,1");
             e14.setPrimitiveValue(e14.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
-            e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; });
+            e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; }, __creator);
             this.append(e14);
             var e16 = document.createTextNode("\r\n\r\n");
             this.element.appendChild(e16);
@@ -100,6 +101,7 @@ var __extends = (this && this.__extends) || (function () {
         TaskListView_itemTemplate_1.prototype.create = function () {
             var _this = this;
             _super.prototype.create.call(this);
+            var __creator = TaskListView_itemTemplate_1.__creator;
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n\r\n            ");
             this.element.appendChild(e1);
@@ -112,6 +114,7 @@ var __extends = (this && this.__extends) || (function () {
             this.element.appendChild(e3);
             var e4 = document.createElement("button");
             this.append(e4);
+            this.bind(e4, "styleClass", [["this", "controlStyle", "saveButton"]], false, function (v1) { return (v1); }, __creator);
             this.runAfterInit(function () {
                 return _this.setLocalValue(e4, "eventClick", function () { return (_this.viewModel).deleteTask((_this.data)); });
             });

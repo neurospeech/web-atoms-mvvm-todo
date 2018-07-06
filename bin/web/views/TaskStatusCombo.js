@@ -19,7 +19,6 @@ var __extends = (this && this.__extends) || (function () {
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
     var AtomComboBox_1 = require("web-atoms-core/bin/web/controls/AtomComboBox");
     var ConfigService_1 = require("../../services/ConfigService");
     var TaskStatusCombo = /** @class */ (function (_super) {
@@ -29,6 +28,7 @@ var __extends = (this && this.__extends) || (function () {
         }
         TaskStatusCombo.prototype.create = function () {
             _super.prototype.create.call(this);
+            var __creator = this;
             this.element = document.createElement("select");
             var e1 = document.createTextNode("\r\n");
             this.element.appendChild(e1);

@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomItemsControl} from "web-atoms-core/bin/web/controls/AtomItemsControl";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
@@ -7,8 +8,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class UserSelector extends AtomControl {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("div");
             
@@ -35,7 +44,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e4, "autofocus", "autofocus" );
         
 
-            this.bind(e4, "value",  [["viewModel","searchText"]], true );
+            this.bind(e4, "value",  [["viewModel","searchText"]], ["change", "keyup", "keydown", "blur"]  );
         
 
         const e5 = document.createTextNode("\r\n\r\n\t\t");
@@ -56,9 +65,10 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         e6.setPrimitiveValue(e6.element, "style", "padding:5px" );
         
 
-            e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1));
+            e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1), __creator);
 
         e6.itemTemplate = UserSelector_itemTemplate_1;
+        UserSelector_itemTemplate_1.__creator = this;
             
             this.append(e6);
 
@@ -78,8 +88,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
     
      class UserSelector_itemTemplate_1 extends AtomControl {
 
+        
+
+        public static __creator: any;
+
         public create(): void {
             super.create();
+
+            const __creator = UserSelector_itemTemplate_1.__creator;
+
+            
 
             this.element = document.createElement("div");
             

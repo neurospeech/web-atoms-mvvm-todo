@@ -1,4 +1,5 @@
 // tslint:disable
+import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
 	import { TaskStatusCombo } from "./TaskStatusCombo";
@@ -6,8 +7,16 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     export class TaskEditor extends AtomControl {
 
+        
+
+        
+
         public create(): void {
             super.create();
+
+            const __creator = this;
+
+            
 
             this.element = document.createElement("div");
             
@@ -23,7 +32,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e2, "type", "text" );
         
 
-            this.bind(e2, "value",  [["viewModel","task","label"]], true );
+            this.bind(e2, "value",  [["viewModel","task","label"]], ["change", "keyup", "keydown", "blur"]  );
 
         this.setPrimitiveValue(e2, "autofocus", "autofocus" );
         
@@ -37,7 +46,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e4);
         
-            this.bind(e4, "text",  [["viewModel","errorLabel"]], false , (v1) => (v1));
+            this.bind(e4, "text",  [["viewModel","errorLabel"]], false , (v1) => (v1), __creator);
         
 
         const e5 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
@@ -58,7 +67,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
             
             
             
-            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true );
+            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true  );
             this.append(e8);
 
 
@@ -70,7 +79,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e10);
         
-            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1));
+            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1), __creator);
         
 
         const e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
@@ -87,7 +96,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e12, "rows", "10" );
         
 
-            this.bind(e12, "value",  [["viewModel","task","description"]], true );
+            this.bind(e12, "value",  [["viewModel","task","description"]], true  );
         
 
         const e13 = document.createTextNode("\r\n\r\n\t\t");
@@ -107,7 +116,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e14.appendChild(e16);
         
-            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1));
+            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1), __creator);
         
 
         const e17 = document.createTextNode("\r\n\t\t\t");
