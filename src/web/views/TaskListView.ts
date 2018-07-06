@@ -45,6 +45,8 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e2.appendChild(e4);
         
+            this.bind(e4, "styleClass",  [["this","controlStyle","addButton"]], false , (v1) => (v1), __creator);
+
             this.runAfterInit( () =>
             this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).addTask()) );
         

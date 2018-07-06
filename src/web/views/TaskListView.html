@@ -15,7 +15,7 @@
     atom-view-model="{ this.resolve(TaskListViewModel) }">
 
     <header cell="0:3,0">
-        <button atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
+        <button style-class="[$this.controlStyle.addButton]" atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
     </header>
 
     <div atom-type="AtomGridSplitter" cell="1,1" direction="vertical"></div>

@@ -45,6 +45,7 @@ var __extends = (this && this.__extends) || (function () {
             e2.appendChild(e3);
             var e4 = document.createElement("button");
             e2.appendChild(e4);
+            this.bind(e4, "styleClass", [["this", "controlStyle", "addButton"]], false, function (v1) { return (v1); }, __creator);
             this.runAfterInit(function () {
                 return _this.setLocalValue(e4, "eventClick", function () { return (_this.viewModel).addTask(); });
             });
