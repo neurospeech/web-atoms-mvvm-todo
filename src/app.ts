@@ -1,7 +1,5 @@
 import { Atom } from "web-atoms-core/bin/Atom";
 import { JsonService } from "web-atoms-core/bin/services/JsonService";
-import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import { AtomTheme } from "web-atoms-core/bin/web/styles/AtomTheme";
 import { WebApp } from "web-atoms-core/bin/web/WebApp";
 import { ConfigService } from "./services/ConfigService";
 import { MockConfigService } from "./services/MockConfigService";
@@ -15,8 +13,6 @@ export class SampleApp extends WebApp {
     public main(): void {
 
         Atom.designMode = true;
-
-        const windowService = this.resolve(NavigationService);
 
         if (Atom.designMode) {
             this.put(ConfigService, new MockConfigService(this.resolve(JsonService)));

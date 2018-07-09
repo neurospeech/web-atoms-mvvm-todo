@@ -14,14 +14,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/Atom", "web-atoms-core/bin/services/JsonService", "web-atoms-core/bin/services/NavigationService", "web-atoms-core/bin/web/WebApp", "./services/ConfigService", "./services/MockConfigService", "./services/MockTaskListService", "./services/TaskListService", "./web/styles/AppTheme", "./web/views/AppFrame"], factory);
+        define(["require", "exports", "web-atoms-core/bin/Atom", "web-atoms-core/bin/services/JsonService", "web-atoms-core/bin/web/WebApp", "./services/ConfigService", "./services/MockConfigService", "./services/MockTaskListService", "./services/TaskListService", "./web/styles/AppTheme", "./web/views/AppFrame"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var Atom_1 = require("web-atoms-core/bin/Atom");
     var JsonService_1 = require("web-atoms-core/bin/services/JsonService");
-    var NavigationService_1 = require("web-atoms-core/bin/services/NavigationService");
     var WebApp_1 = require("web-atoms-core/bin/web/WebApp");
     var ConfigService_1 = require("./services/ConfigService");
     var MockConfigService_1 = require("./services/MockConfigService");
@@ -36,7 +35,6 @@ var __extends = (this && this.__extends) || (function () {
         }
         SampleApp.prototype.main = function () {
             Atom_1.Atom.designMode = true;
-            var windowService = this.resolve(NavigationService_1.NavigationService);
             if (Atom_1.Atom.designMode) {
                 this.put(ConfigService_1.ConfigService, new MockConfigService_1.MockConfigService(this.resolve(JsonService_1.JsonService)));
                 this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService(this.resolve(JsonService_1.JsonService)));
