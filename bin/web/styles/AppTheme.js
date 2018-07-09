@@ -35,8 +35,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
         __extends(AppTheme, _super);
         function AppTheme() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.taskEditor = _this.createStyle(TaskEditor_1.TaskEditor, TaskEditorStyle_1.TaskEditorStyle, "editor");
-            _this.taskList = _this.createStyle(TaskListView_1.TaskListView, TaskListStyle_1.TaskListStyle, "list");
+            _this.taskEditor = _this.createStyle(TaskEditor_1.default, TaskEditorStyle_1.TaskEditorStyle, "editor");
+            _this.taskList = _this.createStyle(TaskListView_1.default, TaskListStyle_1.TaskListStyle, "list");
             return _this;
         }
         AppTheme = __decorate([

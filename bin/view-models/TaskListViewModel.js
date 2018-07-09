@@ -35,8 +35,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -61,7 +61,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/App", "web-atoms-core/bin/core/AtomList", "web-atoms-core/bin/core/BindableProperty", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/NavigationService", "web-atoms-core/bin/view-model/AtomViewModel", "../channels", "../models/task", "../services/TaskListService"], factory);
+        define(["require", "exports", "web-atoms-core/bin/App", "web-atoms-core/bin/core/AtomList", "web-atoms-core/bin/core/BindableProperty", "web-atoms-core/bin/di/Inject", "web-atoms-core/bin/services/NavigationService", "web-atoms-core/bin/view-model/AtomViewModel", "../channels", "../models/task", "../ModuleFiles", "../services/TaskListService"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -74,6 +74,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
     var channels_1 = require("../channels");
     var task_1 = require("../models/task");
+    var ModuleFiles_1 = require("../ModuleFiles");
     var TaskListService_1 = require("../services/TaskListService");
     var TaskListViewModel = /** @class */ (function (_super) {
         __extends(TaskListViewModel, _super);
@@ -125,7 +126,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openPage("NewTaskWindow")];
+                            return [4 /*yield*/, this.windowService.openPage(ModuleFiles_1.ModuleFiles.files.views.NewTaskWindow)];
                         case 1:
                             task = _a.sent();
                             return [4 /*yield*/, this.taskService.create(task)];

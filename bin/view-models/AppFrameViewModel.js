@@ -23,17 +23,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/view-model/AtomViewModel"], factory);
+        define(["require", "exports", "web-atoms-core/bin/view-model/AtomViewModel", "../ModuleFiles"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+    var ModuleFiles_1 = require("../ModuleFiles");
     var AppFrameViewModel = /** @class */ (function (_super) {
         __extends(AppFrameViewModel, _super);
         function AppFrameViewModel() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.url = "LoginView";
+            _this.url = ModuleFiles_1.ModuleFiles.files.views.LoginView;
             return _this;
         }
         __decorate([

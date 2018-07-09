@@ -7,7 +7,7 @@ import { AtomWindowViewModel } from "web-atoms-core/bin/view-model/AtomWindowVie
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
-import { UserSelectorViewModel } from "./UserSelectorViewModel";
+import { ModuleFiles } from "../ModuleFiles";
 
 export class TaskEditorViewModel extends AtomWindowViewModel {
 
@@ -49,7 +49,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        this.user = await this.windowService.openPage<IUser>("UserSelector");
+        this.user = await this.windowService.openPage<IUser>(ModuleFiles.files.views.UserSelector);
     }
 
     // @receive(Channels.SelectedTaskChanged)

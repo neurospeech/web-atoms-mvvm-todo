@@ -14,13 +14,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomStyle", "../images/AddIcon"], factory);
+        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomStyle", "../../images/AddIcon"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AtomStyle_1 = require("web-atoms-core/bin/web/styles/AtomStyle");
-    var AddIcon_1 = require("../images/AddIcon");
+    var AddIcon_1 = require("../../images/AddIcon");
     var TaskListStyle = /** @class */ (function (_super) {
         __extends(TaskListStyle, _super);
         function TaskListStyle() {

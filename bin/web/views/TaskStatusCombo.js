@@ -36,6 +36,6 @@ var __extends = (this && this.__extends) || (function () {
         };
         return TaskStatusCombo;
     }(AtomComboBox_1.AtomComboBox));
-    exports.TaskStatusCombo = TaskStatusCombo;
+    exports.default = TaskStatusCombo;
 });
 //# sourceMappingURL=TaskStatusCombo.js.map

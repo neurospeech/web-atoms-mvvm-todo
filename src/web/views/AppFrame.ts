@@ -5,7 +5,7 @@ import {AtomPageView} from "web-atoms-core/bin/web/controls/AtomPageView";
     import {AppFrameViewModel} from "../../view-models/AppFrameViewModel";
 
 
-    export class AppFrame extends AtomPageView {
+    export default  class AppFrame extends AtomPageView {
 
         
 
@@ -27,7 +27,7 @@ import {AtomPageView} from "web-atoms-core/bin/web/controls/AtomPageView";
             
                 this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel));
 
-            this.bind(this.element, "url",  [["localViewModel","url"]], false , (v1) => (v1), __creator);
+            this.bind(this.element, "url",  [["localViewModel","url"]], false , (v1) => (v1) );
         }
     }
 

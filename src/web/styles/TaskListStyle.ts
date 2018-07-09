@@ -1,6 +1,6 @@
 import { AtomStyle } from "web-atoms-core/bin/web/styles/AtomStyle";
 import { AtomStyleClass } from "web-atoms-core/bin/web/styles/AtomStyleClass";
-import { AddIcon } from "../images/AddIcon";
+import { AddIcon } from "../../images/AddIcon";
 
 export class TaskListStyle extends AtomStyle {
 

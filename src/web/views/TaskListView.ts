@@ -7,10 +7,10 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import { TaskListViewModel } from "../../view-models/TaskListViewModel";
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
-    import { TaskEditor } from "./TaskEditor";
+    import TaskEditor from "./TaskEditor";
 
 
-    export class TaskListView extends AtomGridView {
+    export default  class TaskListView extends AtomGridView {
 
         
 
@@ -45,7 +45,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e2.appendChild(e4);
         
-            this.bind(e4, "styleClass",  [["this","controlStyle","addButton"]], false , (v1) => (v1), __creator);
+            this.bind(e4, "styleClass",  [["this","controlStyle","addButton"]], false , (v1) => (v1) , __creator);
 
             this.runAfterInit( () =>
             this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).addTask()) );
@@ -122,7 +122,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
                 e14.setPrimitiveValue(e14.element, "viewModel",  this.resolve(TaskEditorViewModel) );
 
-            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none', __creator);
+            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none' );
             this.append(e14);
 
 
@@ -180,7 +180,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e4);
         
-            this.bind(e4, "styleClass",  [["this","controlStyle","saveButton"]], false , (v1) => (v1), __creator);
+            this.bind(e4, "styleClass",  [["this","controlStyle","saveButton"]], false , (v1) => (v1) , __creator);
 
             this.runAfterInit( () =>
             this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).deleteTask((this.data))) );

@@ -71,6 +71,6 @@ var __extends = (this && this.__extends) || (function () {
         };
         return LoginView;
     }(AtomControl_1.AtomControl));
-    exports.LoginView = LoginView;
+    exports.default = LoginView;
 });
 //# sourceMappingURL=LoginView.js.map

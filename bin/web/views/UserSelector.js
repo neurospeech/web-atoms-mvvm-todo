@@ -50,7 +50,7 @@ var __extends = (this && this.__extends) || (function () {
             var e8 = document.createTextNode("\r\n\t\t");
             e6.element.appendChild(e8);
             e6.setPrimitiveValue(e6.element, "style", "padding:5px");
-            e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); }, __creator);
+            e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
             e6.itemTemplate = UserSelector_itemTemplate_1;
             UserSelector_itemTemplate_1.__creator = this;
             this.append(e6);
@@ -62,7 +62,7 @@ var __extends = (this && this.__extends) || (function () {
         };
         return UserSelector;
     }(AtomControl_1.AtomControl));
-    exports.UserSelector = UserSelector;
+    exports.default = UserSelector;
     var UserSelector_itemTemplate_1 = /** @class */ (function (_super) {
         __extends(UserSelector_itemTemplate_1, _super);
         function UserSelector_itemTemplate_1() {

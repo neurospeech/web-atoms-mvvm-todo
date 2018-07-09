@@ -5,7 +5,7 @@ import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
     import { ConfigService } from "../../services/ConfigService";
 
 
-    export class TaskStatusCombo extends AtomComboBox {
+    export default  class TaskStatusCombo extends AtomComboBox {
 
         
 

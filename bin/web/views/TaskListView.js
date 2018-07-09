@@ -77,12 +77,12 @@ var __extends = (this && this.__extends) || (function () {
             this.append(e10);
             var e13 = document.createTextNode("\r\n\r\n    ");
             this.element.appendChild(e13);
-            var e14 = new TaskEditor_1.TaskEditor(this.app, document.createElement("section"));
+            var e14 = new TaskEditor_1.default(this.app, document.createElement("section"));
             var e15 = document.createTextNode("\r\n \r\n    ");
             e14.element.appendChild(e15);
             e14.setPrimitiveValue(e14.element, "cell", "2,1");
             e14.setPrimitiveValue(e14.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
-            e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; }, __creator);
+            e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; });
             this.append(e14);
             var e16 = document.createTextNode("\r\n\r\n");
             this.element.appendChild(e16);
@@ -93,7 +93,7 @@ var __extends = (this && this.__extends) || (function () {
         };
         return TaskListView;
     }(AtomGridView_1.AtomGridView));
-    exports.TaskListView = TaskListView;
+    exports.default = TaskListView;
     var TaskListView_itemTemplate_1 = /** @class */ (function (_super) {
         __extends(TaskListView_itemTemplate_1, _super);
         function TaskListView_itemTemplate_1() {

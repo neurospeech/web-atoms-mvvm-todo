@@ -5,7 +5,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
     import {LoginViewModel} from "../../view-models/LoginViewModel";
 
 
-    export class LoginView extends AtomControl {
+    export default  class LoginView extends AtomControl {
 
         
 

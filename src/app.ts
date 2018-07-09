@@ -8,11 +8,7 @@ import { MockConfigService } from "./services/MockConfigService";
 import { MockTaskListService } from "./services/MockTaskListService";
 import { TaskListService } from "./services/TaskListService";
 import { AppTheme } from "./web/styles/AppTheme";
-import { AppFrame } from "./web/views/AppFrame";
-import { LoginView } from "./web/views/LoginView";
-import { NewTaskWindow } from "./web/views/NewTaskWindow";
-import { TaskListView } from "./web/views/TaskListView";
-import { UserSelector } from "./web/views/UserSelector";
+import AppFrame from "./web/views/AppFrame";
 
 export class SampleApp extends WebApp {
 
@@ -21,11 +17,6 @@ export class SampleApp extends WebApp {
         Atom.designMode = true;
 
         const windowService = this.resolve(NavigationService);
-
-        windowService.register("NewTaskWindow", NewTaskWindow);
-        windowService.register("LoginView", LoginView);
-        windowService.register("TaskListView", TaskListView);
-        windowService.register("UserSelector", UserSelector);
 
         if (Atom.designMode) {
             this.put(ConfigService, new MockConfigService(this.resolve(JsonService)));

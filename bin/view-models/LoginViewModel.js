@@ -23,13 +23,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/core/BindableProperty", "web-atoms-core/bin/view-model/AtomViewModel"], factory);
+        define(["require", "exports", "web-atoms-core/bin/core/BindableProperty", "web-atoms-core/bin/view-model/AtomViewModel", "../ModuleFiles"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var BindableProperty_1 = require("web-atoms-core/bin/core/BindableProperty");
     var AtomViewModel_1 = require("web-atoms-core/bin/view-model/AtomViewModel");
+    var ModuleFiles_1 = require("../ModuleFiles");
     var LoginViewModel = /** @class */ (function (_super) {
         __extends(LoginViewModel, _super);
         function LoginViewModel() {
@@ -39,7 +40,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             return _this;
         }
         LoginViewModel.prototype.login = function () {
-            this.broadcast("app-url", "TaskListView");
+            this.broadcast("app-url", ModuleFiles_1.ModuleFiles.files.views.TaskListView);
         };
         __decorate([
             BindableProperty_1.BindableProperty,

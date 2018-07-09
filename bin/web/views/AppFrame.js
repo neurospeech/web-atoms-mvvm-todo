@@ -33,10 +33,10 @@ var __extends = (this && this.__extends) || (function () {
             var e1 = document.createTextNode("\r\n");
             this.element.appendChild(e1);
             this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
-            this.bind(this.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); }, __creator);
+            this.bind(this.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
         };
         return AppFrame;
     }(AtomPageView_1.AtomPageView));
-    exports.AppFrame = AppFrame;
+    exports.default = AppFrame;
 });
 //# sourceMappingURL=AppFrame.js.map

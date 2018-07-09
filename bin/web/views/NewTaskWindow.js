@@ -39,7 +39,7 @@ var __extends = (this && this.__extends) || (function () {
             var e3 = document.createTextNode("\r\n");
             this.element.appendChild(e3);
             this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
-            this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; }, __creator);
+            this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
             this.setPrimitiveValue(this.element, "width", "400px");
             this.setPrimitiveValue(this.element, "height", "400px");
             this.windowTemplate = NewTaskWindow_windowTemplate_1;
@@ -49,7 +49,7 @@ var __extends = (this && this.__extends) || (function () {
         };
         return NewTaskWindow;
     }(AtomWindow_1.AtomWindow));
-    exports.NewTaskWindow = NewTaskWindow;
+    exports.default = NewTaskWindow;
     var NewTaskWindow_windowTemplate_1 = /** @class */ (function (_super) {
         __extends(NewTaskWindow_windowTemplate_1, _super);
         function NewTaskWindow_windowTemplate_1() {
@@ -61,7 +61,7 @@ var __extends = (this && this.__extends) || (function () {
             this.element = document.createElement("div");
             var e1 = document.createTextNode("\r\n        \r\n        ");
             this.element.appendChild(e1);
-            var e2 = new TaskEditor_1.TaskEditor(this.app, document.createElement("div"));
+            var e2 = new TaskEditor_1.default(this.app, document.createElement("div"));
             this.append(e2);
             var e3 = document.createTextNode("\r\n\r\n    ");
             this.element.appendChild(e3);

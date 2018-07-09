@@ -42,21 +42,21 @@ var __extends = (this && this.__extends) || (function () {
             this.element.appendChild(e3);
             var e4 = document.createElement("span");
             this.append(e4);
-            this.bind(e4, "text", [["viewModel", "errorLabel"]], false, function (v1) { return (v1); }, __creator);
+            this.bind(e4, "text", [["viewModel", "errorLabel"]], false, function (v1) { return (v1); });
             var e5 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
             this.element.appendChild(e5);
             var e6 = document.createElement("undefined");
             this.append(e6);
             var e7 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e7);
-            var e8 = new TaskStatusCombo_1.TaskStatusCombo(this.app, document.createElement("select"));
+            var e8 = new TaskStatusCombo_1.default(this.app, document.createElement("select"));
             e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
             this.append(e8);
             var e9 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e9);
             var e10 = document.createElement("span");
             this.append(e10);
-            this.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); }, __creator);
+            this.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); });
             var e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
             this.element.appendChild(e11);
             var e12 = document.createElement("textarea");
@@ -72,7 +72,7 @@ var __extends = (this && this.__extends) || (function () {
             e14.appendChild(e15);
             var e16 = document.createElement("span");
             e14.appendChild(e16);
-            this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); }, __creator);
+            this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); });
             var e17 = document.createTextNode("\r\n\t\t\t");
             e14.appendChild(e17);
             var e18 = document.createElement("button");
@@ -108,6 +108,6 @@ var __extends = (this && this.__extends) || (function () {
         };
         return TaskEditor;
     }(AtomControl_1.AtomControl));
-    exports.TaskEditor = TaskEditor;
+    exports.default = TaskEditor;
 });
 //# sourceMappingURL=TaskEditor.js.map

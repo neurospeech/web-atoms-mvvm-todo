@@ -2,10 +2,10 @@
 import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
-	import { TaskStatusCombo } from "./TaskStatusCombo";
+	import TaskStatusCombo from "./TaskStatusCombo";
 
 
-    export class TaskEditor extends AtomControl {
+    export default  class TaskEditor extends AtomControl {
 
         
 
@@ -46,7 +46,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e4);
         
-            this.bind(e4, "text",  [["viewModel","errorLabel"]], false , (v1) => (v1), __creator);
+            this.bind(e4, "text",  [["viewModel","errorLabel"]], false , (v1) => (v1) );
         
 
         const e5 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
@@ -79,7 +79,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e10);
         
-            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1), __creator);
+            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1) );
         
 
         const e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
@@ -116,7 +116,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e14.appendChild(e16);
         
-            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1), __creator);
+            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1) );
         
 
         const e17 = document.createTextNode("\r\n\t\t\t");

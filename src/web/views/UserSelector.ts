@@ -6,7 +6,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 	import {UserSelectorViewModel} from "../../view-models/UserSelectorViewModel";
 
 
-    export class UserSelector extends AtomControl {
+    export default  class UserSelector extends AtomControl {
 
         
 
@@ -65,7 +65,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         e6.setPrimitiveValue(e6.element, "style", "padding:5px" );
         
 
-            e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1), __creator);
+            e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1) );
 
         e6.itemTemplate = UserSelector_itemTemplate_1;
         UserSelector_itemTemplate_1.__creator = this;

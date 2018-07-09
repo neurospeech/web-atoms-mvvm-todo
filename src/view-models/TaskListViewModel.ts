@@ -6,8 +6,8 @@ import { NavigationService } from "web-atoms-core/bin/services/NavigationService
 import { AtomViewModel, BindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
+import { ModuleFiles } from "../ModuleFiles";
 import { TaskListService } from "../services/TaskListService";
-import { TaskEditorViewModel } from "./TaskEditorViewModel";
 
 export class TaskListViewModel extends AtomViewModel {
 
@@ -49,7 +49,7 @@ export class TaskListViewModel extends AtomViewModel {
 
         try {
 
-            let task = await this.windowService.openPage<Task>("NewTaskWindow");
+            let task = await this.windowService.openPage<Task>(ModuleFiles.files.views.NewTaskWindow);
             task = await this.taskService.create(task);
             this.list.add(task);
 

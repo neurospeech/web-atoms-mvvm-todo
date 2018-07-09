@@ -4,10 +4,10 @@ import {AtomWindow} from "web-atoms-core/bin/web/controls/AtomWindow";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import {TaskEditorViewModel} from "../../view-models/TaskEditorViewModel";
-    import {TaskEditor} from "./TaskEditor";
+    import TaskEditor from "./TaskEditor";
 
 
-    export class NewTaskWindow extends AtomWindow {
+    export default  class NewTaskWindow extends AtomWindow {
 
         
 
@@ -37,7 +37,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
             
                 this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskEditorViewModel) );
 
-            this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task', __creator);
+            this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task' );
 
         this.setPrimitiveValue(this.element, "width", "400px" );
         
