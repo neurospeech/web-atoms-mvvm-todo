@@ -49,7 +49,7 @@ export class TaskEditorViewModel extends AtomWindowViewModel {
     }
 
     public async assign(): Promise<any> {
-        this.user = await this.windowService.openPage<IUser>(ModuleFiles.files.views.UserSelector);
+        this.user = await this.windowService.openPage<IUser>(ModuleFiles.views.UserSelector);
     }
 
     // @receive(Channels.SelectedTaskChanged)

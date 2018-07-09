@@ -11,7 +11,7 @@ export class LoginViewModel extends AtomViewModel {
 	public password: string = "demo";
 
 	public login(): void {
-		this.broadcast("app-url", ModuleFiles.files.views.TaskListView);
+		this.broadcast("app-url", ModuleFiles.views.TaskListView);
 	}
 
 }

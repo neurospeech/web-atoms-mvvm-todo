@@ -60,7 +60,7 @@ class WindowTests extends BaseTest {
         // unit test of View Model of Window should verify all
         // individual tasks
         this.navigationService
-            .expectWindow<TaskEditorViewModel>(ModuleFiles.files.views.NewTaskWindow, (vm2) => {
+            .expectWindow<TaskEditorViewModel>(ModuleFiles.views.NewTaskWindow, (vm2) => {
                 const t = new Task();
                 t.label = "New Task";
                 t.status = "Open";

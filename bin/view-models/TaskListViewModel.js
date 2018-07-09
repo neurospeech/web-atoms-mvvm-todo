@@ -126,7 +126,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_a.label) {
                         case 0:
                             _a.trys.push([0, 3, , 4]);
-                            return [4 /*yield*/, this.windowService.openPage(ModuleFiles_1.ModuleFiles.files.views.NewTaskWindow)];
+                            return [4 /*yield*/, this.windowService.openPage(ModuleFiles_1.ModuleFiles.views.NewTaskWindow)];
                         case 1:
                             task = _a.sent();
                             return [4 /*yield*/, this.taskService.create(task)];

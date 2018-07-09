@@ -40,7 +40,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             return _this;
         }
         LoginViewModel.prototype.login = function () {
-            this.broadcast("app-url", ModuleFiles_1.ModuleFiles.files.views.TaskListView);
+            this.broadcast("app-url", ModuleFiles_1.ModuleFiles.views.TaskListView);
         };
         __decorate([
             BindableProperty_1.BindableProperty,

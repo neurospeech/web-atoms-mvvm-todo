@@ -134,7 +134,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                             // unit test of View Model of Window should verify all
                             // individual tasks
                             this.navigationService
-                                .expectWindow(ModuleFiles_1.ModuleFiles.files.views.NewTaskWindow, function (vm2) {
+                                .expectWindow(ModuleFiles_1.ModuleFiles.views.NewTaskWindow, function (vm2) {
                                 var t = new task_1.Task();
                                 t.label = "New Task";
                                 t.status = "Open";

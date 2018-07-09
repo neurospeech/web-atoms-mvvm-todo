@@ -1,8 +1,8 @@
 // tslint:disable
 			declare var UMD: any;
 			UMD = UMD || { resolvePath: (v) => v };
-			export const ModuleFiles = {
-				files: {
+			export const ModuleFiles =
+				{
   "src": {
     "images": {
       "AddIcon_svg": UMD.resolvePath("web-atoms-mvvm-todo/src/images/AddIcon.svg")
@@ -18,4 +18,3 @@
     "UserSelector": "web-atoms-mvvm-todo/bin/{platform}/views/UserSelector"
   }
 }
-			}

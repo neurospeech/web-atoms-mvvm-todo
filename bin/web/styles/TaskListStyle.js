@@ -30,7 +30,7 @@ var __extends = (this && this.__extends) || (function () {
                 color: "green"
             });
             _this.addButton = _this.createClass("add-button", {
-                backgroundImage: "url(" + ModuleFiles_1.ModuleFiles.files.src.images.AddIcon_svg + ")",
+                backgroundImage: "url(" + ModuleFiles_1.ModuleFiles.src.images.AddIcon_svg + ")",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 paddingLeft: "20px"

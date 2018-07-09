@@ -10,7 +10,7 @@ export class TaskListStyle extends AtomStyle {
     });
 
     public readonly addButton: AtomStyleClass = this.createClass("add-button", {
-        backgroundImage: `url(${ModuleFiles.files.src.images.AddIcon_svg})`,
+        backgroundImage: `url(${ModuleFiles.src.images.AddIcon_svg})`,
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         paddingLeft: "20px"

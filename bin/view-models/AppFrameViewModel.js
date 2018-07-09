@@ -34,7 +34,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         __extends(AppFrameViewModel, _super);
         function AppFrameViewModel() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.url = ModuleFiles_1.ModuleFiles.files.views.LoginView;
+            _this.url = ModuleFiles_1.ModuleFiles.views.LoginView;
             return _this;
         }
         __decorate([

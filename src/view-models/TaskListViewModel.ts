@@ -49,7 +49,7 @@ export class TaskListViewModel extends AtomViewModel {
 
         try {
 
-            let task = await this.windowService.openPage<Task>(ModuleFiles.files.views.NewTaskWindow);
+            let task = await this.windowService.openPage<Task>(ModuleFiles.views.NewTaskWindow);
             task = await this.taskService.create(task);
             this.list.add(task);
 

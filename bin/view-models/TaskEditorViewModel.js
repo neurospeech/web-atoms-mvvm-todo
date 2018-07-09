@@ -126,7 +126,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     switch (_b.label) {
                         case 0:
                             _a = this;
-                            return [4 /*yield*/, this.windowService.openPage(ModuleFiles_1.ModuleFiles.files.views.UserSelector)];
+                            return [4 /*yield*/, this.windowService.openPage(ModuleFiles_1.ModuleFiles.views.UserSelector)];
                         case 1:
                             _a.user = _b.sent();
                             return [2 /*return*/];

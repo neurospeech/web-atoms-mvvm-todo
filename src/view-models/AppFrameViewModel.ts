@@ -4,6 +4,6 @@ import { ModuleFiles } from "../ModuleFiles";
 export class AppFrameViewModel extends AtomViewModel {
 
     @BindableReceive("app-url")
-    public url: string = ModuleFiles.files.views.LoginView;
+    public url: string = ModuleFiles.views.LoginView;
 
 }
