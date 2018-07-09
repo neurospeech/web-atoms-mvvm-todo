@@ -14,13 +14,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomStyle", "../../images/AddIcon"], factory);
+        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomStyle", "../../ModuleFiles"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AtomStyle_1 = require("web-atoms-core/bin/web/styles/AtomStyle");
-    var AddIcon_1 = require("../../images/AddIcon");
+    var ModuleFiles_1 = require("../../ModuleFiles");
     var TaskListStyle = /** @class */ (function (_super) {
         __extends(TaskListStyle, _super);
         function TaskListStyle() {
@@ -30,7 +30,7 @@ var __extends = (this && this.__extends) || (function () {
                 color: "green"
             });
             _this.addButton = _this.createClass("add-button", {
-                backgroundImage: "url(" + AddIcon_1.AddIcon.url + ")",
+                backgroundImage: "url(" + ModuleFiles_1.ModuleFiles.files.src.images.AddIcon_svg + ")",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 paddingLeft: "20px"

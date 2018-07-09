@@ -1,6 +1,6 @@
 import { AtomStyle } from "web-atoms-core/bin/web/styles/AtomStyle";
 import { AtomStyleClass } from "web-atoms-core/bin/web/styles/AtomStyleClass";
-import { AddIcon } from "../../images/AddIcon";
+import { ModuleFiles } from "../../ModuleFiles";
 
 export class TaskListStyle extends AtomStyle {
 
@@ -10,7 +10,7 @@ export class TaskListStyle extends AtomStyle {
     });
 
     public readonly addButton: AtomStyleClass = this.createClass("add-button", {
-        backgroundImage: `url(${AddIcon.url})`,
+        backgroundImage: `url(${ModuleFiles.files.src.images.AddIcon_svg})`,
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         paddingLeft: "20px"

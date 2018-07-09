@@ -3,6 +3,7 @@ import { Assert } from "web-atoms-core/bin/unit/Assert";
 import { Category } from "web-atoms-core/bin/unit/Category";
 import { Test } from "web-atoms-core/bin/unit/Test";
 import { Task } from "../models/task";
+import { ModuleFiles } from "../ModuleFiles";
 import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";
 import { TaskListViewModel } from "../view-models/TaskListViewModel";
 import { BaseTest } from "./BaseTest";
@@ -59,7 +60,7 @@ class WindowTests extends BaseTest {
         // unit test of View Model of Window should verify all
         // individual tasks
         this.navigationService
-            .expectWindow<TaskEditorViewModel>("NewTaskWindow", (vm2) => {
+            .expectWindow<TaskEditorViewModel>(ModuleFiles.files.views.NewTaskWindow, (vm2) => {
                 const t = new Task();
                 t.label = "New Task";
                 t.status = "Open";

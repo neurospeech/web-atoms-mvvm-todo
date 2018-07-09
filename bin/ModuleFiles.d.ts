@@ -1,7 +1,9 @@
 export declare const ModuleFiles: {
     files: {
-        "images": {
-            "AddIcon.svg": string;
+        "src": {
+            "images": {
+                "AddIcon_svg": any;
+            };
         };
         "views": {
             "AppFrame": string;

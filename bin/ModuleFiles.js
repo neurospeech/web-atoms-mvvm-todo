@@ -9,11 +9,13 @@
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    // tslint:disable
+    UMD = UMD || { resolvePath: function (v) { return v; } };
     exports.ModuleFiles = {
         files: {
-            "images": {
-                "AddIcon.svg": "web-atoms-mvvm-todo/bin/images/AddIcon.svg"
+            "src": {
+                "images": {
+                    "AddIcon_svg": UMD.resolvePath("web-atoms-mvvm-todo/src/images/AddIcon.svg")
+                }
             },
             "views": {
                 "AppFrame": "web-atoms-mvvm-todo/bin/{platform}/views/AppFrame",

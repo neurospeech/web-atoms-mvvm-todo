@@ -32,8 +32,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -58,7 +58,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "test-dom", "web-atoms-core/bin/unit/Assert", "web-atoms-core/bin/unit/Category", "web-atoms-core/bin/unit/Test", "../models/task", "../view-models/TaskEditorViewModel", "../view-models/TaskListViewModel", "./BaseTest"], factory);
+        define(["require", "exports", "test-dom", "web-atoms-core/bin/unit/Assert", "web-atoms-core/bin/unit/Category", "web-atoms-core/bin/unit/Test", "../models/task", "../ModuleFiles", "../view-models/TaskEditorViewModel", "../view-models/TaskListViewModel", "./BaseTest"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -68,6 +68,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     var Category_1 = require("web-atoms-core/bin/unit/Category");
     var Test_1 = require("web-atoms-core/bin/unit/Test");
     var task_1 = require("../models/task");
+    var ModuleFiles_1 = require("../ModuleFiles");
     var TaskEditorViewModel_1 = require("../view-models/TaskEditorViewModel");
     var TaskListViewModel_1 = require("../view-models/TaskListViewModel");
     var BaseTest_1 = require("./BaseTest");
@@ -133,7 +134,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                             // unit test of View Model of Window should verify all
                             // individual tasks
                             this.navigationService
-                                .expectWindow("NewTaskWindow", function (vm2) {
+                                .expectWindow(ModuleFiles_1.ModuleFiles.files.views.NewTaskWindow, function (vm2) {
                                 var t = new task_1.Task();
                                 t.label = "New Task";
                                 t.status = "Open";
