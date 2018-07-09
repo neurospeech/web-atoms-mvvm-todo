@@ -9,8 +9,7 @@
             UMD.map("reflect-metadata", "./node_modules/reflect-metadata/Reflect.js");
             UMD.map("web-atoms-core", "./node_modules/web-atoms-core");
             UMD.map("web-atoms-mvvm-todo", "./");
-            UMD.setup();
-            SystemJS.import("web-atoms-mvvm-todo/bin/app.js");
+            UMD.load("web-atoms-mvvm-todo/bin/app.js");
         </script>
     </body>
 </html>
