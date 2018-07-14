@@ -44,7 +44,7 @@ var __extends = (this && this.__extends) || (function () {
             document.body.appendChild(appFrame.element);
         };
         return SampleApp;
-    }(WebApp_1.WebApp));
+    }(WebApp_1.default));
     exports.SampleApp = SampleApp;
     var app = new SampleApp();
 });

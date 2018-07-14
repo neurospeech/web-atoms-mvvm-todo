@@ -29,7 +29,6 @@ var __extends = (this && this.__extends) || (function () {
         TaskStatusCombo.prototype.create = function () {
             _super.prototype.create.call(this);
             var __creator = this;
-            this.element = document.createElement("select");
             var e1 = document.createTextNode("\r\n");
             this.element.appendChild(e1);
             this.setPrimitiveValue(this.element, "items", this.resolve(ConfigService_1.ConfigService).getStatusList());

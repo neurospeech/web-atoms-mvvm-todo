@@ -28,6 +28,7 @@ var __extends = (this && this.__extends) || (function () {
             return _super !== null && _super.apply(this, arguments) || this;
         }
         UserSelector.prototype.create = function () {
+            var _this = this;
             _super.prototype.create.call(this);
             var __creator = this;
             this.element = document.createElement("div");
@@ -36,7 +37,7 @@ var __extends = (this && this.__extends) || (function () {
             var e2 = document.createElement("div");
             this.append(e2);
             this.setPrimitiveValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;");
-            var e3 = document.createTextNode("\r\n\t\t");
+            var e3 = document.createTextNode("\r\n\r\n\t\t");
             e2.appendChild(e3);
             var e4 = document.createElement("input");
             e2.appendChild(e4);
@@ -44,49 +45,36 @@ var __extends = (this && this.__extends) || (function () {
             this.bind(e4, "value", [["viewModel", "searchText"]], ["change", "keyup", "keydown", "blur"]);
             var e5 = document.createTextNode("\r\n\r\n\t\t");
             e2.appendChild(e5);
-            var e6 = new AtomItemsControl_1.AtomItemsControl(this.app, document.createElement("div"));
+            var e6 = new AtomItemsControl_1.AtomItemsControl(this.app);
             var e7 = document.createTextNode("\r\n\t\t\t");
             e6.element.appendChild(e7);
-            var e8 = document.createTextNode("\r\n\t\t");
-            e6.element.appendChild(e8);
+            var e8 = document.createElement("div");
+            e6.append(e8);
+            e6.runAfterInit(function () {
+                return e6.setLocalValue(e8, "eventClick", function () { return (_this.viewModel).select((_this.data)); });
+            });
+            var e9 = document.createTextNode("\r\n\t\t\t\t");
+            e8.appendChild(e9);
+            var e10 = document.createElement("span");
+            e8.appendChild(e10);
+            e6.runAfterInit(function () {
+                return e6.setLocalValue(e10, "text", (_this.data.label));
+            });
+            var e11 = document.createTextNode("\r\n\t\t\t");
+            e8.appendChild(e11);
+            var e12 = document.createTextNode("\r\n\t\t");
+            e6.element.appendChild(e12);
             e6.setPrimitiveValue(e6.element, "style", "padding:5px");
             e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
-            e6.itemTemplate = UserSelector_itemTemplate_1;
-            UserSelector_itemTemplate_1.__creator = this;
             this.append(e6);
-            var e9 = document.createTextNode("\r\n\t");
-            e2.appendChild(e9);
-            var e10 = document.createTextNode("\r\n");
-            this.element.appendChild(e10);
+            var e13 = document.createTextNode("\r\n\t");
+            e2.appendChild(e13);
+            var e14 = document.createTextNode("\r\n");
+            this.element.appendChild(e14);
             this.setPrimitiveValue(this.element, "viewModel", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel));
         };
         return UserSelector;
     }(AtomControl_1.AtomControl));
     exports.default = UserSelector;
-    var UserSelector_itemTemplate_1 = /** @class */ (function (_super) {
-        __extends(UserSelector_itemTemplate_1, _super);
-        function UserSelector_itemTemplate_1() {
-            return _super !== null && _super.apply(this, arguments) || this;
-        }
-        UserSelector_itemTemplate_1.prototype.create = function () {
-            var _this = this;
-            _super.prototype.create.call(this);
-            var __creator = UserSelector_itemTemplate_1.__creator;
-            this.element = document.createElement("div");
-            var e1 = document.createTextNode("\r\n\t\t\t\t");
-            this.element.appendChild(e1);
-            var e2 = document.createElement("span");
-            this.append(e2);
-            this.runAfterInit(function () {
-                return _this.setLocalValue(e2, "text", (_this.data.label));
-            });
-            var e3 = document.createTextNode("\r\n\t\t\t");
-            this.element.appendChild(e3);
-            this.runAfterInit(function () {
-                return _this.setLocalValue(_this.element, "eventClick", function () { return (_this.viewModel).select((_this.data)); });
-            });
-        };
-        return UserSelector_itemTemplate_1;
-    }(AtomControl_1.AtomControl));
 });
 //# sourceMappingURL=UserSelector.js.map

@@ -1,4 +1,4 @@
-import { AtomPageView } from "web-atoms-core/bin/web/controls/AtomPageView";
-export default class AppFrame extends AtomPageView {
+import { AtomFrame } from "web-atoms-core/bin/web/controls/AtomFrame";
+export default class AppFrame extends AtomFrame {
     create(): void;
 }

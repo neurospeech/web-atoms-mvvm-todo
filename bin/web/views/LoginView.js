@@ -41,7 +41,6 @@ var __extends = (this && this.__extends) || (function () {
             this.element.appendChild(e4);
             var e5 = document.createElement("input");
             this.append(e5);
-            this.setPrimitiveValue(e5, "label", "Username:");
             this.bind(e5, "value", [["viewModel", "username"]], true);
             var e6 = document.createTextNode("\r\n\t");
             this.element.appendChild(e6);
@@ -53,7 +52,6 @@ var __extends = (this && this.__extends) || (function () {
             this.element.appendChild(e9);
             var e10 = document.createElement("input");
             this.append(e10);
-            this.setPrimitiveValue(e10, "label", "Password:");
             this.bind(e10, "value", [["viewModel", "password"]], true);
             this.setPrimitiveValue(e10, "type", "password");
             var e11 = document.createTextNode("\r\n\r\n\t");

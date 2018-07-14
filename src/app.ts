@@ -1,6 +1,6 @@
 import { Atom } from "web-atoms-core/bin/Atom";
 import { JsonService } from "web-atoms-core/bin/services/JsonService";
-import { WebApp } from "web-atoms-core/bin/web/WebApp";
+import WebApp from "web-atoms-core/bin/web/WebApp";
 import { ConfigService } from "./services/ConfigService";
 import { MockConfigService } from "./services/MockConfigService";
 import { MockTaskListService } from "./services/MockTaskListService";

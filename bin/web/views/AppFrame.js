@@ -14,12 +14,12 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/web/controls/AtomPageView", "../../view-models/AppFrameViewModel"], factory);
+        define(["require", "exports", "web-atoms-core/bin/web/controls/AtomFrame", "../../view-models/AppFrameViewModel"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AtomPageView_1 = require("web-atoms-core/bin/web/controls/AtomPageView");
+    var AtomFrame_1 = require("web-atoms-core/bin/web/controls/AtomFrame");
     var AppFrameViewModel_1 = require("../../view-models/AppFrameViewModel");
     var AppFrame = /** @class */ (function (_super) {
         __extends(AppFrame, _super);
@@ -29,14 +29,13 @@ var __extends = (this && this.__extends) || (function () {
         AppFrame.prototype.create = function () {
             _super.prototype.create.call(this);
             var __creator = this;
-            this.element = document.createElement("section");
             var e1 = document.createTextNode("\r\n");
             this.element.appendChild(e1);
             this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
             this.bind(this.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
         };
         return AppFrame;
-    }(AtomPageView_1.AtomPageView));
+    }(AtomFrame_1.AtomFrame));
     exports.default = AppFrame;
 });
 //# sourceMappingURL=AppFrame.js.map
