@@ -4,32 +4,31 @@
 <div>
 		<input 
 			type="text" 
-			atom-value="^[viewModel.task.label]" autofocus="autofocus" />
-		<span atom-text="[$viewModel.errorLabel]"></span>
+			value="^[viewModel.task.label]" autofocus="autofocus" />
+		<span text="[$viewModel.errorLabel]"></span>
 		
 
 		<!-- We can reuse TaskStatusCombo that is another combo -->
-		<select 
-			atom-type="TaskStatusCombo" 
-			atom-value="$[viewModel.task.status]"></select>
-		<span atom-text="[$viewModel.errorStatus]"></span>
+		<TaskStatusCombo 
+			value="$[viewModel.task.status]"/>
+		<span text="[$viewModel.errorStatus]"></span>
 		
 
 		<textarea 
 			cols="30" 
 			rows="10"
-			atom-value="$[viewModel.task.description]"></textarea>
+			value="$[viewModel.task.description]"></textarea>
 
 		<div>
-			<span atom-text="[$viewModel.user.label]"></span>
-			<button atom-event-click="{ () => $viewModel.assign() }">Assign</button>
+			<span text="[$viewModel.user.label]"></span>
+			<button event-click="{ () => $viewModel.assign() }">Assign</button>
 		</div>
 
 		<div
 			style-display="{ !$viewModel.windowName ? '' : 'none' }">
 			<button
 				style-class="{ this.controlStyle.saveButton }"
-				atom-event-click="{ () => $viewModel.save() }">Save</button>
+				event-click="{ () => $viewModel.save() }">Save</button>
 		</div>
 
 </div>

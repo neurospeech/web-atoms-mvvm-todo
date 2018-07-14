@@ -4,23 +4,20 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
 	import TaskStatusCombo from "./TaskStatusCombo";
 
+export default  class TaskEditor extends AtomControl {
 
-    export default  class TaskEditor extends AtomControl {
+                
 
-        
+                public create(): void {
+                    super.create();
 
-        
+                    const __creator = this;
 
-        public create(): void {
-            super.create();
+                    
 
-            const __creator = this;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
+                    this.element = document.createElement("div");
+                    
+                    
         const e1 = document.createTextNode("\r\n\t\t");
         
         this.element.appendChild(e1);
@@ -63,49 +60,44 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.element.appendChild(e7);
 
-            const e8 = new TaskStatusCombo(this.app, document.createElement("select"));
+            const e8 = new TaskStatusCombo(this.app);
             
             
-            
-            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true  );
-            this.append(e8);
-
-
         const e9 = document.createTextNode("\r\n\t\t");
         
-        this.element.appendChild(e9);
+        e8.element.appendChild(e9);
 
         const e10 = document.createElement("span");
         
-        this.append(e10);
+        e8.append(e10);
         
-            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1) );
+            e8.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1) );
         
 
         const e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
         
-        this.element.appendChild(e11);
+        e8.element.appendChild(e11);
 
         const e12 = document.createElement("textarea");
         
-        this.append(e12);
+        e8.append(e12);
         
-        this.setPrimitiveValue(e12, "cols", "30" );
-        
-
-        this.setPrimitiveValue(e12, "rows", "10" );
+        e8.setPrimitiveValue(e12, "cols", "30" );
         
 
-            this.bind(e12, "value",  [["viewModel","task","description"]], true  );
+        e8.setPrimitiveValue(e12, "rows", "10" );
+        
+
+            e8.bind(e12, "value",  [["viewModel","task","description"]], true  );
         
 
         const e13 = document.createTextNode("\r\n\r\n\t\t");
         
-        this.element.appendChild(e13);
+        e8.element.appendChild(e13);
 
         const e14 = document.createElement("div");
         
-        this.append(e14);
+        e8.append(e14);
         
         
         const e15 = document.createTextNode("\r\n\t\t\t");
@@ -116,7 +108,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e14.appendChild(e16);
         
-            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1) );
+            e8.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1) );
         
 
         const e17 = document.createTextNode("\r\n\t\t\t");
@@ -127,8 +119,8 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e14.appendChild(e18);
         
-            this.runAfterInit( () =>
-            this.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
+            e8.runAfterInit( () =>
+            e8.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
         
         const e19 = document.createTextNode("Assign");
         
@@ -140,14 +132,14 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
         const e21 = document.createTextNode("\r\n\r\n\t\t");
         
-        this.element.appendChild(e21);
+        e8.element.appendChild(e21);
 
         const e22 = document.createElement("div");
         
-        this.append(e22);
+        e8.append(e22);
         
-            this.runAfterInit( () =>
-            this.setLocalValue(e22, "styleDisplay", !(this.viewModel.windowName) ? '' : 'none') );
+            e8.runAfterInit( () =>
+            e8.setLocalValue(e22, "styleDisplay", !(this.viewModel.windowName) ? '' : 'none') );
         
         const e23 = document.createTextNode("\r\n\t\t\t");
         
@@ -157,10 +149,10 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e22.appendChild(e24);
         
-                this.setPrimitiveValue(e24, "styleClass",  this.controlStyle.saveButton );
+                e8.setPrimitiveValue(e24, "styleClass",  this.controlStyle.saveButton );
 
-            this.runAfterInit( () =>
-            this.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
+            e8.runAfterInit( () =>
+            e8.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
         
         const e25 = document.createTextNode("Save");
         
@@ -172,11 +164,15 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
         const e27 = document.createTextNode("\r\n\r\n");
         
-        this.element.appendChild(e27);
+        e8.element.appendChild(e27);
             
-        }
-    }
+            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true  );
+            this.append(e8);
 
-    
+                    
+                }
+            }
+
+            
 
             

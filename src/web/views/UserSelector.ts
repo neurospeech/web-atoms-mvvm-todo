@@ -5,23 +5,20 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
 	import {UserSelectorViewModel} from "../../view-models/UserSelectorViewModel";
 
+export default  class UserSelector extends AtomControl {
 
-    export default  class UserSelector extends AtomControl {
+                
 
-        
+                public create(): void {
+                    super.create();
 
-        
+                    const __creator = this;
 
-        public create(): void {
-            super.create();
+                    
 
-            const __creator = this;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
+                    this.element = document.createElement("div");
+                    
+                    
         const e1 = document.createTextNode("\r\n\t");
         
         this.element.appendChild(e1);
@@ -33,7 +30,7 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         this.setPrimitiveValue(e2, "style", "background: white; padding:5px; border: solid lightgray 1px;" );
         
         
-        const e3 = document.createTextNode("\r\n\t\t");
+        const e3 = document.createTextNode("\r\n\r\n\t\t");
         
         e2.appendChild(e3);
 
@@ -51,79 +48,58 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e2.appendChild(e5);
 
-            const e6 = new AtomItemsControl(this.app, document.createElement("div"));
+            const e6 = new AtomItemsControl(this.app);
             
             
         const e7 = document.createTextNode("\r\n\t\t\t");
         
         e6.element.appendChild(e7);
 
-        const e8 = document.createTextNode("\r\n\t\t");
+        const e8 = document.createElement("div");
         
-        e6.element.appendChild(e8);
+        e6.append(e8);
+        
+            e6.runAfterInit( () =>
+            e6.setLocalValue(e8, "eventClick", () => (this.viewModel).select((this.data))) );
+        
+        const e9 = document.createTextNode("\r\n\t\t\t\t");
+        
+        e8.appendChild(e9);
+
+        const e10 = document.createElement("span");
+        
+        e8.appendChild(e10);
+        
+            e6.runAfterInit( () =>
+            e6.setLocalValue(e10, "text", (this.data.label)) );
+        
+
+        const e11 = document.createTextNode("\r\n\t\t\t");
+        
+        e8.appendChild(e11);
+
+        const e12 = document.createTextNode("\r\n\t\t");
+        
+        e6.element.appendChild(e12);
             
         e6.setPrimitiveValue(e6.element, "style", "padding:5px" );
         
 
             e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1) );
-
-        e6.itemTemplate = UserSelector_itemTemplate_1;
-        UserSelector_itemTemplate_1.__creator = this;
-            
             this.append(e6);
 
 
-        const e9 = document.createTextNode("\r\n\t");
+        const e13 = document.createTextNode("\r\n\t");
         
-        e2.appendChild(e9);
+        e2.appendChild(e13);
 
-        const e10 = document.createTextNode("\r\n");
+        const e14 = document.createTextNode("\r\n");
         
-        this.element.appendChild(e10);
-            
+        this.element.appendChild(e14);
+                    
                 this.setPrimitiveValue(this.element, "viewModel",  this.resolve(UserSelectorViewModel) );
-        }
-    }
-
-    
-     class UserSelector_itemTemplate_1 extends AtomControl {
-
-        
-
-        public static __creator: any;
-
-        public create(): void {
-            super.create();
-
-            const __creator = UserSelector_itemTemplate_1.__creator;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
-        const e1 = document.createTextNode("\r\n\t\t\t\t");
-        
-        this.element.appendChild(e1);
-
-        const e2 = document.createElement("span");
-        
-        this.append(e2);
-        
-            this.runAfterInit( () =>
-            this.setLocalValue(e2, "text", (this.data.label)) );
-        
-
-        const e3 = document.createTextNode("\r\n\t\t\t");
-        
-        this.element.appendChild(e3);
-            
-            this.runAfterInit( () =>
-            this.setLocalValue(this.element, "eventClick", () => (this.viewModel).select((this.data))) );
-        }
-    }
-
-    
+                }
+            }
 
             
 

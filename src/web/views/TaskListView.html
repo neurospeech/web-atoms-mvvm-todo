@@ -7,43 +7,41 @@
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import TaskEditor from "./TaskEditor";
 </script>
-<div
+<AtomGridView
     class="task-list"
-    atom-type="AtomGridView"
-    atom-columns="30%, 5, *"
-    atom-rows="50, *"
-    atom-view-model="{ this.resolve(TaskListViewModel) }">
+    columns="30%, 5, *"
+    rows="50, *"
+    view-model="{ this.resolve(TaskListViewModel) }">
 
-    <header cell="0:3,0">
-        <button style-class="[$this.controlStyle.addButton]" atom-event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
+    <header row="0" column="0:3">
+        <button
+            style-class="[$this.controlStyle.addButton]"
+            event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
     </header>
 
-    <div atom-type="AtomGridSplitter" cell="1,1" direction="vertical"></div>
+    <AtomGridSplitter row="1" column="1" direction="vertical"/>
 
-    <div
-        cell="0,1"
-        atom-dock="Left"
-        atom-type="AtomListBox"
-        atom-items="{$viewModel.list}"
-        atom-selected-item="$[viewModel.selectedTask]">
+    <AtomListBox.div
+        row="1"
+        column="0"
+        items="{$viewModel.list}"
+        selected-item="$[viewModel.selectedTask]">
         <div 
-            atom-template="itemTemplate" 
+            template="itemTemplate" 
             class="item">
 
-            <span atom-text="{$data.label}"></span>
+            <span text="{$data.label}"></span>
 
             <button
                 style-class="[$this.controlStyle.saveButton]"
                 event-click="{ ()=> $viewModel.deleteTask($data)  }">Delete</button>
         </div>
-    </div>
+    </AtomListBox.div>
 
-    <section 
-        cell="2,1"
-        atom-type="TaskEditor"
-        atom-view-model="{ this.resolve(TaskEditorViewModel) }"
-        style-display="[ $viewModel.task ? '' : 'none' ]">
- 
-    </section>
+    <TaskEditor
+        column="2"
+        row="1"
+        view-model="{ this.resolve(TaskEditorViewModel) }"
+        style-display="[ $viewModel.task ? '' : 'none' ]"/>
 
 </div>

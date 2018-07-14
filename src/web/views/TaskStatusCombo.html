@@ -1,7 +1,6 @@
 <script>
     import { ConfigService } from "../../services/ConfigService";
 </script>
-<select
-    atom-type="AtomComboBox"
-    atom-items="{ this.resolve(ConfigService).getStatusList() }">
-</select>
+<AtomComboBox
+    items="{ this.resolve(ConfigService).getStatusList() }">
+</AtomComboBox>

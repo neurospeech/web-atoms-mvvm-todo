@@ -1,31 +1,27 @@
 // tslint:disable
 import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
-import {AtomGridSplitter} from "web-atoms-core/bin/web/controls/AtomGridSplitter";
 import {AtomListBox} from "web-atoms-core/bin/web/controls/AtomListBox";
+import {AtomGridSplitter} from "web-atoms-core/bin/web/controls/AtomGridSplitter";
 import {AtomGridView} from "web-atoms-core/bin/web/controls/AtomGridView";
-import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import { TaskListViewModel } from "../../view-models/TaskListViewModel";
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import TaskEditor from "./TaskEditor";
 
+export default  class TaskListView extends AtomGridView {
 
-    export default  class TaskListView extends AtomGridView {
+                
 
-        
+                public create(): void {
+                    super.create();
 
-        
+                    const __creator = this;
 
-        public create(): void {
-            super.create();
+                    
 
-            const __creator = this;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
+                    
+                    
+                    
         const e1 = document.createTextNode("\r\n\r\n    ");
         
         this.element.appendChild(e1);
@@ -34,7 +30,10 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e2);
         
-        this.setPrimitiveValue(e2, "cell", "0:3,0" );
+        this.setPrimitiveValue(e2, "row", "0" );
+        
+
+        this.setPrimitiveValue(e2, "column", "0:3" );
         
         
         const e3 = document.createTextNode("\r\n        ");
@@ -62,21 +61,12 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.element.appendChild(e7);
 
-            const e8 = new AtomGridSplitter(this.app, document.createElement("div"));
+            const e8 = new AtomGridSplitter(this.app);
             
             
-            
-        e8.setPrimitiveValue(e8.element, "cell", "1,1" );
-        
-
-        e8.setPrimitiveValue(e8.element, "direction", "vertical" );
-        
-            this.append(e8);
-
-
         const e9 = document.createTextNode("\r\n\r\n    ");
         
-        this.element.appendChild(e9);
+        e8.element.appendChild(e9);
 
             const e10 = new AtomListBox(this.app, document.createElement("div"));
             
@@ -85,51 +75,97 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         e10.element.appendChild(e11);
 
-        const e12 = document.createTextNode("\r\n    ");
+        const e12 = document.createElement("div");
         
-        e10.element.appendChild(e12);
-            
-        e10.setPrimitiveValue(e10.element, "cell", "0,1" );
+        e10.append(e12);
+        
+        e10.setPrimitiveValue(e12, "class", "item" );
+        
+        
+        const e13 = document.createTextNode("\r\n\r\n            ");
+        
+        e12.appendChild(e13);
+
+        const e14 = document.createElement("span");
+        
+        e12.appendChild(e14);
+        
+            e10.runAfterInit( () =>
+            e10.setLocalValue(e14, "text", (this.data.label)) );
         
 
-        e10.setPrimitiveValue(e10.element, "dock", "Left" );
+        const e15 = document.createTextNode("\r\n\r\n            ");
+        
+        e12.appendChild(e15);
+
+        const e16 = document.createElement("button");
+        
+        e12.appendChild(e16);
+        
+            e10.bind(e16, "styleClass",  [["this","controlStyle","saveButton"]], false , (v1) => (v1) , __creator);
+
+            e10.runAfterInit( () =>
+            e10.setLocalValue(e16, "eventClick", ()=> (this.viewModel).deleteTask((this.data))) );
+        
+        const e17 = document.createTextNode("Delete");
+        
+        e16.appendChild(e17);
+
+        const e18 = document.createTextNode("\r\n        ");
+        
+        e12.appendChild(e18);
+
+        const e19 = document.createTextNode("\r\n    ");
+        
+        e10.element.appendChild(e19);
+            
+        e10.setPrimitiveValue(e10.element, "row", "1" );
+        
+
+        e10.setPrimitiveValue(e10.element, "column", "0" );
         
 
             e10.runAfterInit( () =>
             e10.setLocalValue(e10.element, "items", (this.viewModel.list)) );
 
             e10.bind(e10.element, "selectedItem",  [["viewModel","selectedTask"]], true  );
-
-        e10.itemTemplate = TaskListView_itemTemplate_1;
-        TaskListView_itemTemplate_1.__creator = this;
-            
-            this.append(e10);
+            e8.append(e10);
 
 
-        const e13 = document.createTextNode("\r\n\r\n    ");
+        const e20 = document.createTextNode("\r\n\r\n    ");
         
-        this.element.appendChild(e13);
+        e8.element.appendChild(e20);
 
-            const e14 = new TaskEditor(this.app, document.createElement("section"));
+            const e21 = new TaskEditor(this.app);
             
             
-        const e15 = document.createTextNode("\r\n \r\n    ");
+        const e22 = document.createTextNode("\r\n\r\n");
         
-        e14.element.appendChild(e15);
+        e21.element.appendChild(e22);
             
-        e14.setPrimitiveValue(e14.element, "cell", "2,1" );
+        e21.setPrimitiveValue(e21.element, "column", "2" );
         
 
-                e14.setPrimitiveValue(e14.element, "viewModel",  this.resolve(TaskEditorViewModel) );
-
-            e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none' );
-            this.append(e14);
-
-
-        const e16 = document.createTextNode("\r\n\r\n");
+        e21.setPrimitiveValue(e21.element, "row", "1" );
         
-        this.element.appendChild(e16);
+
+                e21.setPrimitiveValue(e21.element, "viewModel",  this.resolve(TaskEditorViewModel) );
+
+            e21.bind(e21.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none' );
+            e8.append(e21);
+
             
+        e8.setPrimitiveValue(e8.element, "row", "1" );
+        
+
+        e8.setPrimitiveValue(e8.element, "column", "1" );
+        
+
+        e8.setPrimitiveValue(e8.element, "direction", "vertical" );
+        
+            this.append(e8);
+
+                    
         this.setPrimitiveValue(this.element, "class", "task-list" );
         
 
@@ -140,65 +176,8 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
 
                 this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskListViewModel) );
-        }
-    }
-
-    
-     class TaskListView_itemTemplate_1 extends AtomControl {
-
-        
-
-        public static __creator: any;
-
-        public create(): void {
-            super.create();
-
-            const __creator = TaskListView_itemTemplate_1.__creator;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
-        const e1 = document.createTextNode("\r\n\r\n            ");
-        
-        this.element.appendChild(e1);
-
-        const e2 = document.createElement("span");
-        
-        this.append(e2);
-        
-            this.runAfterInit( () =>
-            this.setLocalValue(e2, "text", (this.data.label)) );
-        
-
-        const e3 = document.createTextNode("\r\n\r\n            ");
-        
-        this.element.appendChild(e3);
-
-        const e4 = document.createElement("button");
-        
-        this.append(e4);
-        
-            this.bind(e4, "styleClass",  [["this","controlStyle","saveButton"]], false , (v1) => (v1) , __creator);
-
-            this.runAfterInit( () =>
-            this.setLocalValue(e4, "eventClick", ()=> (this.viewModel).deleteTask((this.data))) );
-        
-        const e5 = document.createTextNode("Delete");
-        
-        e4.appendChild(e5);
-
-        const e6 = document.createTextNode("\r\n        ");
-        
-        this.element.appendChild(e6);
-            
-        this.setPrimitiveValue(this.element, "class", "item" );
-        
-        }
-    }
-
-    
+                }
+            }
 
             
 

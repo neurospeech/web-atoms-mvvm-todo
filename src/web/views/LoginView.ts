@@ -4,23 +4,20 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
     import {LoginViewModel} from "../../view-models/LoginViewModel";
 
+export default  class LoginView extends AtomControl {
 
-    export default  class LoginView extends AtomControl {
+                
 
-        
+                public create(): void {
+                    super.create();
 
-        
+                    const __creator = this;
 
-        public create(): void {
-            super.create();
+                    
 
-            const __creator = this;
-
-            
-
-            this.element = document.createElement("div");
-            
-            
+                    this.element = document.createElement("div");
+                    
+                    
         const e1 = document.createTextNode("\r\n\t");
         
         this.element.appendChild(e1);
@@ -42,9 +39,6 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e5);
         
-        this.setPrimitiveValue(e5, "label", "Username:" );
-        
-
             this.bind(e5, "value",  [["viewModel","username"]], true  );
         
 
@@ -69,9 +63,6 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         
         this.append(e10);
         
-        this.setPrimitiveValue(e10, "label", "Password:" );
-        
-
             this.bind(e10, "value",  [["viewModel","password"]], true  );
 
         this.setPrimitiveValue(e10, "type", "password" );
@@ -96,11 +87,11 @@ import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
         const e14 = document.createTextNode("\r\n\r\n");
         
         this.element.appendChild(e14);
-            
+                    
                 this.setPrimitiveValue(this.element, "viewModel",  this.resolve(LoginViewModel) );
-        }
-    }
+                }
+            }
 
-    
+            
 
             

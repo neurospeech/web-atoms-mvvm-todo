@@ -1,17 +1,15 @@
 <script>
     import {LoginViewModel} from "../../view-models/LoginViewModel";
 </script>
-<div atom-view-model="{ this.resolve(LoginViewModel) }">
+<div view-model="{ this.resolve(LoginViewModel) }">
 	<label>Username:</label>
 	<input 
-		atom-label="Username:"
-		atom-value="$[viewModel.username]"/>
+		value="$[viewModel.username]"/>
 	<label>Password:</label>
 	<input 
-		atom-label="Password:"
-		atom-value="$[viewModel.password]" type="password"/>
+		value="$[viewModel.password]" type="password"/>
 
 	<button
-		atom-event-click="{ () => $viewModel.login() }">Login</button>
+		event-click="{ () => $viewModel.login() }">Login</button>
 
 </div>
