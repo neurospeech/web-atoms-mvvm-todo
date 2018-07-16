@@ -18,6 +18,8 @@ export default  class LoginView extends AtomControl {
                     this.element = document.createElement("div");
                     
                     
+                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(LoginViewModel) );
+                    
         const e1 = document.createTextNode("\r\n\t");
         
         this.element.appendChild(e1);
@@ -87,8 +89,6 @@ export default  class LoginView extends AtomControl {
         const e14 = document.createTextNode("\r\n\r\n");
         
         this.element.appendChild(e14);
-                    
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(LoginViewModel) );
                 }
             }
 

@@ -31,6 +31,7 @@ var __extends = (this && this.__extends) || (function () {
             _super.prototype.create.call(this);
             var __creator = this;
             this.element = document.createElement("div");
+            this.setPrimitiveValue(this.element, "viewModel", this.resolve(LoginViewModel_1.LoginViewModel));
             var e1 = document.createTextNode("\r\n\t");
             this.element.appendChild(e1);
             var e2 = document.createElement("label");
@@ -65,7 +66,6 @@ var __extends = (this && this.__extends) || (function () {
             e12.appendChild(e13);
             var e14 = document.createTextNode("\r\n\r\n");
             this.element.appendChild(e14);
-            this.setPrimitiveValue(this.element, "viewModel", this.resolve(LoginViewModel_1.LoginViewModel));
         };
         return LoginView;
     }(AtomControl_1.AtomControl));

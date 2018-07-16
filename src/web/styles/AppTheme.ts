@@ -7,8 +7,4 @@ import { TaskListStyle } from "./TaskListStyle";
 
 @RegisterSingleton
 export class AppTheme extends AtomTheme {
-
-    public readonly taskEditor: TaskEditorStyle = this.createStyle(TaskEditor, TaskEditorStyle, "editor");
-
-    public readonly taskList: TaskListStyle = this.createStyle(TaskListView, TaskListStyle, "list");
 }

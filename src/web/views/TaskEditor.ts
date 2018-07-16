@@ -3,6 +3,7 @@ import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
 import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
 
 	import TaskStatusCombo from "./TaskStatusCombo";
+	import { TaskEditorStyle } from "../styles/TaskEditorStyle";
 
 export default  class TaskEditor extends AtomControl {
 
@@ -17,6 +18,9 @@ export default  class TaskEditor extends AtomControl {
 
                     this.element = document.createElement("div");
                     
+                    
+            this.defaultControlStyle = TaskEditorStyle;
+            
                     
         const e1 = document.createTextNode("\r\n\t\t");
         
@@ -63,41 +67,46 @@ export default  class TaskEditor extends AtomControl {
             const e8 = new TaskStatusCombo(this.app);
             
             
+            
+            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true  );
+            this.append(e8);
+
+
         const e9 = document.createTextNode("\r\n\t\t");
         
-        e8.element.appendChild(e9);
+        this.element.appendChild(e9);
 
         const e10 = document.createElement("span");
         
-        e8.append(e10);
+        this.append(e10);
         
-            e8.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1) );
+            this.bind(e10, "text",  [["viewModel","errorStatus"]], false , (v1) => (v1) );
         
 
         const e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
         
-        e8.element.appendChild(e11);
+        this.element.appendChild(e11);
 
         const e12 = document.createElement("textarea");
         
-        e8.append(e12);
+        this.append(e12);
         
-        e8.setPrimitiveValue(e12, "cols", "30" );
-        
-
-        e8.setPrimitiveValue(e12, "rows", "10" );
+        this.setPrimitiveValue(e12, "cols", "30" );
         
 
-            e8.bind(e12, "value",  [["viewModel","task","description"]], true  );
+        this.setPrimitiveValue(e12, "rows", "10" );
+        
+
+            this.bind(e12, "value",  [["viewModel","task","description"]], true  );
         
 
         const e13 = document.createTextNode("\r\n\r\n\t\t");
         
-        e8.element.appendChild(e13);
+        this.element.appendChild(e13);
 
         const e14 = document.createElement("div");
         
-        e8.append(e14);
+        this.append(e14);
         
         
         const e15 = document.createTextNode("\r\n\t\t\t");
@@ -108,7 +117,7 @@ export default  class TaskEditor extends AtomControl {
         
         e14.appendChild(e16);
         
-            e8.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1) );
+            this.bind(e16, "text",  [["viewModel","user","label"]], false , (v1) => (v1) );
         
 
         const e17 = document.createTextNode("\r\n\t\t\t");
@@ -119,8 +128,8 @@ export default  class TaskEditor extends AtomControl {
         
         e14.appendChild(e18);
         
-            e8.runAfterInit( () =>
-            e8.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
+            this.runAfterInit( () =>
+            this.setLocalValue(e18, "eventClick", () => (this.viewModel).assign()) );
         
         const e19 = document.createTextNode("Assign");
         
@@ -132,14 +141,14 @@ export default  class TaskEditor extends AtomControl {
 
         const e21 = document.createTextNode("\r\n\r\n\t\t");
         
-        e8.element.appendChild(e21);
+        this.element.appendChild(e21);
 
         const e22 = document.createElement("div");
         
-        e8.append(e22);
+        this.append(e22);
         
-            e8.runAfterInit( () =>
-            e8.setLocalValue(e22, "styleDisplay", !(this.viewModel.windowName) ? '' : 'none') );
+            this.runAfterInit( () =>
+            this.setLocalValue(e22, "styleDisplay", !(this.viewModel.windowName) ? '' : 'none') );
         
         const e23 = document.createTextNode("\r\n\t\t\t");
         
@@ -149,10 +158,10 @@ export default  class TaskEditor extends AtomControl {
         
         e22.appendChild(e24);
         
-                e8.setPrimitiveValue(e24, "styleClass",  this.controlStyle.saveButton );
+                this.setPrimitiveValue(e24, "styleClass",  this.controlStyle.saveButton );
 
-            e8.runAfterInit( () =>
-            e8.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
+            this.runAfterInit( () =>
+            this.setLocalValue(e24, "eventClick", () => (this.viewModel).save()) );
         
         const e25 = document.createTextNode("Save");
         
@@ -164,12 +173,7 @@ export default  class TaskEditor extends AtomControl {
 
         const e27 = document.createTextNode("\r\n\r\n");
         
-        e8.element.appendChild(e27);
-            
-            e8.bind(e8.element, "value",  [["viewModel","task","status"]], true  );
-            this.append(e8);
-
-                    
+        this.element.appendChild(e27);
                 }
             }
 

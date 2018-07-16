@@ -19,6 +19,8 @@ export default  class UserSelector extends AtomControl {
                     this.element = document.createElement("div");
                     
                     
+                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(UserSelectorViewModel) );
+                    
         const e1 = document.createTextNode("\r\n\t");
         
         this.element.appendChild(e1);
@@ -55,52 +57,69 @@ export default  class UserSelector extends AtomControl {
         
         e6.element.appendChild(e7);
 
-        const e8 = document.createElement("div");
+        const e8 = document.createTextNode("\r\n\t\t");
         
-        e6.append(e8);
-        
-            e6.runAfterInit( () =>
-            e6.setLocalValue(e8, "eventClick", () => (this.viewModel).select((this.data))) );
-        
-        const e9 = document.createTextNode("\r\n\t\t\t\t");
-        
-        e8.appendChild(e9);
-
-        const e10 = document.createElement("span");
-        
-        e8.appendChild(e10);
-        
-            e6.runAfterInit( () =>
-            e6.setLocalValue(e10, "text", (this.data.label)) );
-        
-
-        const e11 = document.createTextNode("\r\n\t\t\t");
-        
-        e8.appendChild(e11);
-
-        const e12 = document.createTextNode("\r\n\t\t");
-        
-        e6.element.appendChild(e12);
+        e6.element.appendChild(e8);
             
         e6.setPrimitiveValue(e6.element, "style", "padding:5px" );
         
 
             e6.bind(e6.element, "items",  [["viewModel","items"]], false , (v1) => (v1) );
+
+        e6.itemTemplate = UserSelector_itemTemplate_1Creator(this);
+            
             this.append(e6);
 
 
-        const e13 = document.createTextNode("\r\n\t");
+        const e9 = document.createTextNode("\r\n\t");
         
-        e2.appendChild(e13);
+        e2.appendChild(e9);
 
-        const e14 = document.createTextNode("\r\n");
+        const e10 = document.createTextNode("\r\n");
         
-        this.element.appendChild(e14);
+        this.element.appendChild(e10);
+                }
+            }
+
+            function UserSelector_itemTemplate_1Creator(__creator){
+                return  class UserSelector_itemTemplate_1 extends AtomControl {
+
+                
+
+                public create(): void {
+                    super.create();
+
+                     ;
+
                     
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(UserSelectorViewModel) );
+
+                    this.element = document.createElement("div");
+                    
+                    
+            this.runAfterInit( () =>
+            this.setLocalValue(this.element, "eventClick", () => (this.viewModel).select((this.data))) );
+                    
+        const e1 = document.createTextNode("\r\n\t\t\t\t");
+        
+        this.element.appendChild(e1);
+
+        const e2 = document.createElement("span");
+        
+        this.append(e2);
+        
+            this.runAfterInit( () =>
+            this.setLocalValue(e2, "text", (this.data.label)) );
+        
+
+        const e3 = document.createTextNode("\r\n\t\t\t");
+        
+        this.element.appendChild(e3);
                 }
             }
 
             
+
+            
+            }
 
             

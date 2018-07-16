@@ -1,7 +1,9 @@
 <script>
 	import TaskStatusCombo from "./TaskStatusCombo";
+	import { TaskEditorStyle } from "../styles/TaskEditorStyle";
 </script>
-<div>
+<div
+	default-style="TaskEditorStyle">
 		<input 
 			type="text" 
 			value="^[viewModel.task.label]" autofocus="autofocus" />
@@ -10,7 +12,7 @@
 
 		<!-- We can reuse TaskStatusCombo that is another combo -->
 		<TaskStatusCombo 
-			value="$[viewModel.task.status]"/>
+			value="$[viewModel.task.status]"></TaskStatusCombo>
 		<span text="[$viewModel.errorStatus]"></span>
 		
 

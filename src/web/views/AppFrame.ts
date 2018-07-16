@@ -18,13 +18,13 @@ export default  class AppFrame extends AtomFrame {
                     
                     
                     
-        const e1 = document.createTextNode("\r\n");
-        
-        this.element.appendChild(e1);
-                    
                 this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel));
 
             this.bind(this.element, "url",  [["localViewModel","url"]], false , (v1) => (v1) );
+                    
+        const e1 = document.createTextNode("\r\n");
+        
+        this.element.appendChild(e1);
                 }
             }
 

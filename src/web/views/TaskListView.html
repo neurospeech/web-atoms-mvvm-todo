@@ -6,9 +6,10 @@
     import { TaskListViewModel } from "../../view-models/TaskListViewModel";
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import TaskEditor from "./TaskEditor";
+    import { TaskListStyle } from "../styles/TaskListStyle";
 </script>
 <AtomGridView
-    class="task-list"
+    default-style="TaskListStyle"
     columns="30%, 5, *"
     rows="50, *"
     view-model="{ this.resolve(TaskListViewModel) }">
@@ -19,7 +20,7 @@
             event-click="{ ()=> $viewModel.addTask() }">Add New Task</button>
     </header>
 
-    <AtomGridSplitter row="1" column="1" direction="vertical"/>
+    <AtomGridSplitter row="1" column="1" direction="vertical"></AtomGridSplitter>
 
     <AtomListBox.div
         row="1"
@@ -42,6 +43,6 @@
         column="2"
         row="1"
         view-model="{ this.resolve(TaskEditorViewModel) }"
-        style-display="[ $viewModel.task ? '' : 'none' ]"/>
+        style-display="[ $viewModel.task ? '' : 'none' ]"></TaskEditor>
 
 </div>

@@ -28,10 +28,10 @@ var __extends = (this && this.__extends) || (function () {
             return _super !== null && _super.apply(this, arguments) || this;
         }
         UserSelector.prototype.create = function () {
-            var _this = this;
             _super.prototype.create.call(this);
             var __creator = this;
             this.element = document.createElement("div");
+            this.setPrimitiveValue(this.element, "viewModel", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel));
             var e1 = document.createTextNode("\r\n\t");
             this.element.appendChild(e1);
             var e2 = document.createElement("div");
@@ -48,33 +48,46 @@ var __extends = (this && this.__extends) || (function () {
             var e6 = new AtomItemsControl_1.AtomItemsControl(this.app);
             var e7 = document.createTextNode("\r\n\t\t\t");
             e6.element.appendChild(e7);
-            var e8 = document.createElement("div");
-            e6.append(e8);
-            e6.runAfterInit(function () {
-                return e6.setLocalValue(e8, "eventClick", function () { return (_this.viewModel).select((_this.data)); });
-            });
-            var e9 = document.createTextNode("\r\n\t\t\t\t");
-            e8.appendChild(e9);
-            var e10 = document.createElement("span");
-            e8.appendChild(e10);
-            e6.runAfterInit(function () {
-                return e6.setLocalValue(e10, "text", (_this.data.label));
-            });
-            var e11 = document.createTextNode("\r\n\t\t\t");
-            e8.appendChild(e11);
-            var e12 = document.createTextNode("\r\n\t\t");
-            e6.element.appendChild(e12);
+            var e8 = document.createTextNode("\r\n\t\t");
+            e6.element.appendChild(e8);
             e6.setPrimitiveValue(e6.element, "style", "padding:5px");
             e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
+            e6.itemTemplate = UserSelector_itemTemplate_1Creator(this);
             this.append(e6);
-            var e13 = document.createTextNode("\r\n\t");
-            e2.appendChild(e13);
-            var e14 = document.createTextNode("\r\n");
-            this.element.appendChild(e14);
-            this.setPrimitiveValue(this.element, "viewModel", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel));
+            var e9 = document.createTextNode("\r\n\t");
+            e2.appendChild(e9);
+            var e10 = document.createTextNode("\r\n");
+            this.element.appendChild(e10);
         };
         return UserSelector;
     }(AtomControl_1.AtomControl));
     exports.default = UserSelector;
+    function UserSelector_itemTemplate_1Creator(__creator) {
+        return /** @class */ (function (_super) {
+            __extends(UserSelector_itemTemplate_1, _super);
+            function UserSelector_itemTemplate_1() {
+                return _super !== null && _super.apply(this, arguments) || this;
+            }
+            UserSelector_itemTemplate_1.prototype.create = function () {
+                var _this = this;
+                _super.prototype.create.call(this);
+                ;
+                this.element = document.createElement("div");
+                this.runAfterInit(function () {
+                    return _this.setLocalValue(_this.element, "eventClick", function () { return (_this.viewModel).select((_this.data)); });
+                });
+                var e1 = document.createTextNode("\r\n\t\t\t\t");
+                this.element.appendChild(e1);
+                var e2 = document.createElement("span");
+                this.append(e2);
+                this.runAfterInit(function () {
+                    return _this.setLocalValue(e2, "text", (_this.data.label));
+                });
+                var e3 = document.createTextNode("\r\n\t\t\t");
+                this.element.appendChild(e3);
+            };
+            return UserSelector_itemTemplate_1;
+        }(AtomControl_1.AtomControl));
+    }
 });
 //# sourceMappingURL=UserSelector.js.map

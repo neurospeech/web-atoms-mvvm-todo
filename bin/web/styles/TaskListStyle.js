@@ -14,12 +14,12 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomStyle", "../../ModuleFiles"], factory);
+        define(["require", "exports", "web-atoms-core/bin/web/styles/AtomListBoxStyle", "../../ModuleFiles"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AtomStyle_1 = require("web-atoms-core/bin/web/styles/AtomStyle");
+    var AtomListBoxStyle_1 = require("web-atoms-core/bin/web/styles/AtomListBoxStyle");
     var ModuleFiles_1 = require("../../ModuleFiles");
     var TaskListStyle = /** @class */ (function (_super) {
         __extends(TaskListStyle, _super);
@@ -38,7 +38,7 @@ var __extends = (this && this.__extends) || (function () {
             return _this;
         }
         return TaskListStyle;
-    }(AtomStyle_1.AtomStyle));
+    }(AtomListBoxStyle_1.AtomListBoxStyle));
     exports.TaskListStyle = TaskListStyle;
 });
 //# sourceMappingURL=TaskListStyle.js.map

@@ -14,13 +14,14 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/bin/web/controls/AtomControl", "./TaskStatusCombo"], factory);
+        define(["require", "exports", "web-atoms-core/bin/web/controls/AtomControl", "./TaskStatusCombo", "../styles/TaskEditorStyle"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var AtomControl_1 = require("web-atoms-core/bin/web/controls/AtomControl");
     var TaskStatusCombo_1 = require("./TaskStatusCombo");
+    var TaskEditorStyle_1 = require("../styles/TaskEditorStyle");
     var TaskEditor = /** @class */ (function (_super) {
         __extends(TaskEditor, _super);
         function TaskEditor() {
@@ -31,6 +32,7 @@ var __extends = (this && this.__extends) || (function () {
             _super.prototype.create.call(this);
             var __creator = this;
             this.element = document.createElement("div");
+            this.defaultControlStyle = TaskEditorStyle_1.TaskEditorStyle;
             var e1 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e1);
             var e2 = document.createElement("input");
@@ -50,61 +52,61 @@ var __extends = (this && this.__extends) || (function () {
             var e7 = document.createTextNode("\r\n\t\t");
             this.element.appendChild(e7);
             var e8 = new TaskStatusCombo_1.default(this.app);
+            e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
+            this.append(e8);
             var e9 = document.createTextNode("\r\n\t\t");
-            e8.element.appendChild(e9);
+            this.element.appendChild(e9);
             var e10 = document.createElement("span");
-            e8.append(e10);
-            e8.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); });
+            this.append(e10);
+            this.bind(e10, "text", [["viewModel", "errorStatus"]], false, function (v1) { return (v1); });
             var e11 = document.createTextNode("\r\n\t\t\r\n\r\n\t\t");
-            e8.element.appendChild(e11);
+            this.element.appendChild(e11);
             var e12 = document.createElement("textarea");
-            e8.append(e12);
-            e8.setPrimitiveValue(e12, "cols", "30");
-            e8.setPrimitiveValue(e12, "rows", "10");
-            e8.bind(e12, "value", [["viewModel", "task", "description"]], true);
+            this.append(e12);
+            this.setPrimitiveValue(e12, "cols", "30");
+            this.setPrimitiveValue(e12, "rows", "10");
+            this.bind(e12, "value", [["viewModel", "task", "description"]], true);
             var e13 = document.createTextNode("\r\n\r\n\t\t");
-            e8.element.appendChild(e13);
+            this.element.appendChild(e13);
             var e14 = document.createElement("div");
-            e8.append(e14);
+            this.append(e14);
             var e15 = document.createTextNode("\r\n\t\t\t");
             e14.appendChild(e15);
             var e16 = document.createElement("span");
             e14.appendChild(e16);
-            e8.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); });
+            this.bind(e16, "text", [["viewModel", "user", "label"]], false, function (v1) { return (v1); });
             var e17 = document.createTextNode("\r\n\t\t\t");
             e14.appendChild(e17);
             var e18 = document.createElement("button");
             e14.appendChild(e18);
-            e8.runAfterInit(function () {
-                return e8.setLocalValue(e18, "eventClick", function () { return (_this.viewModel).assign(); });
+            this.runAfterInit(function () {
+                return _this.setLocalValue(e18, "eventClick", function () { return (_this.viewModel).assign(); });
             });
             var e19 = document.createTextNode("Assign");
             e18.appendChild(e19);
             var e20 = document.createTextNode("\r\n\t\t");
             e14.appendChild(e20);
             var e21 = document.createTextNode("\r\n\r\n\t\t");
-            e8.element.appendChild(e21);
+            this.element.appendChild(e21);
             var e22 = document.createElement("div");
-            e8.append(e22);
-            e8.runAfterInit(function () {
-                return e8.setLocalValue(e22, "styleDisplay", !(_this.viewModel.windowName) ? '' : 'none');
+            this.append(e22);
+            this.runAfterInit(function () {
+                return _this.setLocalValue(e22, "styleDisplay", !(_this.viewModel.windowName) ? '' : 'none');
             });
             var e23 = document.createTextNode("\r\n\t\t\t");
             e22.appendChild(e23);
             var e24 = document.createElement("button");
             e22.appendChild(e24);
-            e8.setPrimitiveValue(e24, "styleClass", this.controlStyle.saveButton);
-            e8.runAfterInit(function () {
-                return e8.setLocalValue(e24, "eventClick", function () { return (_this.viewModel).save(); });
+            this.setPrimitiveValue(e24, "styleClass", this.controlStyle.saveButton);
+            this.runAfterInit(function () {
+                return _this.setLocalValue(e24, "eventClick", function () { return (_this.viewModel).save(); });
             });
             var e25 = document.createTextNode("Save");
             e24.appendChild(e25);
             var e26 = document.createTextNode("\r\n\t\t");
             e22.appendChild(e26);
             var e27 = document.createTextNode("\r\n\r\n");
-            e8.element.appendChild(e27);
-            e8.bind(e8.element, "value", [["viewModel", "task", "status"]], true);
-            this.append(e8);
+            this.element.appendChild(e27);
         };
         return TaskEditor;
     }(AtomControl_1.AtomControl));

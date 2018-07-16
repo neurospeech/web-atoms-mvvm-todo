@@ -18,11 +18,11 @@ export default  class TaskStatusCombo extends AtomComboBox {
                     
                     
                     
+                this.setPrimitiveValue(this.element, "items",  this.resolve(ConfigService).getStatusList() );
+                    
         const e1 = document.createTextNode("\r\n");
         
         this.element.appendChild(e1);
-                    
-                this.setPrimitiveValue(this.element, "items",  this.resolve(ConfigService).getStatusList() );
                 }
             }
 
