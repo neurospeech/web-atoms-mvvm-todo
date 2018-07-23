@@ -7,4 +7,11 @@ import { TaskListStyle } from "./TaskListStyle";
 
 @RegisterSingleton
 export class AppTheme extends AtomTheme {
+
+    constructor() {
+        super();
+        this.selectedBgColor = "green";
+        this.selectedColor = "yellow";
+    }
+
 }
