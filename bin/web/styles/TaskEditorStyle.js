@@ -24,9 +24,9 @@ var __extends = (this && this.__extends) || (function () {
         __extends(TaskEditorStyle, _super);
         function TaskEditorStyle() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.saveButton = _this.createClass("button", {
+            _this.saveButton = _this.createClass("button", function () { return ({
                 fontFamily: "bold"
-            });
+            }); });
             return _this;
         }
         return TaskEditorStyle;

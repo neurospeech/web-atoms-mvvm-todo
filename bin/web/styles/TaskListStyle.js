@@ -25,16 +25,16 @@ var __extends = (this && this.__extends) || (function () {
         __extends(TaskListStyle, _super);
         function TaskListStyle() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.saveButton = _this.createClass("button", {
+            _this.saveButton = _this.createClass("button", function () { return ({
                 fontWeight: "bold",
                 color: "green"
-            });
-            _this.addButton = _this.createClass("add-button", {
+            }); });
+            _this.addButton = _this.createClass("add-button", function () { return ({
                 backgroundImage: "url(" + ModuleFiles_1.ModuleFiles.src.images.AddIcon_svg + ")",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 paddingLeft: "20px"
-            });
+            }); });
             return _this;
         }
         return TaskListStyle;
