@@ -1,5 +1,5 @@
-import { RegisterSingleton } from "web-atoms-core/bin/di/RegisterSingleton";
-import { BaseService, Get } from "web-atoms-core/bin/services/http/RestService";
+import { RegisterSingleton } from "web-atoms-core/dist/di/RegisterSingleton";
+import { BaseService, Get } from "web-atoms-core/dist/services/http/RestService";
 import { SampleApp } from "../app";
 import { IConfigItem } from "../models/task-status";
 

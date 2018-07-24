@@ -1,7 +1,7 @@
 import "test-dom";
-import { Assert } from "web-atoms-core/bin/unit/Assert";
-import { Category } from "web-atoms-core/bin/unit/Category";
-import { Test } from "web-atoms-core/bin/unit/Test";
+import { Assert } from "web-atoms-core/dist/unit/Assert";
+import { Category } from "web-atoms-core/dist/unit/Category";
+import { Test } from "web-atoms-core/dist/unit/Test";
 import { Task } from "../models/task";
 import { ModuleFiles } from "../ModuleFiles";
 import { TaskEditorViewModel } from "../view-models/TaskEditorViewModel";

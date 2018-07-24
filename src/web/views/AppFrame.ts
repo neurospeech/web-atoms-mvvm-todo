@@ -1,6 +1,6 @@
 // tslint:disable
-import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
-import {AtomFrame} from "web-atoms-core/bin/web/controls/AtomFrame";
+import {BindableProperty} from "web-atoms-core/dist/core/BindableProperty";
+import {AtomFrame} from "web-atoms-core/dist/web/controls/AtomFrame";
 
     import {AppFrameViewModel} from "../../view-models/AppFrameViewModel";
 

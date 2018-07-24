@@ -1,6 +1,6 @@
-import { AtomListBoxStyle } from "web-atoms-core/bin/web/styles/AtomListBoxStyle";
-import { AtomStyle } from "web-atoms-core/bin/web/styles/AtomStyle";
-import { AtomStyleClass } from "web-atoms-core/bin/web/styles/AtomStyleClass";
+import { AtomListBoxStyle } from "web-atoms-core/dist/web/styles/AtomListBoxStyle";
+import { AtomStyle } from "web-atoms-core/dist/web/styles/AtomStyle";
+import { AtomStyleClass } from "web-atoms-core/dist/web/styles/AtomStyleClass";
 import { ModuleFiles } from "../../ModuleFiles";
 
 export class TaskListStyle extends AtomListBoxStyle {

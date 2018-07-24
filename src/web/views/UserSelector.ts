@@ -1,7 +1,7 @@
 // tslint:disable
-import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
-import {AtomItemsControl} from "web-atoms-core/bin/web/controls/AtomItemsControl";
-import {AtomControl} from "web-atoms-core/bin/web/controls/AtomControl";
+import {BindableProperty} from "web-atoms-core/dist/core/BindableProperty";
+import {AtomItemsControl} from "web-atoms-core/dist/web/controls/AtomItemsControl";
+import {AtomControl} from "web-atoms-core/dist/web/controls/AtomControl";
 
 	import {UserSelectorViewModel} from "../../view-models/UserSelectorViewModel";
 

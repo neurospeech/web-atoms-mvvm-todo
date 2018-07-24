@@ -1,6 +1,6 @@
 // tslint:disable
-import {BindableProperty} from "web-atoms-core/bin/core/BindableProperty";
-import {AtomComboBox} from "web-atoms-core/bin/web/controls/AtomComboBox";
+import {BindableProperty} from "web-atoms-core/dist/core/BindableProperty";
+import {AtomComboBox} from "web-atoms-core/dist/web/controls/AtomComboBox";
 
     import { ConfigService } from "../../services/ConfigService";
 

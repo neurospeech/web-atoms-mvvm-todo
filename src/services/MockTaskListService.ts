@@ -1,5 +1,5 @@
-import { Inject } from "web-atoms-core/bin/di/Inject";
-import { JsonService } from "web-atoms-core/bin/services/JsonService";
+import { Inject } from "web-atoms-core/dist/di/Inject";
+import { JsonService } from "web-atoms-core/dist/services/JsonService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 import { TaskListService } from "./TaskListService";

@@ -1,6 +1,6 @@
-import { MockNavigationService } from "web-atoms-core/bin/services/MockNavigationService";
-import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import { TestItem } from "web-atoms-core/bin/unit/TestItem";
+import { MockNavigationService } from "web-atoms-core/dist/services/MockNavigationService";
+import { NavigationService } from "web-atoms-core/dist/services/NavigationService";
+import { TestItem } from "web-atoms-core/dist/unit/TestItem";
 import { TestApp } from "./TestApp";
 
 export class BaseTest extends TestItem {

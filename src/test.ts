@@ -1,5 +1,5 @@
 // tslint:disable:no-console
-import { TestRunner } from "web-atoms-core/bin/unit/TestRunner";
+import { TestRunner } from "web-atoms-core/dist/unit/TestRunner";
 
 // import unit test modules here
 import "./tests/NewTaskWindowTest";

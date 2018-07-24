@@ -1,9 +1,9 @@
-import { App } from "web-atoms-core/bin/App";
-import { AtomList } from "web-atoms-core/bin/core/AtomList";
-import { BindableProperty } from "web-atoms-core/bin/core/BindableProperty";
-import { Inject } from "web-atoms-core/bin/di/Inject";
-import { NavigationService } from "web-atoms-core/bin/services/NavigationService";
-import { AtomViewModel, BindableBroadcast } from "web-atoms-core/bin/view-model/AtomViewModel";
+import { App } from "web-atoms-core/dist/App";
+import { AtomList } from "web-atoms-core/dist/core/AtomList";
+import { BindableProperty } from "web-atoms-core/dist/core/BindableProperty";
+import { Inject } from "web-atoms-core/dist/di/Inject";
+import { NavigationService } from "web-atoms-core/dist/services/NavigationService";
+import { AtomViewModel, BindableBroadcast } from "web-atoms-core/dist/view-model/AtomViewModel";
 import { Channels } from "../channels";
 import { Task } from "../models/task";
 import { ModuleFiles } from "../ModuleFiles";

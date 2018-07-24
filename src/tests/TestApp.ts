@@ -1,4 +1,4 @@
-import { MockApp } from "web-atoms-core/bin/MockApp";
+import { MockApp } from "web-atoms-core/dist/MockApp";
 import { MockTaskListService } from "../services/MockTaskListService";
 import { TaskListService } from "../services/TaskListService";
 
