@@ -40,7 +40,7 @@ var __extends = (this && this.__extends) || (function () {
             this.defaultControlStyle = TaskListStyle_1.TaskListStyle;
             this.setPrimitiveValue(this.element, "columns", "30%, 5, *");
             this.setPrimitiveValue(this.element, "rows", "50, *");
-            this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskListViewModel_1.TaskListViewModel));
+            this.viewModel = this.resolve(TaskListViewModel_1.TaskListViewModel);
             var e1 = document.createTextNode("\r\n\r\n    ");
             this.element.appendChild(e1);
             var e2 = document.createElement("header");
@@ -73,7 +73,7 @@ var __extends = (this && this.__extends) || (function () {
             e10.element.appendChild(e11);
             var e12 = document.createTextNode("\r\n    ");
             e10.element.appendChild(e12);
-            e10.setPrimitiveValue(e10.element, "controlStyle", RedListStyle_1.default);
+            e10.controlStyle = RedListStyle_1.default;
             e10.setPrimitiveValue(e10.element, "row", "1");
             e10.setPrimitiveValue(e10.element, "column", "0");
             e10.runAfterInit(function () {
@@ -87,7 +87,7 @@ var __extends = (this && this.__extends) || (function () {
             var e14 = new TaskEditor_1.default(this.app);
             e14.setPrimitiveValue(e14.element, "column", "2");
             e14.setPrimitiveValue(e14.element, "row", "1");
-            e14.setPrimitiveValue(e14.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
+            e14.viewModel = this.resolve(TaskEditorViewModel_1.TaskEditorViewModel);
             e14.bind(e14.element, "styleDisplay", [["viewModel", "task"]], false, function (v1) { return (v1) ? '' : 'none'; });
             this.append(e14);
             var e15 = document.createTextNode("\r\n\r\n");

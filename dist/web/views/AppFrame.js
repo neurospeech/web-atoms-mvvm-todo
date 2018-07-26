@@ -29,7 +29,7 @@ var __extends = (this && this.__extends) || (function () {
         AppFrame.prototype.create = function () {
             _super.prototype.create.call(this);
             var __creator = this;
-            this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel_1.AppFrameViewModel));
+            this.localViewModel = this.resolve(AppFrameViewModel_1.AppFrameViewModel);
             this.bind(this.element, "url", [["localViewModel", "url"]], false, function (v1) { return (v1); });
             var e1 = document.createTextNode("\r\n");
             this.element.appendChild(e1);

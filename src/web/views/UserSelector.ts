@@ -19,7 +19,7 @@ export default  class UserSelector extends AtomControl {
                     this.element = document.createElement("div");
                     
                     
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(UserSelectorViewModel) );
+                this.viewModel =  this.resolve(UserSelectorViewModel) ;
                     
         const e1 = document.createTextNode("\r\n\t");
         

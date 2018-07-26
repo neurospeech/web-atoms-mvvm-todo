@@ -18,7 +18,7 @@ export default  class LoginView extends AtomControl {
                     this.element = document.createElement("div");
                     
                     
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(LoginViewModel) );
+                this.viewModel =  this.resolve(LoginViewModel) ;
                     
         const e1 = document.createTextNode("\r\n\t");
         

@@ -19,7 +19,7 @@ export default  class TaskEditor extends AtomControl {
                     this.element = document.createElement("div");
                     
                     
-            this.defaultControlStyle = TaskEditorStyle;
+            this.defaultControlStyle =  TaskEditorStyle ;
             
                     
         const e1 = document.createTextNode("\r\n\t\t");

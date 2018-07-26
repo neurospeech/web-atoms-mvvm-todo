@@ -18,7 +18,7 @@ export default  class AppFrame extends AtomFrame {
                     
                     
                     
-                this.setPrimitiveValue(this.element, "localViewModel", this.resolve(AppFrameViewModel));
+                this.localViewModel = this.resolve(AppFrameViewModel);
 
             this.bind(this.element, "url",  [["localViewModel","url"]], false , (v1) => (v1) );
                     

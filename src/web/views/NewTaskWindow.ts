@@ -20,7 +20,7 @@ export default  class NewTaskWindow extends AtomWindow {
                     
                     
                     
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskEditorViewModel) );
+                this.viewModel =  this.resolve(TaskEditorViewModel) ;
 
             this.bind(this.element, "title",  [["viewModel","task","label"],["viewModel","task","label"]], false , (v1,v2) => (v1) ? ('Task ' + (v2)) : 'Add New Task' );
 

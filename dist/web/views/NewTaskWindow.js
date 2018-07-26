@@ -31,7 +31,7 @@ var __extends = (this && this.__extends) || (function () {
         NewTaskWindow.prototype.create = function () {
             _super.prototype.create.call(this);
             var __creator = this;
-            this.setPrimitiveValue(this.element, "viewModel", this.resolve(TaskEditorViewModel_1.TaskEditorViewModel));
+            this.viewModel = this.resolve(TaskEditorViewModel_1.TaskEditorViewModel);
             this.bind(this.element, "title", [["viewModel", "task", "label"], ["viewModel", "task", "label"]], false, function (v1, v2) { return (v1) ? ('Task ' + (v2)) : 'Add New Task'; });
             this.setPrimitiveValue(this.element, "width", "400px");
             this.setPrimitiveValue(this.element, "height", "400px");

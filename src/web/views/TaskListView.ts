@@ -25,7 +25,7 @@ export default  class TaskListView extends AtomGridView {
                     
                     
                     
-            this.defaultControlStyle = TaskListStyle;
+            this.defaultControlStyle =  TaskListStyle ;
             
 
         this.setPrimitiveValue(this.element, "columns", "30%, 5, *" );
@@ -34,7 +34,7 @@ export default  class TaskListView extends AtomGridView {
         this.setPrimitiveValue(this.element, "rows", "50, *" );
         
 
-                this.setPrimitiveValue(this.element, "viewModel",  this.resolve(TaskListViewModel) );
+                this.viewModel =  this.resolve(TaskListViewModel) ;
                     
         const e1 = document.createTextNode("\r\n\r\n    ");
         
@@ -105,7 +105,7 @@ export default  class TaskListView extends AtomGridView {
         
         e10.element.appendChild(e12);
             
-                e10.setPrimitiveValue(e10.element, "controlStyle",  RedListStyle );
+                e10.controlStyle =  RedListStyle ;
 
         e10.setPrimitiveValue(e10.element, "row", "1" );
         
@@ -137,7 +137,7 @@ export default  class TaskListView extends AtomGridView {
         e14.setPrimitiveValue(e14.element, "row", "1" );
         
 
-                e14.setPrimitiveValue(e14.element, "viewModel",  this.resolve(TaskEditorViewModel) );
+                e14.viewModel =  this.resolve(TaskEditorViewModel) ;
 
             e14.bind(e14.element, "styleDisplay",  [["viewModel","task"]], false , (v1) => (v1) ? '' : 'none' );
             this.append(e14);

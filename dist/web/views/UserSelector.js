@@ -31,7 +31,7 @@ var __extends = (this && this.__extends) || (function () {
             _super.prototype.create.call(this);
             var __creator = this;
             this.element = document.createElement("div");
-            this.setPrimitiveValue(this.element, "viewModel", this.resolve(UserSelectorViewModel_1.UserSelectorViewModel));
+            this.viewModel = this.resolve(UserSelectorViewModel_1.UserSelectorViewModel);
             var e1 = document.createTextNode("\r\n\t");
             this.element.appendChild(e1);
             var e2 = document.createElement("div");

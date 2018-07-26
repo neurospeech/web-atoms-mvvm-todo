@@ -25,7 +25,7 @@
   "dependencies": {
     "reflect-metadata": "^0.1.12",
     "web-atoms-amd-loader": "^1.0.17",
-    "web-atoms-core": "^1.0.281"
+    "web-atoms-core": "^1.0.282"
   },
   "devDependencies": {
     "jsdom": "^11.11.0",
