@@ -87,7 +87,17 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     value: "Tucker"
                 }];
             var t = new task_1.Task();
-            t.label = "Sample task";
+            t.label = "Sample task 1";
+            t.status = "open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
+            t = new task_1.Task();
+            t.label = "Sample task 2";
+            t.status = "open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
+            t = new task_1.Task();
+            t.label = "Sample task 3";
             t.status = "open";
             t.id = (new Date()).getTime();
             _this.tasks.push(t);

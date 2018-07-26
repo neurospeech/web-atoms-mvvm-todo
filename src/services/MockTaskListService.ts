@@ -21,12 +21,23 @@ export class MockTaskListService extends TaskListService {
     constructor(@Inject jsonService: JsonService = new JsonService()) {
         super(jsonService);
 
-        const t = new Task();
-        t.label = "Sample task";
+        let t = new Task();
+        t.label = "Sample task 1";
         t.status = "open";
         t.id = (new Date()).getTime();
         this.tasks.push(t);
 
+        t = new Task();
+        t.label = "Sample task 2";
+        t.status = "open";
+        t.id = (new Date()).getTime();
+        this.tasks.push(t);
+
+        t = new Task();
+        t.label = "Sample task 3";
+        t.status = "open";
+        t.id = (new Date()).getTime();
+        this.tasks.push(t);
     }
 
     public async create(task: Task): Promise<Task> {

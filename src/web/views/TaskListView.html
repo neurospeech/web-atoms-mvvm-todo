@@ -7,6 +7,7 @@
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import TaskEditor from "./TaskEditor";
     import { TaskListStyle } from "../styles/TaskListStyle";
+    import RedListStyle from "~/src/web/styles/RedListStyle";
 </script>
 <AtomGridView
     default-style="TaskListStyle"
@@ -23,6 +24,7 @@
     <AtomGridSplitter row="1" column="1" direction="vertical"></AtomGridSplitter>
 
     <AtomListBox.div
+        control-style="{ RedListStyle }"
         row="1"
         column="0"
         items="{$viewModel.list}"

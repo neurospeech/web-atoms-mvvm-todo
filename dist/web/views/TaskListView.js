@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/web/controls/AtomGridSplitter", "web-atoms-core/dist/web/controls/AtomListBox", "web-atoms-core/dist/web/controls/AtomGridView", "web-atoms-core/dist/web/controls/AtomControl", "../../view-models/TaskListViewModel", "../../view-models/TaskEditorViewModel", "./TaskEditor", "../styles/TaskListStyle"], factory);
+        define(["require", "exports", "web-atoms-core/dist/web/controls/AtomGridSplitter", "web-atoms-core/dist/web/controls/AtomListBox", "web-atoms-core/dist/web/controls/AtomGridView", "web-atoms-core/dist/web/controls/AtomControl", "../../view-models/TaskListViewModel", "../../view-models/TaskEditorViewModel", "./TaskEditor", "../styles/TaskListStyle", "../styles/RedListStyle"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -27,6 +27,7 @@ var __extends = (this && this.__extends) || (function () {
     var TaskEditorViewModel_1 = require("../../view-models/TaskEditorViewModel");
     var TaskEditor_1 = require("./TaskEditor");
     var TaskListStyle_1 = require("../styles/TaskListStyle");
+    var RedListStyle_1 = require("../styles/RedListStyle");
     var TaskListView = /** @class */ (function (_super) {
         __extends(TaskListView, _super);
         function TaskListView() {
@@ -72,6 +73,7 @@ var __extends = (this && this.__extends) || (function () {
             e10.element.appendChild(e11);
             var e12 = document.createTextNode("\r\n    ");
             e10.element.appendChild(e12);
+            e10.setPrimitiveValue(e10.element, "controlStyle", RedListStyle_1.default);
             e10.setPrimitiveValue(e10.element, "row", "1");
             e10.setPrimitiveValue(e10.element, "column", "0");
             e10.runAfterInit(function () {

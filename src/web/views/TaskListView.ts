@@ -9,6 +9,7 @@ import {AtomControl} from "web-atoms-core/dist/web/controls/AtomControl";
     import { TaskEditorViewModel } from "../../view-models/TaskEditorViewModel";
     import TaskEditor from "./TaskEditor";
     import { TaskListStyle } from "../styles/TaskListStyle";
+    import RedListStyle from "../styles/RedListStyle";
 
 export default  class TaskListView extends AtomGridView {
 
@@ -104,6 +105,8 @@ export default  class TaskListView extends AtomGridView {
         
         e10.element.appendChild(e12);
             
+                e10.setPrimitiveValue(e10.element, "controlStyle",  RedListStyle );
+
         e10.setPrimitiveValue(e10.element, "row", "1" );
         
 
