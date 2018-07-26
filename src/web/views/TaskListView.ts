@@ -1,7 +1,7 @@
 // tslint:disable
 import {BindableProperty} from "web-atoms-core/dist/core/BindableProperty";
-import {AtomListBox} from "web-atoms-core/dist/web/controls/AtomListBox";
 import {AtomGridSplitter} from "web-atoms-core/dist/web/controls/AtomGridSplitter";
+import {AtomListBox} from "web-atoms-core/dist/web/controls/AtomListBox";
 import {AtomGridView} from "web-atoms-core/dist/web/controls/AtomGridView";
 import {AtomControl} from "web-atoms-core/dist/web/controls/AtomControl";
 

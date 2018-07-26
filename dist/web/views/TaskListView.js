@@ -14,13 +14,13 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/web/controls/AtomListBox", "web-atoms-core/dist/web/controls/AtomGridSplitter", "web-atoms-core/dist/web/controls/AtomGridView", "web-atoms-core/dist/web/controls/AtomControl", "../../view-models/TaskListViewModel", "../../view-models/TaskEditorViewModel", "./TaskEditor", "../styles/TaskListStyle"], factory);
+        define(["require", "exports", "web-atoms-core/dist/web/controls/AtomGridSplitter", "web-atoms-core/dist/web/controls/AtomListBox", "web-atoms-core/dist/web/controls/AtomGridView", "web-atoms-core/dist/web/controls/AtomControl", "../../view-models/TaskListViewModel", "../../view-models/TaskEditorViewModel", "./TaskEditor", "../styles/TaskListStyle"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AtomListBox_1 = require("web-atoms-core/dist/web/controls/AtomListBox");
     var AtomGridSplitter_1 = require("web-atoms-core/dist/web/controls/AtomGridSplitter");
+    var AtomListBox_1 = require("web-atoms-core/dist/web/controls/AtomListBox");
     var AtomGridView_1 = require("web-atoms-core/dist/web/controls/AtomGridView");
     var AtomControl_1 = require("web-atoms-core/dist/web/controls/AtomControl");
     var TaskListViewModel_1 = require("../../view-models/TaskListViewModel");

@@ -24,8 +24,8 @@
   "homepage": "https://github.com/neurospeech/web-atoms-mvvm-todo#readme",
   "dependencies": {
     "reflect-metadata": "^0.1.12",
-    "systemjs": "^0.21.4",
-    "web-atoms-core": "^1.0.276"
+    "web-atoms-amd-loader": "^1.0.17",
+    "web-atoms-core": "^1.0.279"
   },
   "devDependencies": {
     "jsdom": "^11.11.0",
