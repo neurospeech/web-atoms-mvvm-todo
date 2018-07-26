@@ -1,9 +1,8 @@
-import { AtomListBoxStyle } from "web-atoms-core/dist/web/styles/AtomListBoxStyle";
 import { AtomStyle } from "web-atoms-core/dist/web/styles/AtomStyle";
 import { AtomStyleClass } from "web-atoms-core/dist/web/styles/AtomStyleClass";
 import { ModuleFiles } from "../../ModuleFiles";
 
-export class TaskListStyle extends AtomListBoxStyle {
+export class TaskListStyle extends AtomStyle {
 
     public readonly saveButton: AtomStyleClass = this.createClass("button", () => ({
         fontWeight: "bold",
@@ -16,4 +15,5 @@ export class TaskListStyle extends AtomListBoxStyle {
         backgroundRepeat: "no-repeat",
         paddingLeft: "20px"
     }));
+
 }
