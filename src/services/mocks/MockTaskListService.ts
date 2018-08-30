@@ -1,10 +1,11 @@
+import { App } from "web-atoms-core/dist/App";
 import { Inject } from "web-atoms-core/dist/di/Inject";
 import { JsonService } from "web-atoms-core/dist/services/JsonService";
-import { Task } from "../models/task";
-import { IUser } from "../models/user";
-import { TaskListService } from "./TaskListService";
+import { Task } from "../../models/task";
+import { IUser } from "../../models/user";
+import { TaskListService } from "../TaskListService";
 
-export class MockTaskListService extends TaskListService {
+export default class MockTaskListService extends TaskListService {
     public tasks: Task[] = [];
 
     public users: IUser[] = [{
@@ -18,8 +19,8 @@ export class MockTaskListService extends TaskListService {
         value: "Tucker"
     }];
 
-    constructor(@Inject jsonService: JsonService = new JsonService()) {
-        super(jsonService);
+    constructor(@Inject app: App, @Inject jsonService: JsonService = new JsonService()) {
+        super(app, jsonService);
 
         let t = new Task();
         t.label = "Sample task 1";

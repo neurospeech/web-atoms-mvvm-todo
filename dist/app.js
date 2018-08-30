@@ -14,7 +14,7 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/Atom", "web-atoms-core/dist/services/JsonService", "web-atoms-core/dist/web/WebApp", "./services/ConfigService", "./services/MockConfigService", "./services/MockTaskListService", "./services/TaskListService", "./web/styles/AppTheme", "./web/views/AppFrame"], factory);
+        define(["require", "exports", "web-atoms-core/dist/Atom", "web-atoms-core/dist/services/JsonService", "web-atoms-core/dist/web/WebApp", "./services/ConfigService", "./services/mocks/MockConfigService", "./services/mocks/MockTaskListService", "./services/TaskListService", "./web/styles/AppTheme", "./web/views/AppFrame"], factory);
     }
 })(function (require, exports) {
     "use strict";
@@ -23,8 +23,8 @@ var __extends = (this && this.__extends) || (function () {
     var JsonService_1 = require("web-atoms-core/dist/services/JsonService");
     var WebApp_1 = require("web-atoms-core/dist/web/WebApp");
     var ConfigService_1 = require("./services/ConfigService");
-    var MockConfigService_1 = require("./services/MockConfigService");
-    var MockTaskListService_1 = require("./services/MockTaskListService");
+    var MockConfigService_1 = require("./services/mocks/MockConfigService");
+    var MockTaskListService_1 = require("./services/mocks/MockTaskListService");
     var TaskListService_1 = require("./services/TaskListService");
     var AppTheme_1 = require("./web/styles/AppTheme");
     var AppFrame_1 = require("./web/views/AppFrame");

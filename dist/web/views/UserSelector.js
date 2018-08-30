@@ -53,7 +53,7 @@ var __extends = (this && this.__extends) || (function () {
             e6.setPrimitiveValue(e6.element, "style", "padding:5px");
             e6.bind(e6.element, "items", [["viewModel", "items"]], false, function (v1) { return (v1); });
             e6.itemTemplate = UserSelector_itemTemplate_1Creator(this);
-            this.append(e6);
+            e2.appendChild(e6.element);
             var e9 = document.createTextNode("\r\n\t");
             e2.appendChild(e9);
             var e10 = document.createTextNode("\r\n");

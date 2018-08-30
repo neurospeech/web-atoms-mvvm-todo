@@ -14,19 +14,20 @@ var __extends = (this && this.__extends) || (function () {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/MockApp", "../services/MockTaskListService", "../services/TaskListService"], factory);
+        define(["require", "exports", "web-atoms-core/dist/MockApp", "web-atoms-core/dist/services/JsonService", "../services/mocks/MockTaskListService", "../services/TaskListService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var MockApp_1 = require("web-atoms-core/dist/MockApp");
-    var MockTaskListService_1 = require("../services/MockTaskListService");
+    var JsonService_1 = require("web-atoms-core/dist/services/JsonService");
+    var MockTaskListService_1 = require("../services/mocks/MockTaskListService");
     var TaskListService_1 = require("../services/TaskListService");
     var TestApp = /** @class */ (function (_super) {
         __extends(TestApp, _super);
         function TestApp() {
             var _this = _super.call(this) || this;
-            _this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService());
+            _this.put(TaskListService_1.TaskListService, new MockTaskListService_1.MockTaskListService(_this, _this.resolve(JsonService_1.JsonService)));
             return _this;
         }
         return TestApp;

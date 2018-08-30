@@ -68,7 +68,7 @@ export default  class UserSelector extends AtomControl {
 
         e6.itemTemplate = UserSelector_itemTemplate_1Creator(this);
             
-            this.append(e6);
+            e2.appendChild(e6.element);
 
 
         const e9 = document.createTextNode("\r\n\t");

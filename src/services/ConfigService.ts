@@ -1,9 +1,9 @@
+import DISingleton from "web-atoms-core/dist/di/DISingleton";
 import { RegisterSingleton } from "web-atoms-core/dist/di/RegisterSingleton";
 import { BaseService, Get } from "web-atoms-core/dist/services/http/RestService";
-import { SampleApp } from "../app";
 import { IConfigItem } from "../models/task-status";
 
-@RegisterSingleton
+@DISingleton({ mock: "./mocks/MockConfigService" })
 export class ConfigService extends BaseService {
 
     @Get("/config/status")

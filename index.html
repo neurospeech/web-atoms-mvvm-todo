@@ -5,10 +5,11 @@
     </head>
     <body>
         <script type="text/javascript">
+            UMD.mock = true;
             UMD.map("reflect-metadata", "./node_modules/reflect-metadata/Reflect.js");
             UMD.map("web-atoms-core", "./node_modules/web-atoms-core");
             UMD.map("web-atoms-mvvm-todo", "./");
-            UMD.load("web-atoms-mvvm-todo/dist/app.js");
+            UMD.loadView("web-atoms-mvvm-todo/dist/web/views/AppFrame", true);
         </script>
     </body>
 </html>

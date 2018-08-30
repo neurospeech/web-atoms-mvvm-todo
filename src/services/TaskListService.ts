@@ -1,9 +1,10 @@
+import DISingleton from "web-atoms-core/dist/di/DISingleton";
 import { RegisterSingleton } from "web-atoms-core/dist/di/RegisterSingleton";
 import { BaseService, Body, Delete, Get, Patch, Path, Put, Query } from "web-atoms-core/dist/services/http/RestService";
 import { Task } from "../models/task";
 import { IUser } from "../models/user";
 
-@RegisterSingleton
+@DISingleton({ mock: "./mocks/MockTaskListService" })
 export class TaskListService extends BaseService {
 
     @Put("/tasks/task")

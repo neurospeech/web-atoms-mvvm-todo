@@ -49,34 +49,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/services/NavigationService", "web-atoms-core/dist/unit/TestItem", "./TestApp"], factory);
+        define(["require", "exports", "../ConfigService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var NavigationService_1 = require("web-atoms-core/dist/services/NavigationService");
-    var TestItem_1 = require("web-atoms-core/dist/unit/TestItem");
-    var TestApp_1 = require("./TestApp");
-    var BaseTest = /** @class */ (function (_super) {
-        __extends(BaseTest, _super);
-        function BaseTest(app, navigationService) {
-            if (app === void 0) { app = new TestApp_1.TestApp(); }
-            if (navigationService === void 0) { navigationService = app.get(NavigationService_1.NavigationService); }
-            var _this = _super.call(this) || this;
-            _this.app = app;
-            _this.navigationService = navigationService;
-            return _this;
+    var ConfigService_1 = require("../ConfigService");
+    var MockConfigService = /** @class */ (function (_super) {
+        __extends(MockConfigService, _super);
+        function MockConfigService() {
+            return _super !== null && _super.apply(this, arguments) || this;
         }
-        BaseTest.prototype.dispose = function () {
+        MockConfigService.prototype.getStatusList = function () {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    this.navigationService.assert();
-                    return [2 /*return*/];
+                    return [2 /*return*/, [
+                            {
+                                label: "Select", value: ""
+                            },
+                            {
+                                label: "Open", value: "open"
+                            },
+                            {
+                                label: "Closed", value: "closed"
+                            }
+                        ]];
                 });
             });
         };
-        return BaseTest;
-    }(TestItem_1.TestItem));
-    exports.BaseTest = BaseTest;
+        return MockConfigService;
+    }(ConfigService_1.ConfigService));
+    exports.default = MockConfigService;
 });
-//# sourceMappingURL=BaseTest.js.map
+//# sourceMappingURL=MockConfigService.js.map

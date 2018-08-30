@@ -61,79 +61,113 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/App", "web-atoms-core/dist/core/BindableProperty", "web-atoms-core/dist/di/Inject", "web-atoms-core/dist/view-model/AtomViewModel", "web-atoms-core/dist/view-model/AtomWindowViewModel", "../services/TaskListService"], factory);
+        define(["require", "exports", "web-atoms-core/dist/App", "web-atoms-core/dist/di/Inject", "web-atoms-core/dist/services/JsonService", "../../models/task", "../TaskListService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var App_1 = require("web-atoms-core/dist/App");
-    var BindableProperty_1 = require("web-atoms-core/dist/core/BindableProperty");
     var Inject_1 = require("web-atoms-core/dist/di/Inject");
-    var AtomViewModel_1 = require("web-atoms-core/dist/view-model/AtomViewModel");
-    var AtomWindowViewModel_1 = require("web-atoms-core/dist/view-model/AtomWindowViewModel");
-    var TaskListService_1 = require("../services/TaskListService");
-    var UserSelectorViewModel = /** @class */ (function (_super) {
-        __extends(UserSelectorViewModel, _super);
-        function UserSelectorViewModel(app, taskListService) {
-            var _this = _super.call(this, app) || this;
-            _this.taskListService = taskListService;
+    var JsonService_1 = require("web-atoms-core/dist/services/JsonService");
+    var task_1 = require("../../models/task");
+    var TaskListService_1 = require("../TaskListService");
+    var MockTaskListService = /** @class */ (function (_super) {
+        __extends(MockTaskListService, _super);
+        function MockTaskListService(app, jsonService) {
+            if (jsonService === void 0) { jsonService = new JsonService_1.JsonService(); }
+            var _this = _super.call(this, app, jsonService) || this;
+            _this.tasks = [];
+            _this.users = [{
+                    label: "Akash Kava",
+                    value: "ackava",
+                }, {
+                    label: "John",
+                    value: "Hemond"
+                }, {
+                    label: "Chris",
+                    value: "Tucker"
+                }];
+            var t = new task_1.Task();
+            t.label = "Sample task 1";
+            t.status = "open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
+            t = new task_1.Task();
+            t.label = "Sample task 2";
+            t.status = "open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
+            t = new task_1.Task();
+            t.label = "Sample task 3";
+            t.status = "open";
+            t.id = (new Date()).getTime();
+            _this.tasks.push(t);
             return _this;
         }
-        UserSelectorViewModel.prototype.init = function () {
+        MockTaskListService.prototype.create = function (task) {
             return __awaiter(this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = this;
-                            return [4 /*yield*/, this.taskListService.getUsers(null)];
-                        case 1:
-                            _a.items = _b.sent();
-                            return [2 /*return*/];
-                    }
+                return __generator(this, function (_a) {
+                    task.id = (new Date()).getTime();
+                    this.tasks.push(task);
+                    return [2 /*return*/, task];
                 });
             });
         };
-        UserSelectorViewModel.prototype.searchUser = function () {
+        MockTaskListService.prototype.retrive = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var _a;
-                return __generator(this, function (_b) {
-                    switch (_b.label) {
-                        case 0:
-                            _a = this;
-                            return [4 /*yield*/, this.taskListService.getUsers(this.searchText)];
-                        case 1:
-                            _a.items = _b.sent();
-                            return [2 /*return*/];
-                    }
+                return __generator(this, function (_a) {
+                    return [2 /*return*/, this.tasks];
                 });
             });
         };
-        UserSelectorViewModel.prototype.select = function (user) {
-            this.close(user);
+        MockTaskListService.prototype.update = function (data) {
+            return __awaiter(this, void 0, void 0, function () {
+                var t;
+                return __generator(this, function (_a) {
+                    t = this.tasks.find(function (x) { return x.id === data.id; });
+                    t.label = data.label;
+                    t.description = data.description;
+                    t.status = data.status;
+                    return [2 /*return*/, data];
+                });
+            });
         };
-        __decorate([
-            BindableProperty_1.BindableProperty,
-            __metadata("design:type", Array)
-        ], UserSelectorViewModel.prototype, "items", void 0);
-        __decorate([
-            BindableProperty_1.BindableProperty,
-            __metadata("design:type", String)
-        ], UserSelectorViewModel.prototype, "searchText", void 0);
-        __decorate([
-            AtomViewModel_1.Watch,
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", Promise)
-        ], UserSelectorViewModel.prototype, "searchUser", null);
-        UserSelectorViewModel = __decorate([
-            __param(0, Inject_1.Inject),
-            __param(1, Inject_1.Inject),
-            __metadata("design:paramtypes", [App_1.App,
-                TaskListService_1.TaskListService])
-        ], UserSelectorViewModel);
-        return UserSelectorViewModel;
-    }(AtomWindowViewModel_1.AtomWindowViewModel));
-    exports.UserSelectorViewModel = UserSelectorViewModel;
+        MockTaskListService.prototype.deleteTask = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    this.tasks = this.tasks.filter(function (x) { return x.id !== id; });
+                    return [2 /*return*/];
+                });
+            });
+        };
+        MockTaskListService.prototype.getUsers = function (name) {
+            return __awaiter(this, void 0, void 0, function () {
+                var n;
+                return __generator(this, function (_a) {
+                    if (!name) {
+                        return [2 /*return*/, this.users];
+                    }
+                    n = name.toLocaleLowerCase();
+                    return [2 /*return*/, this.users.filter(function (x) {
+                            if (name) {
+                                if (x.label.toLocaleLowerCase().indexOf(n) >= 0 ||
+                                    x.value.toLocaleLowerCase().indexOf(n) >= 0) {
+                                    return true;
+                                }
+                            }
+                            else {
+                                return true;
+                            }
+                        })];
+                });
+            });
+        };
+        MockTaskListService = __decorate([
+            __param(0, Inject_1.Inject), __param(1, Inject_1.Inject),
+            __metadata("design:paramtypes", [App_1.App, JsonService_1.JsonService])
+        ], MockTaskListService);
+        return MockTaskListService;
+    }(TaskListService_1.TaskListService));
+    exports.default = MockTaskListService;
 });
-//# sourceMappingURL=UserSelectorViewModel.js.map
+//# sourceMappingURL=MockTaskListService.js.map

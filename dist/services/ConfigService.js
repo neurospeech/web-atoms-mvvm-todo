@@ -32,8 +32,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
         while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
             switch (op[0]) {
                 case 0: case 1: t = op; break;
                 case 4: _.label++; return { value: op[1], done: false };
@@ -58,12 +58,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "web-atoms-core/dist/di/RegisterSingleton", "web-atoms-core/dist/services/http/RestService"], factory);
+        define(["require", "exports", "web-atoms-core/dist/di/DISingleton", "web-atoms-core/dist/services/http/RestService"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var RegisterSingleton_1 = require("web-atoms-core/dist/di/RegisterSingleton");
+    var DISingleton_1 = require("web-atoms-core/dist/di/DISingleton");
     var RestService_1 = require("web-atoms-core/dist/services/http/RestService");
     var ConfigService = /** @class */ (function (_super) {
         __extends(ConfigService, _super);
@@ -84,7 +84,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             __metadata("design:returntype", Promise)
         ], ConfigService.prototype, "getStatusList", null);
         ConfigService = __decorate([
-            RegisterSingleton_1.RegisterSingleton
+            DISingleton_1.default({ mock: "./mocks/MockConfigService" })
         ], ConfigService);
         return ConfigService;
     }(RestService_1.BaseService));

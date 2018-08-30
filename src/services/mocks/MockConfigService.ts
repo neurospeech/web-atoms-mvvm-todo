@@ -1,7 +1,7 @@
-import { IConfigItem } from "../models/task-status";
-import { ConfigService } from "./ConfigService";
+import { IConfigItem } from "../../models/task-status";
+import { ConfigService } from "../ConfigService";
 
-export class MockConfigService extends ConfigService {
+export default class MockConfigService extends ConfigService {
 
     public async getStatusList(): Promise<IConfigItem[]> {
         return [
